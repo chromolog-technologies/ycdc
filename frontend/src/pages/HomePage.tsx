@@ -45,7 +45,7 @@ const CARE_CATEGORIES_DATA: Record<CareCategory, {
     tabLabel: 'Clinical Dermatology',
     protocolTitle: 'Clinical Dermatology',
     protocolDesc: 'Evidence-based therapies for healthy, clear, and resilient skin.',
-    protocolImage: '/skin_treatment_premium.png',
+    protocolImage: '/luxury_treatment_suite.jpg',
     services: [
       {
         title: 'Advanced Acne & Scar Revision',
@@ -109,7 +109,7 @@ const CARE_CATEGORIES_DATA: Record<CareCategory, {
     tabLabel: 'Advanced Laser Therapies',
     protocolTitle: 'Advanced Laser Therapies',
     protocolDesc: 'US-FDA approved laser systems delivering precise, safe rejuvenation.',
-    protocolImage: '/laser_treatment_premium.png',
+    protocolImage: '/laser_suite_clinical.jpg',
     services: [
       {
         title: 'RevLite Q-Switched Laser Toning',
@@ -141,7 +141,7 @@ const CARE_CATEGORIES_DATA: Record<CareCategory, {
     tabLabel: 'Aesthetic Cosmetology',
     protocolTitle: 'Aesthetic Cosmetology',
     protocolDesc: 'Refined anti-aging and facial contouring tailored to natural facial balance.',
-    protocolImage: '/cosmetic_treatment_premium.png',
+    protocolImage: '/facial_aesthetic_treatment.jpg',
     services: [
       {
         title: 'Advanced Anti-Aging & Wrinkle Correction',
@@ -583,8 +583,8 @@ export const HomePage: React.FC<HomePageProps> = ({
               tabIndex={0}
             >
               <div className="master-ribbon-approach-content">
-                <span className="master-ribbon-approach-title" style={{ color: '#045935' }}>Our Approach</span>
-                <div className="master-ribbon-approach-arrow" style={{ borderColor: '#045935', color: '#045935' }}>
+                <span className="master-ribbon-approach-title">Our Approach</span>
+                <div className="master-ribbon-approach-arrow">
                   <ArrowRight size={13} />
                 </div>
               </div>
@@ -605,9 +605,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <div className="heritage-photo-outline-frame" />
                 <div className="heritage-photo-frame">
                   <img
-                    src="https://ycdc.in/wp-content/uploads/2025/05/DSC09955-scaled-880x952.jpg"
+                    src="/ycdc_reception_lobby.jpg"
                     onError={(e) => { e.currentTarget.src = '/DSC09955-scaled-880x952.jpg'; }}
-                    alt="Dr. Yogiraj Centre for Dermatology & Cosmetology Clinic Reception"
+                    alt="Dr. Yogiraj Centre for Dermatology & Cosmetology Luxury Reception Lobby"
                   />
                 </div>
               </div>
@@ -629,7 +629,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   fontWeight: 700,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
-                  color: '#045935',
+                  color: 'var(--color-soldier-green)',
                   background: '#EEF3EB',
                   border: '1px solid #C8D1C0',
                   borderRadius: '9999px',
@@ -647,7 +647,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </h2>
 
               <div className="heritage-quote-box">
-                <p className="heritage-quote-text" style={{ fontSize: '1.08rem', color: '#045935' }}>
+                <p className="heritage-quote-text" style={{ fontSize: '1.08rem' }}>
                   &ldquo;ISO Certified for quality and safety, YCDC meets rigorous international standards, giving you peace of mind along with effective, personalized solutions.&rdquo;
                 </p>
               </div>
@@ -748,7 +748,6 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <button
                   onClick={() => onNavigateToPage('treatments')}
                   className="btn-care-primary"
-                  style={{ backgroundColor: '#045935' }}
                 >
                   Explore All {careData.tabLabel} Procedures <ArrowRight size={15} />
                 </button>
@@ -1185,7 +1184,6 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <a
                   href="tel:+914713100707"
                   className="btn-facility-book"
-                  style={{ backgroundColor: '#045935', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
                 >
                   <Phone size={14} /> Call Trivandrum
                 </a>
@@ -1236,7 +1234,6 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <a
                   href="tel:+917593864264"
                   className="btn-facility-book"
-                  style={{ backgroundColor: '#045935', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
                 >
                   <Phone size={14} /> Call Whitefield
                 </a>
@@ -1361,7 +1358,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               title="YCDC Luxury Clinic Lounge"
             >
               <img
-                src="/clinic_lobby_premium.png"
+                src="/ycdc_reception_lobby.jpg"
                 alt="YCDC Clinic Reception Lounge"
                 className="journey-card-img"
               />
@@ -1381,7 +1378,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               title="Advanced Rejuvenation Treatments"
             >
               <img
-                src="/skin_treatment_premium.png"
+                src="/facial_aesthetic_treatment.jpg"
                 alt="Cosmetic Skin Treatment"
                 className="journey-card-img"
               />
@@ -1422,7 +1419,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               title="State-of-the-Art Treatment Suites"
             >
               <img
-                src="/journey_clinic_bed.jpg"
+                src="/luxury_treatment_suite.jpg"
                 alt="YCDC Treatment Suite"
                 className="journey-card-img"
               />

@@ -41,23 +41,39 @@ const MOCK_GALLERY: GalleryItem[] = [
     type: 'image',
     category: 'infrastructure',
     title: 'YCDC Luxury Reception Lounge',
-    thumbnail_path: '/clinic_lobby_premium.png',
-    description: 'Our welcoming reception lounge designed to provide patients with a calming and premium clinical environment.'
+    thumbnail_path: '/ycdc_reception_lobby.jpg',
+    description: 'Our welcoming reception lounge with back-lit YCDC insignia designed to provide patients with an unhurried, royal clinical ambiance.'
+  },
+  {
+    id: 'luxury-treatment-suite',
+    type: 'image',
+    category: 'infrastructure',
+    title: 'Private Clinical Aesthetic Suite',
+    thumbnail_path: '/luxury_treatment_suite.jpg',
+    description: 'Ergonomically equipped aesthetic procedure room with serene sage and dusty rose design for clinical comfort.'
   },
   {
     id: 'laser-infra',
     type: 'image',
     category: 'infrastructure',
     title: 'US-FDA Approved Laser Suite',
-    thumbnail_path: '/laser_treatment_premium.png',
-    description: 'State-of-the-art laser procedure room equipped for pain-free permanent hair reduction and skin toning.'
+    thumbnail_path: '/laser_suite_clinical.jpg',
+    description: 'State-of-the-art laser procedure room equipped for pain-free permanent hair reduction and non-ablative skin toning.'
+  },
+  {
+    id: 'facial-aesthetic-rejuvenation',
+    type: 'image',
+    category: 'treatments',
+    title: 'Aesthetic Facial Rejuvenation & Skin Tightening',
+    thumbnail_path: '/facial_aesthetic_treatment.jpg',
+    description: 'Ultrasound and radiofrequency facial rejuvenation protocol applied with high-precision gold applicator.'
   },
   {
     id: 'treatment-showcase-video',
     type: 'video',
     category: 'treatments',
     title: 'YCDC Clinic Experience & Facility Tour',
-    thumbnail_path: '/cosmetic_treatment_premium.png',
+    thumbnail_path: '/luxury_treatment_suite.jpg',
     video_path: 'https://www.youtube.com/watch?v=RWr8XeBUxTU',
     description: 'Detailed clinical video tour demonstrating our professional environment, FDA-approved lasers, and workflows.'
   }

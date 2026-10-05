@@ -199,7 +199,7 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
               padding: '0 8px 0 2px',
               display: 'flex',
               alignItems: 'center',
-              color: '#045935',
+              color: '#233D32',
               flexShrink: 0
             }}
           >
@@ -261,10 +261,10 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
               left: 0,
               width: '100%',
               height: '2px',
-              background: 'linear-gradient(90deg, #045935 0%, #D9A5A7 100%)',
+              background: 'linear-gradient(90deg, #233D32 0%, #D9A5A7 100%)',
               transformOrigin: 'left center',
               animation: 'expandLineLeftToRight 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-              boxShadow: '0 1px 4px rgba(4, 89, 53, 0.2)'
+              boxShadow: '0 1px 4px rgba(35, 61, 50, 0.2)'
             }}
           />
 
@@ -334,9 +334,9 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
                           transition: 'all 0.2s ease'
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#045935';
+                          e.currentTarget.style.backgroundColor = '#233D32';
                           e.currentTarget.style.color = '#ffffff';
-                          e.currentTarget.style.borderColor = '#045935';
+                          e.currentTarget.style.borderColor = '#233D32';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.backgroundColor = '#ffffff';
@@ -418,8 +418,8 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
                                 width: '32px',
                                 height: '32px',
                                 borderRadius: '8px',
-                                backgroundColor: isCosmetic ? 'rgba(217, 165, 167, 0.2)' : 'rgba(4, 89, 53, 0.12)',
-                                color: isCosmetic ? '#D9A5A7' : '#045935',
+                                backgroundColor: isCosmetic ? 'rgba(217, 165, 167, 0.2)' : 'rgba(35, 61, 50, 0.12)',
+                                color: isCosmetic ? '#D9A5A7' : '#233D32',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -485,7 +485,7 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
                       width: '100%',
                       marginTop: '8px',
                       padding: '10px',
-                      backgroundColor: '#045935',
+                      backgroundColor: '#233D32',
                       color: '#ffffff',
                       border: 'none',
                       borderRadius: '10px',
@@ -502,7 +502,7 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
                       e.currentTarget.style.backgroundColor = '#D9A5A7';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = '#045935';
+                      e.currentTarget.style.backgroundColor = '#233D32';
                     }}
                   >
                     View all matching treatments in catalog <ArrowRight size={14} />

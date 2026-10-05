@@ -185,7 +185,7 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
       <section style={{
         position: 'relative',
         padding: '120px 0 80px',
-        background: 'url("/cosmetic_treatment_premium.png") no-repeat center center/cover',
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%), url("/cosmetic_treatment_premium.png") no-repeat center center/cover',
         color: 'white',
         textAlign: 'center',
         overflow: 'hidden'

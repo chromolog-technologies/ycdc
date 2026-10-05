@@ -23,18 +23,25 @@ export default function useScrollReveal() {
         });
       },
       {
-        threshold: 0.1, // Trigger when 10% of element is visible
-        rootMargin: '0px 0px -40px 0px', // Slight offset at bottom of viewport
+        threshold: 0.02, // Trigger immediately when even 2% is visible
+        rootMargin: '0px 0px 40px 0px', // Trigger slightly ahead of scrolling
       }
     );
 
-    // Initial observation scan
-    const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
-    revealElements.forEach((el) => {
-      if (!el.classList.contains('reveal-active')) {
-        observerRef.current?.observe(el);
-      }
-    });
+    const scanAndObserve = () => {
+      const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
+      revealElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        // If already in viewport on mount, activate immediately to avoid flash of invisible content
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('reveal-active');
+        } else if (!el.classList.contains('reveal-active') && observerRef.current) {
+          observerRef.current.observe(el);
+        }
+      });
+    };
+
+    scanAndObserve();
 
     return () => {
       if (observerRef.current) {
@@ -48,16 +55,23 @@ export default function useScrollReveal() {
    * Crucial in single-page apps where content mounts dynamically.
    */
   const refresh = () => {
-    // Small timeout to allow React to paint the DOM
-    setTimeout(() => {
-      if (!observerRef.current) return;
+    const scan = () => {
       const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
       revealElements.forEach((el) => {
-        if (!el.classList.contains('reveal-active')) {
-          observerRef.current?.observe(el);
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('reveal-active');
+        } else if (!el.classList.contains('reveal-active') && observerRef.current) {
+          observerRef.current.observe(el);
         }
       });
-    }, 150);
+    };
+
+    // Immediate check
+    scan();
+    // Subsequent check for React DOM paints
+    setTimeout(scan, 80);
+    setTimeout(scan, 250);
   };
 
   return { refresh };

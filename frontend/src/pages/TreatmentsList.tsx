@@ -1,6 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Clock, ChevronDown, ChevronUp, Search, MapPin, Sparkles, Stethoscope, AlertCircle, Phone, MessageSquare } from 'lucide-react';
+import { 
+  Clock, 
+  ChevronDown, 
+  ChevronUp, 
+  Search, 
+  MapPin, 
+  Sparkles, 
+  Stethoscope, 
+  AlertCircle, 
+  Phone, 
+  MessageSquare,
+  ArrowRight,
+  X,
+  CheckCircle2,
+  ShieldCheck,
+  Award,
+  Calendar
+} from 'lucide-react';
 import { API_BASE_URL } from '../config';
 import type { Treatment, TreatmentsListProps } from '../types';
 import { TREATMENT_IMAGES, MOCK_SERVICES } from '../data/treatmentsData';
@@ -28,13 +45,14 @@ const FAQS = [
   }
 ];
 
-export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: TreatmentsListProps) {
+export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps) {
   const [treatments, setTreatments] = useState<Treatment[]>(MOCK_SERVICES);
   const [selectedBranch, setSelectedBranch] = useState<'all' | 'trivandrum' | 'bangalore'>('all');
   const [selectedType, setSelectedType] = useState<'all' | 'dermatic' | 'cosmetic'>('all');
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [activeModalTreatment, setActiveModalTreatment] = useState<Treatment | null>(null);
 
   const [searchParams] = useSearchParams();
 
@@ -53,6 +71,25 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
       }, 150);
     }
   }, [searchParams]);
+
+  // Lock body scroll and handle Escape key when modal is open
+  useEffect(() => {
+    if (activeModalTreatment) {
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setActiveModalTreatment(null);
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = 'unset';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [activeModalTreatment]);
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/services`)
@@ -98,11 +135,24 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   };
 
+  // Helper for small card descriptions (around 1-2 clean lines)
+  const getShortDescription = (desc: string) => {
+    if (!desc) return '';
+    if (desc.length <= 110) return desc;
+    const periodIdx = desc.indexOf('. ');
+    if (periodIdx > 35 && periodIdx <= 110) {
+      return desc.substring(0, periodIdx + 1);
+    }
+    const trimmed = desc.substring(0, 105);
+    const lastSpace = trimmed.lastIndexOf(' ');
+    return (lastSpace > 0 ? trimmed.substring(0, lastSpace) : trimmed) + '...';
+  };
+
   return (
     <div className="animate-fade-in" style={{ backgroundColor: 'var(--silk-100)', paddingBottom: '60px' }}>
       {/* Page Header */}
       <section className="section-padding" style={{ 
-        background: 'linear-gradient(135deg, rgba(30, 20, 40, 0.92), rgba(60, 20, 50, 0.85)), url("/skin_treatment_premium.png") no-repeat center center/cover', 
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%), url("/luxury_treatment_suite.jpg") no-repeat center center/cover', 
         color: 'white',
         textAlign: 'center',
         padding: '100px 0 80px'
@@ -199,8 +249,8 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
                   fontWeight: '700',
                   fontSize: '0.9rem',
                   border: 'none',
-                  backgroundColor: selectedType === 'all' ? 'var(--plum-900)' : 'var(--silk-100)',
-                  color: selectedType === 'all' ? 'white' : 'var(--plum-900)',
+                  backgroundColor: selectedType === 'all' ? '#233D32' : 'var(--silk-100)',
+                  color: selectedType === 'all' ? 'white' : '#233D32',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease'
                 }}
@@ -215,8 +265,8 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
                   fontWeight: '700',
                   fontSize: '0.9rem',
                   border: 'none',
-                  backgroundColor: selectedType === 'dermatic' ? 'var(--plum-800)' : 'var(--silk-100)',
-                  color: selectedType === 'dermatic' ? 'white' : 'var(--plum-900)',
+                  backgroundColor: selectedType === 'dermatic' ? '#233D32' : 'var(--silk-100)',
+                  color: selectedType === 'dermatic' ? 'white' : '#233D32',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -234,8 +284,8 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
                   fontWeight: '700',
                   fontSize: '0.9rem',
                   border: 'none',
-                  backgroundColor: selectedType === 'cosmetic' ? 'var(--gold-600)' : 'var(--silk-100)',
-                  color: selectedType === 'cosmetic' ? 'white' : 'var(--plum-900)',
+                  backgroundColor: selectedType === 'cosmetic' ? '#B49A68' : 'var(--silk-100)',
+                  color: selectedType === 'cosmetic' ? 'white' : '#233D32',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -265,7 +315,7 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
                       padding: '8px 16px',
                       fontSize: '0.82rem',
                       borderRadius: '20px',
-                      backgroundColor: activeFilter === cat.key ? 'var(--plum-900)' : 'var(--silk-100)',
+                      backgroundColor: activeFilter === cat.key ? '#233D32' : 'var(--silk-100)',
                       color: activeFilter === cat.key ? 'white' : 'var(--muted-charcoal)',
                       border: '1px solid transparent',
                       transition: 'var(--transition-fast)',
@@ -315,14 +365,14 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
               boxShadow: 'var(--shadow-sm)'
             }}>
               <AlertCircle size={44} style={{ color: 'var(--gold-600)', marginBottom: '14px' }} />
-              <h3 style={{ fontFamily: 'var(--font-serif)', color: 'var(--plum-900)', fontSize: '1.8rem', marginBottom: '10px' }}>
+              <h3 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', fontSize: '1.8rem', marginBottom: '10px' }}>
                 Bangalore Branch Procedures Updating Soon
               </h3>
               <p style={{ maxWidth: '650px', margin: '0 auto 24px', color: 'var(--muted-charcoal)', fontSize: '1rem', lineHeight: '1.6' }}>
                 The full catalog of clinical and cosmetic procedures specifically customized for our <strong>Whitefield, Bangalore</strong> branch is currently being updated and will be published here shortly.
               </p>
-              <p style={{ fontSize: '0.9rem', color: 'var(--plum-800)', fontWeight: '600', marginBottom: '24px' }}>
-                All core treatments, consultations, lasers, and hair procedures are fully active at our Whitefield clinic. Reach out to our Bangalore care team directly:
+              <p style={{ fontSize: '0.9rem', color: '#233D32', fontWeight: '600', marginBottom: '24px' }}>
+                All core treatments, consultations, lasers, and hair care are fully active at our Whitefield clinic. Reach out to our Bangalore care team directly:
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
                 <button
@@ -335,7 +385,7 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
                 <a
                   href="tel:+919008985222"
                   className="btn btn-outline"
-                  style={{ padding: '12px 24px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--plum-900)', borderColor: 'var(--plum-900)', fontWeight: 'bold' }}
+                  style={{ padding: '12px 24px', display: 'flex', alignItems: 'center', gap: '8px', color: '#233D32', borderColor: '#233D32', fontWeight: 'bold' }}
                 >
                   <Phone size={16} /> Call Whitefield Branch
                 </a>
@@ -362,20 +412,21 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
               Showing <strong>{filteredTreatments.length}</strong> procedure{filteredTreatments.length === 1 ? '' : 's'} 
               {selectedBranch === 'trivandrum' ? ' available at Trivandrum Branch' : selectedBranch === 'bangalore' ? ' for Bangalore Branch' : ' across branches'}
             </span>
-            <span className="badge badge-plum" style={{ fontSize: '0.75rem' }}>
+            <span className="badge badge-premium" style={{ fontSize: '0.75rem', backgroundColor: 'rgba(35, 61, 50, 0.1)', color: '#233D32', borderColor: 'rgba(35, 61, 50, 0.25)' }}>
               {selectedBranch === 'trivandrum' ? '📍 Trivandrum Branch (Pattom)' : selectedBranch === 'bangalore' ? '📍 Bangalore Branch (Whitefield)' : '📍 All Branches'}
             </span>
           </div>
 
           {filteredTreatments.length > 0 ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '26px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '26px' }}>
               {filteredTreatments.map((t) => (
                 <div 
                   key={t.id}
-                  className="glass"
+                  className="glass hover-premium"
+                  onClick={() => setActiveModalTreatment(t)}
                   style={{
                     background: 'white',
-                    borderRadius: '14px',
+                    borderRadius: '16px',
                     border: '1px solid var(--silk-200)',
                     overflow: 'hidden',
                     textAlign: 'left',
@@ -383,24 +434,27 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     boxShadow: 'var(--shadow-sm)',
-                    transition: 'transform 0.25s ease, box-shadow 0.25s ease'
+                    transition: 'transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
+                    cursor: 'pointer'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-4px)';
-                    e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                    e.currentTarget.style.boxShadow = '0 12px 30px rgba(35, 61, 50, 0.12)';
+                    e.currentTarget.style.borderColor = 'rgba(35, 61, 50, 0.35)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'none';
                     e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
+                    e.currentTarget.style.borderColor = 'var(--silk-200)';
                   }}
                 >
                   {/* Card Cover Image */}
                   {t.image && (
-                    <div style={{ height: '175px', overflow: 'hidden', position: 'relative', backgroundColor: 'var(--silk-200)' }}>
+                    <div style={{ height: '185px', overflow: 'hidden', position: 'relative', backgroundColor: 'var(--silk-200)' }}>
                       <img 
                         src={t.image} 
                         alt={t.name}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
                         onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.06)'}
                         onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                       />
@@ -412,8 +466,9 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
                           letterSpacing: '0.05em',
                           padding: '4px 10px', 
                           borderRadius: '20px', 
-                          backgroundColor: t.procedure_type === 'dermatic' ? 'var(--plum-900)' : 'var(--gold-600)',
-                          color: 'white'
+                          backgroundColor: t.procedure_type === 'dermatic' ? '#233D32' : '#B49A68',
+                          color: 'white',
+                          boxShadow: '0 2px 6px rgba(0,0,0,0.2)'
                         }}>
                           {t.procedure_type === 'dermatic' ? '🩺 DERMATIC' : '✨ COSMETIC'}
                         </span>
@@ -422,48 +477,72 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
                       <div style={{ position: 'absolute', top: '12px', right: '12px' }}>
                         <span style={{ 
                           fontSize: '0.65rem', 
-                          fontWeight: 'bold',
+                          fontWeight: 'bold', 
                           padding: '4px 8px', 
                           borderRadius: '4px', 
                           backgroundColor: 'rgba(0,0,0,0.65)',
                           color: 'white',
                           backdropFilter: 'blur(4px)'
                         }}>
-                          Trivandrum Branch
+                          {t.branch === 'bangalore' ? 'Bangalore Branch' : t.branch === 'both' ? 'All Branches' : 'Trivandrum Branch'}
                         </span>
                       </div>
                     </div>
                   )}
 
                   {/* Card Content Details */}
-                  <div style={{ padding: '22px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                     <div>
                       {/* Category and duration */}
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                        <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--plum-800)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                        <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#233D32', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                           {t.category_name}
                         </span>
-                        <span style={{ fontSize: '0.75rem', color: 'var(--gold-600)', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <span style={{ fontSize: '0.75rem', color: '#B49A68', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '4px' }}>
                           <Clock size={12} /> {t.duration}
                         </span>
                       </div>
 
-                      <h4 style={{ fontFamily: 'var(--font-serif)', color: 'var(--plum-900)', fontSize: '1.35rem', marginBottom: '10px', lineHeight: '1.3' }}>
+                      <h4 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', fontSize: '1.25rem', marginBottom: '8px', lineHeight: '1.35', fontWeight: 600 }}>
                         {t.name}
                       </h4>
-                      <p style={{ fontSize: '0.88rem', color: 'var(--muted-charcoal)', lineHeight: '1.5', marginBottom: '16px' }}>
-                        {t.description}
+                      <p style={{ fontSize: '0.86rem', color: 'var(--muted-charcoal)', lineHeight: '1.55', marginBottom: '16px' }}>
+                        {getShortDescription(t.description)}
                       </p>
+                    </div>
 
-                      {/* Scientific mechanism */}
-                      <div style={{ background: 'var(--silk-100)', padding: '10px 14px', borderRadius: '6px', marginBottom: '14px', fontSize: '0.78rem' }}>
-                        <strong style={{ color: 'var(--plum-800)', display: 'block', marginBottom: '2px' }}>Clinical Mechanism:</strong>
-                        <span style={{ color: 'var(--muted-charcoal)', fontStyle: 'italic' }}>{t.science}</span>
-                      </div>
-
-                      <div style={{ fontSize: '0.8rem', color: 'var(--charcoal)', marginBottom: '0' }}>
-                        <strong>Indicated for:</strong> <span style={{ color: 'var(--muted-charcoal)' }}>{t.treats}</span>
-                      </div>
+                    {/* Interactive Card Action Bar */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid var(--silk-200)', marginTop: '6px' }}>
+                      <span style={{ fontSize: '0.82rem', fontWeight: '700', color: '#233D32', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                        View Details <ArrowRight size={14} />
+                      </span>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onBookTreatment(t.category, t.id);
+                        }}
+                        style={{
+                          padding: '6px 14px',
+                          borderRadius: '20px',
+                          fontSize: '0.78rem',
+                          fontWeight: '700',
+                          border: 'none',
+                          backgroundColor: 'rgba(35, 61, 50, 0.08)',
+                          color: '#233D32',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#233D32';
+                          e.currentTarget.style.color = '#ffffff';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'rgba(35, 61, 50, 0.08)';
+                          e.currentTarget.style.color = '#233D32';
+                        }}
+                      >
+                        Book Now
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -481,8 +560,8 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
       <section className="section-padding" style={{ backgroundColor: 'white' }}>
         <div className="container" style={{ maxWidth: '820px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <span className="badge badge-premium">Patient Knowledge Base</span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', color: 'var(--plum-900)', marginTop: '10px' }}>
+            <span className="badge badge-premium">Patient Knowledge</span>
+            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', marginTop: '10px', fontSize: '2.2rem' }}>
               Procedures & Diagnostics FAQ
             </h2>
           </div>
@@ -506,12 +585,12 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
                     display: 'flex', 
                     justifyContent: 'space-between', 
                     alignItems: 'center', 
-                    cursor: 'pointer',
+                    cursor: 'pointer', 
                     userSelect: 'none'
                   }}
                 >
-                  <span style={{ fontWeight: '600', color: 'var(--plum-900)', fontSize: '0.95rem' }}>{faq.q}</span>
-                  {expandedFaq === idx ? <ChevronUp size={18} style={{ color: 'var(--plum-800)' }} /> : <ChevronDown size={18} style={{ color: 'var(--plum-800)' }} />}
+                  <span style={{ fontWeight: '600', color: '#233D32', fontSize: '0.95rem' }}>{faq.q}</span>
+                  {expandedFaq === idx ? <ChevronUp size={18} style={{ color: '#233D32' }} /> : <ChevronDown size={18} style={{ color: '#233D32' }} />}
                 </div>
 
                 {expandedFaq === idx && (
@@ -524,6 +603,330 @@ export default function TreatmentsList({ onBookTreatment: _onBookTreatment }: Tr
           </div>
         </div>
       </section>
+
+      {/* Detailed Treatment Modal */}
+      {activeModalTreatment && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setActiveModalTreatment(null)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 10000,
+            backgroundColor: 'rgba(20, 35, 25, 0.75)',
+            backdropFilter: 'blur(8px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px'
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="animate-scale-up"
+            style={{
+              width: '100%',
+              maxWidth: '740px',
+              maxHeight: '90vh',
+              backgroundColor: '#ffffff',
+              borderRadius: '20px',
+              border: '1px solid var(--silk-200)',
+              boxShadow: '0 24px 60px rgba(0, 0, 0, 0.28)',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              position: 'relative'
+            }}
+          >
+            {/* Top Banner / Image Header */}
+            <div style={{ position: 'relative', height: '220px', backgroundColor: '#233D32', overflow: 'hidden' }}>
+              {activeModalTreatment.image ? (
+                <>
+                  <img
+                    src={activeModalTreatment.image}
+                    alt={activeModalTreatment.name}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.85) 100%)'
+                  }} />
+                </>
+              ) : (
+                <div style={{
+                  width: '100%',
+                  height: '100%',
+                  background: 'linear-gradient(135deg, #233D32 0%, #1A2F26 100%)'
+                }} />
+              )}
+
+              {/* Close Button */}
+              <button
+                onClick={() => setActiveModalTreatment(null)}
+                aria-label="Close modal"
+                style={{
+                  position: 'absolute',
+                  top: '16px',
+                  right: '16px',
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  color: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  zIndex: 10
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#233D32')}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.5)')}
+              >
+                <X size={20} />
+              </button>
+
+              {/* Badges on Top of Image Header */}
+              <div style={{ position: 'absolute', bottom: '16px', left: '24px', right: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '8px' }}>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <span style={{
+                    fontSize: '0.7rem',
+                    fontWeight: 'bold',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    padding: '5px 12px',
+                    borderRadius: '20px',
+                    backgroundColor: activeModalTreatment.procedure_type === 'dermatic' ? '#233D32' : '#B49A68',
+                    color: 'white',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.25)'
+                  }}>
+                    {activeModalTreatment.procedure_type === 'dermatic' ? '🩺 DERMATIC PROCEDURE' : '✨ COSMETIC PROCEDURE'}
+                  </span>
+                  <span style={{
+                    fontSize: '0.7rem',
+                    fontWeight: '600',
+                    padding: '5px 12px',
+                    borderRadius: '20px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                    color: 'white',
+                    backdropFilter: 'blur(6px)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)'
+                  }}>
+                    {activeModalTreatment.category_name}
+                  </span>
+                </div>
+
+                <span style={{
+                  fontSize: '0.75rem',
+                  fontWeight: '600',
+                  padding: '5px 12px',
+                  borderRadius: '20px',
+                  backgroundColor: 'rgba(0, 0, 0, 0.55)',
+                  color: '#F3E5AB',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  <Clock size={13} /> {activeModalTreatment.duration}
+                </span>
+              </div>
+            </div>
+
+            {/* Modal Scrollable Body */}
+            <div style={{ padding: '28px 28px 20px', overflowY: 'auto', flex: 1, textAlign: 'left' }}>
+              {/* Title */}
+              <h3 style={{
+                fontFamily: 'var(--font-serif)',
+                color: '#233D32',
+                fontSize: '1.85rem',
+                marginBottom: '10px',
+                lineHeight: '1.3',
+                fontWeight: 600
+              }}>
+                {activeModalTreatment.name}
+              </h3>
+
+              {/* Location & Branch Availability */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '18px', color: '#B49A68', fontSize: '0.85rem', fontWeight: 600 }}>
+                <MapPin size={15} />
+                <span>
+                  Available at: {activeModalTreatment.branch === 'bangalore' ? 'Whitefield, Bengaluru Clinic' : activeModalTreatment.branch === 'both' ? 'Trivandrum & Bangalore Clinics' : 'Pattom, Trivandrum Clinic'}
+                </span>
+              </div>
+
+              {/* Full Comprehensive Description */}
+              <div style={{ marginBottom: '22px' }}>
+                <h5 style={{ fontSize: '0.88rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#565F55', fontWeight: 700, marginBottom: '6px' }}>
+                  Procedure Overview & Indications
+                </h5>
+                <p style={{ fontSize: '0.95rem', color: '#242923', lineHeight: '1.7' }}>
+                  {activeModalTreatment.description}
+                </p>
+              </div>
+
+              {/* Scientific & Clinical Mechanism Box */}
+              {activeModalTreatment.science && (
+                <div style={{
+                  background: 'linear-gradient(135deg, rgba(35, 61, 50, 0.05) 0%, rgba(200, 209, 192, 0.2) 100%)',
+                  border: '1px solid rgba(35, 61, 50, 0.18)',
+                  borderRadius: '12px',
+                  padding: '16px 20px',
+                  marginBottom: '20px'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', color: '#233D32', fontWeight: 700, fontSize: '0.88rem' }}>
+                    <Stethoscope size={18} />
+                    <span>Clinical Mechanism of Action</span>
+                  </div>
+                  <p style={{ fontSize: '0.88rem', color: '#334035', lineHeight: '1.6', margin: 0, fontStyle: 'italic' }}>
+                    {activeModalTreatment.science}
+                  </p>
+                </div>
+              )}
+
+              {/* Indicated For / Treats Tags */}
+              {activeModalTreatment.treats && (
+                <div style={{ marginBottom: '24px' }}>
+                  <h5 style={{ fontSize: '0.88rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#565F55', fontWeight: 700, marginBottom: '10px' }}>
+                    Indicated For & Target Concerns
+                  </h5>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    {activeModalTreatment.treats.split(',').map((item, idx) => (
+                      <span
+                        key={idx}
+                        style={{
+                          backgroundColor: 'var(--silk-100)',
+                          border: '1px solid var(--silk-200)',
+                          color: '#233D32',
+                          padding: '6px 14px',
+                          borderRadius: '20px',
+                          fontSize: '0.82rem',
+                          fontWeight: 600,
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px'
+                        }}
+                      >
+                        <CheckCircle2 size={13} style={{ color: '#233D32' }} />
+                        {item.trim()}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Clinical Quality Assurance Guarantee */}
+              <div style={{
+                backgroundColor: '#FCFAF6',
+                border: '1px solid #EFE9DF',
+                borderRadius: '12px',
+                padding: '14px 18px',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '12px',
+                marginBottom: '10px'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#565F55' }}>
+                  <ShieldCheck size={16} style={{ color: '#233D32', flexShrink: 0 }} />
+                  <span>ISO 9001:2015 Clinical Safety</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#565F55' }}>
+                  <Award size={16} style={{ color: '#233D32', flexShrink: 0 }} />
+                  <span>US-FDA Approved Devices</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#565F55' }}>
+                  <Sparkles size={16} style={{ color: '#233D32', flexShrink: 0 }} />
+                  <span>Personalized Skin Protocol</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Actions Footer */}
+            <div style={{
+              padding: '16px 28px',
+              backgroundColor: '#FCFAF6',
+              borderTop: '1px solid var(--silk-200)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '12px'
+            }}>
+              <button
+                onClick={() => setActiveModalTreatment(null)}
+                style={{
+                  padding: '10px 20px',
+                  borderRadius: '30px',
+                  border: '1px solid var(--silk-200)',
+                  backgroundColor: 'white',
+                  color: '#565F55',
+                  fontWeight: 600,
+                  fontSize: '0.88rem',
+                  cursor: 'pointer'
+                }}
+              >
+                Close
+              </button>
+
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                <button
+                  onClick={() => {
+                    const branchName = activeModalTreatment.branch === 'bangalore' ? 'Whitefield, Bangalore' : 'Pattom, Trivandrum';
+                    const phone = activeModalTreatment.branch === 'bangalore' ? '919008985222' : '919447012345';
+                    const message = encodeURIComponent(`Hello YCDC ${branchName} Clinic, I would like to inquire about "${activeModalTreatment.name}".`);
+                    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+                  }}
+                  style={{
+                    padding: '10px 20px',
+                    borderRadius: '30px',
+                    border: 'none',
+                    backgroundColor: '#25D366',
+                    color: 'white',
+                    fontWeight: 700,
+                    fontSize: '0.88rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 8px rgba(37, 211, 102, 0.25)'
+                  }}
+                >
+                  <MessageSquare size={16} /> WhatsApp Inquiry
+                </button>
+
+                <button
+                  onClick={() => {
+                    const cat = activeModalTreatment.category;
+                    const sId = activeModalTreatment.id;
+                    setActiveModalTreatment(null);
+                    onBookTreatment(cat, sId);
+                  }}
+                  style={{
+                    padding: '10px 24px',
+                    borderRadius: '30px',
+                    border: 'none',
+                    backgroundColor: '#233D32',
+                    color: 'white',
+                    fontWeight: 700,
+                    fontSize: '0.88rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 14px rgba(35, 61, 50, 0.25)'
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1A2F26')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#233D32')}
+                >
+                  <Calendar size={16} /> Book This Treatment
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

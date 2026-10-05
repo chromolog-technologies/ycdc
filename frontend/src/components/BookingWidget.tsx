@@ -306,34 +306,61 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
   }
 
   return (
-    <div className="glass" style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
+    <div className="glass" style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.22)', background: '#ffffff' }}>
       {/* Widget Header */}
-      <div className="plum-gradient" style={{ padding: '24px 30px', color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div 
+        className="plum-gradient" 
+        style={{ 
+          background: 'linear-gradient(135deg, #233D32 0%, #1A2F26 100%)', 
+          padding: '24px 30px', 
+          color: 'white', 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center' 
+        }}
+      >
         <div>
-          <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--gold-300)', fontWeight: 'bold' }}>Interactive Booking System</span>
-          <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: 'white', marginTop: '4px' }}>Schedule Appointment</h4>
+          <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#F3E5AB', fontWeight: 'bold' }}>Interactive Booking System</span>
+          <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: '#ffffff', marginTop: '4px', fontWeight: 600 }}>Schedule Appointment</h4>
         </div>
         {onClose && (
-          <button onClick={onClose} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.7)', cursor: 'pointer' }}>
-            <X size={24} />
+          <button 
+            onClick={onClose} 
+            style={{ 
+              background: 'rgba(255,255,255,0.15)', 
+              border: 'none', 
+              color: '#ffffff', 
+              cursor: 'pointer',
+              width: '36px',
+              height: '36px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.3)'}
+            onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
+          >
+            <X size={20} />
           </button>
         )}
       </div>
 
       {/* Progress Bar */}
-      <div style={{ display: 'flex', height: '4px', backgroundColor: 'var(--silk-200)' }}>
+      <div style={{ display: 'flex', height: '4px', backgroundColor: '#E2DCD2' }}>
         <div style={{ 
           width: `${(step / 5) * 100}%`, 
-          backgroundColor: 'var(--gold-500)', 
+          backgroundColor: '#233D32', 
           transition: 'width 0.4s ease' 
         }} />
       </div>
 
       {/* Form Steps */}
-      <div style={{ padding: '30px 40px' }}>
+      <div style={{ padding: '30px 40px', textAlign: 'left' }}>
         {step === 1 && (
           <div className="animate-fade-in">
-            <h5 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', color: 'var(--plum-900)', marginBottom: '16px' }}>
+            <h5 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', color: '#233D32', marginBottom: '16px', fontWeight: 600 }}>
               Step 1: Choose Clinic Location
             </h5>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -343,35 +370,37 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
                   onClick={() => dispatch(setBookingSelection({ branch: b.id }))}
                   style={{
                     padding: '20px',
-                    borderRadius: '8px',
-                    border: branch === b.id ? '2px solid var(--plum-800)' : '1px solid var(--silk-200)',
-                    backgroundColor: branch === b.id ? 'var(--plum-100)' : 'white',
+                    borderRadius: '12px',
+                    border: branch === b.id ? '2px solid #233D32' : '1.5px solid #E2DCD2',
+                    backgroundColor: branch === b.id ? 'rgba(35, 61, 50, 0.06)' : 'white',
                     cursor: 'pointer',
-                    transition: 'var(--transition-fast)',
+                    transition: 'all 0.2s ease',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '16px'
+                    gap: '16px',
+                    boxShadow: branch === b.id ? '0 4px 14px rgba(35, 61, 50, 0.1)' : 'none'
                   }}
                 >
                   <div style={{
-                    width: '40px',
-                    height: '40px',
+                    width: '44px',
+                    height: '44px',
                     borderRadius: '50%',
-                    backgroundColor: branch === b.id ? 'var(--plum-800)' : 'var(--silk-200)',
-                    color: branch === b.id ? 'white' : 'var(--plum-700)',
+                    backgroundColor: branch === b.id ? '#233D32' : '#E2DCD2',
+                    color: branch === b.id ? 'white' : '#565F55',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    flexShrink: 0
                   }}>
                     <MapPin size={20} />
                   </div>
                   <div style={{ textAlign: 'left', flex: 1 }}>
-                    <h6 style={{ fontSize: '1rem', fontWeight: '600', color: 'var(--plum-900)' }}>{b.name}</h6>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)' }}>{b.address}</p>
+                    <h6 style={{ fontSize: '1.05rem', fontWeight: '700', color: branch === b.id ? '#233D32' : '#242923', marginBottom: '2px' }}>{b.name}</h6>
+                    <p style={{ fontSize: '0.85rem', color: '#565F55', margin: 0 }}>{b.address}</p>
                   </div>
                   {branch === b.id && (
-                    <div style={{ color: 'var(--plum-800)' }}>
-                      <Check size={20} />
+                    <div style={{ color: '#233D32' }}>
+                      <Check size={22} />
                     </div>
                   )}
                 </div>
@@ -382,7 +411,7 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
 
         {step === 2 && (
           <div className="animate-fade-in">
-            <h5 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', color: 'var(--plum-900)', marginBottom: '16px' }}>
+            <h5 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', color: '#233D32', marginBottom: '16px', fontWeight: 600 }}>
               Step 2: Select Specialty & Treatment
             </h5>
             <div className="form-group">
@@ -395,14 +424,15 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
                     onClick={() => handleCategoryChange(c.id)}
                     style={{
                       padding: '12px 16px',
-                      borderRadius: '4px',
-                      border: category === c.id ? '1px solid var(--plum-800)' : '1px solid var(--silk-200)',
-                      backgroundColor: category === c.id ? 'var(--plum-800)' : 'white',
-                      color: category === c.id ? 'white' : 'var(--charcoal)',
-                      fontWeight: '500',
+                      borderRadius: '10px',
+                      border: category === c.id ? '2px solid #233D32' : '1.5px solid #E2DCD2',
+                      backgroundColor: category === c.id ? '#233D32' : 'white',
+                      color: category === c.id ? 'white' : '#242923',
+                      fontWeight: '700',
                       cursor: 'pointer',
                       fontSize: '0.9rem',
-                      transition: 'var(--transition-fast)'
+                      transition: 'all 0.2s ease',
+                      boxShadow: category === c.id ? '0 4px 12px rgba(35, 61, 50, 0.2)' : 'none'
                     }}
                   >
                     {c.name}
@@ -413,27 +443,28 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
 
             <div className="form-group">
               <label className="form-label">Available Treatments</label>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '240px', overflowY: 'auto', paddingRight: '4px' }}>
                 {availableServices.map((s) => (
                   <div
                     key={s.id}
                     onClick={() => dispatch(setBookingSelection({ service: s.id }))}
                     style={{
                       padding: '14px 20px',
-                      borderRadius: '6px',
-                      border: service === s.id ? '1px solid var(--gold-500)' : '1px solid var(--silk-200)',
-                      backgroundColor: service === s.id ? 'var(--gold-100)' : 'white',
+                      borderRadius: '10px',
+                      border: service === s.id ? '2px solid #233D32' : '1.5px solid #E2DCD2',
+                      backgroundColor: service === s.id ? 'rgba(35, 61, 50, 0.06)' : 'white',
                       cursor: 'pointer',
-                      transition: 'var(--transition-fast)',
+                      transition: 'all 0.2s ease',
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center'
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <Sparkles size={16} style={{ color: service === s.id ? 'var(--gold-600)' : 'var(--plum-600)' }} />
-                      <span style={{ fontSize: '0.95rem', fontWeight: '500', color: 'var(--plum-900)' }}>{s.name}</span>
+                      <Sparkles size={16} style={{ color: service === s.id ? '#233D32' : '#B49A68' }} />
+                      <span style={{ fontSize: '0.95rem', fontWeight: service === s.id ? '700' : '500', color: service === s.id ? '#233D32' : '#242923' }}>{s.name}</span>
                     </div>
+                    {service === s.id && <Check size={18} style={{ color: '#233D32' }} />}
                   </div>
                 ))}
               </div>
@@ -443,98 +474,98 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
 
         {step === 3 && (
           <div className="animate-fade-in">
-            <h5 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', color: 'var(--plum-900)', marginBottom: '16px' }}>
+            <h5 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', color: '#233D32', marginBottom: '16px', fontWeight: 600 }}>
               Step 3: Select Doctor & Schedule
             </h5>
             
             <div className="form-group">
               <label className="form-label">Specialist Doctor</label>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '180px', overflowY: 'auto', paddingRight: '4px', marginBottom: '20px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '200px', overflowY: 'auto', paddingRight: '4px', marginBottom: '20px' }}>
                 {availableDoctors.length > 0 ? (
                   availableDoctors.map((d) => (
                     <div
                       key={d.id}
                       onClick={() => dispatch(setBookingSelection({ doctor: d.id }))}
                       style={{
-                        padding: '12px 16px',
-                        borderRadius: '6px',
-                        border: doctor === d.id ? '1px solid var(--plum-800)' : '1px solid var(--silk-200)',
-                        backgroundColor: doctor === d.id ? 'var(--plum-100)' : 'white',
+                        padding: '14px 18px',
+                        borderRadius: '10px',
+                        border: doctor === d.id ? '2px solid #233D32' : '1.5px solid #E2DCD2',
+                        backgroundColor: doctor === d.id ? 'rgba(35, 61, 50, 0.06)' : 'white',
                         cursor: 'pointer',
-                        transition: 'var(--transition-fast)',
+                        transition: 'all 0.2s ease',
                         display: 'flex',
                         alignItems: 'center',
                         gap: '12px'
                       }}
                     >
                       <div style={{
-                        width: '32px',
-                        height: '32px',
+                        width: '36px',
+                        height: '36px',
                         borderRadius: '50%',
-                        backgroundColor: 'var(--plum-800)',
+                        backgroundColor: '#233D32',
                         color: 'white',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: '0.8rem',
-                        fontWeight: 'bold'
+                        fontSize: '0.85rem',
+                        fontWeight: 'bold',
+                        flexShrink: 0
                       }}>
-                        <User size={16} />
+                        <User size={18} />
                       </div>
                       <div style={{ textAlign: 'left', flex: 1 }}>
-                        <span style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--plum-900)' }}>{d.name}</span>
-                        <span style={{ fontSize: '0.8rem', color: 'var(--muted-charcoal)', marginLeft: '8px' }}>({d.role})</span>
+                        <span style={{ fontSize: '0.95rem', fontWeight: '700', color: doctor === d.id ? '#233D32' : '#242923' }}>{d.name}</span>
+                        <span style={{ fontSize: '0.82rem', color: '#565F55', marginLeft: '8px' }}>({d.role})</span>
                       </div>
-                      {doctor === d.id && <Check size={16} style={{ color: 'var(--plum-800)' }} />}
+                      {doctor === d.id && <Check size={18} style={{ color: '#233D32' }} />}
                     </div>
                   ))
                 ) : (
                   <div
                     onClick={() => dispatch(setBookingSelection({ doctor: 'yogiraj' }))}
                     style={{
-                      padding: '12px 16px',
-                      borderRadius: '6px',
-                      border: '1px solid var(--plum-800)',
-                      backgroundColor: 'var(--plum-100)',
+                      padding: '14px 18px',
+                      borderRadius: '10px',
+                      border: '2px solid #233D32',
+                      backgroundColor: 'rgba(35, 61, 50, 0.06)',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '12px'
                     }}
                   >
-                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: 'var(--plum-800)', color: 'white', display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'center' }}>
-                      <User size={16} />
+                    <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#233D32', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <User size={18} />
                     </div>
                     <div style={{ textAlign: 'left', flex: 1 }}>
-                      <span style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--plum-900)' }}>Dr. K. Yogiraj</span>
-                      <span style={{ fontSize: '0.8rem', color: 'var(--muted-charcoal)', marginLeft: '8px' }}>(Chairman & Director)</span>
+                      <span style={{ fontSize: '0.95rem', fontWeight: '700', color: '#233D32' }}>Dr. K. Yogiraj</span>
+                      <span style={{ fontSize: '0.82rem', color: '#565F55', marginLeft: '8px' }}>(Chairman & Director)</span>
                     </div>
-                    <Check size={16} style={{ color: 'var(--plum-800)' }} />
+                    <Check size={18} style={{ color: '#233D32' }} />
                   </div>
                 )}
               </div>
             </div>
 
-            <div style={{ display: 'block', marginBottom: '20px' }}>
-              <div className="form-group" style={{ marginBottom: 0 }}>
-                <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <CalendarIcon size={14} /> Select Date
-                </label>
-                <input 
-                  type="date" 
-                  min={getMinDate()}
-                  value={date}
-                  onChange={(e) => dispatch(setBookingField({ field: 'date', value: e.target.value }))}
-                  className="form-input" 
-                />
-              </div>
+            <div className="form-group" style={{ marginBottom: 0 }}>
+              <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <CalendarIcon size={16} /> Select Date
+              </label>
+              <input 
+                type="date" 
+                min={getMinDate()}
+                value={date}
+                onChange={(e) => dispatch(setBookingField({ field: 'date', value: e.target.value }))}
+                className="form-input" 
+                style={{ width: '100%', boxSizing: 'border-box' }}
+              />
             </div>
           </div>
         )}
 
         {step === 4 && (
           <div className="animate-fade-in">
-            <h5 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', color: 'var(--plum-900)', marginBottom: '16px' }}>
+            <h5 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', color: '#233D32', marginBottom: '16px', fontWeight: 600 }}>
               Step 4: Contact & Details
             </h5>
             
@@ -546,14 +577,15 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
                 value={patientName}
                 onChange={(e) => dispatch(setBookingField({ field: 'patientName', value: e.target.value }))}
                 className="form-input" 
+                style={{ width: '100%', boxSizing: 'border-box' }}
                 required
               />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
-              <div className="form-group">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '18px' }}>
+              <div className="form-group" style={{ marginBottom: 0 }}>
                 <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Smartphone size={14} /> Phone Number
+                  <Smartphone size={16} /> Phone Number
                 </label>
                 <input 
                   type="tel" 
@@ -561,13 +593,14 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
                   value={patientPhone}
                   onChange={(e) => dispatch(setBookingField({ field: 'patientPhone', value: e.target.value }))}
                   className="form-input" 
+                  style={{ width: '100%', boxSizing: 'border-box' }}
                   pattern="[0-9]{10}"
                   required
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group" style={{ marginBottom: 0 }}>
                 <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Mail size={14} /> Email (Optional)
+                  <Mail size={16} /> Email (Optional)
                 </label>
                 <input 
                   type="email" 
@@ -575,17 +608,19 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
                   value={patientEmail}
                   onChange={(e) => dispatch(setBookingField({ field: 'patientEmail', value: e.target.value }))}
                   className="form-input" 
+                  style={{ width: '100%', boxSizing: 'border-box' }}
                 />
               </div>
             </div>
 
-            <div className="form-group">
+            <div className="form-group" style={{ marginBottom: 0 }}>
               <label className="form-label">Describe Skin / Hair Concerns</label>
               <textarea 
                 placeholder="Mention any symptoms, ongoing medications, or specific details..."
                 value={patientNotes}
                 onChange={(e) => dispatch(setBookingField({ field: 'patientNotes', value: e.target.value }))}
                 className="form-textarea"
+                style={{ width: '100%', boxSizing: 'border-box', minHeight: '110px' }}
               />
             </div>
           </div>
@@ -595,16 +630,16 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
         <div style={{ 
           display: 'flex', 
           justifyContent: step > 1 ? 'space-between' : 'flex-end', 
-          marginTop: '30px', 
+          marginTop: '28px', 
           paddingTop: '20px', 
-          borderTop: '1px solid var(--silk-200)' 
+          borderTop: '1px solid #E2DCD2' 
         }}>
           {step > 1 && (
             <button 
               type="button" 
               onClick={handleBack} 
               className="btn btn-outline"
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
             >
               <ChevronLeft size={16} /> Back
             </button>
@@ -615,7 +650,7 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
               type="button" 
               onClick={handleNext} 
               className="btn btn-primary"
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
             >
               Next <ChevronRight size={16} />
             </button>
@@ -624,8 +659,8 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
               type="button" 
               onClick={handleSubmit}
               disabled={submitting}
-              className="btn btn-accent"
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
+              className="btn btn-primary"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
             >
               {submitting ? 'Confirming...' : 'Confirm Reservation'} <Check size={16} />
             </button>
