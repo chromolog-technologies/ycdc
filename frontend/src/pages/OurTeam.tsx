@@ -185,7 +185,7 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
       <section style={{
         position: 'relative',
         padding: '120px 0 80px',
-        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%), url("/cosmetic_treatment_premium.png") no-repeat center center/cover',
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.55) 0%, rgba(0, 0, 0, 0.65) 100%), url("/hero_doctors_team.jpg") no-repeat center center/cover',
         color: 'white',
         textAlign: 'center',
         overflow: 'hidden'
@@ -202,13 +202,28 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
           backgroundSize: '24px 24px'
         }} />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <span className="badge badge-premium" style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'white', background: 'rgba(255,255,255,0.1)', marginBottom: '16px' }}>
+          <span 
+            className="badge badge-gold" 
+            style={{ 
+              marginBottom: '16px', 
+              display: 'inline-block',
+              backgroundColor: 'rgba(180, 154, 104, 0.3)', 
+              color: '#F3E5AB', 
+              border: '1px solid rgba(243, 229, 171, 0.5)',
+              padding: '6px 18px',
+              borderRadius: '30px',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              backdropFilter: 'blur(8px)'
+            }}
+          >
             Meet Our Clinicians
           </span>
-          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '3rem', color: 'white', marginBottom: '10px' }}>
+          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '3rem', color: 'white', marginBottom: '14px', fontWeight: 600 }}>
             Our Medical Specialists
           </h1>
-          <p style={{ color: 'rgba(255, 255, 255, 0.7)', maxWidth: '650px', margin: '0 auto' }}>
+          <p style={{ color: 'rgba(255, 255, 255, 0.92)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', lineHeight: '1.6' }}>
             At YCDC, under the visionary leadership of Dr. K. Yogiraj, we promise unparalleled care and excellence in every service we offer.
           </p>
         </div>
@@ -519,26 +534,72 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
       </section>
 
       {/* Recruitment CTA Section */}
-      <section className="section-padding" style={{
-        background: 'linear-gradient(to right, var(--plum-900), var(--gold-600))',
-        color: 'white',
-        textAlign: 'center'
+      <section className="section-padding reveal reveal-up" style={{
+        background: 'linear-gradient(135deg, #233D32 0%, #1A2F26 100%)',
+        color: '#ffffff',
+        textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        borderTop: '1px solid rgba(180, 154, 104, 0.25)'
       }}>
-        <div className="container">
-          <div style={{ maxWidth: '650px', margin: '0 auto' }}>
-            <span className="badge badge-premium" style={{ border: '1px solid rgba(255,255,255,0.3)', color: 'white', background: 'rgba(255,255,255,0.1)', marginBottom: '20px' }}>
+        {/* Ambient Decorative Graphic Orbs */}
+        <div className="graphic-orb graphic-orb-gold" style={{ width: '420px', height: '420px', top: '-100px', right: '-80px', opacity: 0.18 }} />
+        <div className="graphic-orb graphic-orb-green" style={{ width: '360px', height: '360px', bottom: '-80px', left: '-60px', opacity: 0.2 }} />
+
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+            <span 
+              className="badge badge-gold" 
+              style={{ 
+                border: '1px solid rgba(243, 229, 171, 0.5)', 
+                color: '#F3E5AB', 
+                backgroundColor: 'rgba(180, 154, 104, 0.3)', 
+                marginBottom: '20px',
+                padding: '6px 20px',
+                borderRadius: '30px',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                display: 'inline-block',
+                backdropFilter: 'blur(8px)'
+              }}
+            >
               Work With Us
             </span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', color: 'white', marginBottom: '16px' }}>
+            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.1rem, 4vw, 2.7rem)', color: '#ffffff', marginBottom: '16px', fontWeight: 600 }}>
               Want to Join Our Team?
             </h2>
-            <p style={{ color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+            <p style={{ color: 'rgba(255, 255, 255, 0.92)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '32px' }}>
               Be a part of our expert team at YCDC and make a difference in dermatology and cosmetology. Work with industry leaders, state-of-the-art facilities, and transform lives.
             </p>
             <button
               onClick={onOpenApplyModal}
-              className="btn btn-accent"
-              style={{ padding: '16px 40px', fontSize: '1rem', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '10px', border: 'none' }}
+              className="btn"
+              style={{ 
+                padding: '14px 38px', 
+                fontSize: '0.95rem', 
+                fontWeight: 700,
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase', 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '10px', 
+                border: 'none',
+                borderRadius: '30px',
+                background: 'linear-gradient(135deg, #B49A68 0%, #D4B988 100%)',
+                color: '#1A2F26',
+                boxShadow: '0 6px 22px rgba(180, 154, 104, 0.4)',
+                cursor: 'pointer',
+                transition: 'all 0.25s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 10px 28px rgba(180, 154, 104, 0.55)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 6px 22px rgba(180, 154, 104, 0.4)';
+              }}
             >
               Apply Now <Mail size={18} />
             </button>

@@ -16,7 +16,9 @@ import {
   Phone,
   FileText,
   UploadCloud,
-  Stethoscope
+  Stethoscope,
+  Award,
+  Play
 } from 'lucide-react';
 import ConsultationForm from '../components/ConsultationForm';
 import type { PageId } from '../types/navigation';
@@ -451,21 +453,28 @@ export const HomePage: React.FC<HomePageProps> = ({
       )}
 
       {/* =================================================================
-          1. CINEMATIC HERO SECTION: Reference Design with hero.mp4
+          1. CINEMATIC HERO SECTION: Animated Radiant Skin & Editorial Aesthetics
           ================================================================= */}
       <section className="master-hero-section">
-        {/* Background Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="master-hero-video-bg"
-          poster="/banner_radiant_skin.jpg"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-          <source src="/hero section.mp4" type="video/mp4" />
-        </video>
+        {/* Animated High-End Hero Image with Subtle Breathing Ken Burns Motion */}
+        <div className="master-hero-img-wrap">
+          <img
+            src="/banner_radiant_skin.jpg"
+            alt="YCDC Clinical Dermatology &amp; Luxury Skin Rejuvenation"
+            className="master-hero-animated-img"
+          />
+        </div>
+
+        {/* Ambient Warm Rose-Gold Glow on Peonies */}
+        <div className="master-hero-ambient-glow" />
+
+        {/* Floating Luminous Particle & Petal Accents */}
+        <div className="master-hero-particles-container">
+          <div className="hero-particle hero-particle-1" />
+          <div className="hero-particle hero-particle-2" />
+          <div className="hero-particle hero-particle-3" />
+          <div className="hero-particle hero-particle-4" />
+        </div>
 
         {/* Contrast & Vignette Overlays */}
         <div className="master-hero-overlay-dark" />
@@ -510,6 +519,15 @@ export const HomePage: React.FC<HomePageProps> = ({
                 >
                   <span>Explore Treatments</span>
                   <ArrowRight size={16} />
+                </button>
+
+                <button
+                  onClick={() => setVideoModalOpen(true)}
+                  className="btn-hero-watch-story"
+                  aria-label="Watch Clinic Story Video"
+                >
+                  <Play size={14} fill="currentColor" />
+                  <span>Watch Story</span>
                 </button>
               </div>
 
@@ -602,13 +620,75 @@ export const HomePage: React.FC<HomePageProps> = ({
             {/* Left: Clinic Reception Image with Offset Decorative Outline Frame (DSC09955-scaled-880x952.jpg) */}
             <div className="reveal reveal-left">
               <div className="heritage-photo-wrap">
+                {/* Decorative rotating heritage certification seal */}
+                <div className="heritage-seal-wrapper" title="YCDC Est. 1974 - ISO 9001:2015 Accredited">
+                  <svg viewBox="0 0 160 160" className="heritage-seal-svg">
+                    <defs>
+                      <path id="heritage-seal-circle" d="M 80, 80 m -60, 0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0" />
+                    </defs>
+                    <circle cx="80" cy="80" r="72" fill="none" stroke="rgba(180, 154, 104, 0.45)" strokeWidth="1" strokeDasharray="3 3" />
+                    <circle cx="80" cy="80" r="56" fill="rgba(255, 255, 255, 0.88)" stroke="rgba(180, 154, 104, 0.5)" strokeWidth="1.2" />
+                    <text fontSize="8.2" fill="#8C7042" letterSpacing="2.2" fontWeight="700">
+                      <textPath href="#heritage-seal-circle">
+                        • YOGIRAJ DERMATOLOGY • EST. 1974 • ISO CERTIFIED •
+                      </textPath>
+                    </text>
+                    <circle cx="80" cy="80" r="22" fill="#233D32" />
+                    <path d="M 80 70 L 82.5 76 L 88.5 76.8 L 84 81.2 L 85.3 87.2 L 80 84.1 L 74.7 87.2 L 76 81.2 L 71.5 76.8 L 77.5 76 Z" fill="#D4B988" />
+                  </svg>
+                </div>
+
+                {/* Floating Top Right Clinic Status Pill */}
+                <div className="heritage-float-card-top">
+                  <span className="heritage-pulse-dot" />
+                  <span>Flagship Reception &bull; Bengaluru &amp; Trivandrum</span>
+                </div>
+
+                {/* Offset Decorative Outline Frame with interactive hover glide */}
                 <div className="heritage-photo-outline-frame" />
+                
+                {/* Photo Frame containing the original reception lobby photo */}
                 <div className="heritage-photo-frame">
                   <img
-                    src="/ycdc_reception_lobby.jpg"
-                    onError={(e) => { e.currentTarget.src = '/DSC09955-scaled-880x952.jpg'; }}
-                    alt="Dr. Yogiraj Centre for Dermatology & Cosmetology Luxury Reception Lobby"
+                    src="/DSC09955-scaled-880x952.jpg"
+                    onError={(e) => { e.currentTarget.src = '/ycdc_reception_lobby.jpg'; }}
+                    alt="Dr. Yogiraj Centre for Dermatology &amp; Cosmetology Reception Lobby"
+                    loading="lazy"
                   />
+                </div>
+
+                {/* Floating Bottom Left Clinical Excellence Card */}
+                <div className="heritage-float-card-bottom">
+                  <div style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, #B49A68 0%, #D4B988 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    boxShadow: '0 4px 12px rgba(180, 154, 104, 0.35)'
+                  }}>
+                    <Award size={20} color="#1A2F26" />
+                  </div>
+                  <div>
+                    <div style={{
+                      fontSize: '0.82rem',
+                      fontWeight: 700,
+                      color: '#1A2F26',
+                      letterSpacing: '0.04em',
+                      textTransform: 'uppercase',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px'
+                    }}>
+                      50+ Years Legacy <ShieldCheck size={14} color="#536B4C" />
+                    </div>
+                    <div style={{ fontSize: '0.74rem', color: '#666', marginTop: '1px' }}>
+                      ISO 9001:2015 Accredited Facility
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -860,8 +940,12 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* =================================================================
           6. THE FOUR STAGES OF PATIENT CARE (Care Journey)
           ================================================================= */}
-      <section className="four-stages-section">
-        <div className="container">
+      <section className="four-stages-section" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* Ambient Decorative Graphic Orbs */}
+        <div className="graphic-orb graphic-orb-gold" style={{ width: '480px', height: '480px', top: '-100px', right: '-100px' }} />
+        <div className="graphic-orb graphic-orb-green" style={{ width: '420px', height: '420px', bottom: '-80px', left: '-80px' }} />
+
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="four-stages-grid">
             {/* Left Narrative Column */}
             <div className="four-stages-left">
@@ -876,7 +960,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </p>
 
               {/* Quick Stepper Pills */}
-              <div className="care-journey-stepper">
+              <div className="care-journey-stepper mobile-horizontal-track">
                 {PATIENT_CARE_STAGES.map((stage, idx) => {
                   const stageNum = idx + 1;
                   const isActive = activeStage === stageNum;

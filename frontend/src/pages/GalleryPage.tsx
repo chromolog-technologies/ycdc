@@ -374,7 +374,9 @@ export default function GalleryPage() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(141, 73, 128, 0.97)', /* Deep plum tinted dark backdrop */
+          background: 'linear-gradient(135deg, rgba(35, 61, 50, 0.97) 0%, rgba(20, 36, 29, 0.98) 100%)', /* YCDC Deep Forest Green */
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
           zIndex: 9999,
           display: 'flex',
           alignItems: 'center',
@@ -542,8 +544,19 @@ export default function GalleryPage() {
 
             {/* Description Overlay */}
             <div style={{ color: 'white', textAlign: 'left', padding: '10px 0', overflowY: 'auto', maxHeight: isMobile ? '20vh' : '15vh' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--gold-400)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                {activeMedia.category === 'infrastructure' ? 'Infrastructure facility' : 'clinical session'}
+              <span style={{ 
+                fontSize: '0.74rem', 
+                fontWeight: 700, 
+                color: '#D9A5A7', 
+                backgroundColor: 'rgba(217, 165, 167, 0.18)',
+                border: '1px solid rgba(217, 165, 167, 0.4)',
+                padding: '4px 14px',
+                borderRadius: '20px',
+                display: 'inline-block',
+                textTransform: 'uppercase', 
+                letterSpacing: '0.08em' 
+              }}>
+                {activeMedia.category === 'infrastructure' ? 'Infrastructure Facility' : 'Clinical Session'}
               </span>
               <h3 style={{ color: 'white', fontFamily: 'var(--font-serif)', fontSize: isMobile ? '1.4rem' : '1.8rem', marginTop: '4px', marginBottom: '8px' }}>
                 {activeMedia.title}

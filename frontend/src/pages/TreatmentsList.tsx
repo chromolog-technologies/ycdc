@@ -158,7 +158,22 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
         padding: '100px 0 80px'
       }}>
         <div className="container">
-          <span className="badge badge-premium" style={{ marginBottom: '16px', backgroundColor: '#7c631a', color: '#ffffff', borderColor: '#634f14' }}>
+          <span 
+            className="badge badge-gold" 
+            style={{ 
+              marginBottom: '16px', 
+              display: 'inline-block',
+              backgroundColor: 'rgba(180, 154, 104, 0.3)', 
+              color: '#F3E5AB', 
+              border: '1px solid rgba(243, 229, 171, 0.5)',
+              padding: '6px 18px',
+              borderRadius: '30px',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              backdropFilter: 'blur(8px)'
+            }}
+          >
             Clinical Dermatology & Cosmetic Aesthetics
           </span>
           <h1 style={{ fontFamily: 'var(--font-serif)', color: 'white', fontSize: '2.8rem', marginBottom: '18px' }}>
@@ -237,10 +252,10 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
       {/* Filter and Search Bar Container */}
       <section id="treatments-catalog" style={{ marginTop: '-25px', position: 'relative', zIndex: 10 }}>
         <div className="container">
-          <div className="glass" style={{ padding: '24px 30px', borderRadius: '14px', background: 'white', boxShadow: 'var(--shadow-md)', border: '1px solid var(--silk-200)' }}>
+          <div className="glass" style={{ padding: 'clamp(16px, 3vw, 24px) clamp(16px, 3.5vw, 30px)', borderRadius: '14px', background: 'white', boxShadow: 'var(--shadow-md)', border: '1px solid var(--silk-200)' }}>
             
             {/* Primary Filter Tabs: Dermatic vs Cosmetic */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '20px', flexWrap: 'wrap', borderBottom: '1px solid var(--silk-200)', paddingBottom: '16px' }}>
+            <div className="mobile-horizontal-track" style={{ justifyContent: 'center', gap: '10px', marginBottom: '20px', borderBottom: '1px solid var(--silk-200)', paddingBottom: '16px' }}>
               <button
                 onClick={() => setSelectedType('all')}
                 style={{
@@ -299,7 +314,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
 
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
               {/* Category buttons */}
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <div className="mobile-horizontal-track" style={{ gap: '8px' }}>
                 {[
                   { key: 'all', label: 'All Specialties' },
                   { key: 'skin', label: 'Skin & Allergy' },

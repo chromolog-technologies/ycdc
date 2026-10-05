@@ -161,7 +161,7 @@ export default function BeforeAfter({ onBookTreatment }: BeforeAfterProps) {
       <section style={{
         position: 'relative',
         padding: '120px 0 80px',
-        background: 'url("/laser_treatment_premium.png") no-repeat center center/cover',
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.55) 0%, rgba(0, 0, 0, 0.65) 100%), url("/hero_clinical_results.jpg") no-repeat center center/cover',
         color: 'white',
         textAlign: 'center',
         overflow: 'hidden'
@@ -177,13 +177,28 @@ export default function BeforeAfter({ onBookTreatment }: BeforeAfterProps) {
           backgroundSize: '24px 24px'
         }} />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <span className="badge badge-premium" style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'white', background: 'rgba(255,255,255,0.1)', marginBottom: '16px' }}>
+          <span 
+            className="badge badge-gold" 
+            style={{ 
+              marginBottom: '16px', 
+              display: 'inline-block',
+              backgroundColor: 'rgba(180, 154, 104, 0.3)', 
+              color: '#F3E5AB', 
+              border: '1px solid rgba(243, 229, 171, 0.5)',
+              padding: '6px 18px',
+              borderRadius: '30px',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              backdropFilter: 'blur(8px)'
+            }}
+          >
             Proven Transformations
           </span>
-          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '3rem', color: 'white', marginBottom: '10px' }}>
+          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '3rem', color: 'white', marginBottom: '14px', fontWeight: 600 }}>
             Clinical Before & Afters
           </h1>
-          <p style={{ color: 'rgba(255, 255, 255, 0.7)', maxWidth: '650px', margin: '0 auto' }}>
+          <p style={{ color: 'rgba(255, 255, 255, 0.92)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', lineHeight: '1.6' }}>
             Explore scientific, authentic results of clinical dermatology and hair restoration treatments performed by our leading specialists.
           </p>
         </div>

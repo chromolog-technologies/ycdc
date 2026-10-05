@@ -312,7 +312,7 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
         className="plum-gradient" 
         style={{ 
           background: 'linear-gradient(135deg, #233D32 0%, #1A2F26 100%)', 
-          padding: '24px 30px', 
+          padding: 'clamp(16px, 3.5vw, 24px) clamp(16px, 4vw, 30px)', 
           color: 'white', 
           display: 'flex', 
           justifyContent: 'space-between', 
@@ -321,7 +321,7 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
       >
         <div>
           <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#F3E5AB', fontWeight: 'bold' }}>Interactive Booking System</span>
-          <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: '#ffffff', marginTop: '4px', fontWeight: 600 }}>Schedule Appointment</h4>
+          <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', color: '#ffffff', marginTop: '4px', fontWeight: 600 }}>Schedule Appointment</h4>
         </div>
         {onClose && (
           <button 
@@ -337,7 +337,8 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'all 0.2s ease'
+              transition: 'all 0.2s ease',
+              flexShrink: 0
             }}
             onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.3)'}
             onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
@@ -357,7 +358,7 @@ export default function BookingWidget({ onClose, initialBranch, initialCategory,
       </div>
 
       {/* Form Steps */}
-      <div style={{ padding: '30px 40px', textAlign: 'left' }}>
+      <div style={{ padding: 'clamp(20px, 4vw, 32px) clamp(16px, 4vw, 36px)', textAlign: 'left' }}>
         {step === 1 && (
           <div className="animate-fade-in">
             <h5 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', color: '#233D32', marginBottom: '16px', fontWeight: 600 }}>

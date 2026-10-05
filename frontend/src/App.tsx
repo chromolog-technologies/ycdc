@@ -12,7 +12,10 @@ import {
   Facebook,
   ShieldCheck,
   Lock,
-  Award
+  Award,
+  ChevronUp,
+  Calendar,
+  MessageSquare
 } from 'lucide-react';
 import HomePage from './pages/HomePage';
 import BookingWidget from './components/BookingWidget';
@@ -67,12 +70,20 @@ function AppContent() {
   const { refresh } = useScrollReveal();
   const currentPage = getPageFromPath(location.pathname);
 
-  // Dynamic Header state
+  // Dynamic Header & Scroll Animation state
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScroll = window.scrollY;
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      setIsScrolled(currentScroll > 50);
+      setShowBackToTop(currentScroll > 320);
+      if (totalScroll > 0) {
+        setScrollProgress(Math.min(100, Math.max(0, (currentScroll / totalScroll) * 100)));
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -197,6 +208,19 @@ function AppContent() {
               padding: isScrolled ? '12px 0' : '16px 0'
             }}
           >
+            {/* Elegant Luxury Scroll Progress Indicator */}
+            <div 
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: `${scrollProgress}%`,
+                height: '3px',
+                background: 'linear-gradient(90deg, #B49A68 0%, #233D32 50%, #E6CA85 100%)',
+                zIndex: 1002,
+                transition: 'width 0.12s ease-out'
+              }} 
+            />
             <div
               className="container"
               style={{
@@ -436,7 +460,7 @@ function AppContent() {
                       height: '52px',
                       width: 'auto',
                       objectFit: 'contain',
-                      filter: 'brightness(1.15) drop-shadow(0 2px 8px rgba(0,0,0,0.25))'
+                      filter: 'none'
                     }}
                   />
                 </div>
@@ -580,6 +604,67 @@ function AppContent() {
                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.729-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.968C16.574 1.97 14.101.943 11.474.943 6.037.943 1.611 5.313 1.607 10.744c-.001 1.674.437 3.313 1.272 4.757l-.995 3.633 3.763-.98zm12.355-6.388c-.328-.164-1.94-.959-2.24-1.069-.3-.11-.518-.164-.738.164-.22.329-.85.85-1.042 1.069-.19.22-.382.246-.71.082-.328-.164-1.386-.511-2.64-1.631-.975-.87-1.633-1.947-1.824-2.274-.19-.328-.02-.505.143-.669.148-.148.328-.383.493-.574.165-.19.22-.328.328-.546.11-.22.055-.41-.028-.574-.082-.164-.738-1.78-.997-2.42-.25-.6-.525-.515-.71-.523-.19-.009-.41-.01-.628-.01-.22 0-.573.082-.873.41-.3.329-1.147 1.122-1.147 2.733 0 1.61 1.173 3.167 1.336 3.386.164.22 2.307 3.523 5.59 4.947.78.338 1.39.54 1.86.689.784.249 1.497.213 2.06.13.628-.092 1.94-.793 2.214-1.56.273-.767.273-1.423.19-1.56-.081-.137-.3-.22-.628-.383z" />
               </svg>
             </button>
+          </div>
+
+          {/* Floating Back to Top Button */}
+          {showBackToTop && (
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="back-to-top-btn"
+              title="Scroll to Top"
+              aria-label="Scroll to Top"
+              style={{
+                position: 'fixed',
+                bottom: '28px',
+                right: '28px',
+                zIndex: 999,
+                width: '46px',
+                height: '46px',
+                borderRadius: '50%',
+                backgroundColor: '#233D32',
+                color: '#ffffff',
+                border: '2px solid rgba(180, 154, 104, 0.4)',
+                boxShadow: '0 8px 24px rgba(35, 61, 50, 0.35)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                backdropFilter: 'blur(8px)'
+              }}
+            >
+              <ChevronUp size={22} />
+            </button>
+          )}
+
+          {/* Mobile Bottom Quick-Action Bar (< 768px) */}
+          <div className="mobile-bottom-quickbar">
+            <a 
+              href="tel:+917593864264" 
+              className="mobile-quick-btn mobile-call-btn"
+              aria-label="Call YCDC Clinic"
+            >
+              <Phone size={15} />
+              <span>Call</span>
+            </a>
+            <button 
+              onClick={() => dispatch(openBookingModal(undefined))}
+              className="mobile-quick-btn mobile-book-btn"
+              aria-label="Book Appointment"
+            >
+              <Calendar size={15} />
+              <span>Book Appointment</span>
+            </button>
+            <a 
+              href="https://wa.me/917593864264?text=Hello%20YCDC%20Clinic%2C%20I%20would%20like%20to%20inquire%20about%20a%20consultation." 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="mobile-quick-btn mobile-whatsapp-btn"
+              aria-label="Chat on WhatsApp"
+            >
+              <MessageSquare size={15} />
+              <span>WhatsApp</span>
+            </a>
           </div>
         </>
       )}

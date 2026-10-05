@@ -90,8 +90,10 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
       </section>
 
       {/* Core Values / Principles Grid */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--silk-100)' }}>
-        <div className="container">
+      <section className="section-padding" style={{ backgroundColor: 'var(--silk-100)', position: 'relative', overflow: 'hidden' }}>
+        <div className="graphic-orb graphic-orb-gold" style={{ width: '400px', height: '400px', top: '-60px', right: '-80px' }} />
+        <div className="graphic-orb graphic-orb-green" style={{ width: '350px', height: '350px', bottom: '-50px', left: '-50px' }} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="reveal reveal-up" style={{ textAlign: 'center', marginBottom: '50px' }}>
             <span className="badge badge-premium">Our Philosophy</span>
             <h2 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', marginTop: '10px', fontSize: '2.2rem' }}>
