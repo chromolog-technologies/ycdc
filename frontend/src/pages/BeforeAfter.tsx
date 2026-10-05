@@ -204,12 +204,12 @@ export default function BeforeAfter({ onBookTreatment }: BeforeAfterProps) {
                 style={{
                   padding: '12px 26px',
                   borderRadius: '50px',
-                  border: activeCategory === c.category ? '2px solid #c49cbe' : '1px solid var(--silk-200)',
-                  backgroundColor: activeCategory === c.category ? '#c49cbe' : 'white',
-                  color: activeCategory === c.category ? 'white' : '#63335e',
+                  border: activeCategory === c.category ? '2px solid var(--deep-olive)' : '1px solid var(--warm-fog)',
+                  backgroundColor: activeCategory === c.category ? 'var(--deep-olive)' : 'var(--warm-ivory-light)',
+                  color: activeCategory === c.category ? 'white' : 'var(--botanical-ink)',
                   fontWeight: '600',
                   cursor: 'pointer',
-                  boxShadow: activeCategory === c.category ? '0 4px 15px rgba(196, 156, 190, 0.45)' : 'var(--shadow-sm)',
+                  boxShadow: activeCategory === c.category ? '0 4px 15px rgba(87, 85, 39, 0.3)' : 'var(--shadow-sm)',
                   transition: 'var(--transition-smooth)'
                 }}
               >

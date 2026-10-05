@@ -7,7 +7,8 @@ import type { AnimatedCounterProps } from '../types';
  * using requestAnimationFrame and a smooth ease-out-quad curve.
  */
 export default function AnimatedCounter({ target, duration = 1500, suffix = '', prefix = '' }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
+  // Initial state is target so static extraction, SSR, or unhydrated page shows meaningful value (never '0+')
+  const [count, setCount] = useState(target);
   const elementRef = useRef<HTMLSpanElement>(null);
   const hasAnimated = useRef(false);
 
@@ -39,6 +40,7 @@ export default function AnimatedCounter({ target, duration = 1500, suffix = '', 
   }, [target, duration]);
 
   const startCountUp = () => {
+    setCount(0);
     let startTime: number | null = null;
 
     const animate = (timestamp: number) => {
@@ -46,7 +48,7 @@ export default function AnimatedCounter({ target, duration = 1500, suffix = '', 
       const elapsedTime = timestamp - startTime;
       const progress = Math.min(elapsedTime / duration, 1);
 
-      // Ease-out Quad easing curve: progress * (2 - progress)
+      // Ease-out Quad curve: progress * (2 - progress)
       const easedProgress = progress * (2 - progress);
       const currentVal = Math.floor(easedProgress * target);
 

@@ -13,21 +13,21 @@ const appContextValue: AppContextValue = {
       id: 'trivandrum',
       name: 'Pattom, Trivandrum',
       city: 'Trivandrum',
-      address: 'Marappalam Road, Opp. IndusInd Bank, Pattom'
+      address: 'Marappalam Road, Opp. IndusInd Bank, Pattom, Thiruvananthapuram - 695004',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Yogiraj+Centre+for+Dermatology+Cosmetology+Pattom+Thiruvananthapuram'
     },
     {
       id: 'bangalore',
       name: 'Whitefield, Bangalore',
       city: 'Bangalore',
-      address: '4th Floor, Premium Square, Whitefield Main Road'
+      address: '4th Floor, Premium Square, Whitefield Main Road, Near ITPL, Bengaluru - 560066',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Yogiraj+Centre+for+Dermatology+Cosmetology+Whitefield+Bengaluru'
     }
   ],
   socialLinks: {
-    instagram: 'https://www.instagram.com/ycdc_india?igsh=MXFmYnBwdnFqdDltaA==',
-    youtube: 'https://www.youtube.com/@YCDC_INDIA',
-    facebook: 'https://facebook.com',
-    linkedin: 'https://linkedin.com',
-    twitter: 'https://twitter.com'
+    instagram: 'https://www.instagram.com/ycdc_india/',
+    drNiranjanaInstagram: 'https://www.instagram.com/drniranjanaraj/',
+    youtube: 'https://www.youtube.com/@YCDC_INDIA'
   }
 };
 

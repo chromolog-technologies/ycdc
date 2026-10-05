@@ -29,10 +29,10 @@ const MOCK_BLOGS: BlogPost[] = [
     author: 'Dr. K. Yogiraj (Chairman)',
     date: 'July 15, 2025',
     read_time: '4 min read',
-    excerpt: 'Understand how US-FDA approved laser systems deliver permanent hair reduction safely across all skin types with zero downtime.',
+    excerpt: 'Understand how US-FDA approved laser systems deliver long-term hair reduction safely across all skin types with zero downtime.',
     image_path: '/laser_treatment_premium.png',
     body_content: [
-      'Embrace self-confidence and overcome the hassle of frequent waxing or shaving. Laser hair reduction uses selective photothermolysis to target melanin in hair follicles, disabling their growth cycle permanently without damaging surrounding skin tissue.',
+      'Embrace self-confidence and overcome the hassle of frequent waxing or shaving. Laser hair reduction uses selective photothermolysis to target melanin in hair follicles, significantly disabling follicular re-growth over time without damaging surrounding skin tissue.',
       'At YCDC, we utilize US-FDA approved triple-wavelength lasers that are exceptionally safe for Indian skin types. The integrated cooling tips ensure the treatment is virtually painless.',
       'Normally, a series of 6 to 8 sessions is required to target hairs in their active growth (anagen) phase. Sessions are spaced 4 to 6 weeks apart, revealing smooth, hair-free skin with no recovery downtime.'
     ]
@@ -149,7 +149,7 @@ export default function BlogPage() {
                   gap: '8px',
                   backgroundColor: 'transparent',
                   border: 'none',
-                  color: '#c49cbe',
+                  color: 'var(--deep-olive)',
                   fontWeight: '600',
                   cursor: 'pointer',
                   marginBottom: '30px',
@@ -169,23 +169,23 @@ export default function BlogPage() {
               </div>
 
               {/* Metadata */}
-              <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '20px', fontSize: '0.85rem', color: 'var(--muted-charcoal)', borderBottom: '1px solid var(--silk-200)', paddingBottom: '16px' }}>
+              <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '20px', fontSize: '0.85rem', color: 'var(--botanical-ink-muted)', borderBottom: '1px solid var(--warm-fog)', paddingBottom: '16px' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <User size={14} style={{ color: '#c49cbe' }} /> {selectedPost.author}
+                  <User size={14} style={{ color: 'var(--deep-olive)' }} /> {selectedPost.author}
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Calendar size={14} style={{ color: '#c49cbe' }} /> {selectedPost.date}
+                  <Calendar size={14} style={{ color: 'var(--deep-olive)' }} /> {selectedPost.date}
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Clock size={14} style={{ color: '#c49cbe' }} /> {selectedPost.read_time}
+                  <Clock size={14} style={{ color: 'var(--deep-olive)' }} /> {selectedPost.read_time}
                 </span>
-                <span className="badge badge-plum" style={{ fontSize: '0.7rem' }}>
+                <span className="badge badge-premium" style={{ fontSize: '0.7rem' }}>
                   {selectedPost.category_label}
                 </span>
               </div>
 
               {/* Article Title */}
-              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', color: '#63335e', marginBottom: '24px', lineHeight: '1.2' }}>
+              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', color: 'var(--botanical-ink)', marginBottom: '24px', lineHeight: '1.2' }}>
                 {selectedPost.title}
               </h2>
 
@@ -203,7 +203,7 @@ export default function BlogPage() {
                 borderTop: '1px solid var(--silk-200)',
                 textAlign: 'center'
               }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: '#63335e', marginBottom: '8px' }}>
+                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: 'var(--botanical-ink)', marginBottom: '8px' }}>
                   Have questions about this topic?
                 </h4>
                 <p style={{ fontSize: '0.9rem', color: 'var(--muted-charcoal)', marginBottom: '20px' }}>
@@ -243,12 +243,12 @@ export default function BlogPage() {
                       style={{
                         padding: '10px 22px',
                         borderRadius: '50px',
-                        border: activeCategory === cat ? '2px solid #c49cbe' : '1px solid var(--silk-200)',
-                        backgroundColor: activeCategory === cat ? '#c49cbe' : 'white',
-                        color: activeCategory === cat ? 'white' : '#63335e',
+                        border: activeCategory === cat ? '2px solid var(--deep-olive)' : '1px solid var(--warm-fog)',
+                        backgroundColor: activeCategory === cat ? 'var(--deep-olive)' : 'var(--warm-ivory-light)',
+                        color: activeCategory === cat ? 'white' : 'var(--botanical-ink)',
                         fontWeight: '600',
                         cursor: 'pointer',
-                        boxShadow: activeCategory === cat ? '0 4px 15px rgba(196, 156, 190, 0.4)' : 'none',
+                        boxShadow: activeCategory === cat ? '0 4px 15px rgba(87, 85, 39, 0.25)' : 'none',
                         textTransform: 'capitalize',
                         transition: 'var(--transition-fast)'
                       }}

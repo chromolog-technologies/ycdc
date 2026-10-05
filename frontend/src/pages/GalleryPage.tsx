@@ -191,15 +191,15 @@ export default function GalleryPage() {
               style={{
                 padding: '10px 22px',
                 borderRadius: '50px',
-                border: filter === 'all' ? '2px solid #c49cbe' : '1px solid var(--silk-200)',
-                backgroundColor: filter === 'all' ? '#c49cbe' : 'white',
-                color: filter === 'all' ? 'white' : '#63335e',
+                border: filter === 'all' ? '2px solid var(--deep-olive)' : '1px solid var(--warm-fog)',
+                backgroundColor: filter === 'all' ? 'var(--deep-olive)' : 'var(--warm-ivory-light)',
+                color: filter === 'all' ? 'white' : 'var(--botanical-ink)',
                 fontWeight: '600',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
-                boxShadow: filter === 'all' ? '0 4px 15px rgba(196, 156, 190, 0.4)' : 'none',
+                boxShadow: filter === 'all' ? '0 4px 15px rgba(87, 85, 39, 0.25)' : 'none',
                 transition: 'var(--transition-fast)'
               }}
             >
@@ -210,12 +210,12 @@ export default function GalleryPage() {
               style={{
                 padding: '10px 22px',
                 borderRadius: '50px',
-                border: filter === 'infrastructure' ? '2px solid #c49cbe' : '1px solid var(--silk-200)',
-                backgroundColor: filter === 'infrastructure' ? '#c49cbe' : 'white',
-                color: filter === 'infrastructure' ? 'white' : '#63335e',
+                border: filter === 'infrastructure' ? '2px solid var(--deep-olive)' : '1px solid var(--warm-fog)',
+                backgroundColor: filter === 'infrastructure' ? 'var(--deep-olive)' : 'var(--warm-ivory-light)',
+                color: filter === 'infrastructure' ? 'white' : 'var(--botanical-ink)',
                 fontWeight: '600',
                 cursor: 'pointer',
-                boxShadow: filter === 'infrastructure' ? '0 4px 15px rgba(196, 156, 190, 0.4)' : 'none',
+                boxShadow: filter === 'infrastructure' ? '0 4px 15px rgba(87, 85, 39, 0.25)' : 'none',
                 transition: 'var(--transition-fast)'
               }}
             >
@@ -226,12 +226,12 @@ export default function GalleryPage() {
               style={{
                 padding: '10px 22px',
                 borderRadius: '50px',
-                border: filter === 'treatments' ? '2px solid #c49cbe' : '1px solid var(--silk-200)',
-                backgroundColor: filter === 'treatments' ? '#c49cbe' : 'white',
-                color: filter === 'treatments' ? 'white' : '#63335e',
+                border: filter === 'treatments' ? '2px solid var(--deep-olive)' : '1px solid var(--warm-fog)',
+                backgroundColor: filter === 'treatments' ? 'var(--deep-olive)' : 'var(--warm-ivory-light)',
+                color: filter === 'treatments' ? 'white' : 'var(--botanical-ink)',
                 fontWeight: '600',
                 cursor: 'pointer',
-                boxShadow: filter === 'treatments' ? '0 4px 15px rgba(196, 156, 190, 0.4)' : 'none',
+                boxShadow: filter === 'treatments' ? '0 4px 15px rgba(87, 85, 39, 0.25)' : 'none',
                 transition: 'var(--transition-fast)'
               }}
             >
@@ -242,15 +242,15 @@ export default function GalleryPage() {
               style={{
                 padding: '10px 22px',
                 borderRadius: '50px',
-                border: filter === 'video' ? '2px solid #c49cbe' : '1px solid var(--silk-200)',
-                backgroundColor: filter === 'video' ? '#c49cbe' : 'white',
-                color: filter === 'video' ? 'white' : '#63335e',
+                border: filter === 'video' ? '2px solid var(--deep-olive)' : '1px solid var(--warm-fog)',
+                backgroundColor: filter === 'video' ? 'var(--deep-olive)' : 'var(--warm-ivory-light)',
+                color: filter === 'video' ? 'white' : 'var(--botanical-ink)',
                 fontWeight: '600',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
-                boxShadow: filter === 'video' ? '0 4px 15px rgba(196, 156, 190, 0.4)' : 'none',
+                boxShadow: filter === 'video' ? '0 4px 15px rgba(87, 85, 39, 0.25)' : 'none',
                 transition: 'var(--transition-fast)'
               }}
             >

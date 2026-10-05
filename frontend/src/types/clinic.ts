@@ -3,14 +3,16 @@ export interface ClinicBranch {
   name: string;
   city: string;
   address: string;
+  mapUrl?: string;
 }
 
 export interface SocialLinks {
   instagram: string;
+  drNiranjanaInstagram?: string;
   youtube: string;
-  facebook: string;
-  linkedin: string;
-  twitter: string;
+  facebook?: string;
+  linkedin?: string;
+  twitter?: string;
 }
 
 export interface AppContextValue {

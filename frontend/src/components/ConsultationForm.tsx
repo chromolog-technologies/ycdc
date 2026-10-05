@@ -147,11 +147,11 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
           textAlign: 'left',
           fontSize: '0.9rem'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--gold-600)', marginBottom: '8px', fontWeight: 'bold' }}>
-            <Lock size={14} /> HIPAA Compliant & Secure
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--deep-olive)', marginBottom: '8px', fontWeight: 'bold' }}>
+            <Lock size={14} /> Medical Privacy & Data Confidentiality
           </div>
-          <p style={{ fontSize: '0.85rem' }}>
-            Your photos and medical history are encrypted and only accessible by authorized YCDC medical practitioners.
+          <p style={{ fontSize: '0.85rem', color: 'var(--botanical-ink-muted)' }}>
+            Your photos and medical history are encrypted and only accessible by authorized YCDC medical practitioners in accordance with clinical privacy standards.
           </p>
         </div>
 
@@ -176,26 +176,28 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
   }
 
   return (
-    <form onSubmit={handleSubmit} className="glass consultation-form-card" style={{ borderRadius: '12px', boxShadow: 'var(--shadow-md)', overflow: 'hidden' }}>
-      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <span className="badge badge-premium" style={{ marginBottom: '8px' }}>
-          Virtual Screening Wizard
+    <form onSubmit={handleSubmit} className="consultation-form-card">
+      <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+        <span className="virtual-screening-pill">
+          VIRTUAL SCREENING WIZARD
         </span>
-        <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: 'var(--plum-900)' }}>
+        <h4 className="virtual-wizard-title">
           Online Consultation Request
         </h4>
-        <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', marginTop: '4px' }}>
+        <p className="virtual-wizard-desc">
           Follow the steps below to share your concern details and upload pictures.
         </p>
       </div>
 
-      {/* Step Wizard Progress Tracker */}
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-        <div className={`step-dot ${step >= 1 ? 'active' : ''}`} style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--silk-200)' }}></div>
-        <div style={{ width: '40px', height: '2px', backgroundColor: step >= 2 ? 'var(--plum-800)' : 'var(--silk-200)', transition: 'background-color 0.4s' }}></div>
-        <div className={`step-dot ${step >= 2 ? 'active' : ''}`} style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--silk-200)' }}></div>
-        <div style={{ width: '40px', height: '2px', backgroundColor: step >= 3 ? 'var(--plum-800)' : 'var(--silk-200)', transition: 'background-color 0.4s' }}></div>
-        <div className={`step-dot ${step >= 3 ? 'active' : ''}`} style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--silk-200)' }}></div>
+      {/* Step Wizard Progress Tracker (4 Dots Matching Reference) */}
+      <div className="virtual-wizard-tracker">
+        <div className={`wizard-dot ${step >= 1 ? 'active' : ''}`}></div>
+        <div className={`wizard-line ${step >= 2 ? 'active' : ''}`}></div>
+        <div className={`wizard-dot ${step >= 2 ? 'active' : ''}`}></div>
+        <div className={`wizard-line ${step >= 3 ? 'active' : ''}`}></div>
+        <div className={`wizard-dot ${step >= 3 ? 'active' : ''}`}></div>
+        <div className={`wizard-line ${isSubmitted ? 'active' : ''}`}></div>
+        <div className={`wizard-dot ${isSubmitted ? 'active' : ''}`}></div>
       </div>
 
       <div className="form-step-wrapper">
@@ -206,8 +208,8 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
           {/* STEP 1: BRANCH & CONCERN */}
           <div className={`form-step-slide ${step === 1 ? 'active' : ''}`} style={{ paddingRight: '15px' }}>
             <div className="form-group">
-              <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <MapPin size={12} /> Preferred Branch
+              <label className="form-label">
+                <MapPin size={13} /> PREFERRED BRANCH
               </label>
               <select 
                 value={branch} 
@@ -221,8 +223,8 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
             </div>
 
             <div className="form-group" style={{ marginTop: '20px' }}>
-              <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <Sparkles size={12} /> Concern Category
+              <label className="form-label">
+                <Sparkles size={13} /> CONCERN CATEGORY
               </label>
               <select 
                 value={concern} 
@@ -238,10 +240,9 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
             <button 
               type="button" 
               onClick={() => setStep(2)} 
-              className="btn btn-accent" 
-              style={{ width: '100%', marginTop: '30px' }}
+              className="btn-wizard-continue"
             >
-              Continue to Contact Details
+              CONTINUE TO CONTACT DETAILS
             </button>
           </div>
 
@@ -289,11 +290,11 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
               />
             </div>
 
-            <div style={{ display: 'flex', gap: '12px', marginTop: '30px' }}>
+            <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
               <button 
                 type="button" 
                 onClick={() => setStep(1)} 
-                className="btn btn-outline" 
+                className="btn-wizard-back" 
                 style={{ flex: 1 }}
               >
                 Back
@@ -307,10 +308,10 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
                   }
                   setStep(3);
                 }} 
-                className="btn btn-accent" 
-                style={{ flex: 2 }}
+                className="btn-wizard-continue" 
+                style={{ flex: 2, marginTop: 0 }}
               >
-                Continue
+                CONTINUE TO SYMPTOMS
               </button>
             </div>
           </div>
@@ -395,10 +396,10 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', background: 'var(--gold-100)', borderRadius: '6px', marginBottom: '16px', marginTop: '16px' }}>
-              <ShieldCheck size={18} style={{ color: 'var(--gold-600)', flexShrink: 0 }} />
-              <span style={{ fontSize: '0.7rem', color: 'var(--gold-600)', textAlign: 'left', lineHeight: '1.2' }}>
-                Secure preliminary screening. Secured under medical privacy laws.
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', background: 'var(--soft-sage-light, rgba(205, 210, 190, 0.25))', borderRadius: '6px', marginBottom: '16px', marginTop: '16px' }}>
+              <ShieldCheck size={18} style={{ color: 'var(--deep-olive)', flexShrink: 0 }} />
+              <span style={{ fontSize: '0.75rem', color: 'var(--botanical-ink-muted)', textAlign: 'left', lineHeight: '1.3' }}>
+                Secure preliminary screening. Compliant with medical confidentiality &amp; data privacy standards.
               </span>
             </div>
 
@@ -406,7 +407,7 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
               <button 
                 type="button" 
                 onClick={() => setStep(2)} 
-                className="btn btn-outline" 
+                className="btn-wizard-back" 
                 style={{ flex: 1 }}
                 disabled={submitting}
               >
@@ -415,10 +416,10 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
               <button 
                 type="submit" 
                 disabled={submitting} 
-                className="btn btn-accent" 
-                style={{ flex: 2 }}
+                className="btn-wizard-continue" 
+                style={{ flex: 2, marginTop: 0 }}
               >
-                {submitting ? 'Submitting...' : 'Submit Assessment'}
+                {submitting ? 'Submitting...' : 'SUBMIT REQUEST'}
               </button>
             </div>
           </div>
