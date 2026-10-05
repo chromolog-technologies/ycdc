@@ -913,8 +913,8 @@ function AppContent() {
             </div>
           </footer>
 
-          {/* Floating Action Buttons */}
-          <div className="floating-cta-phone">
+          {/* Floating Action Buttons (Desktop only) */}
+          <div className="floating-cta-phone desktop-only-cta">
             <button
               onClick={() => window.open(`tel:${phone}`, '_self')}
               className="floating-circle-btn"
@@ -926,7 +926,7 @@ function AppContent() {
             </button>
           </div>
 
-          <div className="floating-cta-whatsapp">
+          <div className="floating-cta-whatsapp desktop-only-cta">
             <button
               onClick={() => handleWhatsAppConnect('Floating Widget')}
               className="floating-circle-btn"

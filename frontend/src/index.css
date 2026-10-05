@@ -2157,14 +2157,14 @@ footer.glass-dark {
   box-shadow: 0 6px 20px rgba(41, 45, 38, 0.35);
 }
 
-@media (max-width: 768px) {
-  .floating-cta-phone {
-    bottom: 80px;
-    left: 16px;
-  }
-  .floating-cta-whatsapp {
-    bottom: 18px;
-    left: 16px;
+@media (max-width: 991px) {
+  .floating-cta-phone,
+  .floating-cta-whatsapp,
+  .desktop-only-cta {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 }
 
