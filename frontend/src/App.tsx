@@ -15,7 +15,14 @@ import {
   Award,
   ChevronUp,
   Calendar,
-  MessageSquare
+  MessageSquare,
+  Sparkles,
+  Stethoscope,
+  Image as ImageIcon,
+  BookOpen,
+  ChevronRight,
+  Compass,
+  Activity
 } from 'lucide-react';
 import HomePage from './pages/HomePage';
 import BookingWidget from './components/BookingWidget';
@@ -50,6 +57,25 @@ import {
 
 import './App.css';
 
+interface MobileNavItem {
+  id: PageId;
+  label: string;
+  subtitle: string;
+  icon: React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
+  badge?: string;
+}
+
+const MOBILE_NAV_ITEMS: MobileNavItem[] = [
+  { id: 'home', label: 'Home', subtitle: 'Flagship Dermatology', icon: Compass },
+  { id: 'treatments', label: 'Treatments & Lasers', subtitle: '40+ Clinical Procedures', icon: Sparkles, badge: 'Popular' },
+  { id: 'team', label: 'Specialist Doctors', subtitle: 'Led by Dr. K. Yogiraj', icon: Stethoscope },
+  { id: 'before-after', label: 'Clinical Results', subtitle: 'Real Case Studies', icon: Activity },
+  { id: 'about', label: 'About YCDC', subtitle: '30+ Years Heritage', icon: ShieldCheck },
+  { id: 'gallery', label: 'Clinic Suites', subtitle: 'Trivandrum & Bangalore', icon: ImageIcon },
+  { id: 'blog', label: 'Clinical Blog', subtitle: 'Expert Articles', icon: BookOpen },
+  { id: 'contact', label: 'Contact & Clinics', subtitle: 'Pattom & Whitefield', icon: MapPin }
+];
+
 function AppContent() {
   const dispatch = useAppDispatch();
   const { phone, whatsapp, socialLinks } = useAppContext();
@@ -74,6 +100,18 @@ function AppContent() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Lock body scroll when modern mobile drawer is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -349,51 +387,347 @@ function AppContent() {
               </div>
             </div>
 
-            {/* Mobile Navigation Dropdown */}
+            {/* Modern Full-Screen Mobile Concierge Drawer */}
             {mobileMenuOpen && (
-            <div style={{
-              position: 'absolute',
-              top: '100%',
-              left: 0,
-              width: '100%',
-              padding: '24px 28px',
-              backgroundColor: '#ffffff',
-              borderTop: '1px solid #E8D5E0',
-              borderBottom: '1px solid #E8D5E0',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '14px',
-              boxShadow: '0 12px 30px rgba(60, 35, 53, 0.1)',
-              textAlign: 'left'
-            }}>
-              <button onClick={() => { dispatch(setMobileMenuOpen(false)); navigateToPage('home'); }} className={`header-nav-link ${currentPage === 'home' ? 'active' : ''}`} style={{ textAlign: 'left', fontSize: '1.05rem' }}>Home</button>
-              <button onClick={() => { dispatch(setMobileMenuOpen(false)); navigateToPage('about'); }} className={`header-nav-link ${currentPage === 'about' ? 'active' : ''}`} style={{ textAlign: 'left', fontSize: '1.05rem' }}>About Us</button>
-              <button onClick={() => { dispatch(setMobileMenuOpen(false)); navigateToPage('team'); }} className={`header-nav-link ${currentPage === 'team' ? 'active' : ''}`} style={{ textAlign: 'left', fontSize: '1.05rem' }}>Our Team</button>
-              <button onClick={() => { dispatch(setMobileMenuOpen(false)); navigateToPage('before-after'); }} className={`header-nav-link ${currentPage === 'before-after' ? 'active' : ''}`} style={{ textAlign: 'left', fontSize: '1.05rem' }}>Before &amp; After</button>
-              <button onClick={() => { dispatch(setMobileMenuOpen(false)); navigateToPage('treatments'); }} className={`header-nav-link ${currentPage === 'treatments' ? 'active' : ''}`} style={{ textAlign: 'left', fontSize: '1.05rem' }}>Treatments</button>
-              <button onClick={() => { dispatch(setMobileMenuOpen(false)); navigateToPage('gallery'); }} className={`header-nav-link ${currentPage === 'gallery' ? 'active' : ''}`} style={{ textAlign: 'left', fontSize: '1.05rem' }}>Gallery</button>
-              <button onClick={() => { dispatch(setMobileMenuOpen(false)); navigateToPage('blog'); }} className={`header-nav-link ${currentPage === 'blog' ? 'active' : ''}`} style={{ textAlign: 'left', fontSize: '1.05rem' }}>Blog</button>
-              <button onClick={() => { dispatch(setMobileMenuOpen(false)); navigateToPage('contact'); }} className={`header-nav-link ${currentPage === 'contact' ? 'active' : ''}`} style={{ textAlign: 'left', fontSize: '1.05rem' }}>Contact</button>
-              <button
-                onClick={() => {
-                  dispatch(setMobileMenuOpen(false));
-                  dispatch(openBookingModal({ service: 'Virtual Screening' }));
+              <div
+                className="mobile-nav-drawer-overlay animate-fade-in"
+                style={{
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100dvh',
+                  backgroundColor: 'rgba(253, 250, 245, 0.98)',
+                  backdropFilter: 'blur(24px)',
+                  WebkitBackdropFilter: 'blur(24px)',
+                  zIndex: 9999,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  overflowY: 'auto'
                 }}
-                className="header-nav-link-accent"
-                style={{ textAlign: 'left', fontSize: '1.05rem' }}
               >
-                Virtual Diagnosis
-              </button>
+                {/* Drawer Top Header */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '16px 20px',
+                    borderBottom: '1px solid rgba(215, 203, 190, 0.45)',
+                    backgroundColor: '#FFFFFF',
+                    position: 'sticky',
+                    top: 0,
+                    zIndex: 10
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <img
+                      src="/ycdc-logo.png"
+                      alt="YCDC"
+                      style={{ height: '38px', width: 'auto', objectFit: 'contain' }}
+                    />
+                    <div style={{ borderLeft: '1px solid rgba(35, 61, 50, 0.15)', paddingLeft: '10px' }}>
+                      <div style={{ fontSize: '0.76rem', fontWeight: 700, color: '#233D32', letterSpacing: '0.04em' }}>
+                        YCDC INDIA
+                      </div>
+                      <div style={{ fontSize: '0.64rem', color: '#657766' }}>
+                        Clinical & Aesthetic Care
+                      </div>
+                    </div>
+                  </div>
 
-              <button
-                onClick={() => { dispatch(setMobileMenuOpen(false)); dispatch(openBookingModal(undefined)); }}
-                className="btn-header-book"
-                style={{ width: '100%', marginTop: '8px', padding: '12px' }}
-              >
-                BOOK APPOINTMENT
-              </button>
-            </div>
-          )}
+                  <button
+                    onClick={() => dispatch(setMobileMenuOpen(false))}
+                    aria-label="Close menu"
+                    style={{
+                      width: '38px',
+                      height: '38px',
+                      borderRadius: '50%',
+                      backgroundColor: 'rgba(35, 61, 50, 0.08)',
+                      border: 'none',
+                      color: '#233D32',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+
+                {/* Drawer Interior Body */}
+                <div style={{ padding: '18px 20px 40px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                  {/* Virtual Screening Highlight Card */}
+                  <div
+                    onClick={() => {
+                      dispatch(setMobileMenuOpen(false));
+                      dispatch(openBookingModal({ service: 'Virtual Screening' }));
+                    }}
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(35, 61, 50, 0.08) 0%, rgba(217, 165, 167, 0.22) 100%)',
+                      border: '1.5px solid rgba(217, 165, 167, 0.45)',
+                      borderRadius: '16px',
+                      padding: '14px 16px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      cursor: 'pointer',
+                      boxShadow: '0 4px 16px rgba(35, 61, 50, 0.06)'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div
+                        style={{
+                          width: '38px',
+                          height: '38px',
+                          borderRadius: '10px',
+                          backgroundColor: '#233D32',
+                          color: '#F3E5AB',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
+                        }}
+                      >
+                        <Sparkles size={18} />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#233D32' }}>
+                          Virtual Skin Diagnosis
+                        </div>
+                        <div style={{ fontSize: '0.72rem', color: '#536B4C' }}>
+                          Doctor evaluation from anywhere
+                        </div>
+                      </div>
+                    </div>
+                    <ArrowRight size={18} style={{ color: '#233D32' }} />
+                  </div>
+
+                  {/* Navigation Links Group */}
+                  <div
+                    style={{
+                      backgroundColor: '#FFFFFF',
+                      borderRadius: '18px',
+                      padding: '6px',
+                      border: '1px solid rgba(215, 203, 190, 0.5)',
+                      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '2px'
+                    }}
+                  >
+                    {MOBILE_NAV_ITEMS.map((item) => {
+                      const isActive = currentPage === item.id;
+                      const ItemIcon = item.icon;
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => {
+                            dispatch(setMobileMenuOpen(false));
+                            navigateToPage(item.id);
+                          }}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            padding: '11px 12px',
+                            borderRadius: '12px',
+                            border: 'none',
+                            backgroundColor: isActive ? '#233D32' : 'transparent',
+                            color: isActive ? '#FFFFFF' : '#233D32',
+                            cursor: 'pointer',
+                            textAlign: 'left',
+                            transition: 'all 0.18s ease'
+                          }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                            <div
+                              style={{
+                                width: '32px',
+                                height: '32px',
+                                borderRadius: '8px',
+                                backgroundColor: isActive ? 'rgba(255, 255, 255, 0.15)' : 'rgba(35, 61, 50, 0.06)',
+                                color: isActive ? '#F3E5AB' : '#233D32',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                              }}
+                            >
+                              <ItemIcon size={16} />
+                            </div>
+                            <div>
+                              <div style={{ fontSize: '0.92rem', fontWeight: isActive ? 700 : 600 }}>
+                                {item.label}
+                              </div>
+                              <div
+                                style={{
+                                  fontSize: '0.68rem',
+                                  color: isActive ? 'rgba(255, 255, 255, 0.75)' : '#657766'
+                                }}
+                              >
+                                {item.subtitle}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            {item.badge && (
+                              <span
+                                style={{
+                                  fontSize: '0.65rem',
+                                  fontWeight: 700,
+                                  padding: '2px 7px',
+                                  borderRadius: '9999px',
+                                  backgroundColor: isActive ? '#B49A68' : 'rgba(217, 165, 167, 0.3)',
+                                  color: isActive ? '#FFFFFF' : '#8A4A5B'
+                                }}
+                              >
+                                {item.badge}
+                              </span>
+                            )}
+                            <ChevronRight
+                              size={16}
+                              style={{ color: isActive ? '#FFFFFF' : '#A0AEA1' }}
+                            />
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Branch Hotline Quick Call Buttons */}
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                    <a
+                      href="tel:+917593864264"
+                      style={{
+                        padding: '10px 12px',
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid rgba(215, 203, 190, 0.6)',
+                        borderRadius: '12px',
+                        textDecoration: 'none',
+                        color: '#233D32',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2px'
+                      }}
+                    >
+                      <span style={{ fontSize: '0.68rem', color: '#657766', fontWeight: 600 }}>📍 Trivandrum</span>
+                      <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#233D32' }}>Pattom Clinic</span>
+                    </a>
+                    <a
+                      href="tel:+917593864264"
+                      style={{
+                        padding: '10px 12px',
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid rgba(215, 203, 190, 0.6)',
+                        borderRadius: '12px',
+                        textDecoration: 'none',
+                        color: '#233D32',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2px'
+                      }}
+                    >
+                      <span style={{ fontSize: '0.68rem', color: '#657766', fontWeight: 600 }}>📍 Bengaluru</span>
+                      <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#233D32' }}>Whitefield Suite</span>
+                    </a>
+                  </div>
+
+                  {/* Drawer Booking Button */}
+                  <button
+                    onClick={() => {
+                      dispatch(setMobileMenuOpen(false));
+                      dispatch(openBookingModal(undefined));
+                    }}
+                    style={{
+                      width: '100%',
+                      padding: '14px',
+                      backgroundColor: '#233D32',
+                      color: '#FFFFFF',
+                      border: '1.5px solid #B49A68',
+                      borderRadius: '14px',
+                      fontSize: '0.92rem',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      boxShadow: '0 8px 24px rgba(35, 61, 50, 0.25)'
+                    }}
+                  >
+                    <Calendar size={18} style={{ color: '#F3E5AB' }} />
+                    Book Clinic Appointment
+                  </button>
+
+                  {/* Drawer Footer Socials */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '14px',
+                      paddingTop: '8px'
+                    }}
+                  >
+                    <a
+                      href="https://www.instagram.com/ycdc_india/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: '50%',
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid rgba(215, 203, 190, 0.6)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#233D32'
+                      }}
+                    >
+                      <Instagram size={16} />
+                    </a>
+                    <a
+                      href="https://www.youtube.com/@YCDC_INDIA"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: '50%',
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid rgba(215, 203, 190, 0.6)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#233D32'
+                      }}
+                    >
+                      <Youtube size={16} />
+                    </a>
+                    <a
+                      href="https://facebook.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: '50%',
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid rgba(215, 203, 190, 0.6)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#233D32'
+                      }}
+                    >
+                      <Facebook size={16} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
         </header>
         );
       })()}
