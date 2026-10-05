@@ -643,17 +643,17 @@ function AppContent() {
               href="tel:+917593864264" 
               className="mobile-quick-btn mobile-call-btn"
               aria-label="Call YCDC Clinic"
+              title="Call YCDC Clinic"
             >
-              <Phone size={15} />
-              <span>Call</span>
+              <Phone size={19} />
             </a>
             <button 
               onClick={() => dispatch(openBookingModal(undefined))}
               className="mobile-quick-btn mobile-book-btn"
               aria-label="Book Appointment"
+              title="Book Appointment"
             >
-              <Calendar size={15} />
-              <span>Book Appointment</span>
+              <Calendar size={19} />
             </button>
             <a 
               href="https://wa.me/917593864264?text=Hello%20YCDC%20Clinic%2C%20I%20would%20like%20to%20inquire%20about%20a%20consultation." 
@@ -661,9 +661,9 @@ function AppContent() {
               rel="noopener noreferrer" 
               className="mobile-quick-btn mobile-whatsapp-btn"
               aria-label="Chat on WhatsApp"
+              title="Chat on WhatsApp"
             >
-              <MessageSquare size={15} />
-              <span>WhatsApp</span>
+              <MessageSquare size={19} />
             </a>
           </div>
         </>

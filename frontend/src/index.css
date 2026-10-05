@@ -8743,22 +8743,28 @@ footer.glass-dark {
 }
 
 @media (max-width: 768px) {
+  .floating-cta-phone,
+  .floating-cta-whatsapp {
+    display: none !important;
+  }
+
   .mobile-bottom-quickbar {
     display: flex;
     position: fixed;
-    bottom: 12px;
-    left: 12px;
-    right: 12px;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
     z-index: 998;
     background: rgba(35, 61, 50, 0.95);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-radius: 9999px;
-    padding: 6px 8px;
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.15);
+    padding: 6px 10px;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15);
     align-items: center;
-    justify-content: space-between;
-    gap: 6px;
+    justify-content: center;
+    gap: 10px;
     animation: slideUpQuickbar 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -8766,37 +8772,39 @@ footer.glass-dark {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 10px 14px;
-    border-radius: 9999px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     border: none;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     white-space: nowrap;
     -webkit-tap-highlight-color: transparent;
+    padding: 0;
+    flex: 0 0 auto;
+    text-decoration: none;
+  }
+
+  .mobile-quick-btn:active {
+    transform: scale(0.9);
   }
 
   .mobile-call-btn {
     background: rgba(255, 255, 255, 0.15);
     color: #ffffff;
-    flex: 0 0 auto;
   }
 
   .mobile-book-btn {
     background: linear-gradient(135deg, #B49A68 0%, #D4B988 100%);
     color: #1A2F26;
-    font-weight: 700;
-    flex: 1 1 auto;
-    box-shadow: 0 2px 10px rgba(180, 154, 104, 0.35);
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 4px 14px rgba(180, 154, 104, 0.4);
   }
 
   .mobile-whatsapp-btn {
     background: #25D366;
     color: #ffffff;
-    flex: 0 0 auto;
   }
 
   .back-to-top-btn {
