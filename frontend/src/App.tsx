@@ -162,16 +162,11 @@ function AppContent() {
               <span style={{ opacity: 0.5 }}>|</span>
               <button
                 onClick={() => {
-                  if (currentPage !== 'home') {
-                    navigateToPage('home');
-                    setTimeout(() => {
-                      const el = document.getElementById('virtual-diagnosis');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }, 200);
-                  } else {
+                  navigateToPage('home');
+                  setTimeout(() => {
                     const el = document.getElementById('virtual-diagnosis');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
+                  }, 200);
                 }}
                 style={{ background: 'none', border: 'none', color: '#ffffff', fontSize: '0.82rem', cursor: 'pointer', fontWeight: 600 }}
               >
