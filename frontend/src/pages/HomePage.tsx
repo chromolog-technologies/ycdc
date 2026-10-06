@@ -397,46 +397,10 @@ export const HomePage: React.FC<HomePageProps> = ({
     const timeoutId1 = setTimeout(scanAndObserve, 100);
     const timeoutId2 = setTimeout(scanAndObserve, 300);
 
-    // 2. High-performance scroll spy for Care Journey: dynamically tracks the card closest to viewport focal center
-    let isTicking = false;
-    const handleCareJourneyScroll = () => {
-      if (isTicking) return;
-      isTicking = true;
-      requestAnimationFrame(() => {
-        isTicking = false;
-        const stageCards = document.querySelectorAll<HTMLElement>('.stage-card');
-        if (!stageCards.length) return;
-        const focalLine = window.innerHeight * 0.45;
-        let closestStage = 1;
-        let minDistance = Infinity;
-
-        stageCards.forEach((card) => {
-          const rect = card.getBoundingClientRect();
-          const cardCenter = rect.top + rect.height * 0.5;
-          const distance = Math.abs(cardCenter - focalLine);
-          // Only evaluate cards that are visible in the active viewing zone
-          if (rect.bottom > 60 && rect.top < window.innerHeight - 60) {
-            if (distance < minDistance) {
-              minDistance = distance;
-              const stageNum = Number(card.getAttribute('data-stage'));
-              if (stageNum && !isNaN(stageNum)) {
-                closestStage = stageNum;
-              }
-            }
-          }
-        });
-        setActiveStage((prev) => (prev !== closestStage ? closestStage : prev));
-      });
-    };
-
-    window.addEventListener('scroll', handleCareJourneyScroll, { passive: true });
-    handleCareJourneyScroll();
-
     return () => {
       clearTimeout(timeoutId1);
       clearTimeout(timeoutId2);
       revealObserver?.disconnect();
-      window.removeEventListener('scroll', handleCareJourneyScroll);
     };
   }, []);
 
@@ -892,13 +856,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     <button
                       key={stage.num}
                       type="button"
-                      onClick={() => {
-                        setActiveStage(stageNum);
-                        const el = document.getElementById(`stage-card-${stageNum}`);
-                        if (el) {
-                          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
-                      }}
+                      onClick={() => setActiveStage(stageNum)}
                       className={`care-step-pill ${isActive ? 'active' : ''}`}
                     >
                       <span className="step-pill-num">{stage.num}</span>
@@ -918,40 +876,97 @@ export const HomePage: React.FC<HomePageProps> = ({
               </button>
             </div>
 
-            {/* Right: 4 Stacked Cards with Scroll Spy & Interactive Highlight */}
-            <div className="four-stages-stack reveal-stagger">
-              {PATIENT_CARE_STAGES.map((stage, idx) => {
-                const stageNum = idx + 1;
-                const isActive = activeStage === stageNum;
+            {/* Right: Active Stage Display Card (Only active stage described, no scrolling) */}
+            <div className="four-stages-stack">
+              {(() => {
+                const currentStage = PATIENT_CARE_STAGES[activeStage - 1] || PATIENT_CARE_STAGES[0];
                 return (
                   <div
-                    key={stage.num}
-                    id={`stage-card-${stageNum}`}
-                    data-stage={stageNum}
-                    className={`stage-card reveal reveal-up reveal-delay-${stageNum} ${isActive ? 'active' : ''}`}
-                    onClick={() => setActiveStage(stageNum)}
+                    key={currentStage.num}
+                    id={`stage-card-${activeStage}`}
+                    data-stage={activeStage}
+                    className="stage-card active animate-fade-in"
                   >
                     <div className="stage-card-header">
                       <div className="stage-card-title-group">
-                        <span className="stage-card-num">{stage.num}</span>
-                        <h4 className="stage-card-name">{stage.title}</h4>
+                        <span className="stage-card-num">{currentStage.num}</span>
+                        <h4 className="stage-card-name">{currentStage.title}</h4>
                       </div>
-                      <span className="stage-phase-badge">{stage.tag}</span>
+                      <span className="stage-phase-badge">{currentStage.tag}</span>
                     </div>
 
-                    <p className="stage-card-text">{stage.desc}</p>
+                    <p className="stage-card-text">{currentStage.desc}</p>
 
                     <div className="stage-card-highlights">
-                      {stage.highlights.map((highlight, hIdx) => (
+                      {currentStage.highlights.map((highlight, hIdx) => (
                         <span key={hIdx} className="stage-highlight-tag">
                           <Check size={13} className="stage-check-icon" />
                           {highlight}
                         </span>
                       ))}
                     </div>
+
+                    {/* Step Navigation Bar */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        marginTop: '22px',
+                        paddingTop: '16px',
+                        borderTop: '1px solid rgba(255, 255, 255, 0.12)'
+                      }}
+                    >
+                      <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 500 }}>
+                        Stage {activeStage} of {PATIENT_CARE_STAGES.length}
+                      </span>
+                      <div style={{ display: 'flex', gap: '8px' }}>
+                        <button
+                          type="button"
+                          disabled={activeStage <= 1}
+                          onClick={() => setActiveStage((prev) => Math.max(1, prev - 1))}
+                          style={{
+                            padding: '6px 14px',
+                            borderRadius: '9999px',
+                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                            background: 'rgba(255, 255, 255, 0.08)',
+                            color: activeStage <= 1 ? 'rgba(255, 255, 255, 0.3)' : '#FFFFFF',
+                            cursor: activeStage <= 1 ? 'not-allowed' : 'pointer',
+                            fontSize: '0.78rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            transition: 'all 0.2s ease'
+                          }}
+                        >
+                          <ChevronLeft size={14} /> Prev
+                        </button>
+                        <button
+                          type="button"
+                          disabled={activeStage >= PATIENT_CARE_STAGES.length}
+                          onClick={() => setActiveStage((prev) => Math.min(PATIENT_CARE_STAGES.length, prev + 1))}
+                          style={{
+                            padding: '6px 14px',
+                            borderRadius: '9999px',
+                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                            background: activeStage >= PATIENT_CARE_STAGES.length ? 'rgba(255, 255, 255, 0.08)' : 'var(--color-soft-gold)',
+                            color: activeStage >= PATIENT_CARE_STAGES.length ? 'rgba(255, 255, 255, 0.3)' : '#233D32',
+                            cursor: activeStage >= PATIENT_CARE_STAGES.length ? 'not-allowed' : 'pointer',
+                            fontSize: '0.78rem',
+                            fontWeight: 600,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            transition: 'all 0.2s ease'
+                          }}
+                        >
+                          Next <ChevronRight size={14} />
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 );
-              })}
+              })()}
             </div>
           </div>
         </div>
