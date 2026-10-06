@@ -838,9 +838,6 @@ function AppContent() {
                     <span className="footer-standard-item">
                       <Award size={14} style={{ color: '#B49A68' }} /> Indian Medical Board Registered
                     </span>
-                    <button onClick={() => navigate('/admin')} style={{ color: '#B49A68', marginTop: '8px', fontWeight: 600 }}>
-                      Admin Portal &rarr;
-                    </button>
                   </div>
                 </div>
               </div>
