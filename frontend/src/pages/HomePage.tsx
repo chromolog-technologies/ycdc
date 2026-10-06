@@ -785,7 +785,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           {/* 3 Wide Arched Cards */}
-          <div className="master-specialities-grid mobile-horizontal-track">
+          <div className="master-specialities-grid">
             <div
               className="master-spec-card reveal reveal-left"
               onClick={() => onNavigateToPage('treatments')}
