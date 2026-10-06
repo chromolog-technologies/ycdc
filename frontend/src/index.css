@@ -9944,12 +9944,17 @@ footer.glass-dark {
 
   .journey-cards-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px !important;
+    gap: 12px !important;
     margin-bottom: 24px !important;
   }
 
+  /* Display exactly 4 images on mobile view (2x2 grid) */
+  .journey-cards-grid .journey-card-item:nth-child(n+5) {
+    display: none !important;
+  }
+
   .journey-card-item {
-    border-radius: 14px !important;
+    border-radius: 16px !important;
   }
 
   .follow-journey-actions {
