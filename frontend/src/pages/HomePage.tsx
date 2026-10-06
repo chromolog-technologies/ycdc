@@ -3,7 +3,6 @@ import {
   ArrowRight,
   ChevronRight,
   ChevronLeft,
-  X,
   Flower2,
   Sparkles,
   Heart,
@@ -17,8 +16,7 @@ import {
   FileText,
   UploadCloud,
   Stethoscope,
-  Award,
-  Play
+  Award
 } from 'lucide-react';
 import ConsultationForm from '../components/ConsultationForm';
 import type { PageId } from '../types/navigation';
@@ -308,7 +306,6 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenBookingModal,
   onBookTreatment: _onBookTreatment
 }) => {
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [activeCareCategory, setActiveCareCategory] = useState<CareCategory>('skin');
   const [activeStage, setActiveStage] = useState<number>(1);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
@@ -419,40 +416,6 @@ export const HomePage: React.FC<HomePageProps> = ({
   return (
     <>
       {/* =================================================================
-          VIDEO LIGHTBOX MODAL: Watch Our Story
-          ================================================================= */}
-      {videoModalOpen && (
-        <div
-          className="master-video-modal-backdrop"
-          onClick={() => setVideoModalOpen(false)}
-        >
-          <div
-            className="master-video-modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="master-video-close"
-              onClick={() => setVideoModalOpen(false)}
-              aria-label="Close story video"
-            >
-              <X size={24} />
-            </button>
-            <video
-              autoPlay
-              controls
-              playsInline
-              className="master-video-player"
-            >
-              <source src="/hero.mp4" type="video/mp4" />
-              <source src="/hero section.mp4" type="video/mp4" />
-              <source src="/hero_section.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      )}
-
-      {/* =================================================================
           1. CINEMATIC HERO SECTION: Animated Radiant Skin & Editorial Aesthetics
           ================================================================= */}
       <section className="master-hero-section">
@@ -520,15 +483,6 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <span>Explore Treatments</span>
                   <ArrowRight size={16} />
                 </button>
-
-                <button
-                  onClick={() => setVideoModalOpen(true)}
-                  className="btn-hero-watch-story"
-                  aria-label="Watch Clinic Story Video"
-                >
-                  <Play size={14} fill="currentColor" />
-                  <span>Watch Story</span>
-                </button>
               </div>
 
               {/* Elevated Luxury Metric Capsule */}
@@ -554,7 +508,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* =================================================================
-          2. FEATURE RIBBON STRIP (5 Pillars + Our Approach)
+          2. FEATURE RIBBON STRIP (5 Pillars)
           ================================================================= */}
       <section className="master-ribbon-strip">
         <div className="container master-ribbon-container">
@@ -592,20 +546,6 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <Flower2 size={16} />
               </div>
               <span className="master-ribbon-label">Compassionate Patient Care</span>
-            </div>
-
-            <div
-              className="master-ribbon-approach-card"
-              onClick={() => onNavigateToPage('about')}
-              role="button"
-              tabIndex={0}
-            >
-              <div className="master-ribbon-approach-content">
-                <span className="master-ribbon-approach-title">Our Approach</span>
-                <div className="master-ribbon-approach-arrow">
-                  <ArrowRight size={13} />
-                </div>
-              </div>
             </div>
           </div>
         </div>
