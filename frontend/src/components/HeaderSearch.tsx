@@ -179,136 +179,122 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
           <Search size={18} />
         </button>
       ) : (
-        <div className="header-search-capsule-wrapper" style={{ position: 'relative' }}>
-          {/* Unified Luxury Pill Capsule */}
+        <div
+          className="header-search-line-container"
+          style={{
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            height: '42px',
+            width: 'clamp(260px, 28vw, 360px)',
+            transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+            zIndex: 1002
+          }}
+        >
+          {/* Left search icon inside the line */}
           <div
-            className="header-search-capsule"
             style={{
-              position: 'relative',
+              padding: '0 8px 0 2px',
               display: 'flex',
               alignItems: 'center',
-              height: '44px',
-              width: 'clamp(280px, 32vw, 420px)',
-              backgroundColor: '#FFFFFF',
-              borderRadius: '9999px',
-              border: '1.5px solid #233D32',
-              boxShadow: '0 6px 20px rgba(35, 61, 50, 0.12), 0 1px 3px rgba(0, 0, 0, 0.04)',
-              padding: '0 6px 0 10px',
-              boxSizing: 'border-box',
-              zIndex: 1002,
-              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
+              color: '#233D32',
+              flexShrink: 0
             }}
           >
-            {/* Left search icon with soft circular badge */}
-            <div
-              style={{
-                width: '30px',
-                height: '30px',
-                borderRadius: '50%',
-                backgroundColor: 'rgba(35, 61, 50, 0.08)',
-                color: '#233D32',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                marginRight: '8px'
-              }}
-            >
-              <Search size={15} strokeWidth={2.4} />
-            </div>
+            <Search size={17} style={{ opacity: 0.85 }} />
+          </div>
 
-            {/* Completely borderless search input */}
-            <input
-              ref={inputRef}
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Search treatments, concerns, lasers..."
-              aria-label="Search treatments"
-              className="header-search-input"
-              style={{
-                flex: 1,
-                background: 'transparent',
-                border: 'none',
-                outline: 'none',
-                boxShadow: 'none',
-                WebkitAppearance: 'none',
-                appearance: 'none',
-                fontSize: '0.88rem',
-                color: '#1A2921',
-                fontFamily: 'inherit',
-                padding: '0',
-                margin: '0',
-                letterSpacing: '0.01em',
-                fontWeight: 500,
-                minWidth: 0
-              }}
-            />
+          {/* Search Input sitting on top of the line */}
+          <input
+            ref={inputRef}
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Search treatments..."
+            aria-label="Search treatments"
+            className="header-search-input"
+            style={{
+              flex: 1,
+              background: 'transparent',
+              border: 'none',
+              outline: 'none',
+              fontSize: '0.9rem',
+              color: '#242923',
+              fontFamily: 'inherit',
+              padding: '8px 4px',
+              letterSpacing: '0.01em',
+              fontWeight: 500
+            }}
+          />
 
-            {/* Quick Clear Query Button */}
-            {query.trim() ? (
-              <button
-                type="button"
-                onClick={() => {
-                  setQuery('');
-                  inputRef.current?.focus();
-                }}
-                aria-label="Clear query"
-                style={{
-                  width: '24px',
-                  height: '24px',
-                  borderRadius: '50%',
-                  background: 'rgba(35, 61, 50, 0.08)',
-                  border: 'none',
-                  color: '#233D32',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  padding: 0,
-                  marginRight: '4px',
-                  transition: 'background-color 0.15s ease'
-                }}
-                title="Clear input"
-              >
-                <X size={12} strokeWidth={2.5} />
-              </button>
-            ) : null}
-
-            {/* Close Search Button */}
+          {/* Quick Clear Query Button */}
+          {query.trim() ? (
             <button
               type="button"
-              onClick={handleClose}
-              aria-label="Close search"
+              onClick={() => {
+                setQuery('');
+                inputRef.current?.focus();
+              }}
+              aria-label="Clear query"
               style={{
-                width: '30px',
-                height: '30px',
-                borderRadius: '50%',
-                backgroundColor: '#FAF6F0',
-                border: '1px solid rgba(35, 61, 50, 0.12)',
-                color: '#233D32',
+                background: 'none',
+                border: 'none',
+                color: '#657766',
                 cursor: 'pointer',
+                padding: '4px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: 0,
-                transition: 'all 0.2s ease',
+                borderRadius: '50%',
+                marginRight: '2px',
+                transition: 'all 0.15s ease',
                 flexShrink: 0
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#233D32';
-                e.currentTarget.style.color = '#FFFFFF';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#FAF6F0';
-                e.currentTarget.style.color = '#233D32';
-              }}
-              title="Close (Esc)"
+              title="Clear input"
             >
-              <X size={14} strokeWidth={2.2} />
+              <X size={14} />
             </button>
-          </div>
+          ) : null}
+
+          {/* Close Search Button */}
+          <button
+            type="button"
+            onClick={handleClose}
+            aria-label="Close search"
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#657766',
+              cursor: 'pointer',
+              padding: '6px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '50%',
+              transition: 'all 0.15s ease',
+              flexShrink: 0
+            }}
+            title="Close (Esc)"
+          >
+            <X size={16} />
+          </button>
+
+          {/* The line that draws from left to right */}
+          <div
+            className="search-draw-line"
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              width: '100%',
+              height: '2px',
+              background: 'linear-gradient(90deg, #233D32 0%, #D9A5A7 100%)',
+              transformOrigin: 'left center',
+              animation: 'expandLineLeftToRight 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              boxShadow: '0 1px 4px rgba(35, 61, 50, 0.2)'
+            }}
+          />
 
           {/* Results / Treatment Finder Dropdown */}
           {isOpen && query.trim() && (
@@ -316,19 +302,18 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
               className="search-results-dropdown animate-fade-in"
               style={{
                 position: 'absolute',
-                top: 'calc(100% + 10px)',
+                top: 'calc(100% + 8px)',
                 right: 0,
-                width: 'clamp(320px, 38vw, 480px)',
-                maxHeight: '480px',
+                width: 'clamp(320px, 35vw, 440px)',
+                maxHeight: '440px',
                 overflowY: 'auto',
-                backgroundColor: '#FDFBF7',
-                backdropFilter: 'blur(20px)',
-                borderRadius: '20px',
-                border: '1.5px solid rgba(217, 165, 167, 0.35)',
-                boxShadow: '0 24px 60px rgba(35, 61, 50, 0.18), 0 4px 16px rgba(0, 0, 0, 0.04)',
-                padding: '14px',
-                zIndex: 1050,
-                boxSizing: 'border-box'
+                backgroundColor: '#FAF6F0',
+                backdropFilter: 'blur(16px)',
+                borderRadius: '16px',
+                border: '1px solid rgba(215, 203, 190, 0.85)',
+                boxShadow: '0 20px 40px rgba(42, 54, 43, 0.15), 0 4px 12px rgba(0, 0, 0, 0.05)',
+                padding: '12px',
+                zIndex: 1050
               }}
             >
               {/* If user typed and results found */}
