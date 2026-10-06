@@ -6724,7 +6724,7 @@ footer.glass-dark {
 .reveal.reveal-active,
 .reveal-stagger.reveal-active > * {
   opacity: 1 !important;
-  transform: translate(0, 0) scale(1) !important;
+  transform: translate(0, 0) scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -7457,23 +7457,23 @@ footer.glass-dark {
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  opacity: 1 !important; /* ALWAYS 100% VISIBLE - NO VANISHING */
   cursor: pointer;
   overflow: hidden;
+  will-change: transform, opacity;
 }
 
 .stage-card:hover {
   border-color: var(--color-soft-gold);
   background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
+  transform: translateY(-4px) !important;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
 }
 
 .stage-card.active {
-  border: 2px solid var(--color-soft-gold);
-  background: rgba(255, 255, 255, 0.13);
-  transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
+  border: 2px solid var(--color-soft-gold) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35) !important;
 }
 
 .stage-card.active::before {

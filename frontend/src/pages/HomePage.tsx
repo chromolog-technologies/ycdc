@@ -360,55 +360,83 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   // Scroll reveal observer for elements + automatic active stage on scroll
   useEffect(() => {
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+    if (typeof window === 'undefined') return;
 
     // 1. General scroll reveal observer for smooth entrance animations
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-active');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -40px 0px',
-      }
-    );
+    let revealObserver: IntersectionObserver | null = null;
+    if ('IntersectionObserver' in window) {
+      revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('reveal-active');
+              revealObserver?.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.05,
+          rootMargin: '0px 0px 40px 0px',
+        }
+      );
+    }
 
-    const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
-    revealElements.forEach((el) => {
-      if (!el.classList.contains('reveal-active')) {
-        revealObserver.observe(el);
-      }
-    });
+    const scanAndObserve = () => {
+      const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
+      revealElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('reveal-active');
+        } else if (!el.classList.contains('reveal-active') && revealObserver) {
+          revealObserver.observe(el);
+        }
+      });
+    };
 
-    // 2. Stage cards scroll spy observer: updates activeStage (01 -> 02 -> 03 -> 04) as user scrolls
-    const stageObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const stageNum = Number(entry.target.getAttribute('data-stage'));
-            if (stageNum && !isNaN(stageNum)) {
-              setActiveStage(stageNum);
+    scanAndObserve();
+    const timeoutId1 = setTimeout(scanAndObserve, 100);
+    const timeoutId2 = setTimeout(scanAndObserve, 300);
+
+    // 2. High-performance scroll spy for Care Journey: dynamically tracks the card closest to viewport focal center
+    let isTicking = false;
+    const handleCareJourneyScroll = () => {
+      if (isTicking) return;
+      isTicking = true;
+      requestAnimationFrame(() => {
+        isTicking = false;
+        const stageCards = document.querySelectorAll<HTMLElement>('.stage-card');
+        if (!stageCards.length) return;
+        const focalLine = window.innerHeight * 0.45;
+        let closestStage = 1;
+        let minDistance = Infinity;
+
+        stageCards.forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.top + rect.height * 0.5;
+          const distance = Math.abs(cardCenter - focalLine);
+          // Only evaluate cards that are visible in the active viewing zone
+          if (rect.bottom > 60 && rect.top < window.innerHeight - 60) {
+            if (distance < minDistance) {
+              minDistance = distance;
+              const stageNum = Number(card.getAttribute('data-stage'));
+              if (stageNum && !isNaN(stageNum)) {
+                closestStage = stageNum;
+              }
             }
           }
         });
-      },
-      {
-        threshold: 0.25,
-        rootMargin: '-15% 0px -35% 0px',
-      }
-    );
+        setActiveStage((prev) => (prev !== closestStage ? closestStage : prev));
+      });
+    };
 
-    const stageCards = document.querySelectorAll('.stage-card');
-    stageCards.forEach((card) => stageObserver.observe(card));
+    window.addEventListener('scroll', handleCareJourneyScroll, { passive: true });
+    handleCareJourneyScroll();
 
     return () => {
-      revealObserver.disconnect();
-      stageObserver.disconnect();
+      clearTimeout(timeoutId1);
+      clearTimeout(timeoutId2);
+      revealObserver?.disconnect();
+      window.removeEventListener('scroll', handleCareJourneyScroll);
     };
   }, []);
 
@@ -826,7 +854,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="four-stages-grid">
             {/* Left Narrative Column */}
-            <div className="four-stages-left">
+            <div className="four-stages-left reveal reveal-left">
               <span className="section-pill-badge">
                 CARE JOURNEY
               </span>
@@ -873,7 +901,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             {/* Right: 4 Stacked Cards with Scroll Spy & Interactive Highlight */}
-            <div className="four-stages-stack">
+            <div className="four-stages-stack reveal-stagger">
               {PATIENT_CARE_STAGES.map((stage, idx) => {
                 const stageNum = idx + 1;
                 const isActive = activeStage === stageNum;
@@ -882,7 +910,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     key={stage.num}
                     id={`stage-card-${stageNum}`}
                     data-stage={stageNum}
-                    className={`stage-card ${isActive ? 'active' : ''}`}
+                    className={`stage-card reveal reveal-up reveal-delay-${stageNum} ${isActive ? 'active' : ''}`}
                     onClick={() => setActiveStage(stageNum)}
                   >
                     <div className="stage-card-header">
