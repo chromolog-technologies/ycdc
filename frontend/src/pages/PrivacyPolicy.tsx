@@ -2,110 +2,226 @@ import { Shield, Lock, Eye, CheckCircle2, Instagram, Facebook, Linkedin, Twitter
 
 export default function PrivacyPolicy() {
   return (
-    <div className="animate-fade-in" style={{ backgroundColor: 'var(--silk-100)', minHeight: '100vh', paddingBottom: '100px' }}>
-      {/* Title Hero Banner */}
+    <div className="animate-fade-in" style={{ backgroundColor: '#FAF6F0', minHeight: '100vh', paddingBottom: '100px' }}>
+      {/* Title Hero Banner - Signature YCDC Deep Forest Green */}
       <section style={{
         position: 'relative',
-        padding: '100px 0 60px',
-        background: 'linear-gradient(to right, #3b102f, #23071b)',
-        color: 'white',
+        padding: 'clamp(90px, 12vh, 130px) 0 70px',
+        background: 'linear-gradient(135deg, #172920 0%, #233D32 60%, #1A2E24 100%)',
+        color: '#FFFFFF',
         textAlign: 'center',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        borderBottom: '1px solid rgba(215, 203, 190, 0.25)'
       }}>
+        {/* Soft Gold / Rose Ambient Radiance */}
         <div style={{
           position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          opacity: 0.05,
-          backgroundImage: 'radial-gradient(var(--brand-pink) 1px, transparent 1px)',
-          backgroundSize: '24px 24px'
+          top: '-30%',
+          right: '5%',
+          width: '500px',
+          height: '500px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(217, 165, 167, 0.18) 0%, rgba(180, 154, 104, 0.12) 50%, transparent 75%)',
+          filter: 'blur(50px)',
+          pointerEvents: 'none'
         }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '-20%',
+          left: '5%',
+          width: '400px',
+          height: '400px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(230, 202, 133, 0.15) 0%, transparent 70%)',
+          filter: 'blur(45px)',
+          pointerEvents: 'none'
+        }} />
+
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <span className="badge badge-premium" style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'white', background: 'rgba(255,255,255,0.1)', marginBottom: '16px' }}>
-            Clinical Compliance
+          <span style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            border: '1px solid rgba(230, 202, 133, 0.55)',
+            color: '#F3E5AB',
+            background: 'rgba(230, 202, 133, 0.12)',
+            borderRadius: '9999px',
+            padding: '6px 18px',
+            fontSize: '0.78rem',
+            fontWeight: 700,
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            marginBottom: '18px'
+          }}>
+            ✦ Clinical Compliance &amp; Standards
           </span>
-          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.8rem', color: 'white', marginBottom: '10px' }}>
-            Privacy Policy & Terms
+          <h1 style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(2.2rem, 5vw, 3.4rem)',
+            color: '#FFFFFF',
+            marginBottom: '14px',
+            letterSpacing: '-0.02em',
+            fontWeight: 500,
+            textShadow: '0 2px 14px rgba(0, 0, 0, 0.25)'
+          }}>
+            Privacy Policy &amp; Terms
           </h1>
-          <p style={{ color: 'rgba(255, 255, 255, 0.7)', maxWidth: '650px', margin: '0 auto', fontSize: '0.95rem' }}>
-            Learn how YCDC protects patient confidentiality, handles medical screening details, and complies with healthcare standards.
+          <p style={{
+            color: 'rgba(250, 246, 240, 0.88)',
+            maxWidth: '660px',
+            margin: '0 auto',
+            fontSize: '0.98rem',
+            lineHeight: 1.6
+          }}>
+            Learn how YCDC protects patient confidentiality, handles medical screening details, and adheres to strict medical practitioner ethics and quality codes.
           </p>
         </div>
       </section>
 
       {/* Policy Content */}
-      <section style={{ padding: '60px 0' }}>
-        <div className="container" style={{ maxWidth: '800px' }}>
-          <div className="glass" style={{
-            backgroundColor: 'white',
-            padding: '40px',
-            borderRadius: '16px',
-            border: '1px solid var(--silk-200)',
-            boxShadow: 'var(--shadow-md)',
+      <section style={{ padding: 'clamp(40px, 6vw, 70px) 0' }}>
+        <div className="container" style={{ maxWidth: '840px', padding: '0 20px' }}>
+          <div style={{
+            backgroundColor: '#FFFFFF',
+            padding: 'clamp(28px, 5vw, 50px)',
+            borderRadius: '24px',
+            border: '1px solid rgba(215, 203, 190, 0.65)',
+            boxShadow: '0 16px 44px rgba(35, 61, 50, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02)',
             textAlign: 'left'
           }}>
             {/* Intro Header */}
-            <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginBottom: '30px', borderBottom: '1px solid var(--silk-200)', paddingBottom: '20px' }}>
-              <Shield size={40} style={{ color: 'var(--plum-800)', flexShrink: 0 }} />
+            <div style={{
+              display: 'flex',
+              gap: '18px',
+              alignItems: 'center',
+              marginBottom: '32px',
+              borderBottom: '1px solid rgba(215, 203, 190, 0.55)',
+              paddingBottom: '22px'
+            }}>
+              <div style={{
+                width: '54px',
+                height: '54px',
+                borderRadius: '14px',
+                backgroundColor: 'rgba(35, 61, 50, 0.08)',
+                border: '1px solid rgba(35, 61, 50, 0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}>
+                <Shield size={28} style={{ color: '#233D32' }} />
+              </div>
               <div>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--plum-900)', margin: 0 }}>
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.65rem', color: '#233D32', margin: 0, fontWeight: 600 }}>
                   Patient Data Commitment
                 </h3>
-                <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', marginTop: '4px' }}>
-                  Last Updated: June 24, 2026 | Compliant with Medical Practitioner Codes
+                <p style={{ fontSize: '0.82rem', color: '#657766', marginTop: '4px', margin: 0 }}>
+                  Last Updated: 2026 | ISO 9001:2015 &amp; Medical Practitioner Ethics Compliant
                 </p>
               </div>
             </div>
 
             {/* Sections */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', color: 'var(--charcoal)', lineHeight: '1.7' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', color: '#38433A', lineHeight: '1.75' }}>
               
               <div>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--plum-900)', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                  <Lock size={18} style={{ color: 'var(--gold-500)' }} /> 1. Patient Confidentiality
+                <h4 style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.28rem',
+                  color: '#233D32',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  marginBottom: '10px',
+                  fontWeight: 600
+                }}>
+                  <Lock size={19} style={{ color: '#B49A68', flexShrink: 0 }} /> 1. Patient Confidentiality
                 </h4>
-                <p>
-                  At Yogiraj Centre for Dermatology & Cosmetology (YCDC), we hold your medical information and clinical diagnostic photos with the highest degree of confidentiality. Under no circumstances are clinical photos, consultation summaries, or physical records shared, rented, or sold to third-party marketing entities.
+                <p style={{ margin: 0, fontSize: '0.94rem' }}>
+                  At Dr. Yogiraj Centre for Dermatology &amp; Cosmetology (YCDC), we hold your medical information, consultation summaries, and diagnostic photos in the highest confidence. Under no circumstances are clinical records shared, rented, or disclosed to third-party commercial marketing platforms.
                 </p>
               </div>
 
               <div>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--plum-900)', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                  <Eye size={18} style={{ color: 'var(--gold-500)' }} /> 2. Information We Collect
+                <h4 style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.28rem',
+                  color: '#233D32',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  marginBottom: '10px',
+                  fontWeight: 600
+                }}>
+                  <Eye size={19} style={{ color: '#B49A68', flexShrink: 0 }} /> 2. Information We Collect
                 </h4>
-                <p>
-                  We collect essential information to facilitate clinical appointments, provide accurate remote screenings, and maintain coordinate care. This includes:
+                <p style={{ margin: 0, fontSize: '0.94rem' }}>
+                  We collect essential information to facilitate clinical appointments, provide accurate preliminary evaluations, and coordinate continuous dermatological care:
                 </p>
-                <ul style={{ paddingLeft: '20px', marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <li><strong>Booking Details:</strong> Full Name, Email, Phone Number, Selected Branch Location (Bangalore or Trivandrum), and preferred Date/Time.</li>
-                  <li><strong>Virtual Diagnosis Details:</strong> Self-disclosed skin or hair concerns, medical history summaries, and uploaded clinical evaluation photos.</li>
-                  <li><strong>CRM Logs:</strong> Inquiry messages and follow-up consultation details synced with our receptionist CRM Lead Dashboard (via local browser cache synchronization).</li>
+                <ul style={{ paddingLeft: '22px', marginTop: '10px', marginBottom: 0, display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.92rem' }}>
+                  <li><strong style={{ color: '#233D32' }}>Booking Details:</strong> Full Name, Email, Phone Number, Selected Branch Location (Bangalore or Trivandrum), and preferred Date/Time.</li>
+                  <li><strong style={{ color: '#233D32' }}>Clinical &amp; Screening Details:</strong> Self-disclosed skin or hair concerns, treatment history, and uploaded photographs for remote doctor assessment.</li>
+                  <li><strong style={{ color: '#233D32' }}>Care Coordination Logs:</strong> Appointment confirmations, reminder notifications, and specialist follow-up communications.</li>
                 </ul>
               </div>
 
               <div>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--plum-900)', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                  <CheckCircle2 size={18} style={{ color: 'var(--gold-500)' }} /> 3. How We Use Patient Data
+                <h4 style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.28rem',
+                  color: '#233D32',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  marginBottom: '10px',
+                  fontWeight: 600
+                }}>
+                  <CheckCircle2 size={19} style={{ color: '#B49A68', flexShrink: 0 }} /> 3. How We Use Patient Data
                 </h4>
-                <p>
-                  Your diagnostic details and contact details are used strictly to:
+                <p style={{ margin: 0, fontSize: '0.94rem' }}>
+                  Your clinical details and contact information are used exclusively to:
                 </p>
-                <ul style={{ paddingLeft: '20px', marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <li>Process, confirm, and reschedule clinical consultation bookings.</li>
-                  <li>Perform remote preliminary screening using our Virtual Diagnosis engine to assist YCDC doctors with initial assessment.</li>
-                  <li>Update our receptionist CRM Lead Dashboard to coordinate callbacks, follow-ups, and patient support.</li>
-                  <li>Send newsletter offers, clinical guidelines, and safety alerts (only if explicit newsletter opt-in is confirmed).</li>
+                <ul style={{ paddingLeft: '22px', marginTop: '10px', marginBottom: 0, display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.92rem' }}>
+                  <li>Schedule, confirm, and manage clinical consultations and treatment appointments.</li>
+                  <li>Assist YCDC senior dermatologists and surgeons with preliminary diagnostic evaluations.</li>
+                  <li>Provide critical post-treatment recovery guidelines, follow-up reminders, and care support.</li>
+                  <li>Send clinical health advisories, dermatological updates, and safety announcements (only upon confirmed opt-in).</li>
                 </ul>
               </div>
 
               <div>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--plum-900)', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                  <Shield size={18} style={{ color: 'var(--gold-500)' }} /> 4. Data Security & Storage
+                <h4 style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.28rem',
+                  color: '#233D32',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  marginBottom: '10px',
+                  fontWeight: 600
+                }}>
+                  <Shield size={19} style={{ color: '#B49A68', flexShrink: 0 }} /> 4. Data Security &amp; Clinical Storage
                 </h4>
-                <p>
-                  All self-scheduled bookings, virtual screening inquiries, and receptionist CRM data are stored in a secured environment. We implement administrative and physical controls to safeguard against unauthorized access or disclosure of patient health details.
+                <p style={{ margin: 0, fontSize: '0.94rem' }}>
+                  All self-scheduled consultations and clinical screening inquiries are stored in secure, encrypted medical environments. We implement stringent administrative, physical, and digital safeguards to prevent unauthorized access or disclosure of patient health information.
+                </p>
+              </div>
+
+              <div>
+                <h4 style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.28rem',
+                  color: '#233D32',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  marginBottom: '10px',
+                  fontWeight: 600
+                }}>
+                  <Shield size={19} style={{ color: '#B49A68', flexShrink: 0 }} /> 5. Terms of Care &amp; Clinical Consultations
+                </h4>
+                <p style={{ margin: 0, fontSize: '0.94rem' }}>
+                  Clinical advice delivered through digital channels represents a preliminary triage and does not replace in-person dermatological examination, dermoscopy, or biopsy when required. Treatment protocols are personalized and administered by certified medical professionals following comprehensive in-clinic assessment.
                 </p>
               </div>
 
@@ -113,80 +229,132 @@ export default function PrivacyPolicy() {
 
             {/* Social Icons inside Privacy Policy */}
             <div style={{
-              marginTop: '40px',
-              paddingTop: '30px',
-              borderTop: '1px solid var(--silk-200)',
+              marginTop: '44px',
+              paddingTop: '28px',
+              borderTop: '1px solid rgba(215, 203, 190, 0.55)',
               textAlign: 'center'
             }}>
-              <h5 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', color: 'var(--plum-900)', marginBottom: '12px' }}>
-                Follow YCDC on Social Media
+              <h5 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: '#233D32', marginBottom: '14px', fontWeight: 600 }}>
+                Follow YCDC on Social Channels
               </h5>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
-                <a href="https://www.instagram.com/ycdc_india?igsh=MXFmYnBwdnFqdDltaA==" target="_blank" rel="noopener noreferrer" style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--silk-100)',
-                  color: 'var(--plum-800)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'var(--transition-fast)'
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--plum-800)'; e.currentTarget.style.color = 'white'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--silk-100)'; e.currentTarget.style.color = 'var(--plum-800)'; }}
-                title="Instagram"
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '14px' }}>
+                <a
+                  href="https://www.instagram.com/ycdc_in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    backgroundColor: '#FAF6F0',
+                    border: '1px solid rgba(215, 203, 190, 0.7)',
+                    color: '#233D32',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#233D32';
+                    e.currentTarget.style.borderColor = '#233D32';
+                    e.currentTarget.style.color = '#FFFFFF';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#FAF6F0';
+                    e.currentTarget.style.borderColor = 'rgba(215, 203, 190, 0.7)';
+                    e.currentTarget.style.color = '#233D32';
+                  }}
+                  title="Instagram"
                 >
                   <Instagram size={18} />
                 </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--silk-100)',
-                  color: 'var(--plum-800)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'var(--transition-fast)'
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--plum-800)'; e.currentTarget.style.color = 'white'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--silk-100)'; e.currentTarget.style.color = 'var(--plum-800)'; }}
-                title="Facebook"
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    backgroundColor: '#FAF6F0',
+                    border: '1px solid rgba(215, 203, 190, 0.7)',
+                    color: '#233D32',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#233D32';
+                    e.currentTarget.style.borderColor = '#233D32';
+                    e.currentTarget.style.color = '#FFFFFF';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#FAF6F0';
+                    e.currentTarget.style.borderColor = 'rgba(215, 203, 190, 0.7)';
+                    e.currentTarget.style.color = '#233D32';
+                  }}
+                  title="Facebook"
                 >
                   <Facebook size={18} />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--silk-100)',
-                  color: 'var(--plum-800)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'var(--transition-fast)'
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--plum-800)'; e.currentTarget.style.color = 'white'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--silk-100)'; e.currentTarget.style.color = 'var(--plum-800)'; }}
-                title="LinkedIn"
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    backgroundColor: '#FAF6F0',
+                    border: '1px solid rgba(215, 203, 190, 0.7)',
+                    color: '#233D32',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#233D32';
+                    e.currentTarget.style.borderColor = '#233D32';
+                    e.currentTarget.style.color = '#FFFFFF';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#FAF6F0';
+                    e.currentTarget.style.borderColor = 'rgba(215, 203, 190, 0.7)';
+                    e.currentTarget.style.color = '#233D32';
+                  }}
+                  title="LinkedIn"
                 >
                   <Linkedin size={18} />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--silk-100)',
-                  color: 'var(--plum-800)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'var(--transition-fast)'
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--plum-800)'; e.currentTarget.style.color = 'white'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--silk-100)'; e.currentTarget.style.color = 'var(--plum-800)'; }}
-                title="Twitter"
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    backgroundColor: '#FAF6F0',
+                    border: '1px solid rgba(215, 203, 190, 0.7)',
+                    color: '#233D32',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#233D32';
+                    e.currentTarget.style.borderColor = '#233D32';
+                    e.currentTarget.style.color = '#FFFFFF';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#FAF6F0';
+                    e.currentTarget.style.borderColor = 'rgba(215, 203, 190, 0.7)';
+                    e.currentTarget.style.color = '#233D32';
+                  }}
+                  title="Twitter"
                 >
                   <Twitter size={18} />
                 </a>
