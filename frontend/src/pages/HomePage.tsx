@@ -584,9 +584,12 @@ export const HomePage: React.FC<HomePageProps> = ({
       <section className="heritage-mastery-section">
         <div className="container">
           <div className="heritage-mastery-grid">
-            {/* Left: Clinic Reception Image with Offset Decorative Outline Frame (DSC09955-scaled-880x952.jpg) */}
+            {/* Left: Clinic Reception Image with Luxury Architectural Showcase */}
             <div className="reveal reveal-left">
               <div className="heritage-photo-wrap">
+                {/* Warm Ambient Halo behind the frame */}
+                <div className="heritage-ambient-halo" />
+
                 {/* Photo Frame containing the reception desk photo */}
                 <div className="heritage-photo-frame">
                   <img
@@ -595,6 +598,21 @@ export const HomePage: React.FC<HomePageProps> = ({
                     alt="Dr. Yogiraj Centre for Dermatology &amp; Cosmetology Reception Desk"
                     loading="lazy"
                   />
+
+                  {/* Gradient shadow overlay for legibility of badges */}
+                  <div className="heritage-photo-overlay" />
+
+                  {/* Floating Gold Heritage Badge (Top-Left) */}
+                  <div className="heritage-floating-badge">
+                    <span className="heritage-badge-sparkle">✦</span>
+                    <span>EST. 1980 &bull; FLAGSHIP SUITE</span>
+                  </div>
+
+                  {/* Frosted Glass Caption Pill (Bottom) */}
+                  <div className="heritage-caption-pill">
+                    <span className="heritage-status-pulse" />
+                    <span>Pattom &amp; Whitefield Clinical Centres</span>
+                  </div>
                 </div>
               </div>
             </div>

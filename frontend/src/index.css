@@ -6849,6 +6849,20 @@ footer.glass-dark {
   margin: 0 auto;
 }
 
+.heritage-ambient-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 92%;
+  height: 92%;
+  background: radial-gradient(circle, rgba(230, 202, 133, 0.3) 0%, rgba(217, 165, 167, 0.2) 45%, transparent 72%);
+  filter: blur(34px);
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
 .heritage-photo-outline-frame {
   position: absolute;
   top: 0;
@@ -6870,12 +6884,97 @@ footer.glass-dark {
 .heritage-photo-frame {
   position: relative;
   z-index: 2;
-  border-radius: 22px;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 22px 52px rgba(35, 61, 50, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 22px 52px rgba(35, 61, 50, 0.16), 0 4px 14px rgba(180, 154, 104, 0.14);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
   background: #E8ECE6;
   aspect-ratio: 1 / 1.05;
+}
+
+.heritage-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 26, 21, 0.38) 0%,
+    transparent 28%,
+    transparent 64%,
+    rgba(20, 26, 21, 0.68) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.heritage-floating-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(22, 38, 30, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(230, 202, 133, 0.65);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #F3E5AB;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+}
+
+.heritage-badge-sparkle {
+  color: #E6CA85;
+  font-size: 0.68rem;
+}
+
+.heritage-caption-pill {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: auto;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(250, 246, 240, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(215, 203, 190, 0.75);
+  border-radius: 9999px;
+  padding: 7px 16px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #233D32;
+  box-shadow: 0 8px 24px rgba(35, 61, 50, 0.15);
+}
+
+.heritage-status-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #2E7D32;
+  box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7);
+  animation: heritage-status-pulse-anim 2s infinite;
+}
+
+@keyframes heritage-status-pulse-anim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(46, 125, 50, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(46, 125, 50, 0);
+  }
 }
 
 .heritage-photo-frame img {
@@ -9280,26 +9379,62 @@ footer.glass-dark {
     white-space: nowrap !important;
   }
 
-  /* 4. Heritage & Clinical Mastery */
+  /* 4. Heritage & Clinical Mastery - Luxury Architectural Showcase on Mobile */
   .heritage-mastery-section {
-    padding: 44px 0 !important;
+    padding: 48px 0 !important;
   }
 
   .heritage-mastery-grid {
     grid-template-columns: 1fr !important;
-    gap: 28px !important;
+    gap: 32px !important;
+  }
+
+  .heritage-photo-wrap {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto 10px auto !important;
+  }
+
+  .heritage-ambient-halo {
+    width: 100% !important;
+    height: 100% !important;
+    filter: blur(28px) !important;
   }
 
   .heritage-photo-frame {
-    border-radius: 16px !important;
-    max-height: 280px !important;
+    border-radius: 22px !important;
+    aspect-ratio: 4 / 3.25 !important;
+    max-height: none !important;
+    height: auto !important;
+    width: 100% !important;
     overflow: hidden !important;
+    box-shadow: 0 16px 38px rgba(35, 61, 50, 0.18), 0 2px 10px rgba(180, 154, 104, 0.16) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
   }
 
   .heritage-photo-frame img {
+    width: 100% !important;
     height: 100% !important;
-    max-height: 280px !important;
+    max-height: none !important;
     object-fit: cover !important;
+    object-position: center 38% !important;
+    display: block !important;
+  }
+
+  .heritage-floating-badge {
+    top: 12px !important;
+    left: 12px !important;
+    padding: 5px 12px !important;
+    font-size: 0.68rem !important;
+  }
+
+  .heritage-caption-pill {
+    bottom: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    padding: 6px 14px !important;
+    font-size: 0.74rem !important;
+    justify-content: center !important;
   }
 
   .heritage-title {
