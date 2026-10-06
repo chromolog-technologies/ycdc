@@ -3,8 +3,6 @@ import {
   Search,
   X,
   ArrowRight,
-  Sparkles,
-  Stethoscope,
   ChevronRight
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -121,27 +119,26 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor, isTran
 
 
 
-  // Highlight query term in result text
+  // Highlight query term in result text cleanly with bolding
   const highlightMatch = (text: string, highlight: string) => {
     if (!highlight.trim()) return text;
     const regex = new RegExp(`(${highlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
     const parts = text.split(regex);
     return parts.map((part, i) =>
       regex.test(part) ? (
-        <mark
+        <strong
           key={i}
           style={{
-            backgroundColor: 'rgba(35, 61, 50, 0.15)',
-            color: '#233D32',
             fontWeight: 700,
-            padding: '1px 3px',
-            borderRadius: '3px'
+            color: '#15241C'
           }}
         >
           {part}
-        </mark>
+        </strong>
       ) : (
-        part
+        <span key={i} style={{ color: '#4D584F', fontWeight: 400 }}>
+          {part}
+        </span>
       )
     );
   };
@@ -309,7 +306,7 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor, isTran
             }}
           />
 
-          {/* Results / Treatment Finder Dropdown */}
+          {/* Results / Treatment Finder Dropdown - Simple & Minimalist Design */}
           {isOpen && query.trim() && (
             <div
               className="search-results-dropdown animate-fade-in"
@@ -317,185 +314,117 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor, isTran
                 position: 'absolute',
                 top: 'calc(100% + 8px)',
                 right: 0,
-                width: 'clamp(320px, 35vw, 440px)',
-                maxHeight: '440px',
+                width: 'clamp(290px, 32vw, 420px)',
+                maxHeight: '400px',
                 overflowY: 'auto',
-                backgroundColor: '#FAF6F0',
-                backdropFilter: 'blur(16px)',
-                borderRadius: '16px',
-                border: '1px solid rgba(215, 203, 190, 0.85)',
-                boxShadow: '0 20px 40px rgba(42, 54, 43, 0.15), 0 4px 12px rgba(0, 0, 0, 0.05)',
-                padding: '12px',
+                backgroundColor: '#FFFFFF',
+                borderRadius: '14px',
+                border: '1px solid rgba(0, 0, 0, 0.08)',
+                boxShadow: '0 16px 36px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04)',
+                padding: '4px 0',
                 zIndex: 1050
               }}
             >
               {/* If user typed and results found */}
               {results.length > 0 && (
                 <div>
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      padding: '4px 6px 10px',
-                      borderBottom: '1px solid rgba(215, 203, 190, 0.6)',
-                      fontSize: '0.76rem',
-                      color: '#657766'
-                    }}
-                  >
-                    <span>
-                      Found <strong>{results.length}</strong> treatment{results.length === 1 ? '' : 's'}
-                    </span>
-                    <span style={{ fontSize: '0.7rem', color: '#909F90' }}>
-                      Press Enter to view all
-                    </span>
-                  </div>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginTop: '8px' }}>
-                    {results.slice(0, 7).map((treatment, idx) => {
-                      const isSelected = selectedIndex === idx;
-                      const isCosmetic = treatment.procedure_type === 'cosmetic';
-                      return (
-                        <div
-                          key={treatment.id}
-                          onClick={() => handleSelectTreatment(treatment)}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            gap: '12px',
-                            padding: '10px 12px',
-                            borderRadius: '12px',
-                            cursor: 'pointer',
-                            backgroundColor: isSelected ? 'rgba(35, 61, 50, 0.08)' : '#FFFFFF',
-                            border: isSelected
-                              ? '1px solid #233D32'
-                              : '1px solid rgba(35, 61, 50, 0.08)',
-                            transition: 'all 0.18s ease',
-                            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.02)'
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = 'rgba(35, 61, 50, 0.07)';
-                            e.currentTarget.style.borderColor = '#233D32';
-                          }}
-                          onMouseLeave={(e) => {
-                            if (!isSelected) {
-                              e.currentTarget.style.backgroundColor = '#FFFFFF';
-                              e.currentTarget.style.borderColor = 'rgba(35, 61, 50, 0.08)';
-                            }
-                          }}
-                        >
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: 1 }}>
-                            <div
-                              style={{
-                                width: '34px',
-                                height: '34px',
-                                borderRadius: '10px',
-                                backgroundColor: isCosmetic ? 'rgba(217, 165, 167, 0.25)' : 'rgba(35, 61, 50, 0.12)',
-                                color: isCosmetic ? '#D9A5A7' : '#233D32',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                flexShrink: 0
-                              }}
-                            >
-                              {isCosmetic ? <Sparkles size={16} /> : <Stethoscope size={16} />}
-                            </div>
-                            <div style={{ minWidth: 0, flex: 1 }}>
-                              <div
-                                style={{
-                                  fontSize: '0.88rem',
-                                  fontWeight: 600,
-                                  color: '#242923',
-                                  whiteSpace: 'nowrap',
-                                  overflow: 'hidden',
-                                  textOverflow: 'ellipsis'
-                                }}
-                              >
-                                {highlightMatch(treatment.name, query)}
-                              </div>
-                            </div>
+                  {results.slice(0, 7).map((treatment, idx) => {
+                    const isSelected = selectedIndex === idx;
+                    return (
+                      <div
+                        key={treatment.id}
+                        onClick={() => handleSelectTreatment(treatment)}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '12px',
+                          padding: '10px 16px',
+                          cursor: 'pointer',
+                          backgroundColor: isSelected ? 'rgba(35, 61, 50, 0.06)' : 'transparent',
+                          borderBottom: idx === Math.min(results.length, 7) - 1 ? 'none' : '1px solid rgba(0, 0, 0, 0.04)',
+                          transition: 'background-color 0.15s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = 'rgba(35, 61, 50, 0.05)';
+                        }}
+                        onMouseLeave={(e) => {
+                          if (!isSelected) {
+                            e.currentTarget.style.backgroundColor = 'transparent';
+                          }
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: 1 }}>
+                          <Search size={14} style={{ color: '#889B8A', flexShrink: 0, opacity: 0.7 }} />
+                          <div
+                            style={{
+                              fontSize: '0.88rem',
+                              whiteSpace: 'nowrap',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              minWidth: 0,
+                              flex: 1
+                            }}
+                          >
+                            {highlightMatch(treatment.name, query)}
                           </div>
-                          <ChevronRight size={16} style={{ color: '#909F90', flexShrink: 0 }} />
                         </div>
-                      );
-                    })}
-                  </div>
+                        <ChevronRight size={14} style={{ color: '#BAC6BB', flexShrink: 0 }} />
+                      </div>
+                    );
+                  })}
 
-                  {/* View all button */}
-                  <button
-                    type="button"
+                  {/* Clean, simple text footer link */}
+                  <div
                     onClick={() => handleSubmitSearch(query)}
                     style={{
-                      width: '100%',
-                      marginTop: '10px',
-                      padding: '11px',
-                      backgroundColor: '#233D32',
-                      color: '#ffffff',
-                      border: 'none',
-                      borderRadius: '12px',
-                      fontSize: '0.84rem',
+                      padding: '10px 16px',
+                      borderTop: '1px solid rgba(0, 0, 0, 0.06)',
+                      fontSize: '0.82rem',
                       fontWeight: 600,
+                      color: '#233D32',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                      transition: 'background-color 0.2s ease',
-                      boxShadow: '0 4px 14px rgba(35, 61, 50, 0.2)'
+                      justifyContent: 'space-between',
+                      backgroundColor: 'rgba(35, 61, 50, 0.02)',
+                      transition: 'all 0.15s ease'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#D9A5A7';
+                      e.currentTarget.style.backgroundColor = 'rgba(35, 61, 50, 0.06)';
+                      e.currentTarget.style.color = '#B49A68';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = '#233D32';
+                      e.currentTarget.style.backgroundColor = 'rgba(35, 61, 50, 0.02)';
+                      e.currentTarget.style.color = '#233D32';
                     }}
                   >
-                    View all matching treatments in catalog <ArrowRight size={14} />
-                  </button>
+                    <span>View all matching treatments &ldquo;{query}&rdquo;</span>
+                    <ArrowRight size={13} />
+                  </div>
                 </div>
               )}
 
               {/* If user typed and no results found */}
               {results.length === 0 && (
-                <div style={{ padding: '24px 14px', textAlign: 'center' }}>
-                  <div
-                    style={{
-                      width: '46px',
-                      height: '46px',
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(217, 165, 167, 0.2)',
-                      color: '#D9A5A7',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      margin: '0 auto 12px'
-                    }}
-                  >
-                    <Search size={22} />
+                <div style={{ padding: '22px 16px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.88rem', color: '#657766', marginBottom: '8px' }}>
+                    No treatments found for &ldquo;{query}&rdquo;
                   </div>
-                  <div style={{ fontSize: '0.92rem', fontWeight: 600, color: '#242923', marginBottom: '4px' }}>
-                    No treatments found for "{query}"
-                  </div>
-                  <p style={{ fontSize: '0.8rem', color: '#657766', maxWidth: '300px', margin: '0 auto 16px' }}>
-                    Try searching for common treatments like <em>Hydrafacial</em>, <em>PRP</em>, <em>Acne</em>, <em>Diode Laser</em>, or <em>Allergy</em>.
-                  </p>
                   <button
                     type="button"
                     onClick={() => handleSubmitSearch('')}
                     style={{
-                      backgroundColor: '#233D32',
+                      background: 'none',
                       border: 'none',
-                      color: '#FFFFFF',
-                      borderRadius: '9999px',
-                      padding: '8px 20px',
-                      fontSize: '0.8rem',
+                      color: '#233D32',
+                      fontSize: '0.82rem',
                       fontWeight: 600,
                       cursor: 'pointer',
-                      boxShadow: '0 4px 12px rgba(35, 61, 50, 0.15)'
+                      textDecoration: 'underline'
                     }}
                   >
-                    Browse Complete Catalog
+                    Browse full treatments catalog &rarr;
                   </button>
                 </div>
               )}
