@@ -6787,7 +6787,7 @@ footer.glass-dark {
 
 .heritage-photo-wrap {
   position: relative;
-  padding: 24px 0 0 24px;
+  padding: 0;
   max-width: 530px;
   margin: 0 auto;
 }
@@ -6948,7 +6948,7 @@ footer.glass-dark {
 
 @media (max-width: 600px) {
   .heritage-photo-wrap {
-    padding: 14px 0 0 14px;
+    padding: 0;
   }
   .heritage-photo-outline-frame {
     width: calc(100% - 14px);

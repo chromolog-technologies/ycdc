@@ -559,27 +559,6 @@ export const HomePage: React.FC<HomePageProps> = ({
             {/* Left: Clinic Reception Image with Offset Decorative Outline Frame (DSC09955-scaled-880x952.jpg) */}
             <div className="reveal reveal-left">
               <div className="heritage-photo-wrap">
-                {/* Decorative rotating heritage certification seal */}
-                <div className="heritage-seal-wrapper" title="YCDC Est. 1974 - ISO 9001:2015 Accredited">
-                  <svg viewBox="0 0 160 160" className="heritage-seal-svg">
-                    <defs>
-                      <path id="heritage-seal-circle" d="M 80, 80 m -60, 0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0" />
-                    </defs>
-                    <circle cx="80" cy="80" r="72" fill="none" stroke="rgba(180, 154, 104, 0.45)" strokeWidth="1" strokeDasharray="3 3" />
-                    <circle cx="80" cy="80" r="56" fill="rgba(255, 255, 255, 0.88)" stroke="rgba(180, 154, 104, 0.5)" strokeWidth="1.2" />
-                    <text fontSize="8.2" fill="#8C7042" letterSpacing="2.2" fontWeight="700">
-                      <textPath href="#heritage-seal-circle">
-                        • YOGIRAJ DERMATOLOGY • EST. 1974 • ISO CERTIFIED •
-                      </textPath>
-                    </text>
-                    <circle cx="80" cy="80" r="22" fill="#233D32" />
-                    <path d="M 80 70 L 82.5 76 L 88.5 76.8 L 84 81.2 L 85.3 87.2 L 80 84.1 L 74.7 87.2 L 76 81.2 L 71.5 76.8 L 77.5 76 Z" fill="#D4B988" />
-                  </svg>
-                </div>
-
-                {/* Offset Decorative Outline Frame with interactive hover glide */}
-                <div className="heritage-photo-outline-frame" />
-                
                 {/* Photo Frame containing the reception desk photo */}
                 <div className="heritage-photo-frame">
                   <img
