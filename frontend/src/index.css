@@ -7591,11 +7591,30 @@ footer.glass-dark {
   box-shadow: 0 10px 26px rgba(217, 165, 167, 0.5);
 }
 
-/* Right Stack of 4 Cards */
+/* Right Stack of 4 Cards (Desktop all 4, Mobile single active card) */
 .four-stages-stack {
   display: flex;
   flex-direction: column;
   gap: 22px;
+}
+
+.care-journey-desktop-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.care-journey-mobile-card {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .care-journey-desktop-stack {
+    display: none !important;
+  }
+  .care-journey-mobile-card {
+    display: block !important;
+  }
 }
 
 .stage-card {

@@ -18,6 +18,7 @@ import {
   Stethoscope
 } from 'lucide-react';
 import ConsultationForm from '../components/ConsultationForm';
+import useScrollReveal from '../hooks/useScrollReveal';
 import type { PageId } from '../types/navigation';
 
 interface HomePageProps {
@@ -310,6 +311,41 @@ export const HomePage: React.FC<HomePageProps> = ({
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const storiesScrollRef = useRef<HTMLDivElement>(null);
   const [isStoriesPaused, setIsStoriesPaused] = useState<boolean>(false);
+
+  const { refresh } = useScrollReveal();
+
+  useEffect(() => {
+    refresh();
+  }, [refresh]);
+
+  // Sync Care Journey activeStage with scrolling cards on desktop
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+    if (window.innerWidth <= 960) return;
+
+    const observers: IntersectionObserver[] = [];
+    [1, 2, 3, 4].forEach((num) => {
+      const el = document.getElementById(`stage-card-${num}`);
+      if (!el) return;
+
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && window.innerWidth > 960) {
+              setActiveStage(num);
+            }
+          });
+        },
+        { threshold: 0.5, rootMargin: '-10% 0px -25% 0px' }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => {
+      observers.forEach((obs) => obs.disconnect());
+    };
+  }, []);
 
   // Auto-running continuous carousel loop for Patient Stories
   useEffect(() => {
@@ -847,7 +883,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 We do not apply standard formulas. Every patient&apos;s journey through YCDC follows an orderly, unhurried diagnostic path to identify root causes before initiating treatment.
               </p>
 
-              {/* Quick Stepper Pills */}
+              {/* Quick Stepper Pills (Scrolls to card on desktop, selects active card on mobile) */}
               <div className="care-journey-stepper mobile-horizontal-track">
                 {PATIENT_CARE_STAGES.map((stage, idx) => {
                   const stageNum = idx + 1;
@@ -856,7 +892,15 @@ export const HomePage: React.FC<HomePageProps> = ({
                     <button
                       key={stage.num}
                       type="button"
-                      onClick={() => setActiveStage(stageNum)}
+                      onClick={() => {
+                        setActiveStage(stageNum);
+                        if (typeof window !== 'undefined' && window.innerWidth > 960) {
+                          const el = document.getElementById(`stage-card-${stageNum}`);
+                          if (el) {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          }
+                        }
+                      }}
                       className={`care-step-pill ${isActive ? 'active' : ''}`}
                     >
                       <span className="step-pill-num">{stage.num}</span>
@@ -876,97 +920,136 @@ export const HomePage: React.FC<HomePageProps> = ({
               </button>
             </div>
 
-            {/* Right: Active Stage Display Card (Only active stage described, no scrolling) */}
+            {/* Right: Four Stages Stack */}
             <div className="four-stages-stack">
-              {(() => {
-                const currentStage = PATIENT_CARE_STAGES[activeStage - 1] || PATIENT_CARE_STAGES[0];
-                return (
-                  <div
-                    key={currentStage.num}
-                    id={`stage-card-${activeStage}`}
-                    data-stage={activeStage}
-                    className="stage-card active animate-fade-in"
-                  >
-                    <div className="stage-card-header">
-                      <div className="stage-card-title-group">
-                        <span className="stage-card-num">{currentStage.num}</span>
-                        <h4 className="stage-card-name">{currentStage.title}</h4>
-                      </div>
-                      <span className="stage-phase-badge">{currentStage.tag}</span>
-                    </div>
-
-                    <p className="stage-card-text">{currentStage.desc}</p>
-
-                    <div className="stage-card-highlights">
-                      {currentStage.highlights.map((highlight, hIdx) => (
-                        <span key={hIdx} className="stage-highlight-tag">
-                          <Check size={13} className="stage-check-icon" />
-                          {highlight}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Step Navigation Bar */}
+              {/* DESKTOP VIEW: List all 4 cards with scroll reveal animations */}
+              <div className="care-journey-desktop-stack">
+                {PATIENT_CARE_STAGES.map((stage, idx) => {
+                  const stageNum = idx + 1;
+                  const isActive = activeStage === stageNum;
+                  return (
                     <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        marginTop: '22px',
-                        paddingTop: '16px',
-                        borderTop: '1px solid rgba(255, 255, 255, 0.12)'
-                      }}
+                      key={stage.num}
+                      id={`stage-card-${stageNum}`}
+                      data-stage={stageNum}
+                      className={`stage-card reveal reveal-up reveal-delay-${stageNum} ${isActive ? 'active' : ''}`}
+                      onClick={() => setActiveStage(stageNum)}
                     >
-                      <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 500 }}>
-                        Stage {activeStage} of {PATIENT_CARE_STAGES.length}
-                      </span>
-                      <div style={{ display: 'flex', gap: '8px' }}>
-                        <button
-                          type="button"
-                          disabled={activeStage <= 1}
-                          onClick={() => setActiveStage((prev) => Math.max(1, prev - 1))}
-                          style={{
-                            padding: '6px 14px',
-                            borderRadius: '9999px',
-                            border: '1px solid rgba(255, 255, 255, 0.2)',
-                            background: 'rgba(255, 255, 255, 0.08)',
-                            color: activeStage <= 1 ? 'rgba(255, 255, 255, 0.3)' : '#FFFFFF',
-                            cursor: activeStage <= 1 ? 'not-allowed' : 'pointer',
-                            fontSize: '0.78rem',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '4px',
-                            transition: 'all 0.2s ease'
-                          }}
-                        >
-                          <ChevronLeft size={14} /> Prev
-                        </button>
-                        <button
-                          type="button"
-                          disabled={activeStage >= PATIENT_CARE_STAGES.length}
-                          onClick={() => setActiveStage((prev) => Math.min(PATIENT_CARE_STAGES.length, prev + 1))}
-                          style={{
-                            padding: '6px 14px',
-                            borderRadius: '9999px',
-                            border: '1px solid rgba(255, 255, 255, 0.2)',
-                            background: activeStage >= PATIENT_CARE_STAGES.length ? 'rgba(255, 255, 255, 0.08)' : 'var(--color-soft-gold)',
-                            color: activeStage >= PATIENT_CARE_STAGES.length ? 'rgba(255, 255, 255, 0.3)' : '#233D32',
-                            cursor: activeStage >= PATIENT_CARE_STAGES.length ? 'not-allowed' : 'pointer',
-                            fontSize: '0.78rem',
-                            fontWeight: 600,
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '4px',
-                            transition: 'all 0.2s ease'
-                          }}
-                        >
-                          Next <ChevronRight size={14} />
-                        </button>
+                      <div className="stage-card-header">
+                        <div className="stage-card-title-group">
+                          <span className="stage-card-num">{stage.num}</span>
+                          <h4 className="stage-card-name">{stage.title}</h4>
+                        </div>
+                        <span className="stage-phase-badge">{stage.tag}</span>
+                      </div>
+
+                      <p className="stage-card-text">{stage.desc}</p>
+
+                      <div className="stage-card-highlights">
+                        {stage.highlights.map((highlight, hIdx) => (
+                          <span key={hIdx} className="stage-highlight-tag">
+                            <Check size={13} className="stage-check-icon" />
+                            {highlight}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                  </div>
-                );
-              })()}
+                  );
+                })}
+              </div>
+
+              {/* MOBILE VIEW: Active single card by select */}
+              <div className="care-journey-mobile-card">
+                {(() => {
+                  const currentStage = PATIENT_CARE_STAGES[activeStage - 1] || PATIENT_CARE_STAGES[0];
+                  return (
+                    <div
+                      key={currentStage.num}
+                      id={`mobile-stage-card-${activeStage}`}
+                      data-stage={activeStage}
+                      className="stage-card active animate-fade-in"
+                    >
+                      <div className="stage-card-header">
+                        <div className="stage-card-title-group">
+                          <span className="stage-card-num">{currentStage.num}</span>
+                          <h4 className="stage-card-name">{currentStage.title}</h4>
+                        </div>
+                        <span className="stage-phase-badge">{currentStage.tag}</span>
+                      </div>
+
+                      <p className="stage-card-text">{currentStage.desc}</p>
+
+                      <div className="stage-card-highlights">
+                        {currentStage.highlights.map((highlight, hIdx) => (
+                          <span key={hIdx} className="stage-highlight-tag">
+                            <Check size={13} className="stage-check-icon" />
+                            {highlight}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Mobile Step Navigation Bar */}
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          marginTop: '22px',
+                          paddingTop: '16px',
+                          borderTop: '1px solid rgba(255, 255, 255, 0.12)'
+                        }}
+                      >
+                        <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 500 }}>
+                          Stage {activeStage} of {PATIENT_CARE_STAGES.length}
+                        </span>
+                        <div style={{ display: 'flex', gap: '8px' }}>
+                          <button
+                            type="button"
+                            disabled={activeStage <= 1}
+                            onClick={() => setActiveStage((prev) => Math.max(1, prev - 1))}
+                            style={{
+                              padding: '6px 14px',
+                              borderRadius: '9999px',
+                              border: '1px solid rgba(255, 255, 255, 0.2)',
+                              background: 'rgba(255, 255, 255, 0.08)',
+                              color: activeStage <= 1 ? 'rgba(255, 255, 255, 0.3)' : '#FFFFFF',
+                              cursor: activeStage <= 1 ? 'not-allowed' : 'pointer',
+                              fontSize: '0.78rem',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              transition: 'all 0.2s ease'
+                            }}
+                          >
+                            <ChevronLeft size={14} /> Prev
+                          </button>
+                          <button
+                            type="button"
+                            disabled={activeStage >= PATIENT_CARE_STAGES.length}
+                            onClick={() => setActiveStage((prev) => Math.min(PATIENT_CARE_STAGES.length, prev + 1))}
+                            style={{
+                              padding: '6px 14px',
+                              borderRadius: '9999px',
+                              border: '1px solid rgba(255, 255, 255, 0.2)',
+                              background: activeStage >= PATIENT_CARE_STAGES.length ? 'rgba(255, 255, 255, 0.08)' : 'var(--color-soft-gold)',
+                              color: activeStage >= PATIENT_CARE_STAGES.length ? 'rgba(255, 255, 255, 0.3)' : '#233D32',
+                              cursor: activeStage >= PATIENT_CARE_STAGES.length ? 'not-allowed' : 'pointer',
+                              fontSize: '0.78rem',
+                              fontWeight: 600,
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              transition: 'all 0.2s ease'
+                            }}
+                          >
+                            Next <ChevronRight size={14} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
             </div>
           </div>
         </div>
