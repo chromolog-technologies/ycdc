@@ -8336,6 +8336,8 @@ footer.glass-dark {
   text-align: center;
   position: relative;
   box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 
 .virtual-screening-pill {
@@ -8383,6 +8385,7 @@ footer.glass-dark {
   border-radius: 50%;
   background-color: #E2DBD5;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .wizard-dot.active {
@@ -8395,6 +8398,7 @@ footer.glass-dark {
   height: 2px;
   background-color: #E2DBD5;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .wizard-line.active {
@@ -8403,19 +8407,12 @@ footer.glass-dark {
 
 /* Form Slider Wrapper */
 .consultation-form-card .form-step-wrapper {
-  overflow: hidden;
+  position: relative;
   width: 100%;
 }
 
-.consultation-form-card .form-step-container {
-  display: flex;
-  width: 300%;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 .consultation-form-card .form-step-slide {
-  width: 33.333333%;
-  flex-shrink: 0;
+  width: 100%;
   box-sizing: border-box;
   text-align: left;
 }
@@ -8451,6 +8448,18 @@ footer.glass-dark {
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.25s, box-shadow 0.25s, background-color 0.25s;
+  font-family: inherit;
+}
+
+.consultation-form-card .form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23354536' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 38px;
+  cursor: pointer;
 }
 
 .consultation-form-card .form-select:focus,
@@ -8461,30 +8470,98 @@ footer.glass-dark {
   box-shadow: 0 0 0 3px rgba(185, 114, 123, 0.15);
 }
 
+.photo-uploader-box {
+  border: 2px dashed var(--gold-400);
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgba(245, 240, 233, 0.3);
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.photo-uploader-box:hover {
+  background-color: rgba(245, 240, 233, 0.5);
+  border-color: var(--color-deep-forest);
+}
+
+.wizard-compliance-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(205, 210, 190, 0.35);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.wizard-compliance-badge span {
+  font-size: 0.75rem;
+  color: var(--color-ink-muted);
+  text-align: left;
+  line-height: 1.35;
+}
+
+.wizard-actions-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.wizard-actions-row .btn-wizard-back {
+  flex: 0 0 auto;
+  min-width: 80px;
+}
+
+.wizard-actions-row .btn-wizard-continue {
+  flex: 1;
+  margin-top: 0;
+}
+
 .btn-wizard-continue {
   width: 100%;
-  padding: 14px 24px;
+  padding: 14px 22px;
   border-radius: 9999px;
-  background-color: #8C9979;
+  background-color: var(--color-deep-forest);
   color: #ffffff;
   font-size: 0.86rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   border: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 6px 18px rgba(140, 153, 121, 0.28);
+  box-shadow: 0 6px 18px rgba(35, 61, 50, 0.25);
   margin-top: 24px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
 }
 
 .btn-wizard-continue:hover {
-  background-color: #233D32;
+  background-color: var(--color-deep-forest-hover);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(35, 61, 50, 0.3);
+}
+
+.btn-wizard-continue:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-wizard-submit {
+  background-color: #823B51;
+  box-shadow: 0 6px 18px rgba(130, 59, 81, 0.28);
+}
+
+.btn-wizard-submit:hover {
+  background-color: #6D2E40;
+  box-shadow: 0 8px 24px rgba(130, 59, 81, 0.38);
 }
 
 .btn-wizard-back {
@@ -8497,11 +8574,20 @@ footer.glass-dark {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .btn-wizard-back:hover {
   background: rgba(53, 69, 54, 0.06);
   border-color: #354536;
+}
+
+.btn-wizard-back:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* ==========================================================================
@@ -9550,14 +9636,14 @@ footer.glass-dark {
     box-sizing: border-box !important;
   }
 
-  /* 11. Virtual Diagnosis Section */
+  /* 11. Virtual Diagnosis Section & Wizard Form on Mobile */
   .virtual-diagnosis-section {
-    padding: 48px 0 !important;
+    padding: 44px 0 !important;
   }
 
   .virtual-diagnosis-grid {
     grid-template-columns: 1fr !important;
-    gap: 32px !important;
+    gap: 28px !important;
   }
 
   .virtual-diagnosis-title {
@@ -9566,7 +9652,7 @@ footer.glass-dark {
 
   .virtual-diagnosis-subtext {
     font-size: 0.92rem !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 22px !important;
   }
 
   .virtual-steps-list {
@@ -9584,6 +9670,92 @@ footer.glass-dark {
 
   .virtual-step-desc {
     font-size: 0.82rem !important;
+  }
+
+  .consultation-form-card {
+    padding: 24px 18px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(35, 61, 50, 0.08) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .virtual-screening-pill {
+    font-size: 0.65rem !important;
+    padding: 4px 12px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .virtual-wizard-title {
+    font-size: 1.35rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .virtual-wizard-desc {
+    font-size: 0.82rem !important;
+    margin-bottom: 18px !important;
+    line-height: 1.45 !important;
+  }
+
+  .virtual-wizard-tracker {
+    gap: 6px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .wizard-dot {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .wizard-line {
+    width: 24px !important;
+  }
+
+  .consultation-form-card .form-group {
+    margin-bottom: 14px !important;
+  }
+
+  .consultation-form-card .form-label {
+    font-size: 0.72rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  .consultation-form-card .form-select,
+  .consultation-form-card .form-input,
+  .consultation-form-card .form-textarea {
+    font-size: 16px !important; /* Prevents iOS Safari input focus auto-zoom */
+    padding: 12px 14px !important;
+    border-radius: 10px !important;
+  }
+
+  .consultation-form-card .form-select {
+    padding-right: 36px !important;
+  }
+
+  .btn-wizard-continue {
+    padding: 13px 16px !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.03em !important;
+    margin-top: 18px !important;
+  }
+
+  .btn-wizard-back {
+    padding: 12px 14px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .wizard-actions-row {
+    gap: 8px !important;
+    margin-top: 18px !important;
+  }
+
+  .wizard-actions-row .btn-wizard-back {
+    min-width: 66px !important;
+  }
+
+  .photo-uploader-box {
+    padding: 14px !important;
   }
 
   /* 12. Follow Our Journey */
@@ -9645,6 +9817,30 @@ footer.glass-dark {
     flex: none !important;
     width: 100% !important;
     max-width: 100% !important;
+  }
+
+  .consultation-form-card {
+    padding: 20px 14px !important;
+    border-radius: 18px !important;
+  }
+
+  .virtual-wizard-title {
+    font-size: 1.25rem !important;
+  }
+
+  .wizard-line {
+    width: 18px !important;
+  }
+
+  .btn-wizard-continue {
+    padding: 12px 12px !important;
+    font-size: 0.78rem !important;
+  }
+
+  .btn-wizard-back {
+    padding: 11px 12px !important;
+    font-size: 0.78rem !important;
+    min-width: 58px !important;
   }
 }
 

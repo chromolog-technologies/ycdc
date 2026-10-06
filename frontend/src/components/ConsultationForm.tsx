@@ -118,55 +118,63 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
 
   if (isSubmitted) {
     return (
-      <div className="glass consultation-form-card animate-fade-in" style={{ borderRadius: '12px', textAlign: 'center', border: '1px solid var(--gold-400)' }}>
+      <div className="glass consultation-form-card animate-fade-in" style={{ textAlign: 'center' }}>
         <div style={{
-          width: '64px',
-          height: '64px',
+          width: '58px',
+          height: '58px',
           borderRadius: '50%',
-          backgroundColor: 'var(--gold-100)',
+          backgroundColor: 'rgba(35, 61, 50, 0.12)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          margin: '0 auto 16px',
-          color: 'var(--gold-600)'
+          margin: '0 auto 14px',
+          color: '#233D32'
         }}>
-          <CheckCircle size={36} />
+          <CheckCircle size={32} />
         </div>
-        <h3 style={{ fontSize: '2rem', color: 'var(--plum-900)' }}>Consultation Requested</h3>
-        <p style={{ color: 'var(--muted-charcoal)', marginTop: '8px', maxWidth: '450px', margin: '8px auto 0' }}>
-          Your digital assessment has been registered under ID <strong style={{ color: 'var(--plum-800)' }}>{consultId}</strong>. A dermatologist will analyze your details and contact you via Phone/WhatsApp.
+        <h3 style={{ fontSize: 'clamp(1.5rem, 4vw, 1.85rem)', color: 'var(--color-deep-forest)', marginBottom: '8px', fontWeight: 600 }}>
+          Consultation Requested
+        </h3>
+        <p style={{ color: 'var(--color-ink-muted)', fontSize: '0.9rem', maxWidth: '420px', margin: '0 auto 16px', lineHeight: 1.55 }}>
+          Your digital assessment has been registered under ID <strong style={{ color: 'var(--color-deep-forest)' }}>{consultId}</strong>. A dermatologist will analyze your details and contact you via Phone/WhatsApp.
         </p>
 
         <div style={{
-          background: '#white',
-          border: '1px solid var(--silk-200)',
-          borderRadius: '8px',
-          padding: '20px',
-          maxWidth: '400px',
-          margin: '24px auto',
+          background: '#ffffff',
+          border: '1px solid var(--color-rose-quartz-border)',
+          borderRadius: '12px',
+          padding: '16px',
+          maxWidth: '380px',
+          margin: '18px auto',
           textAlign: 'left',
-          fontSize: '0.9rem'
+          fontSize: '0.85rem',
+          boxSizing: 'border-box'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--deep-olive)', marginBottom: '8px', fontWeight: 'bold' }}>
-            <Lock size={14} /> Medical Privacy & Data Confidentiality
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-deep-forest)', marginBottom: '6px', fontWeight: 'bold' }}>
+            <Lock size={14} /> Medical Privacy &amp; Data Confidentiality
           </div>
-          <p style={{ fontSize: '0.85rem', color: 'var(--botanical-ink-muted)' }}>
+          <p style={{ fontSize: '0.8rem', color: 'var(--color-ink-muted)', margin: 0, lineHeight: 1.45 }}>
             Your photos and medical history are encrypted and only accessible by authorized YCDC medical practitioners in accordance with clinical privacy standards.
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '18px' }}>
           <button 
             onClick={() => {
               const text = encodeURIComponent(`Hi YCDC, I just submitted an online consultation request. ID: ${consultId}. Name: ${name}. Concern: ${CONCERN_TYPES.find(c => c.id === concern)?.name}.`);
               window.open(`https://wa.me/917593864264?text=${text}`, '_blank');
             }} 
-            className="btn btn-accent"
+            className="btn-wizard-continue btn-wizard-submit"
+            style={{ width: 'auto', padding: '12px 22px' }}
           >
             Connect on WhatsApp
           </button>
           {onSuccessClose && (
-            <button onClick={onSuccessClose} className="btn btn-outline" style={{ cursor: 'pointer' }}>
+            <button 
+              onClick={onSuccessClose} 
+              className="btn-wizard-back" 
+              style={{ width: 'auto', padding: '12px 20px' }}
+            >
               Close
             </button>
           )}
@@ -201,12 +209,9 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
       </div>
 
       <div className="form-step-wrapper">
-        <div 
-          className="form-step-container" 
-          style={{ transform: `translateX(-${(step - 1) * 33.333}%)` }}
-        >
-          {/* STEP 1: BRANCH & CONCERN */}
-          <div className={`form-step-slide ${step === 1 ? 'active' : ''}`} style={{ paddingRight: '15px' }}>
+        {/* STEP 1: BRANCH & CONCERN */}
+        {step === 1 && (
+          <div className="form-step-slide active animate-fade-in">
             <div className="form-group">
               <label className="form-label">
                 <MapPin size={13} /> PREFERRED BRANCH
@@ -222,7 +227,7 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
               </select>
             </div>
 
-            <div className="form-group" style={{ marginTop: '20px' }}>
+            <div className="form-group">
               <label className="form-label">
                 <Sparkles size={13} /> CONCERN CATEGORY
               </label>
@@ -242,15 +247,17 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
               onClick={() => setStep(2)} 
               className="btn-wizard-continue"
             >
-              CONTINUE TO CONTACT DETAILS
+              Continue to Contact Details &rarr;
             </button>
           </div>
+        )}
 
-          {/* STEP 2: DEMOGRAPHICS */}
-          <div className={`form-step-slide ${step === 2 ? 'active' : ''}`} style={{ paddingLeft: '15px', paddingRight: '15px' }}>
+        {/* STEP 2: DEMOGRAPHICS */}
+        {step === 2 && (
+          <div className="form-step-slide active animate-fade-in">
             <div className="form-group">
-              <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <User size={12} /> Full Name
+              <label className="form-label">
+                <User size={12} /> Full Name *
               </label>
               <input 
                 type="text" 
@@ -258,27 +265,27 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="form-input" 
-                required={step === 2}
+                required
               />
             </div>
 
-            <div className="form-group" style={{ marginTop: '20px' }}>
-              <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <Smartphone size={12} /> Phone Number
+            <div className="form-group">
+              <label className="form-label">
+                <Smartphone size={12} /> Phone Number *
               </label>
               <input 
                 type="tel" 
                 placeholder="10-digit Mobile"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, ''))}
                 className="form-input" 
-                pattern="[0-9]{10}"
-                required={step === 2}
+                maxLength={10}
+                required
               />
             </div>
 
-            <div className="form-group" style={{ marginTop: '20px' }}>
-              <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <div className="form-group">
+              <label className="form-label">
                 <Mail size={12} /> Email (Optional)
               </label>
               <input 
@@ -290,12 +297,11 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
               />
             </div>
 
-            <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
+            <div className="wizard-actions-row">
               <button 
                 type="button" 
                 onClick={() => setStep(1)} 
                 className="btn-wizard-back" 
-                style={{ flex: 1 }}
               >
                 Back
               </button>
@@ -309,15 +315,16 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
                   setStep(3);
                 }} 
                 className="btn-wizard-continue" 
-                style={{ flex: 2, marginTop: 0 }}
               >
-                CONTINUE TO SYMPTOMS
+                Continue to Symptoms &rarr;
               </button>
             </div>
           </div>
+        )}
 
-          {/* STEP 3: CONCERNS & PHOTO UPLOAD */}
-          <div className={`form-step-slide ${step === 3 ? 'active' : ''}`} style={{ paddingLeft: '15px' }}>
+        {/* STEP 3: CONCERNS & PHOTO UPLOAD */}
+        {step === 3 && (
+          <div className="form-step-slide active animate-fade-in">
             <div className="form-group">
               <label className="form-label">Brief medical history / symptoms</label>
               <textarea 
@@ -325,26 +332,18 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
                 value={history}
                 onChange={(e) => setHistory(e.target.value)}
                 className="form-textarea"
-                style={{ minHeight: '60px' }}
+                style={{ minHeight: '68px' }}
               />
             </div>
 
             {/* Simulated Image Uploader */}
-            <div className="form-group" style={{ marginTop: '16px' }}>
-              <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <div className="form-group">
+              <label className="form-label">
                 <Camera size={14} /> Upload Photos (Acne / Hair / Skin spots)
               </label>
               <div 
                 onClick={() => fileInputRef.current?.click()}
-                style={{
-                  border: '2px dashed var(--gold-400)',
-                  borderRadius: '6px',
-                  padding: '16px',
-                  textAlign: 'center',
-                  cursor: 'pointer',
-                  backgroundColor: 'rgba(245, 240, 233, 0.2)',
-                  transition: 'var(--transition-fast)'
-                }}
+                className="photo-uploader-box"
                 onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--gold-600)'}
                 onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--gold-400)'}
               >
@@ -383,6 +382,7 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
                       type="button" 
                       onClick={(e) => { e.stopPropagation(); handleRemoveFile(); }} 
                       style={{ background: 'none', border: 'none', color: 'red', cursor: 'pointer' }}
+                      aria-label="Remove uploaded file"
                     >
                       <Trash2 size={16} />
                     </button>
@@ -396,19 +396,18 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', background: 'var(--soft-sage-light, rgba(205, 210, 190, 0.25))', borderRadius: '6px', marginBottom: '16px', marginTop: '16px' }}>
+            <div className="wizard-compliance-badge">
               <ShieldCheck size={18} style={{ color: 'var(--deep-olive)', flexShrink: 0 }} />
-              <span style={{ fontSize: '0.75rem', color: 'var(--botanical-ink-muted)', textAlign: 'left', lineHeight: '1.3' }}>
+              <span>
                 Secure preliminary screening. Compliant with medical confidentiality &amp; data privacy standards.
               </span>
             </div>
 
-            <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
+            <div className="wizard-actions-row">
               <button 
                 type="button" 
                 onClick={() => setStep(2)} 
                 className="btn-wizard-back" 
-                style={{ flex: 1 }}
                 disabled={submitting}
               >
                 Back
@@ -416,14 +415,13 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
               <button 
                 type="submit" 
                 disabled={submitting} 
-                className="btn-wizard-continue" 
-                style={{ flex: 2, marginTop: 0 }}
+                className="btn-wizard-continue btn-wizard-submit"
               >
-                {submitting ? 'Submitting...' : 'SUBMIT REQUEST'}
+                {submitting ? 'Submitting...' : 'Submit Request'}
               </button>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </form>
   );
