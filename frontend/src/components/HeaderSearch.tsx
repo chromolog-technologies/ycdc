@@ -391,7 +391,7 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
                             <div style={{ minWidth: 0, flex: 1 }}>
                               <div
                                 style={{
-                                  fontSize: '0.86rem',
+                                  fontSize: '0.88rem',
                                   fontWeight: 600,
                                   color: '#242923',
                                   whiteSpace: 'nowrap',
@@ -400,34 +400,6 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
                                 }}
                               >
                                 {highlightMatch(treatment.name, query)}
-                              </div>
-                              <div
-                                style={{
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: '8px',
-                                  marginTop: '2px'
-                                }}
-                              >
-                                <span
-                                  style={{
-                                    fontSize: '0.68rem',
-                                    fontWeight: 600,
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '0.04em',
-                                    color: isCosmetic ? '#D9A5A7' : '#536B4C'
-                                  }}
-                                >
-                                  {treatment.category_name}
-                                </span>
-                                {treatment.price_range && (
-                                  <>
-                                    <span style={{ opacity: 0.4, fontSize: '0.65rem' }}>•</span>
-                                    <span style={{ fontSize: '0.7rem', color: '#657766' }}>
-                                      {treatment.price_range}
-                                    </span>
-                                  </>
-                                )}
                               </div>
                             </div>
                           </div>
