@@ -60,20 +60,19 @@ import './App.css';
 interface MobileNavItem {
   id: PageId;
   label: string;
-  subtitle: string;
   icon: React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
   badge?: string;
 }
 
 const MOBILE_NAV_ITEMS: MobileNavItem[] = [
-  { id: 'home', label: 'Home', subtitle: 'Flagship Dermatology', icon: Compass },
-  { id: 'treatments', label: 'Treatments & Lasers', subtitle: '40+ Clinical Procedures', icon: Sparkles, badge: 'Popular' },
-  { id: 'team', label: 'Specialist Doctors', subtitle: 'Led by Dr. K. Yogiraj', icon: Stethoscope },
-  { id: 'before-after', label: 'Clinical Results', subtitle: 'Real Case Studies', icon: Activity },
-  { id: 'about', label: 'About YCDC', subtitle: '30+ Years Heritage', icon: ShieldCheck },
-  { id: 'gallery', label: 'Clinic Suites', subtitle: 'Trivandrum & Bangalore', icon: ImageIcon },
-  { id: 'blog', label: 'Clinical Blog', subtitle: 'Expert Articles', icon: BookOpen },
-  { id: 'contact', label: 'Contact & Clinics', subtitle: 'Pattom & Whitefield', icon: MapPin }
+  { id: 'home', label: 'Home', icon: Compass },
+  { id: 'treatments', label: 'Treatments & Lasers', icon: Sparkles, badge: 'Popular' },
+  { id: 'team', label: 'Specialist Doctors', icon: Stethoscope },
+  { id: 'before-after', label: 'Clinical Results', icon: Activity },
+  { id: 'about', label: 'About YCDC', icon: ShieldCheck },
+  { id: 'gallery', label: 'Clinic Suites', icon: ImageIcon },
+  { id: 'blog', label: 'Clinical Blog', icon: BookOpen },
+  { id: 'contact', label: 'Contact & Clinics', icon: MapPin }
 ];
 
 function AppContent() {
@@ -464,13 +463,13 @@ function AppContent() {
                   <div
                     style={{
                       backgroundColor: '#FFFFFF',
-                      borderRadius: '18px',
-                      padding: '6px',
-                      border: '1px solid rgba(215, 203, 190, 0.5)',
-                      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)',
+                      borderRadius: '20px',
+                      padding: '8px',
+                      border: '1px solid rgba(215, 203, 190, 0.55)',
+                      boxShadow: '0 8px 30px rgba(35, 61, 50, 0.04)',
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: '2px'
+                      gap: '4px'
                     }}
                   >
                     {MOBILE_NAV_ITEMS.map((item) => {
@@ -487,64 +486,86 @@ function AppContent() {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
-                            padding: '11px 12px',
+                            padding: '12px 14px',
                             borderRadius: '12px',
                             border: 'none',
-                            backgroundColor: isActive ? '#233D32' : 'transparent',
-                            color: isActive ? '#FFFFFF' : '#233D32',
+                            backgroundColor: isActive ? 'rgba(35, 61, 50, 0.06)' : 'transparent',
+                            color: '#233D32',
                             cursor: 'pointer',
                             textAlign: 'left',
-                            transition: 'all 0.18s ease'
+                            position: 'relative',
+                            transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
                           }}
                         >
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                          {/* Active Gold Left Indicator Line */}
+                          {isActive && (
+                            <span
+                              style={{
+                                position: 'absolute',
+                                left: '3px',
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                width: '3px',
+                                height: '20px',
+                                borderRadius: '3px',
+                                backgroundColor: '#B49A68'
+                              }}
+                            />
+                          )}
+
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', paddingLeft: isActive ? '6px' : '0px', transition: 'padding 0.2s ease' }}>
                             <div
                               style={{
-                                width: '32px',
-                                height: '32px',
-                                borderRadius: '8px',
-                                backgroundColor: isActive ? 'rgba(255, 255, 255, 0.15)' : 'rgba(35, 61, 50, 0.06)',
+                                width: '34px',
+                                height: '34px',
+                                borderRadius: '10px',
+                                backgroundColor: isActive ? '#233D32' : 'rgba(35, 61, 50, 0.05)',
                                 color: isActive ? '#F3E5AB' : '#233D32',
                                 display: 'flex',
                                 alignItems: 'center',
-                                justifyContent: 'center'
+                                justifyContent: 'center',
+                                transition: 'all 0.2s ease'
                               }}
                             >
-                              <ItemIcon size={16} />
+                              <ItemIcon size={17} />
                             </div>
-                            <div>
-                              <div style={{ fontSize: '0.92rem', fontWeight: isActive ? 700 : 600 }}>
-                                {item.label}
-                              </div>
-                              <div
-                                style={{
-                                  fontSize: '0.68rem',
-                                  color: isActive ? 'rgba(255, 255, 255, 0.75)' : '#657766'
-                                }}
-                              >
-                                {item.subtitle}
-                              </div>
-                            </div>
+                            <span
+                              style={{
+                                fontSize: '0.94rem',
+                                fontWeight: isActive ? 600 : 500,
+                                color: '#233D32',
+                                letterSpacing: '-0.01em'
+                              }}
+                            >
+                              {item.label}
+                            </span>
                           </div>
 
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             {item.badge && (
                               <span
                                 style={{
-                                  fontSize: '0.65rem',
-                                  fontWeight: 700,
-                                  padding: '2px 7px',
+                                  fontSize: '0.62rem',
+                                  fontWeight: 600,
+                                  letterSpacing: '0.04em',
+                                  textTransform: 'uppercase',
+                                  padding: '2px 8px',
                                   borderRadius: '9999px',
-                                  backgroundColor: isActive ? '#B49A68' : 'rgba(217, 165, 167, 0.3)',
-                                  color: isActive ? '#FFFFFF' : '#8A4A5B'
+                                  backgroundColor: isActive ? 'rgba(180, 154, 104, 0.2)' : 'rgba(180, 154, 104, 0.1)',
+                                  border: '1px solid rgba(180, 154, 104, 0.35)',
+                                  color: '#8C703D'
                                 }}
                               >
                                 {item.badge}
                               </span>
                             )}
                             <ChevronRight
-                              size={16}
-                              style={{ color: isActive ? '#FFFFFF' : '#A0AEA1' }}
+                              size={15}
+                              style={{
+                                color: isActive ? '#B49A68' : 'rgba(35, 61, 50, 0.28)',
+                                transform: isActive ? 'translateX(2px)' : 'none',
+                                transition: 'all 0.2s ease'
+                              }}
                             />
                           </div>
                         </button>
