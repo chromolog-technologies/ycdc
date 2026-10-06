@@ -201,7 +201,7 @@ function AppContent() {
                 <MapPin size={13} /> Bengaluru | Thiruvananthapuram
               </span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <div className="top-bar-user-actions" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
               <button
                 onClick={() => navigate('/admin')}
                 style={{ background: 'none', border: 'none', color: '#ffffff', fontSize: '0.82rem', cursor: 'pointer', opacity: 0.95 }}
@@ -337,6 +337,7 @@ function AppContent() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <HeaderSearch
                   iconColor={isTransparentHeader ? '#ffffff' : '#2A362B'}
+                  isTransparentHeader={isTransparentHeader}
                   onNavigateToTreatments={(searchQuery) => {
                     navigate(`/treatments?search=${encodeURIComponent(searchQuery)}`);
                     dispatch(setMobileMenuOpen(false));
@@ -458,50 +459,6 @@ function AppContent() {
 
                 {/* Drawer Interior Body */}
                 <div style={{ padding: '18px 20px 40px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                  {/* Virtual Screening Highlight Card */}
-                  <div
-                    onClick={() => {
-                      dispatch(setMobileMenuOpen(false));
-                      dispatch(openBookingModal({ service: 'Virtual Screening' }));
-                    }}
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(35, 61, 50, 0.08) 0%, rgba(217, 165, 167, 0.22) 100%)',
-                      border: '1.5px solid rgba(217, 165, 167, 0.45)',
-                      borderRadius: '16px',
-                      padding: '14px 16px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      cursor: 'pointer',
-                      boxShadow: '0 4px 16px rgba(35, 61, 50, 0.06)'
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div
-                        style={{
-                          width: '38px',
-                          height: '38px',
-                          borderRadius: '10px',
-                          backgroundColor: '#233D32',
-                          color: '#F3E5AB',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center'
-                        }}
-                      >
-                        <Sparkles size={18} />
-                      </div>
-                      <div>
-                        <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#233D32' }}>
-                          Virtual Skin Diagnosis
-                        </div>
-                        <div style={{ fontSize: '0.72rem', color: '#536B4C' }}>
-                          Doctor evaluation from anywhere
-                        </div>
-                      </div>
-                    </div>
-                    <ArrowRight size={18} style={{ color: '#233D32' }} />
-                  </div>
 
                   {/* Navigation Links Group */}
                   <div

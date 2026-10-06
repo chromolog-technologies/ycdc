@@ -14,9 +14,10 @@ import type { Treatment } from '../types';
 interface HeaderSearchProps {
   onNavigateToTreatments?: (searchQuery: string) => void;
   iconColor?: string;
+  isTransparentHeader?: boolean;
 }
 
-export default function HeaderSearch({ onNavigateToTreatments, iconColor }: HeaderSearchProps) {
+export default function HeaderSearch({ onNavigateToTreatments, iconColor, isTransparentHeader }: HeaderSearchProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Treatment[]>([]);
@@ -202,11 +203,11 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
               padding: '0 8px 0 2px',
               display: 'flex',
               alignItems: 'center',
-              color: '#233D32',
+              color: isTransparentHeader ? '#E6CA85' : '#233D32',
               flexShrink: 0
             }}
           >
-            <Search size={17} style={{ opacity: 0.85 }} />
+            <Search size={17} style={{ opacity: isTransparentHeader ? 1 : 0.85 }} />
           </div>
 
           {/* Search Input sitting on top of the line */}
@@ -218,7 +219,7 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
             onKeyDown={handleKeyDown}
             placeholder="Search treatments..."
             aria-label="Search treatments"
-            className="header-search-input"
+            className={`header-search-input ${isTransparentHeader ? 'is-transparent-header' : ''}`}
             style={{
               flex: 1,
               background: 'transparent',
@@ -228,11 +229,11 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
               boxShadow: 'none',
               outline: 'none',
               fontSize: '0.9rem',
-              color: '#242923',
+              color: isTransparentHeader ? '#FFFFFF' : '#242923',
               fontFamily: 'inherit',
               padding: '8px 4px',
               letterSpacing: '0.01em',
-              fontWeight: 500
+              fontWeight: isTransparentHeader ? 600 : 500
             }}
           />
 
@@ -248,7 +249,7 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#657766',
+                color: isTransparentHeader ? 'rgba(255, 255, 255, 0.85)' : '#657766',
                 cursor: 'pointer',
                 padding: '4px',
                 display: 'flex',
@@ -273,7 +274,7 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
             style={{
               background: 'none',
               border: 'none',
-              color: '#657766',
+              color: isTransparentHeader ? 'rgba(255, 255, 255, 0.9)' : '#657766',
               cursor: 'pointer',
               padding: '6px',
               display: 'flex',
@@ -296,11 +297,15 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
               bottom: 0,
               left: 0,
               width: '100%',
-              height: '2px',
-              background: 'linear-gradient(90deg, #233D32 0%, #D9A5A7 100%)',
+              height: isTransparentHeader ? '2.5px' : '2px',
+              background: isTransparentHeader
+                ? 'linear-gradient(90deg, #E6CA85 0%, #FFFFFF 40%, #D9A5A7 100%)'
+                : 'linear-gradient(90deg, #233D32 0%, #D9A5A7 100%)',
               transformOrigin: 'left center',
               animation: 'expandLineLeftToRight 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-              boxShadow: '0 1px 4px rgba(35, 61, 50, 0.2)'
+              boxShadow: isTransparentHeader
+                ? '0 0 10px rgba(230, 202, 133, 0.75), 0 0 4px rgba(255, 255, 255, 0.9)'
+                : '0 1px 4px rgba(35, 61, 50, 0.2)'
             }}
           />
 
