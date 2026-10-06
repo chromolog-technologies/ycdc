@@ -15,8 +15,7 @@ import {
   Phone,
   FileText,
   UploadCloud,
-  Stethoscope,
-  Award
+  Stethoscope
 } from 'lucide-react';
 import ConsultationForm from '../components/ConsultationForm';
 import type { PageId } from '../types/navigation';
@@ -578,57 +577,17 @@ export const HomePage: React.FC<HomePageProps> = ({
                   </svg>
                 </div>
 
-                {/* Floating Top Right Clinic Status Pill */}
-                <div className="heritage-float-card-top">
-                  <span className="heritage-pulse-dot" />
-                  <span>Flagship Reception &bull; Bengaluru &amp; Trivandrum</span>
-                </div>
-
                 {/* Offset Decorative Outline Frame with interactive hover glide */}
                 <div className="heritage-photo-outline-frame" />
                 
-                {/* Photo Frame containing the original reception lobby photo */}
+                {/* Photo Frame containing the reception desk photo */}
                 <div className="heritage-photo-frame">
                   <img
-                    src="/DSC09955-scaled-880x952.jpg"
-                    onError={(e) => { e.currentTarget.src = '/ycdc_reception_lobby.jpg'; }}
-                    alt="Dr. Yogiraj Centre for Dermatology &amp; Cosmetology Reception Lobby"
+                    src="/ycdc_reception_desk.png"
+                    onError={(e) => { e.currentTarget.src = '/DSC09955-scaled-880x952.jpg'; }}
+                    alt="Dr. Yogiraj Centre for Dermatology &amp; Cosmetology Reception Desk"
                     loading="lazy"
                   />
-                </div>
-
-                {/* Floating Bottom Left Clinical Excellence Card */}
-                <div className="heritage-float-card-bottom">
-                  <div style={{
-                    width: '38px',
-                    height: '38px',
-                    borderRadius: '10px',
-                    background: 'linear-gradient(135deg, #B49A68 0%, #D4B988 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                    boxShadow: '0 4px 12px rgba(180, 154, 104, 0.35)'
-                  }}>
-                    <Award size={20} color="#1A2F26" />
-                  </div>
-                  <div>
-                    <div style={{
-                      fontSize: '0.82rem',
-                      fontWeight: 700,
-                      color: '#1A2F26',
-                      letterSpacing: '0.04em',
-                      textTransform: 'uppercase',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '4px'
-                    }}>
-                      50+ Years Legacy <ShieldCheck size={14} color="#536B4C" />
-                    </div>
-                    <div style={{ fontSize: '0.74rem', color: '#666', marginTop: '1px' }}>
-                      ISO 9001:2015 Accredited Facility
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
