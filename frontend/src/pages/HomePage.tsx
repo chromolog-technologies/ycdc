@@ -539,7 +539,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           ================================================================= */}
       <section className="master-ribbon-strip">
         <div className="container master-ribbon-container">
-          <div className="master-ribbon-items-row">
+          <div className="master-ribbon-items-row mobile-horizontal-track">
             <div className="master-ribbon-item">
               <div className="master-ribbon-icon-circle">
                 <UserCheck size={16} />
@@ -689,7 +689,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           {/* Category Tabs */}
-          <div className="care-tabs-row reveal reveal-up">
+          <div className="care-tabs-row mobile-horizontal-track reveal reveal-up">
             {(Object.keys(CARE_CATEGORIES_DATA) as CareCategory[]).map((catKey) => {
               const cat = CARE_CATEGORIES_DATA[catKey];
               const isActive = activeCareCategory === catKey;
@@ -785,7 +785,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           {/* 3 Wide Arched Cards */}
-          <div className="master-specialities-grid">
+          <div className="master-specialities-grid mobile-horizontal-track">
             <div
               className="master-spec-card reveal reveal-left"
               onClick={() => onNavigateToPage('treatments')}

@@ -8953,50 +8953,636 @@ footer.glass-dark {
   scroll-snap-align: start;
 }
 
-/* Universal Mobile Enhancements */
+/* ==========================================================================
+   COMPREHENSIVE HOME PAGE MOBILE DESIGN SYSTEM (<= 768px & <= 480px)
+   ========================================================================== */
 @media (max-width: 768px) {
-  /* Fluid text clamps */
-  h1 {
-    font-size: clamp(2.1rem, 6vw, 2.7rem) !important;
-  }
-  
-  h2 {
-    font-size: clamp(1.75rem, 5vw, 2.2rem) !important;
-  }
-
-  /* Facility Actions Column on Mobile */
-  .facility-actions-row {
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-
-  .facility-actions-row a {
-    width: 100% !important;
-    text-align: center;
-    justify-content: center;
-  }
-
-  /* Container padding */
+  /* 1. Global Container & Text Hierarchy */
   .container {
-    padding-left: clamp(14px, 4vw, 24px) !important;
-    padding-right: clamp(14px, 4vw, 24px) !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
-  /* Section Padding */
+  h1 {
+    font-size: clamp(2.1rem, 7.5vw, 2.75rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  h2 {
+    font-size: clamp(1.65rem, 5.5vw, 2.15rem) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.015em !important;
+  }
+
   .section-padding {
+    padding: 44px 0 !important;
+  }
+
+  .section-pill-badge {
+    font-size: 0.68rem !important;
+    padding: 4px 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* 2. Hero Section on Mobile */
+  .master-hero-section {
+    min-height: auto !important;
+    padding-top: 96px !important;
+    padding-bottom: 44px !important;
+  }
+
+  .master-hero-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .master-hero-main-row {
+    min-height: auto !important;
+    gap: 24px !important;
+    align-items: flex-start !important;
+  }
+
+  .master-hero-text-col {
+    max-width: 100% !important;
+  }
+
+  .hero-luxury-eyebrow {
+    font-size: 0.64rem !important;
+    letter-spacing: 0.12em !important;
+    margin-bottom: 12px !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .master-hero-title {
+    font-size: clamp(2.2rem, 8vw, 2.9rem) !important;
+    line-height: 1.12 !important;
+    margin-bottom: 14px !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .hero-luxury-subtext {
+    font-size: 0.94rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 22px !important;
+    max-width: 100% !important;
+  }
+
+  .master-hero-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    font-size: 0.92rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-luxury-metrics-capsule {
+    width: 100% !important;
+    justify-content: space-around !important;
+    padding: 10px 14px !important;
+    border-radius: 16px !important;
+    gap: 6px !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-luxury-metric-item {
+    gap: 6px !important;
+  }
+
+  .hero-metric-gold {
+    font-size: 1.15rem !important;
+  }
+
+  .hero-metric-label {
+    font-size: 0.7rem !important;
+  }
+
+  /* 3. Feature Ribbon Strip */
+  .master-ribbon-strip {
+    padding: 10px 0 !important;
+  }
+
+  .master-ribbon-items-row {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    padding: 0 16px !important;
+  }
+
+  .master-ribbon-items-row::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .master-ribbon-item {
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-radius: 9999px !important;
+    padding: 6px 14px 6px 8px !important;
+  }
+
+  .master-ribbon-icon-circle {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .master-ribbon-label {
+    font-size: 0.78rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* 4. Heritage & Clinical Mastery */
+  .heritage-mastery-section {
+    padding: 44px 0 !important;
+  }
+
+  .heritage-mastery-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .heritage-photo-frame {
+    border-radius: 16px !important;
+    max-height: 280px !important;
+    overflow: hidden !important;
+  }
+
+  .heritage-photo-frame img {
+    height: 100% !important;
+    max-height: 280px !important;
+    object-fit: cover !important;
+  }
+
+  .heritage-title {
+    font-size: clamp(1.65rem, 5.5vw, 2.1rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .heritage-quote-box {
+    padding: 16px !important;
+    margin: 18px 0 !important;
+    border-radius: 14px !important;
+  }
+
+  .heritage-quote-text {
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .heritage-footer-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    padding-top: 18px !important;
+  }
+
+  .heritage-signature-img {
+    height: 38px !important;
+  }
+
+  /* 5. Structured Care Categories (Horizontal Touch-Swipe Tabs) */
+  .care-categories-section {
     padding: 48px 0 !important;
   }
 
-  /* Care Journey Stack */
+  .care-categories-title {
+    font-size: clamp(1.65rem, 5.5vw, 2.1rem) !important;
+  }
+
+  .care-categories-sub {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 22px !important;
+  }
+
+  .care-tabs-row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    padding: 4px 16px 14px 16px !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .care-tabs-row::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .care-tab-btn {
+    flex: 0 0 auto !important;
+    scroll-snap-align: start !important;
+    white-space: nowrap !important;
+    padding: 9px 18px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .care-content-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+
+  .care-service-item {
+    padding: 14px 16px !important;
+    border-radius: 14px !important;
+  }
+
+  .care-service-item-title {
+    font-size: 0.96rem !important;
+  }
+
+  .care-service-item-desc {
+    font-size: 0.82rem !important;
+  }
+
+  .care-preview-card {
+    aspect-ratio: 16 / 10 !important;
+    border-radius: 18px !important;
+    min-height: 220px !important;
+  }
+
+  .care-preview-caption {
+    padding: 18px !important;
+  }
+
+  .care-preview-title {
+    font-size: 1.35rem !important;
+  }
+
+  .care-preview-desc {
+    font-size: 0.84rem !important;
+  }
+
+  .btn-care-primary {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* 6. Our Specialities (Modern Swipe Track on Mobile) */
+  .master-specialities-section {
+    padding: 48px 0 !important;
+  }
+
+  .master-specialities-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .master-specialities-header-right {
+    max-width: 100% !important;
+  }
+
+  .master-specialities-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    gap: 14px !important;
+    padding: 4px 16px 16px 16px !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+  }
+
+  .master-specialities-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .master-spec-card {
+    flex: 0 0 82vw !important;
+    max-width: 320px !important;
+    scroll-snap-align: center !important;
+    border-radius: 40px 18px 18px 18px !important;
+  }
+
+  .master-spec-img-wrap {
+    border-radius: 40px 18px 0 0 !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  .master-spec-card-content {
+    padding: 16px 18px !important;
+  }
+
+  .master-spec-card-title {
+    font-size: 1.3rem !important;
+  }
+
+  /* 7. Care Journey (The Four Stages) */
+  .four-stages-section {
+    padding: 48px 0 !important;
+  }
+
   .four-stages-grid {
     grid-template-columns: 1fr !important;
-    gap: 32px !important;
+    gap: 28px !important;
   }
 
   .four-stages-left {
     position: static !important;
   }
+
+  .four-stages-title {
+    font-size: clamp(1.65rem, 5.5vw, 2.1rem) !important;
+    margin-top: 10px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .four-stages-desc {
+    font-size: 0.9rem !important;
+    margin-bottom: 20px !important;
+  }
+
+  .care-journey-stepper {
+    margin-bottom: 22px !important;
+    gap: 6px !important;
+  }
+
+  .care-step-pill {
+    padding: 7px 12px !important;
+    font-size: 0.78rem !important;
+  }
+
+  .btn-care-journey {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 20px !important;
+    font-size: 0.88rem !important;
+  }
+
+  .four-stages-stack {
+    gap: 14px !important;
+  }
+
+  .stage-card {
+    padding: 20px 18px !important;
+    border-radius: 16px !important;
+  }
+
+  .stage-card-num {
+    font-size: 1.2rem !important;
+  }
+
+  .stage-card-name {
+    font-size: 1.18rem !important;
+  }
+
+  .stage-card-text {
+    font-size: 0.86rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .stage-card-highlights {
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .stage-highlight-tag {
+    font-size: 0.74rem !important;
+    padding: 4px 10px !important;
+  }
+
+  /* 8. Real People Real Results */
+  .master-results-section {
+    padding: 48px 0 !important;
+  }
+
+  .master-results-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .master-results-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .master-ba-card {
+    border-radius: 16px !important;
+  }
+
+  .master-ba-img-box {
+    min-height: 165px !important;
+    max-height: 195px !important;
+  }
+
+  .master-testimonial-card {
+    padding: 18px !important;
+    border-radius: 16px !important;
+  }
+
+  .master-testimonial-quote-text {
+    font-size: 0.94rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 9. Patient Stories Carousel */
+  .patient-stories-section {
+    padding: 40px 0 46px 0 !important;
+  }
+
+  .patient-stories-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+
+  .patient-stories-title {
+    font-size: clamp(1.6rem, 5.2vw, 2rem) !important;
+  }
+
+  .patient-stories-sub {
+    font-size: 0.88rem !important;
+  }
+
+  .patient-stories-track {
+    gap: 12px !important;
+    padding: 4px 16px 14px 16px !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+  }
+
+  .patient-story-card {
+    flex: 0 0 84vw !important;
+    max-width: 330px !important;
+    padding: 18px 18px 14px 18px !important;
+    border-radius: 14px !important;
+    min-height: auto !important;
+  }
+
+  .patient-story-quote {
+    font-size: 0.86rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .patient-story-author {
+    font-size: 0.88rem !important;
+  }
+
+  .patient-story-location {
+    font-size: 0.76rem !important;
+  }
+
+  /* 10. Consultation Facilities */
+  .consultation-facilities-section {
+    padding: 48px 0 !important;
+  }
+
+  .facilities-title {
+    font-size: clamp(1.65rem, 5.5vw, 2.1rem) !important;
+  }
+
+  .facilities-sub {
+    font-size: 0.9rem !important;
+    margin-bottom: 24px !important;
+  }
+
+  .facilities-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .facility-card {
+    padding: 22px 18px !important;
+    border-radius: 16px !important;
+  }
+
+  .facility-card-name {
+    font-size: 1.25rem !important;
+  }
+
+  .facility-actions-row {
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-top: 18px !important;
+  }
+
+  .btn-facility-maps,
+  .btn-facility-book {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 11. Virtual Diagnosis Section */
+  .virtual-diagnosis-section {
+    padding: 48px 0 !important;
+  }
+
+  .virtual-diagnosis-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .virtual-diagnosis-title {
+    font-size: clamp(1.75rem, 5.5vw, 2.2rem) !important;
+  }
+
+  .virtual-diagnosis-subtext {
+    font-size: 0.92rem !important;
+    margin-bottom: 24px !important;
+  }
+
+  .virtual-steps-list {
+    gap: 16px !important;
+  }
+
+  .virtual-step-icon-box {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .virtual-step-title {
+    font-size: 0.94rem !important;
+  }
+
+  .virtual-step-desc {
+    font-size: 0.82rem !important;
+  }
+
+  /* 12. Follow Our Journey */
+  .follow-journey-section {
+    padding: 48px 0 !important;
+  }
+
+  .follow-journey-title {
+    font-size: clamp(1.65rem, 5.5vw, 2.1rem) !important;
+  }
+
+  .journey-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .journey-card-item {
+    border-radius: 14px !important;
+  }
+
+  .follow-journey-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .btn-journey-instagram,
+  .btn-journey-more {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
 }
+
+/* Extra Compact Tweaks for Small Mobile Screens (<= 480px) */
+@media (max-width: 480px) {
+  .master-hero-title {
+    font-size: 2.15rem !important;
+  }
+
+  .hero-luxury-metrics-capsule {
+    padding: 8px 10px !important;
+  }
+
+  .hero-metric-gold {
+    font-size: 1.05rem !important;
+  }
+
+  .hero-metric-label {
+    font-size: 0.65rem !important;
+  }
+
+  .patient-story-card {
+    flex: 0 0 88vw !important;
+  }
+
+  .master-spec-card {
+    flex: 0 0 86vw !important;
+  }
+}
+
 
 
 
