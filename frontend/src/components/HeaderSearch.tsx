@@ -188,7 +188,12 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
             height: '42px',
             width: 'clamp(260px, 28vw, 360px)',
             transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-            zIndex: 1002
+            zIndex: 1002,
+            background: 'transparent',
+            backgroundColor: 'transparent',
+            border: 'none',
+            borderRadius: 0,
+            boxShadow: 'none'
           }}
         >
           {/* Left search icon inside the line */}
@@ -217,7 +222,10 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor }: Head
             style={{
               flex: 1,
               background: 'transparent',
+              backgroundColor: 'transparent',
               border: 'none',
+              borderRadius: 0,
+              boxShadow: 'none',
               outline: 'none',
               fontSize: '0.9rem',
               color: '#242923',

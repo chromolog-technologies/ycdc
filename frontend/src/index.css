@@ -240,7 +240,7 @@
 
 /* 2. Text, Email, Phone, Number, Date Inputs */
 .form-input,
-input[type="text"],
+input[type="text"]:not(.header-search-input),
 input[type="email"],
 input[type="tel"],
 input[type="date"],
@@ -263,7 +263,7 @@ input[type="password"] {
 }
 
 .form-input:focus,
-input[type="text"]:focus,
+input[type="text"]:not(.header-search-input):focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
 input[type="date"]:focus,
@@ -1048,13 +1048,22 @@ header.header-scrolled .mobile-menu-btn {
 
 .header-search-line-container {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
+input.header-search-input,
+input[type="text"].header-search-input,
 .header-search-input {
   border: none !important;
+  border-radius: 0 !important;
   outline: none !important;
   box-shadow: none !important;
   background: transparent !important;
+  background-color: transparent !important;
   -webkit-appearance: none !important;
   appearance: none !important;
 }
@@ -1064,10 +1073,15 @@ header.header-scrolled .mobile-menu-btn {
   font-weight: 400;
 }
 
+input.header-search-input:focus,
+input[type="text"].header-search-input:focus,
 .header-search-input:focus {
   border: none !important;
+  border-radius: 0 !important;
   outline: none !important;
   box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 .search-results-dropdown::-webkit-scrollbar {
@@ -1098,8 +1112,11 @@ header.header-scrolled .mobile-menu-btn {
     top: 50% !important;
     transform: translateY(-50%) !important;
     width: auto !important;
-    background-color: #FAF6F0 !important;
-    border-radius: 6px !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
     padding: 0 4px !important;
     z-index: 1050 !important;
   }
