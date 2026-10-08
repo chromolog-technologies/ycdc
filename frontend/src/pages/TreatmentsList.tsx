@@ -255,19 +255,21 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
           <div className="glass" style={{ padding: 'clamp(16px, 3vw, 24px) clamp(16px, 3.5vw, 30px)', borderRadius: '14px', background: 'white', boxShadow: 'var(--shadow-md)', border: '1px solid var(--silk-200)' }}>
             
             {/* Primary Filter Tabs: Dermatic vs Cosmetic */}
-            <div className="mobile-horizontal-track" style={{ justifyContent: 'center', gap: '10px', marginBottom: '20px', borderBottom: '1px solid var(--silk-200)', paddingBottom: '16px' }}>
+            <div className="treatments-filter-tabs" style={{ marginBottom: '20px', borderBottom: '1px solid var(--silk-200)', paddingBottom: '16px' }}>
               <button
                 onClick={() => setSelectedType('all')}
                 style={{
-                  padding: '10px 24px',
+                  padding: '10px 20px',
                   borderRadius: '8px',
                   fontWeight: '700',
-                  fontSize: '0.9rem',
+                  fontSize: '0.88rem',
                   border: 'none',
                   backgroundColor: selectedType === 'all' ? '#233D32' : 'var(--silk-100)',
                   color: selectedType === 'all' ? 'white' : '#233D32',
                   cursor: 'pointer',
-                  transition: 'all 0.2s ease'
+                  transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0
                 }}
               >
                 All Procedures ({selectedBranch === 'bangalore' ? 0 : 37})
@@ -275,10 +277,10 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
               <button
                 onClick={() => setSelectedType('dermatic')}
                 style={{
-                  padding: '10px 24px',
+                  padding: '10px 20px',
                   borderRadius: '8px',
                   fontWeight: '700',
-                  fontSize: '0.9rem',
+                  fontSize: '0.88rem',
                   border: 'none',
                   backgroundColor: selectedType === 'dermatic' ? '#233D32' : 'var(--silk-100)',
                   color: selectedType === 'dermatic' ? 'white' : '#233D32',
@@ -286,7 +288,9 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  transition: 'all 0.2s ease'
+                  transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0
                 }}
               >
                 <Stethoscope size={16} /> Dermatic Procedures ({selectedBranch === 'bangalore' ? 0 : dermaticCount})
@@ -294,10 +298,10 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
               <button
                 onClick={() => setSelectedType('cosmetic')}
                 style={{
-                  padding: '10px 24px',
+                  padding: '10px 20px',
                   borderRadius: '8px',
                   fontWeight: '700',
-                  fontSize: '0.9rem',
+                  fontSize: '0.88rem',
                   border: 'none',
                   backgroundColor: selectedType === 'cosmetic' ? '#B49A68' : 'var(--silk-100)',
                   color: selectedType === 'cosmetic' ? 'white' : '#233D32',
@@ -305,16 +309,18 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  transition: 'all 0.2s ease'
+                  transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0
                 }}
               >
                 <Sparkles size={16} /> Cosmetic Procedures ({selectedBranch === 'bangalore' ? 0 : cosmeticCount})
               </button>
             </div>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
               {/* Category buttons */}
-              <div className="mobile-horizontal-track" style={{ gap: '8px' }}>
+              <div className="mobile-horizontal-track" style={{ gap: '8px', flex: 1, minWidth: 0 }}>
                 {[
                   { key: 'all', label: 'All Specialties' },
                   { key: 'skin', label: 'Skin & Allergy' },
@@ -327,7 +333,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                     onClick={() => setActiveFilter(cat.key)}
                     className="btn"
                     style={{
-                      padding: '8px 16px',
+                      padding: '8px 14px',
                       fontSize: '0.82rem',
                       borderRadius: '20px',
                       backgroundColor: activeFilter === cat.key ? '#233D32' : 'var(--silk-100)',
@@ -335,7 +341,8 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                       border: '1px solid transparent',
                       transition: 'var(--transition-fast)',
                       cursor: 'pointer',
-                      fontWeight: activeFilter === cat.key ? '600' : 'normal'
+                      fontWeight: activeFilter === cat.key ? '600' : 'normal',
+                      whiteSpace: 'nowrap'
                     }}
                   >
                     {cat.label}
@@ -358,7 +365,8 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                     border: '1px solid var(--silk-200)',
                     outline: 'none',
                     fontSize: '0.88rem',
-                    backgroundColor: 'var(--silk-100)'
+                    backgroundColor: 'var(--silk-100)',
+                    boxSizing: 'border-box'
                   }}
                 />
               </div>
@@ -422,18 +430,18 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
         <div className="container">
 
           {/* Active branch label bar */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '10px' }}>
             <span style={{ fontSize: '0.9rem', color: 'var(--muted-charcoal)' }}>
               Showing <strong>{filteredTreatments.length}</strong> procedure{filteredTreatments.length === 1 ? '' : 's'} 
               {selectedBranch === 'trivandrum' ? ' available at Trivandrum Branch' : selectedBranch === 'bangalore' ? ' for Bangalore Branch' : ' across branches'}
             </span>
-            <span className="badge badge-premium" style={{ fontSize: '0.75rem', backgroundColor: 'rgba(35, 61, 50, 0.1)', color: '#233D32', borderColor: 'rgba(35, 61, 50, 0.25)' }}>
+            <span className="badge badge-premium" style={{ fontSize: '0.75rem', backgroundColor: 'rgba(35, 61, 50, 0.1)', color: '#233D32', borderColor: 'rgba(35, 61, 50, 0.25)', whiteSpace: 'nowrap' }}>
               {selectedBranch === 'trivandrum' ? '📍 Trivandrum Branch (Pattom)' : selectedBranch === 'bangalore' ? '📍 Bangalore Branch (Whitefield)' : '📍 All Branches'}
             </span>
           </div>
 
           {filteredTreatments.length > 0 ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '26px' }}>
+            <div className="treatments-catalog-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '22px', width: '100%' }}>
               {filteredTreatments.map((t) => (
                 <div 
                   key={t.id}
@@ -450,7 +458,9 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                     justifyContent: 'space-between',
                     boxShadow: 'var(--shadow-sm)',
                     transition: 'transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    width: '100%',
+                    boxSizing: 'border-box'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-5px)';
@@ -473,31 +483,41 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                         onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.06)'}
                         onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                       />
-                      <div style={{ position: 'absolute', top: '12px', left: '12px', display: 'flex', gap: '6px' }}>
+                      <div style={{ position: 'absolute', top: '10px', left: '10px', display: 'flex', gap: '6px', maxWidth: '48%', zIndex: 2 }}>
                         <span style={{ 
                           fontSize: '0.65rem', 
                           fontWeight: 'bold', 
                           textTransform: 'uppercase',
-                          letterSpacing: '0.05em',
-                          padding: '4px 10px', 
+                          letterSpacing: '0.04em',
+                          padding: '4px 8px', 
                           borderRadius: '20px', 
                           backgroundColor: t.procedure_type === 'dermatic' ? '#233D32' : '#B49A68',
                           color: 'white',
-                          boxShadow: '0 2px 6px rgba(0,0,0,0.2)'
+                          boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          display: 'inline-block',
+                          maxWidth: '100%'
                         }}>
                           {t.procedure_type === 'dermatic' ? '🩺 DERMATIC' : '✨ COSMETIC'}
                         </span>
                       </div>
 
-                      <div style={{ position: 'absolute', top: '12px', right: '12px' }}>
+                      <div style={{ position: 'absolute', top: '10px', right: '10px', maxWidth: '48%', zIndex: 2, display: 'flex', justifyContent: 'flex-end' }}>
                         <span style={{ 
                           fontSize: '0.65rem', 
                           fontWeight: 'bold', 
                           padding: '4px 8px', 
                           borderRadius: '4px', 
-                          backgroundColor: 'rgba(0,0,0,0.65)',
+                          backgroundColor: 'rgba(0,0,0,0.7)',
                           color: 'white',
-                          backdropFilter: 'blur(4px)'
+                          backdropFilter: 'blur(4px)',
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          display: 'inline-block',
+                          maxWidth: '100%'
                         }}>
                           {t.branch === 'bangalore' ? 'Bangalore Branch' : t.branch === 'both' ? 'All Branches' : 'Trivandrum Branch'}
                         </span>
@@ -506,29 +526,29 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                   )}
 
                   {/* Card Content Details */}
-                  <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div style={{ padding: 'clamp(14px, 4vw, 20px)', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                     <div>
                       {/* Category and duration */}
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '4px' }}>
                         <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#233D32', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                           {t.category_name}
                         </span>
-                        <span style={{ fontSize: '0.75rem', color: '#B49A68', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <span style={{ fontSize: '0.75rem', color: '#B49A68', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}>
                           <Clock size={12} /> {t.duration}
                         </span>
                       </div>
 
-                      <h4 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', fontSize: '1.25rem', marginBottom: '8px', lineHeight: '1.35', fontWeight: 600 }}>
+                      <h4 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', fontSize: '1.2rem', marginBottom: '8px', lineHeight: '1.35', fontWeight: 600 }}>
                         {t.name}
                       </h4>
-                      <p style={{ fontSize: '0.86rem', color: 'var(--muted-charcoal)', lineHeight: '1.55', marginBottom: '16px' }}>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', lineHeight: '1.55', marginBottom: '14px' }}>
                         {getShortDescription(t.description)}
                       </p>
                     </div>
 
                     {/* Interactive Card Action Bar */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid var(--silk-200)', marginTop: '6px' }}>
-                      <span style={{ fontSize: '0.82rem', fontWeight: '700', color: '#233D32', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid var(--silk-200)', marginTop: '6px', gap: '8px' }}>
+                      <span style={{ fontSize: '0.82rem', fontWeight: '700', color: '#233D32', display: 'flex', alignItems: 'center', gap: '5px', whiteSpace: 'nowrap' }}>
                         View Details <ArrowRight size={14} />
                       </span>
                       <button
@@ -545,7 +565,8 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                           backgroundColor: 'rgba(35, 61, 50, 0.08)',
                           color: '#233D32',
                           cursor: 'pointer',
-                          transition: 'all 0.2s ease'
+                          transition: 'all 0.2s ease',
+                          whiteSpace: 'nowrap'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#233D32';
@@ -634,7 +655,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '20px'
+            padding: 'clamp(8px, 3vw, 20px)'
           }}
         >
           <div
@@ -839,7 +860,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                 borderRadius: '12px',
                 padding: '14px 18px',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))',
                 gap: '12px',
                 marginBottom: '10px'
               }}>

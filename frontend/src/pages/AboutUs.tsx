@@ -101,7 +101,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
             </h2>
           </div>
 
-          <div className="reveal-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+          <div className="reveal-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '24px' }}>
             <div className="glass hover-premium" style={{ padding: '32px', borderRadius: '14px', background: 'white', border: '1px solid var(--silk-200)', textAlign: 'left', boxShadow: '0 8px 24px rgba(0,0,0,0.04)' }}>
               <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'rgba(35, 61, 50, 0.1)', color: '#233D32', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                 <ShieldCheck size={24} />
@@ -148,7 +148,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
             </p>
           </div>
 
-          <div className="reveal-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
+          <div className="reveal-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '30px' }}>
             {/* Doctor 1 */}
             <div className="glass hover-premium" style={{ borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--silk-200)', display: 'flex', flexDirection: 'column', textAlign: 'left', background: 'white', boxShadow: '0 8px 24px rgba(0,0,0,0.05)' }}>
               <div style={{ height: '300px', overflow: 'hidden', position: 'relative' }}>
@@ -222,7 +222,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '24px' }}>
             <div className="glass hover-premium" style={{ borderRadius: '16px', overflow: 'hidden', background: 'white', border: '1px solid var(--silk-200)', boxShadow: '0 8px 24px rgba(0,0,0,0.06)' }}>
               <div style={{ height: '240px', overflow: 'hidden' }}>
                 <img src="/ycdc_reception_lobby.jpg" alt="YCDC Reception Lobby" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} />
