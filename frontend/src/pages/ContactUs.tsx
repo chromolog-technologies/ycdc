@@ -97,7 +97,7 @@ export default function ContactUs() {
         <div className="container consultation-layout">
           {/* Contact Form */}
           <div className="glass" style={{ padding: '40px', borderRadius: '16px', background: 'white', border: '1px solid var(--silk-200)', textAlign: 'left', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: '#233D32', marginBottom: '8px', fontWeight: 600 }}>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: '#536B4C', marginBottom: '8px', fontWeight: 600 }}>
               Send a Direct Message
             </h3>
             <p style={{ fontSize: '0.9rem', color: 'var(--muted-charcoal)', marginBottom: '24px' }}>
@@ -106,10 +106,10 @@ export default function ContactUs() {
 
             {isSuccess ? (
               <div className="animate-fade-in" style={{ textAlign: 'center', padding: '30px 0' }}>
-                <div style={{ color: '#233D32', display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+                <div style={{ color: '#536B4C', display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
                   <CheckCircle2 size={56} />
                 </div>
-                <h4 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', fontSize: '1.6rem', marginBottom: '8px', fontWeight: 600 }}>
+                <h4 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', fontSize: '1.6rem', marginBottom: '8px', fontWeight: 600 }}>
                   Message Sent Successfully!
                 </h4>
                 <p style={{ color: 'var(--muted-charcoal)', fontSize: '0.95rem', marginBottom: '24px' }}>
@@ -132,15 +132,15 @@ export default function ContactUs() {
                       flex: 1, 
                       padding: '14px 16px', 
                       borderRadius: '10px', 
-                      border: branch === 'trivandrum' ? '2px solid #233D32' : '1.5px solid #E2DCD2', 
-                      backgroundColor: branch === 'trivandrum' ? 'rgba(35, 61, 50, 0.08)' : 'white', 
-                      color: branch === 'trivandrum' ? '#233D32' : '#565F55',
+                      border: branch === 'trivandrum' ? '2px solid #536B4C' : '1.5px solid #E2DCD2', 
+                      backgroundColor: branch === 'trivandrum' ? 'rgba(83, 107, 76, 0.08)' : 'white', 
+                      color: branch === 'trivandrum' ? '#536B4C' : '#565F55',
                       cursor: 'pointer', 
                       textAlign: 'center', 
                       fontWeight: branch === 'trivandrum' ? '700' : '500', 
                       fontSize: '0.95rem',
                       transition: 'all 0.2s ease',
-                      boxShadow: branch === 'trivandrum' ? '0 2px 8px rgba(35, 61, 50, 0.12)' : 'none'
+                      boxShadow: branch === 'trivandrum' ? '0 2px 8px rgba(83, 107, 76, 0.12)' : 'none'
                     }}>
                       <input type="radio" name="branch" value="trivandrum" checked={branch === 'trivandrum'} onChange={() => setBranch('trivandrum')} style={{ display: 'none' }} />
                       Pattom, Trivandrum
@@ -149,15 +149,15 @@ export default function ContactUs() {
                       flex: 1, 
                       padding: '14px 16px', 
                       borderRadius: '10px', 
-                      border: branch === 'bangalore' ? '2px solid #233D32' : '1.5px solid #E2DCD2', 
-                      backgroundColor: branch === 'bangalore' ? 'rgba(35, 61, 50, 0.08)' : 'white', 
-                      color: branch === 'bangalore' ? '#233D32' : '#565F55',
+                      border: branch === 'bangalore' ? '2px solid #536B4C' : '1.5px solid #E2DCD2', 
+                      backgroundColor: branch === 'bangalore' ? 'rgba(83, 107, 76, 0.08)' : 'white', 
+                      color: branch === 'bangalore' ? '#536B4C' : '#565F55',
                       cursor: 'pointer', 
                       textAlign: 'center', 
                       fontWeight: branch === 'bangalore' ? '700' : '500', 
                       fontSize: '0.95rem',
                       transition: 'all 0.2s ease',
-                      boxShadow: branch === 'bangalore' ? '0 2px 8px rgba(35, 61, 50, 0.12)' : 'none'
+                      boxShadow: branch === 'bangalore' ? '0 2px 8px rgba(83, 107, 76, 0.12)' : 'none'
                     }}>
                       <input type="radio" name="branch" value="bangalore" checked={branch === 'bangalore'} onChange={() => setBranch('bangalore')} style={{ display: 'none' }} />
                       Whitefield, Bangalore
@@ -258,24 +258,24 @@ export default function ContactUs() {
             {/* Pattom branch details */}
             <div className="glass" style={{ padding: '32px', borderRadius: '16px', background: 'white', border: '1px solid var(--silk-200)', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.45rem', color: '#233D32', fontWeight: 600 }}>Pattom, Trivandrum</h4>
+                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.45rem', color: '#536B4C', fontWeight: 600 }}>Pattom, Trivandrum</h4>
                 <span className="badge badge-premium" style={{ fontSize: '0.7rem' }}>Active Center</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '0.9rem' }}>
                 <div style={{ display: 'flex', gap: '12px' }}>
-                  <MapPin size={18} style={{ color: '#233D32', flexShrink: 0, marginTop: '2px' }} />
+                  <MapPin size={18} style={{ color: '#536B4C', flexShrink: 0, marginTop: '2px' }} />
                   <span style={{ color: '#242923', lineHeight: '1.5' }}>Marappalam Road, Opposite IndusInd Bank, Pattom, Thiruvananthapuram - 695004</span>
                 </div>
                 <div style={{ display: 'flex', gap: '12px' }}>
-                  <Phone size={18} style={{ color: '#233D32', flexShrink: 0 }} />
-                  <a href="tel:+914713100707" style={{ color: '#233D32', fontWeight: 'bold' }}>+91 471 310 0707</a>
+                  <Phone size={18} style={{ color: '#536B4C', flexShrink: 0 }} />
+                  <a href="tel:+914713100707" style={{ color: '#536B4C', fontWeight: 'bold' }}>+91 471 310 0707</a>
                 </div>
                 <div style={{ display: 'flex', gap: '12px' }}>
-                  <Mail size={18} style={{ color: '#233D32', flexShrink: 0 }} />
-                  <a href="mailto:trivandrum@ycdcdermatology.com" style={{ color: '#233D32', textDecoration: 'none' }}>trivandrum@ycdcdermatology.com</a>
+                  <Mail size={18} style={{ color: '#536B4C', flexShrink: 0 }} />
+                  <a href="mailto:trivandrum@ycdcdermatology.com" style={{ color: '#536B4C', textDecoration: 'none' }}>trivandrum@ycdcdermatology.com</a>
                 </div>
                 <div style={{ display: 'flex', gap: '12px' }}>
-                  <Clock size={18} style={{ color: '#233D32', flexShrink: 0 }} />
+                  <Clock size={18} style={{ color: '#536B4C', flexShrink: 0 }} />
                   <span style={{ color: '#565F55' }}>Mon - Sat: 9:00 AM - 7:00 PM (Sunday Closed)</span>
                 </div>
               </div>
@@ -289,24 +289,24 @@ export default function ContactUs() {
             {/* Whitefield branch details */}
             <div className="glass" style={{ padding: '32px', borderRadius: '16px', background: 'white', border: '1px solid var(--silk-200)', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.45rem', color: '#233D32', fontWeight: 600 }}>Whitefield, Bangalore</h4>
+                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.45rem', color: '#536B4C', fontWeight: 600 }}>Whitefield, Bangalore</h4>
                 <span className="badge badge-gold" style={{ fontSize: '0.7rem' }}>Main Clinic</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '0.9rem' }}>
                 <div style={{ display: 'flex', gap: '12px' }}>
-                  <MapPin size={18} style={{ color: '#233D32', flexShrink: 0, marginTop: '2px' }} />
+                  <MapPin size={18} style={{ color: '#536B4C', flexShrink: 0, marginTop: '2px' }} />
                   <span style={{ color: '#242923', lineHeight: '1.5' }}>4th Floor, Premium Square, Whitefield Main Road, Near ITPL, Bengaluru - 560066</span>
                 </div>
                 <div style={{ display: 'flex', gap: '12px' }}>
-                  <Phone size={18} style={{ color: '#233D32', flexShrink: 0 }} />
-                  <a href="tel:+917593864264" style={{ color: '#233D32', fontWeight: 'bold' }}>+91 75938 64264</a>
+                  <Phone size={18} style={{ color: '#536B4C', flexShrink: 0 }} />
+                  <a href="tel:+917593864264" style={{ color: '#536B4C', fontWeight: 'bold' }}>+91 75938 64264</a>
                 </div>
                 <div style={{ display: 'flex', gap: '12px' }}>
-                  <Mail size={18} style={{ color: '#233D32', flexShrink: 0 }} />
-                  <a href="mailto:info@ycdcdermatology.com" style={{ color: '#233D32', textDecoration: 'none' }}>info@ycdcdermatology.com</a>
+                  <Mail size={18} style={{ color: '#536B4C', flexShrink: 0 }} />
+                  <a href="mailto:info@ycdcdermatology.com" style={{ color: '#536B4C', textDecoration: 'none' }}>info@ycdcdermatology.com</a>
                 </div>
                 <div style={{ display: 'flex', gap: '12px' }}>
-                  <Clock size={18} style={{ color: '#233D32', flexShrink: 0 }} />
+                  <Clock size={18} style={{ color: '#536B4C', flexShrink: 0 }} />
                   <span style={{ color: '#565F55' }}>Mon - Sat: 9:00 AM - 7:00 PM (Sunday Closed)</span>
                 </div>
               </div>

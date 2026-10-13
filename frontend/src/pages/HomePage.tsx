@@ -1032,7 +1032,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                               borderRadius: '9999px',
                               border: '1px solid rgba(255, 255, 255, 0.2)',
                               background: activeStage >= PATIENT_CARE_STAGES.length ? 'rgba(255, 255, 255, 0.08)' : 'var(--color-soft-gold)',
-                              color: activeStage >= PATIENT_CARE_STAGES.length ? 'rgba(255, 255, 255, 0.3)' : '#233D32',
+                              color: activeStage >= PATIENT_CARE_STAGES.length ? 'rgba(255, 255, 255, 0.3)' : '#536B4C',
                               cursor: activeStage >= PATIENT_CARE_STAGES.length ? 'not-allowed' : 'pointer',
                               fontSize: '0.78rem',
                               fontWeight: 600,

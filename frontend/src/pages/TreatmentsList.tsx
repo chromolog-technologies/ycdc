@@ -264,8 +264,8 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                   fontWeight: '700',
                   fontSize: '0.88rem',
                   border: 'none',
-                  backgroundColor: selectedType === 'all' ? '#233D32' : 'var(--silk-100)',
-                  color: selectedType === 'all' ? 'white' : '#233D32',
+                  backgroundColor: selectedType === 'all' ? '#536B4C' : 'var(--silk-100)',
+                  color: selectedType === 'all' ? 'white' : '#536B4C',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
                   whiteSpace: 'nowrap',
@@ -282,8 +282,8 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                   fontWeight: '700',
                   fontSize: '0.88rem',
                   border: 'none',
-                  backgroundColor: selectedType === 'dermatic' ? '#233D32' : 'var(--silk-100)',
-                  color: selectedType === 'dermatic' ? 'white' : '#233D32',
+                  backgroundColor: selectedType === 'dermatic' ? '#536B4C' : 'var(--silk-100)',
+                  color: selectedType === 'dermatic' ? 'white' : '#536B4C',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -304,7 +304,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                   fontSize: '0.88rem',
                   border: 'none',
                   backgroundColor: selectedType === 'cosmetic' ? '#B49A68' : 'var(--silk-100)',
-                  color: selectedType === 'cosmetic' ? 'white' : '#233D32',
+                  color: selectedType === 'cosmetic' ? 'white' : '#536B4C',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -336,7 +336,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                       padding: '8px 14px',
                       fontSize: '0.82rem',
                       borderRadius: '20px',
-                      backgroundColor: activeFilter === cat.key ? '#233D32' : 'var(--silk-100)',
+                      backgroundColor: activeFilter === cat.key ? '#536B4C' : 'var(--silk-100)',
                       color: activeFilter === cat.key ? 'white' : 'var(--muted-charcoal)',
                       border: '1px solid transparent',
                       transition: 'var(--transition-fast)',
@@ -388,13 +388,13 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
               boxShadow: 'var(--shadow-sm)'
             }}>
               <AlertCircle size={44} style={{ color: 'var(--gold-600)', marginBottom: '14px' }} />
-              <h3 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', fontSize: '1.8rem', marginBottom: '10px' }}>
+              <h3 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', fontSize: '1.8rem', marginBottom: '10px' }}>
                 Bangalore Branch Procedures Updating Soon
               </h3>
               <p style={{ maxWidth: '650px', margin: '0 auto 24px', color: 'var(--muted-charcoal)', fontSize: '1rem', lineHeight: '1.6' }}>
                 The full catalog of clinical and cosmetic procedures specifically customized for our <strong>Whitefield, Bangalore</strong> branch is currently being updated and will be published here shortly.
               </p>
-              <p style={{ fontSize: '0.9rem', color: '#233D32', fontWeight: '600', marginBottom: '24px' }}>
+              <p style={{ fontSize: '0.9rem', color: '#536B4C', fontWeight: '600', marginBottom: '24px' }}>
                 All core treatments, consultations, lasers, and hair care are fully active at our Whitefield clinic. Reach out to our Bangalore care team directly:
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
@@ -408,7 +408,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                 <a
                   href="tel:+919008985222"
                   className="btn btn-outline"
-                  style={{ padding: '12px 24px', display: 'flex', alignItems: 'center', gap: '8px', color: '#233D32', borderColor: '#233D32', fontWeight: 'bold' }}
+                  style={{ padding: '12px 24px', display: 'flex', alignItems: 'center', gap: '8px', color: '#536B4C', borderColor: '#536B4C', fontWeight: 'bold' }}
                 >
                   <Phone size={16} /> Call Whitefield Branch
                 </a>
@@ -435,7 +435,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
               Showing <strong>{filteredTreatments.length}</strong> procedure{filteredTreatments.length === 1 ? '' : 's'} 
               {selectedBranch === 'trivandrum' ? ' available at Trivandrum Branch' : selectedBranch === 'bangalore' ? ' for Bangalore Branch' : ' across branches'}
             </span>
-            <span className="badge badge-premium" style={{ fontSize: '0.75rem', backgroundColor: 'rgba(35, 61, 50, 0.1)', color: '#233D32', borderColor: 'rgba(35, 61, 50, 0.25)', whiteSpace: 'nowrap' }}>
+            <span className="badge badge-premium" style={{ fontSize: '0.75rem', backgroundColor: 'rgba(83, 107, 76, 0.1)', color: '#536B4C', borderColor: 'rgba(83, 107, 76, 0.25)', whiteSpace: 'nowrap' }}>
               {selectedBranch === 'trivandrum' ? '📍 Trivandrum Branch (Pattom)' : selectedBranch === 'bangalore' ? '📍 Bangalore Branch (Whitefield)' : '📍 All Branches'}
             </span>
           </div>
@@ -464,8 +464,8 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-5px)';
-                    e.currentTarget.style.boxShadow = '0 12px 30px rgba(35, 61, 50, 0.12)';
-                    e.currentTarget.style.borderColor = 'rgba(35, 61, 50, 0.35)';
+                    e.currentTarget.style.boxShadow = '0 12px 30px rgba(83, 107, 76, 0.12)';
+                    e.currentTarget.style.borderColor = 'rgba(83, 107, 76, 0.35)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'none';
@@ -491,7 +491,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                           letterSpacing: '0.04em',
                           padding: '4px 8px', 
                           borderRadius: '20px', 
-                          backgroundColor: t.procedure_type === 'dermatic' ? '#233D32' : '#B49A68',
+                          backgroundColor: t.procedure_type === 'dermatic' ? '#536B4C' : '#B49A68',
                           color: 'white',
                           boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
                           whiteSpace: 'nowrap',
@@ -530,7 +530,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                     <div>
                       {/* Category and duration */}
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '4px' }}>
-                        <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#233D32', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                        <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#536B4C', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                           {t.category_name}
                         </span>
                         <span style={{ fontSize: '0.75rem', color: '#B49A68', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}>
@@ -538,7 +538,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                         </span>
                       </div>
 
-                      <h4 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', fontSize: '1.2rem', marginBottom: '8px', lineHeight: '1.35', fontWeight: 600 }}>
+                      <h4 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', fontSize: '1.2rem', marginBottom: '8px', lineHeight: '1.35', fontWeight: 600 }}>
                         {t.name}
                       </h4>
                       <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', lineHeight: '1.55', marginBottom: '14px' }}>
@@ -548,7 +548,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
 
                     {/* Interactive Card Action Bar */}
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid var(--silk-200)', marginTop: '6px', gap: '8px' }}>
-                      <span style={{ fontSize: '0.82rem', fontWeight: '700', color: '#233D32', display: 'flex', alignItems: 'center', gap: '5px', whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: '0.82rem', fontWeight: '700', color: '#536B4C', display: 'flex', alignItems: 'center', gap: '5px', whiteSpace: 'nowrap' }}>
                         View Details <ArrowRight size={14} />
                       </span>
                       <button
@@ -562,19 +562,19 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                           fontSize: '0.78rem',
                           fontWeight: '700',
                           border: 'none',
-                          backgroundColor: 'rgba(35, 61, 50, 0.08)',
-                          color: '#233D32',
+                          backgroundColor: 'rgba(83, 107, 76, 0.08)',
+                          color: '#536B4C',
                           cursor: 'pointer',
                           transition: 'all 0.2s ease',
                           whiteSpace: 'nowrap'
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#233D32';
+                          e.currentTarget.style.backgroundColor = '#536B4C';
                           e.currentTarget.style.color = '#ffffff';
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'rgba(35, 61, 50, 0.08)';
-                          e.currentTarget.style.color = '#233D32';
+                          e.currentTarget.style.backgroundColor = 'rgba(83, 107, 76, 0.08)';
+                          e.currentTarget.style.color = '#536B4C';
                         }}
                       >
                         Book Now
@@ -597,7 +597,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
         <div className="container" style={{ maxWidth: '820px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <span className="badge badge-premium">Patient Knowledge</span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', marginTop: '10px', fontSize: '2.2rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', marginTop: '10px', fontSize: '2.2rem' }}>
               Procedures & Diagnostics FAQ
             </h2>
           </div>
@@ -625,8 +625,8 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                     userSelect: 'none'
                   }}
                 >
-                  <span style={{ fontWeight: '600', color: '#233D32', fontSize: '0.95rem' }}>{faq.q}</span>
-                  {expandedFaq === idx ? <ChevronUp size={18} style={{ color: '#233D32' }} /> : <ChevronDown size={18} style={{ color: '#233D32' }} />}
+                  <span style={{ fontWeight: '600', color: '#536B4C', fontSize: '0.95rem' }}>{faq.q}</span>
+                  {expandedFaq === idx ? <ChevronUp size={18} style={{ color: '#536B4C' }} /> : <ChevronDown size={18} style={{ color: '#536B4C' }} />}
                 </div>
 
                 {expandedFaq === idx && (
@@ -676,7 +676,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
             }}
           >
             {/* Top Banner / Image Header */}
-            <div style={{ position: 'relative', height: '220px', backgroundColor: '#233D32', overflow: 'hidden' }}>
+            <div style={{ position: 'relative', height: '220px', backgroundColor: '#536B4C', overflow: 'hidden' }}>
               {activeModalTreatment.image ? (
                 <>
                   <img
@@ -694,7 +694,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                 <div style={{
                   width: '100%',
                   height: '100%',
-                  background: 'linear-gradient(135deg, #233D32 0%, #1A2F26 100%)'
+                  background: 'linear-gradient(135deg, #536B4C 0%, #43583E 100%)'
                 }} />
               )}
 
@@ -719,7 +719,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                   transition: 'all 0.2s ease',
                   zIndex: 10
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#233D32')}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#536B4C')}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.5)')}
               >
                 <X size={20} />
@@ -735,7 +735,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                     letterSpacing: '0.05em',
                     padding: '5px 12px',
                     borderRadius: '20px',
-                    backgroundColor: activeModalTreatment.procedure_type === 'dermatic' ? '#233D32' : '#B49A68',
+                    backgroundColor: activeModalTreatment.procedure_type === 'dermatic' ? '#536B4C' : '#B49A68',
                     color: 'white',
                     boxShadow: '0 2px 6px rgba(0,0,0,0.25)'
                   }}>
@@ -776,7 +776,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
               {/* Title */}
               <h3 style={{
                 fontFamily: 'var(--font-serif)',
-                color: '#233D32',
+                color: '#536B4C',
                 fontSize: '1.85rem',
                 marginBottom: '10px',
                 lineHeight: '1.3',
@@ -806,13 +806,13 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
               {/* Scientific & Clinical Mechanism Box */}
               {activeModalTreatment.science && (
                 <div style={{
-                  background: 'linear-gradient(135deg, rgba(35, 61, 50, 0.05) 0%, rgba(200, 209, 192, 0.2) 100%)',
-                  border: '1px solid rgba(35, 61, 50, 0.18)',
+                  background: 'linear-gradient(135deg, rgba(83, 107, 76, 0.05) 0%, rgba(200, 209, 192, 0.2) 100%)',
+                  border: '1px solid rgba(83, 107, 76, 0.18)',
                   borderRadius: '12px',
                   padding: '16px 20px',
                   marginBottom: '20px'
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', color: '#233D32', fontWeight: 700, fontSize: '0.88rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', color: '#536B4C', fontWeight: 700, fontSize: '0.88rem' }}>
                     <Stethoscope size={18} />
                     <span>Clinical Mechanism of Action</span>
                   </div>
@@ -835,7 +835,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                         style={{
                           backgroundColor: 'var(--silk-100)',
                           border: '1px solid var(--silk-200)',
-                          color: '#233D32',
+                          color: '#536B4C',
                           padding: '6px 14px',
                           borderRadius: '20px',
                           fontSize: '0.82rem',
@@ -845,7 +845,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                           gap: '6px'
                         }}
                       >
-                        <CheckCircle2 size={13} style={{ color: '#233D32' }} />
+                        <CheckCircle2 size={13} style={{ color: '#536B4C' }} />
                         {item.trim()}
                       </span>
                     ))}
@@ -865,15 +865,15 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                 marginBottom: '10px'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#565F55' }}>
-                  <ShieldCheck size={16} style={{ color: '#233D32', flexShrink: 0 }} />
+                  <ShieldCheck size={16} style={{ color: '#536B4C', flexShrink: 0 }} />
                   <span>ISO 9001:2015 Clinical Safety</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#565F55' }}>
-                  <Award size={16} style={{ color: '#233D32', flexShrink: 0 }} />
+                  <Award size={16} style={{ color: '#536B4C', flexShrink: 0 }} />
                   <span>US-FDA Approved Devices</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#565F55' }}>
-                  <Sparkles size={16} style={{ color: '#233D32', flexShrink: 0 }} />
+                  <Sparkles size={16} style={{ color: '#536B4C', flexShrink: 0 }} />
                   <span>Personalized Skin Protocol</span>
                 </div>
               </div>
@@ -943,7 +943,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                     padding: '10px 24px',
                     borderRadius: '30px',
                     border: 'none',
-                    backgroundColor: '#233D32',
+                    backgroundColor: '#536B4C',
                     color: 'white',
                     fontWeight: 700,
                     fontSize: '0.88rem',
@@ -951,10 +951,10 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                     alignItems: 'center',
                     gap: '6px',
                     cursor: 'pointer',
-                    boxShadow: '0 4px 14px rgba(35, 61, 50, 0.25)'
+                    boxShadow: '0 4px 14px rgba(83, 107, 76, 0.25)'
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1A2F26')}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#233D32')}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#43583E')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#536B4C')}
                 >
                   <Calendar size={16} /> Book This Treatment
                 </button>

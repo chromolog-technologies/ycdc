@@ -123,12 +123,12 @@ export default function ConsultationForm({ onSuccessClose }: ConsultationFormPro
           width: '58px',
           height: '58px',
           borderRadius: '50%',
-          backgroundColor: 'rgba(35, 61, 50, 0.12)',
+          backgroundColor: 'rgba(83, 107, 76, 0.12)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           margin: '0 auto 14px',
-          color: '#233D32'
+          color: '#536B4C'
         }}>
           <CheckCircle size={32} />
         </div>

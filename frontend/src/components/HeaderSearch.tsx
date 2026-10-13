@@ -200,7 +200,7 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor, isTran
               padding: '0 8px 0 2px',
               display: 'flex',
               alignItems: 'center',
-              color: isTransparentHeader ? '#E6CA85' : '#233D32',
+              color: isTransparentHeader ? '#E6CA85' : '#536B4C',
               flexShrink: 0
             }}
           >
@@ -297,12 +297,12 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor, isTran
               height: isTransparentHeader ? '2.5px' : '2px',
               background: isTransparentHeader
                 ? 'linear-gradient(90deg, #E6CA85 0%, #FFFFFF 40%, #D9A5A7 100%)'
-                : 'linear-gradient(90deg, #233D32 0%, #D9A5A7 100%)',
+                : 'linear-gradient(90deg, #536B4C 0%, #D9A5A7 100%)',
               transformOrigin: 'left center',
               animation: 'expandLineLeftToRight 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards',
               boxShadow: isTransparentHeader
                 ? '0 0 10px rgba(230, 202, 133, 0.75), 0 0 4px rgba(255, 255, 255, 0.9)'
-                : '0 1px 4px rgba(35, 61, 50, 0.2)'
+                : '0 1px 4px rgba(83, 107, 76, 0.2)'
             }}
           />
 
@@ -341,12 +341,12 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor, isTran
                           gap: '12px',
                           padding: '10px 16px',
                           cursor: 'pointer',
-                          backgroundColor: isSelected ? 'rgba(35, 61, 50, 0.06)' : 'transparent',
+                          backgroundColor: isSelected ? 'rgba(83, 107, 76, 0.06)' : 'transparent',
                           borderBottom: idx === Math.min(results.length, 7) - 1 ? 'none' : '1px solid rgba(0, 0, 0, 0.04)',
                           transition: 'background-color 0.15s ease'
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = 'rgba(35, 61, 50, 0.05)';
+                          e.currentTarget.style.backgroundColor = 'rgba(83, 107, 76, 0.05)';
                         }}
                         onMouseLeave={(e) => {
                           if (!isSelected) {
@@ -382,21 +382,21 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor, isTran
                       borderTop: '1px solid rgba(0, 0, 0, 0.06)',
                       fontSize: '0.82rem',
                       fontWeight: 600,
-                      color: '#233D32',
+                      color: '#536B4C',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      backgroundColor: 'rgba(35, 61, 50, 0.02)',
+                      backgroundColor: 'rgba(83, 107, 76, 0.02)',
                       transition: 'all 0.15s ease'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgba(35, 61, 50, 0.06)';
+                      e.currentTarget.style.backgroundColor = 'rgba(83, 107, 76, 0.06)';
                       e.currentTarget.style.color = '#B49A68';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgba(35, 61, 50, 0.02)';
-                      e.currentTarget.style.color = '#233D32';
+                      e.currentTarget.style.backgroundColor = 'rgba(83, 107, 76, 0.02)';
+                      e.currentTarget.style.color = '#536B4C';
                     }}
                   >
                     <span>View all matching treatments &ldquo;{query}&rdquo;</span>
@@ -417,7 +417,7 @@ export default function HeaderSearch({ onNavigateToTreatments, iconColor, isTran
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: '#233D32',
+                      color: '#536B4C',
                       fontSize: '0.82rem',
                       fontWeight: 600,
                       cursor: 'pointer',

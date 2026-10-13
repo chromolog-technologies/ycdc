@@ -10,7 +10,7 @@
      Blossom          | #D9A5A7 | CTA/hover
      Meadow Sage      | #C8D1C0 | Secondary sections
      Soldier Green    | #536B4C | Secondary buttons/details
-     Deep Forest      | #233D32 | Primary brand colour
+     Deep Forest      | #536B4C | Primary brand colour
      Ink              | #242923 | Main typography
      Soft Gold        | #B49A68 | Very small luxury accent
      ========================================================================== */
@@ -50,11 +50,11 @@
   --color-soldier-green-border: #4A6044;
 
   /* --- 7. DEEP FOREST (Primary brand colour) --- */
-  --color-deep-forest: #233D32;
-  --color-deep-forest-hover: #1A2F26;
-  --color-deep-forest-light: #2D4C3F;
+  --color-deep-forest: #536B4C;
+  --color-deep-forest-hover: #43583E;
+  --color-deep-forest-light: #617D59;
   --color-deep-forest-subtle: #E8ECE9;
-  --color-deep-forest-border: #1C332A;
+  --color-deep-forest-border: #4A6044;
 
   /* --- 8. INK (Main typography) --- */
   --color-ink: #242923;
@@ -93,7 +93,7 @@
 
   --primary-color: var(--color-deep-forest);
   --primary-hover: var(--color-deep-forest-hover);
-  --primary-dark: #162620;
+  --primary-dark: #3F523A;
   --primary-light: var(--color-meadow-sage-light);
   --ycdc-forest: var(--color-deep-forest);
   --ycdc-forest-hover: var(--color-deep-forest-hover);
@@ -143,10 +143,10 @@
   --transition-reveal: 650ms cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Restrained Shadows (Very soft and shallow; avoid floating dashboard cards) */
-  --shadow-sm: 0 4px 16px rgba(53, 69, 54, 0.04);
-  --shadow-md: 0 12px 36px rgba(53, 69, 54, 0.05);
-  --shadow-lg: 0 20px 48px rgba(53, 69, 54, 0.07);
-  --shadow-glow: 0 0 25px rgba(53, 69, 54, 0.12);
+  --shadow-sm: 0 4px 16px rgba(83, 107, 76, 0.04);
+  --shadow-md: 0 12px 36px rgba(83, 107, 76, 0.05);
+  --shadow-lg: 0 20px 48px rgba(83, 107, 76, 0.07);
+  --shadow-glow: 0 0 25px rgba(83, 107, 76, 0.12);
 }
 
 /* ==========================================================================
@@ -171,7 +171,7 @@
     ) border-box;
   padding: clamp(24px, 4vw, 48px);
   color: var(--ycdc-ink);
-  box-shadow: 0 12px 36px rgb(53 69 54 / 5%);
+  box-shadow: 0 12px 36px rgb(83 107 76 / 5%);
   transition: background 400ms ease, box-shadow 400ms ease;
 }
 
@@ -190,14 +190,14 @@
       var(--color-rose-quartz) 78%,
       var(--color-usu-koubai) 100%
     ) border-box;
-  box-shadow: 0 16px 42px rgb(53 69 54 / 7%);
+  box-shadow: 0 16px 42px rgb(83 107 76 / 7%);
 }
 
 /* ==========================================================================
    Plum Gradient / Royal Deep Forest Luxury Gradient Banner
    ========================================================================== */
 .plum-gradient {
-  background: linear-gradient(135deg, #233D32 0%, #1A2F26 100%) !important;
+  background: linear-gradient(135deg, #536B4C 0%, #43583E 100%) !important;
   color: #ffffff !important;
 }
 
@@ -269,8 +269,8 @@ input[type="tel"]:focus,
 input[type="date"]:focus,
 input[type="number"]:focus,
 input[type="password"]:focus {
-  border-color: #233D32 !important;
-  box-shadow: 0 0 0 3.5px rgba(35, 61, 50, 0.15) !important;
+  border-color: #536B4C !important;
+  box-shadow: 0 0 0 3.5px rgba(83, 107, 76, 0.15) !important;
   background-color: #FFFFFF !important;
 }
 
@@ -310,7 +310,7 @@ select {
   cursor: pointer !important;
   appearance: none !important;
   -webkit-appearance: none !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23233D32' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23536B4C' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
   background-repeat: no-repeat !important;
   background-position: right 16px center !important;
   transition: all 0.25s ease !important;
@@ -319,8 +319,8 @@ select {
 
 .form-select:focus,
 select:focus {
-  border-color: #233D32 !important;
-  box-shadow: 0 0 0 3.5px rgba(35, 61, 50, 0.15) !important;
+  border-color: #536B4C !important;
+  box-shadow: 0 0 0 3.5px rgba(83, 107, 76, 0.15) !important;
 }
 
 /* 4. Textarea */
@@ -346,8 +346,8 @@ textarea {
 
 .form-textarea:focus,
 textarea:focus {
-  border-color: #233D32 !important;
-  box-shadow: 0 0 0 3.5px rgba(35, 61, 50, 0.15) !important;
+  border-color: #536B4C !important;
+  box-shadow: 0 0 0 3.5px rgba(83, 107, 76, 0.15) !important;
 }
 
 /* 5. Button System */
@@ -371,18 +371,18 @@ textarea:focus {
 
 .btn-primary,
 .btn-accent {
-  background-color: #233D32 !important;
+  background-color: #536B4C !important;
   color: #ffffff !important;
-  border-color: #233D32 !important;
-  box-shadow: 0 4px 14px rgba(35, 61, 50, 0.22) !important;
+  border-color: #536B4C !important;
+  box-shadow: 0 4px 14px rgba(83, 107, 76, 0.22) !important;
 }
 
 .btn-primary:hover,
 .btn-accent:hover {
-  background-color: #1A2F26 !important;
-  border-color: #1A2F26 !important;
+  background-color: #43583E !important;
+  border-color: #43583E !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 8px 22px rgba(35, 61, 50, 0.32) !important;
+  box-shadow: 0 8px 22px rgba(83, 107, 76, 0.32) !important;
 }
 
 .btn-secondary {
@@ -400,12 +400,12 @@ textarea:focus {
 
 .btn-outline {
   background-color: transparent !important;
-  color: #233D32 !important;
-  border: 1.5px solid #233D32 !important;
+  color: #536B4C !important;
+  border: 1.5px solid #536B4C !important;
 }
 
 .btn-outline:hover {
-  background-color: rgba(35, 61, 50, 0.08) !important;
+  background-color: rgba(83, 107, 76, 0.08) !important;
   transform: translateY(-1px) !important;
 }
 
@@ -429,9 +429,9 @@ textarea:focus {
 }
 
 .badge-premium {
-  background-color: rgba(35, 61, 50, 0.1) !important;
-  color: #233D32 !important;
-  border: 1px solid rgba(35, 61, 50, 0.25) !important;
+  background-color: rgba(83, 107, 76, 0.1) !important;
+  color: #536B4C !important;
+  border: 1px solid rgba(83, 107, 76, 0.25) !important;
 }
 
 .badge-gold {
@@ -441,7 +441,7 @@ textarea:focus {
 }
 
 .badge-plum {
-  background-color: #233D32 !important;
+  background-color: #536B4C !important;
   color: #ffffff !important;
 }
 
@@ -689,7 +689,7 @@ a {
 .btn-primary {
   background-color: var(--color-deep-forest);
   color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(35, 61, 50, 0.25);
+  box-shadow: 0 4px 14px rgba(83, 107, 76, 0.25);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1035,7 +1035,7 @@ header.header-scrolled .mobile-menu-btn {
 }
 
 .header-search-icon-btn:hover {
-  background-color: rgba(53, 69, 54, 0.08) !important;
+  background-color: rgba(83, 107, 76, 0.08) !important;
   color: #1F2A20 !important;
   transform: scale(1.05);
 }
@@ -1110,12 +1110,12 @@ input[type="text"].header-search-input:focus,
 }
 
 .search-results-dropdown::-webkit-scrollbar-thumb {
-  background-color: rgba(35, 61, 50, 0.2);
+  background-color: rgba(83, 107, 76, 0.2);
   border-radius: 6px;
 }
 
 .search-results-dropdown::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(35, 61, 50, 0.4);
+  background-color: rgba(83, 107, 76, 0.4);
 }
 
 @media (max-width: 768px) {
@@ -1143,7 +1143,7 @@ input[type="text"].header-search-input:focus,
     backdrop-filter: blur(14px) !important;
     -webkit-backdrop-filter: blur(14px) !important;
     border-bottom: 1px solid rgba(215, 203, 190, 0.6) !important;
-    box-shadow: 0 8px 24px rgba(35, 61, 50, 0.12) !important;
+    box-shadow: 0 8px 24px rgba(83, 107, 76, 0.12) !important;
     z-index: 1050 !important;
   }
 
@@ -2404,7 +2404,7 @@ footer.glass-dark {
   aspect-ratio: 4 / 5;
   border-radius: 220px 220px 32px 32px;
   overflow: hidden;
-  box-shadow: 0 20px 48px rgba(53, 69, 54, 0.12);
+  box-shadow: 0 20px 48px rgba(83, 107, 76, 0.12);
   background: var(--color-pastel-green);
 }
 
@@ -2527,7 +2527,7 @@ footer.glass-dark {
   aspect-ratio: 4 / 5;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 12px 32px rgba(53, 69, 54, 0.08);
+  box-shadow: 0 12px 32px rgba(83, 107, 76, 0.08);
 }
 
 .about-clinic-photo {
@@ -2544,7 +2544,7 @@ footer.glass-dark {
   display: flex;
   flex-direction: column;
   gap: 28px;
-  box-shadow: 0 8px 24px rgba(53, 69, 54, 0.04);
+  box-shadow: 0 8px 24px rgba(83, 107, 76, 0.04);
 }
 
 .stat-row-skinyou {
@@ -2633,7 +2633,7 @@ footer.glass-dark {
 
 .service-card-skinyou:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(53, 69, 54, 0.06);
+  box-shadow: 0 10px 24px rgba(83, 107, 76, 0.06);
   border-color: var(--color-pastel-green);
 }
 
@@ -2703,7 +2703,7 @@ footer.glass-dark {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 20px 48px rgba(53, 69, 54, 0.1);
+  box-shadow: 0 20px 48px rgba(83, 107, 76, 0.1);
   margin: 0 auto;
   border: 5px solid #ffffff;
 }
@@ -2782,7 +2782,7 @@ footer.glass-dark {
   border-radius: 16px;
   padding: 28px 24px;
   border: 1px solid rgba(232, 200, 200, 0.5);
-  box-shadow: 0 6px 20px rgba(53, 69, 54, 0.04);
+  box-shadow: 0 6px 20px rgba(83, 107, 76, 0.04);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -2849,10 +2849,10 @@ footer.glass-dark {
 }
 
 .btn-soldier:hover {
-  background-color: #034529;
+  background-color: #43583E;
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(4, 89, 53, 0.3);
+  box-shadow: 0 8px 20px rgba(83, 107, 76, 0.3);
 }
 
 .btn-soldier-outline {
@@ -2891,7 +2891,7 @@ footer.glass-dark {
   font-family: var(--font-sans);
   font-size: 0.86rem;
   font-weight: 600;
-  border: 1.5px solid rgba(53, 69, 54, 0.4);
+  border: 1.5px solid rgba(83, 107, 76, 0.4);
   cursor: pointer;
   transition: all 0.25s ease;
   text-decoration: none;
@@ -2953,7 +2953,7 @@ footer.glass-dark {
   --royal-gold-glow: 0 0 20px rgba(197, 160, 89, 0.25);
   --royal-rose-shimmer: linear-gradient(135deg, rgba(232, 200, 200, 0.5) 0%, rgba(249, 239, 239, 0.8) 50%, rgba(185, 203, 176, 0.4) 100%);
   --royal-berry-gradient: linear-gradient(135deg, #823B51 0%, #632637 100%);
-  --royal-soldier-gradient: linear-gradient(135deg, #354536 0%, #222E23 100%);
+  --royal-soldier-gradient: linear-gradient(135deg, #536B4C 0%, #43583E 100%);
 }
 
 /* Royal Crest & Emblem */
@@ -3063,7 +3063,7 @@ footer.glass-dark {
   color: #ffffff;
   border-color: var(--color-soldier-green);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(53, 69, 54, 0.18);
+  box-shadow: 0 8px 20px rgba(83, 107, 76, 0.18);
 }
 
 /* Royal Portal Frame with Dual Gold Rim */
@@ -3075,7 +3075,7 @@ footer.glass-dark {
   aspect-ratio: 4 / 5.2;
   border-radius: 220px 220px 28px 28px;
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(53, 69, 54, 0.16), 0 0 0 2px rgba(197, 160, 89, 0.4);
+  box-shadow: 0 24px 60px rgba(83, 107, 76, 0.16), 0 0 0 2px rgba(197, 160, 89, 0.4);
   background: var(--color-pastel-green);
   border: 4px solid #ffffff;
 }
@@ -3214,7 +3214,7 @@ footer.glass-dark {
   align-items: center;
   position: relative;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 6px 20px rgba(53, 69, 54, 0.04);
+  box-shadow: 0 6px 20px rgba(83, 107, 76, 0.04);
   cursor: pointer;
   overflow: hidden;
 }
@@ -3243,7 +3243,7 @@ footer.glass-dark {
 .royal-suite-card.royal-featured {
   background: linear-gradient(180deg, #F3F8F1 0%, #FFFFFF 100%);
   border-color: var(--color-pastel-green);
-  box-shadow: 0 10px 28px rgba(53, 69, 54, 0.08);
+  box-shadow: 0 10px 28px rgba(83, 107, 76, 0.08);
 }
 
 .royal-suite-card.royal-featured::before {
@@ -3513,7 +3513,7 @@ footer.glass-dark {
   display: flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 8px 20px rgba(53, 69, 54, 0.08);
+  box-shadow: 0 8px 20px rgba(83, 107, 76, 0.08);
 }
 
 /* Trust / Approach Strip */
@@ -3709,7 +3709,7 @@ footer.glass-dark {
   border-radius: 18px;
   border: 1px solid rgba(232, 200, 200, 0.7);
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(53, 69, 54, 0.04);
+  box-shadow: 0 8px 24px rgba(83, 107, 76, 0.04);
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
@@ -3804,7 +3804,7 @@ footer.glass-dark {
   border-radius: 20px;
   border: 1px solid rgba(232, 200, 200, 0.6);
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(53, 69, 54, 0.04);
+  box-shadow: 0 8px 24px rgba(83, 107, 76, 0.04);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -3901,7 +3901,7 @@ footer.glass-dark {
   border-radius: 20px;
   border: 1px solid rgba(232, 200, 200, 0.7);
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(53, 69, 54, 0.05);
+  box-shadow: 0 10px 30px rgba(83, 107, 76, 0.05);
 }
 
 .center-photo-wrap {
@@ -3998,7 +3998,7 @@ footer.glass-dark {
   aspect-ratio: 1 / 1;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(53, 69, 54, 0.06);
+  box-shadow: 0 4px 14px rgba(83, 107, 76, 0.06);
 }
 
 .journey-photo-item img {
@@ -4052,7 +4052,7 @@ footer.glass-dark {
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(53, 69, 54, 0.16);
+  box-shadow: 0 4px 16px rgba(83, 107, 76, 0.16);
   transition: all 0.25s ease;
   text-decoration: none;
 }
@@ -4060,7 +4060,7 @@ footer.glass-dark {
 .btn-soldier-pill:hover {
   background-color: var(--color-soldier-green-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(53, 69, 54, 0.24);
+  box-shadow: 0 8px 24px rgba(83, 107, 76, 0.24);
   color: #ffffff;
 }
 
@@ -4141,7 +4141,7 @@ footer.glass-dark {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 8px 24px rgba(53, 69, 54, 0.04);
+  box-shadow: 0 8px 24px rgba(83, 107, 76, 0.04);
 }
 
 .review-stars {
@@ -4195,7 +4195,7 @@ footer.glass-dark {
   background: #1C1E1B;
   border-radius: 40px;
   padding: 10px;
-  box-shadow: 0 24px 50px rgba(53, 69, 54, 0.18);
+  box-shadow: 0 24px 50px rgba(83, 107, 76, 0.18);
   border: 3px solid rgba(150, 127, 142, 0.4);
 }
 
@@ -4258,10 +4258,10 @@ footer.glass-dark {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(53, 69, 54, 0.82) 0%,
-    rgba(53, 69, 54, 0.6) 42%,
-    rgba(53, 69, 54, 0.32) 75%,
-    rgba(53, 69, 54, 0.15) 100%
+    rgba(83, 107, 76, 0.82) 0%,
+    rgba(83, 107, 76, 0.6) 42%,
+    rgba(83, 107, 76, 0.32) 75%,
+    rgba(83, 107, 76, 0.15) 100%
   );
   z-index: 1;
 }
@@ -4424,7 +4424,7 @@ footer.glass-dark {
 }
 
 .btn-translucent-outline {
-  background: rgba(53, 69, 54, 0.32);
+  background: rgba(83, 107, 76, 0.32);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: #ffffff;
@@ -4445,7 +4445,7 @@ footer.glass-dark {
 }
 
 .btn-translucent-outline:hover {
-  background: rgba(53, 69, 54, 0.65);
+  background: rgba(83, 107, 76, 0.65);
   border-color: #A6BBA0;
   transform: translateY(-2px);
   color: #ffffff;
@@ -4533,7 +4533,7 @@ footer.glass-dark {
 .hero-bottom-glass-bar {
   position: relative;
   z-index: 2;
-  background: rgba(53, 69, 54, 0.62);
+  background: rgba(83, 107, 76, 0.62);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(166, 187, 160, 0.45);
@@ -4758,7 +4758,7 @@ footer.glass-dark {
   border-radius: 140px 140px 20px 20px;
   border: 1px solid rgba(232, 200, 200, 0.65);
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(53, 69, 54, 0.04);
+  box-shadow: 0 10px 30px rgba(83, 107, 76, 0.04);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
@@ -4865,7 +4865,7 @@ footer.glass-dark {
 .our-clinic-photo-frame {
   border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(53, 69, 54, 0.12);
+  box-shadow: 0 16px 40px rgba(83, 107, 76, 0.12);
   aspect-ratio: 16 / 10;
   background: #ffffff;
 }
@@ -4894,7 +4894,7 @@ footer.glass-dark {
   height: 40px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(53, 69, 54, 0.25);
+  border: 1px solid rgba(83, 107, 76, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5023,7 +5023,7 @@ footer.glass-dark {
   border-radius: 24px;
   overflow: hidden;
   aspect-ratio: 1 / 1.1;
-  box-shadow: 0 16px 36px rgba(53, 69, 54, 0.1);
+  box-shadow: 0 16px 36px rgba(83, 107, 76, 0.1);
   border: 1px solid rgba(232, 200, 200, 0.7);
   background: #F8F4F4;
 }
@@ -5073,7 +5073,7 @@ footer.glass-dark {
 
 /* 7. Section: Moments in Journey (Image 1 - Dark Forest Green) */
 .moments-journey-dark {
-  background-color: #0D231B;
+  background-color: #3F523A;
   color: #ffffff;
   padding: clamp(64px, 8vw, 100px) 0;
   position: relative;
@@ -5932,7 +5932,7 @@ footer.glass-dark {
   }
 }
 
-/* 3. Master Feature Ribbon Strip (Anchor tone: Deep Forest #233D32) */
+/* 3. Master Feature Ribbon Strip (Anchor tone: Deep Forest #536B4C) */
 .master-ribbon-strip {
   background-color: var(--color-deep-forest);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -6021,7 +6021,7 @@ footer.glass-dark {
 .master-ribbon-approach-title {
   font-size: clamp(0.78rem, 0.88vw, 0.85rem);
   font-weight: 700;
-  color: #354536;
+  color: #536B4C;
   white-space: nowrap;
 }
 
@@ -6029,11 +6029,11 @@ footer.glass-dark {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 1.5px solid #354536;
+  border: 1.5px solid #536B4C;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #354536;
+  color: #536B4C;
   flex-shrink: 0;
 }
 
@@ -6120,7 +6120,7 @@ footer.glass-dark {
   border-radius: 120px 24px 24px 24px;
   overflow: hidden;
   border: 1px solid rgba(183, 195, 174, 0.65);
-  box-shadow: 0 8px 24px rgba(35, 61, 50, 0.08);
+  box-shadow: 0 8px 24px rgba(83, 107, 76, 0.08);
   cursor: pointer;
   transition: all 0.35s ease;
   display: flex;
@@ -6129,7 +6129,7 @@ footer.glass-dark {
 
 .master-spec-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(35, 61, 50, 0.16);
+  box-shadow: 0 16px 40px rgba(83, 107, 76, 0.16);
   border-color: var(--color-blossom);
 }
 
@@ -6187,7 +6187,7 @@ footer.glass-dark {
 }
 
 .master-spec-card:hover .master-spec-arrow-circle {
-  background: #233D32;
+  background: #536B4C;
   color: #ffffff;
 }
 
@@ -6219,7 +6219,7 @@ footer.glass-dark {
   border-radius: 180px 180px 20px 20px;
   overflow: hidden;
   aspect-ratio: 1 / 1.35;
-  box-shadow: 0 16px 40px rgba(53, 69, 54, 0.1);
+  box-shadow: 0 16px 40px rgba(83, 107, 76, 0.1);
   border: 4px solid #ffffff;
 }
 
@@ -6276,8 +6276,8 @@ footer.glass-dark {
 
 .btn-master-story-outline {
   background: transparent;
-  border: 1.5px solid #354536;
-  color: #354536;
+  border: 1.5px solid #536B4C;
+  color: #536B4C;
   border-radius: 9999px;
   padding: 10px 24px;
   font-size: 0.88rem;
@@ -6288,7 +6288,7 @@ footer.glass-dark {
 }
 
 .btn-master-story-outline:hover {
-  background: #233D32;
+  background: #536B4C;
   color: #ffffff;
 }
 
@@ -6308,7 +6308,7 @@ footer.glass-dark {
 .master-about-stat-num {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 3.2vw, 2.7rem);
-  color: #354536;
+  color: #536B4C;
   font-weight: 700;
   line-height: 1;
 }
@@ -6332,7 +6332,7 @@ footer.glass-dark {
   border-radius: 180px 180px 20px 20px;
   overflow: hidden;
   aspect-ratio: 1 / 1.15;
-  box-shadow: 0 16px 40px rgba(53, 69, 54, 0.1);
+  box-shadow: 0 16px 40px rgba(83, 107, 76, 0.1);
   border: 4px solid #ffffff;
 }
 
@@ -6370,7 +6370,7 @@ footer.glass-dark {
 .master-meet-doctors-link {
   background: none;
   border: none;
-  color: #354536;
+  color: #536B4C;
   font-weight: 700;
   font-size: 0.88rem;
   cursor: pointer;
@@ -6420,7 +6420,7 @@ footer.glass-dark {
 
 .master-why-step-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(53, 69, 54, 0.08);
+  box-shadow: 0 12px 30px rgba(83, 107, 76, 0.08);
 }
 
 .master-why-step-icon-circle {
@@ -6519,7 +6519,7 @@ footer.glass-dark {
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(215, 203, 190, 0.6);
-  box-shadow: 0 6px 20px rgba(53, 69, 54, 0.04);
+  box-shadow: 0 6px 20px rgba(83, 107, 76, 0.04);
 }
 
 .master-ba-images-row {
@@ -6559,7 +6559,7 @@ footer.glass-dark {
   border-radius: 14px;
   padding: 20px 22px;
   border: 1px solid rgba(215, 203, 190, 0.6);
-  box-shadow: 0 6px 20px rgba(53, 69, 54, 0.04);
+  box-shadow: 0 6px 20px rgba(83, 107, 76, 0.04);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -6623,9 +6623,9 @@ footer.glass-dark {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 1px solid rgba(53, 69, 54, 0.3);
+  border: 1px solid rgba(83, 107, 76, 0.3);
   background: #FAF7F2;
-  color: #354536;
+  color: #536B4C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6634,7 +6634,7 @@ footer.glass-dark {
 }
 
 .master-testimonial-nav-btn:hover {
-  background: #233D32;
+  background: #536B4C;
   color: #ffffff;
 }
 
@@ -6651,7 +6651,7 @@ footer.glass-dark {
   min-height: 380px;
   display: flex;
   align-items: center;
-  box-shadow: 0 20px 50px rgba(53, 69, 54, 0.12);
+  box-shadow: 0 20px 50px rgba(83, 107, 76, 0.12);
   border: 1px solid rgba(215, 203, 190, 0.6);
 }
 
@@ -6718,8 +6718,8 @@ footer.glass-dark {
 
 .btn-master-white-outline {
   background: rgba(255, 255, 255, 0.85);
-  border: 1.5px solid #354536;
-  color: #354536;
+  border: 1.5px solid #536B4C;
+  color: #536B4C;
   border-radius: 9999px;
   padding: 13px 28px;
   font-size: 0.92rem;
@@ -6798,7 +6798,7 @@ footer.glass-dark {
 .reveal-delay-4 { transition-delay: 400ms; }
 
 /* ==========================================================================
-   GIVEN SECTIONS STYLING (with Green #354536)
+   GIVEN SECTIONS STYLING (with Green #536B4C)
    ========================================================================== */
 
 /* Universal Section Pill Badge */
@@ -6809,11 +6809,11 @@ footer.glass-dark {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-deep-forest);
-  border: 1px solid rgba(35, 61, 50, 0.28);
+  border: 1px solid rgba(83, 107, 76, 0.28);
   border-radius: 9999px;
   padding: 6px 16px;
   margin-bottom: 18px;
-  background-color: rgba(35, 61, 50, 0.04);
+  background-color: rgba(83, 107, 76, 0.04);
 }
 
 .four-stages-section .section-pill-badge {
@@ -6887,7 +6887,7 @@ footer.glass-dark {
   z-index: 2;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 22px 52px rgba(35, 61, 50, 0.16), 0 4px 14px rgba(180, 154, 104, 0.14);
+  box-shadow: 0 22px 52px rgba(83, 107, 76, 0.16), 0 4px 14px rgba(180, 154, 104, 0.14);
   border: 1.5px solid rgba(255, 255, 255, 0.9);
   background: #E8ECE6;
   aspect-ratio: 1 / 1.05;
@@ -6950,8 +6950,8 @@ footer.glass-dark {
   padding: 7px 16px;
   font-size: 0.76rem;
   font-weight: 600;
-  color: #233D32;
-  box-shadow: 0 8px 24px rgba(35, 61, 50, 0.15);
+  color: #536B4C;
+  box-shadow: 0 8px 24px rgba(83, 107, 76, 0.15);
 }
 
 .heritage-status-pulse {
@@ -7046,7 +7046,7 @@ footer.glass-dark {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(180, 154, 104, 0.35);
-  box-shadow: 0 16px 36px rgba(35, 61, 50, 0.16);
+  box-shadow: 0 16px 36px rgba(83, 107, 76, 0.16);
   border-radius: 18px;
   padding: 11px 18px;
   display: flex;
@@ -7066,7 +7066,7 @@ footer.glass-dark {
   top: 12px;
   right: -10px;
   z-index: 4;
-  background: rgba(35, 61, 50, 0.9);
+  background: rgba(83, 107, 76, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: #ffffff;
@@ -7155,7 +7155,7 @@ footer.glass-dark {
   font-size: clamp(1.1rem, 1.4vw, 1.3rem);
   font-style: italic;
   line-height: 1.6;
-  color: #354536;
+  color: #536B4C;
 }
 
 .heritage-body-p {
@@ -7173,7 +7173,7 @@ footer.glass-dark {
   gap: 24px;
   margin-top: 28px;
   padding-top: 20px;
-  border-top: 1px solid rgba(53, 69, 54, 0.15);
+  border-top: 1px solid rgba(83, 107, 76, 0.15);
 }
 
 .heritage-signature-box {
@@ -7290,7 +7290,7 @@ footer.glass-dark {
   background-color: var(--color-deep-forest);
   color: #ffffff;
   border-color: var(--color-deep-forest);
-  box-shadow: 0 4px 14px rgba(35, 61, 50, 0.25);
+  box-shadow: 0 4px 14px rgba(83, 107, 76, 0.25);
 }
 
 .care-content-grid {
@@ -7325,8 +7325,8 @@ footer.glass-dark {
 }
 
 .care-service-item:hover {
-  border-color: #354536;
-  box-shadow: 0 6px 20px rgba(53, 69, 54, 0.06);
+  border-color: #536B4C;
+  box-shadow: 0 6px 20px rgba(83, 107, 76, 0.06);
   transform: translateY(-2px);
 }
 
@@ -7347,8 +7347,8 @@ footer.glass-dark {
 .care-service-badge {
   font-size: 0.78rem;
   font-weight: 600;
-  color: #354536;
-  border: 1px solid rgba(53, 69, 54, 0.3);
+  color: #536B4C;
+  border: 1px solid rgba(83, 107, 76, 0.3);
   border-radius: 9999px;
   padding: 4px 14px;
   white-space: nowrap;
@@ -7376,7 +7376,7 @@ footer.glass-dark {
   align-items: center;
   gap: 8px;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(35, 61, 50, 0.25);
+  box-shadow: 0 4px 14px rgba(83, 107, 76, 0.25);
 }
 
 .btn-care-primary:hover {
@@ -7386,8 +7386,8 @@ footer.glass-dark {
 
 .btn-care-catalogue {
   background: transparent;
-  color: #354536;
-  border: 1.5px solid rgba(53, 69, 54, 0.3);
+  color: #536B4C;
+  border: 1.5px solid rgba(83, 107, 76, 0.3);
   border-radius: 9999px;
   padding: 11px 22px;
   font-size: 0.88rem;
@@ -7400,15 +7400,15 @@ footer.glass-dark {
 }
 
 .btn-care-catalogue:hover {
-  border-color: #354536;
-  background: rgba(53, 69, 54, 0.05);
+  border-color: #536B4C;
+  background: rgba(83, 107, 76, 0.05);
 }
 
 .care-preview-card {
   position: relative;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(53, 69, 54, 0.12);
+  box-shadow: 0 16px 40px rgba(83, 107, 76, 0.12);
   aspect-ratio: 1 / 1.1;
   border: 1px solid rgba(215, 203, 190, 0.7);
   display: flex;
@@ -7445,7 +7445,7 @@ footer.glass-dark {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   background: rgba(255, 255, 255, 0.9);
-  color: #354536;
+  color: #536B4C;
   padding: 4px 12px;
   border-radius: 9999px;
   margin-bottom: 8px;
@@ -7465,7 +7465,7 @@ footer.glass-dark {
   line-height: 1.5;
 }
 
-/* 3. The Four Stages of Patient Care (Cadence Step 4: Deep Forest #233D32 ANCHOR) */
+/* 3. The Four Stages of Patient Care (Cadence Step 4: Deep Forest #536B4C ANCHOR) */
 .four-stages-section {
   background-color: var(--color-deep-forest);
   padding: clamp(80px, 9.5vw, 125px) 0;
@@ -7551,7 +7551,7 @@ footer.glass-dark {
 
 .care-step-pill.active {
   background: var(--color-soft-gold);
-  color: #233D32;
+  color: #536B4C;
   border-color: var(--color-soft-gold);
   box-shadow: 0 6px 18px rgba(180, 154, 104, 0.35);
 }
@@ -7564,7 +7564,7 @@ footer.glass-dark {
 }
 
 .care-step-pill.active .step-pill-num {
-  color: #233D32;
+  color: #536B4C;
 }
 
 /* Beautiful Doctor Discovery Button */
@@ -7701,7 +7701,7 @@ footer.glass-dark {
 
 .stage-card.active .stage-phase-badge {
   background: var(--color-soft-gold);
-  color: #233D32;
+  color: #536B4C;
 }
 
 .stage-card-text {
@@ -7790,7 +7790,7 @@ footer.glass-dark {
   border-radius: 22px;
   padding: 32px 30px;
   border: 1px solid rgba(183, 195, 174, 0.65);
-  box-shadow: 0 10px 30px rgba(35, 61, 50, 0.07);
+  box-shadow: 0 10px 30px rgba(83, 107, 76, 0.07);
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -7853,8 +7853,8 @@ footer.glass-dark {
 .btn-facility-maps {
   flex: 1;
   background: transparent;
-  color: #354536;
-  border: 1.5px solid #354536;
+  color: #536B4C;
+  border: 1.5px solid #536B4C;
   border-radius: 9999px;
   padding: 10px 18px;
   font-size: 0.86rem;
@@ -7869,7 +7869,7 @@ footer.glass-dark {
 }
 
 .btn-facility-maps:hover {
-  background: rgba(53, 69, 54, 0.06);
+  background: rgba(83, 107, 76, 0.06);
 }
 
 .btn-facility-book {
@@ -7886,7 +7886,7 @@ footer.glass-dark {
   align-items: center;
   justify-content: center;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(35, 61, 50, 0.25);
+  box-shadow: 0 4px 14px rgba(83, 107, 76, 0.25);
 }
 
 .btn-facility-book:hover {
@@ -7949,7 +7949,7 @@ footer.glass-dark {
   aspect-ratio: 1 / 1;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(53, 69, 54, 0.08);
+  box-shadow: 0 6px 20px rgba(83, 107, 76, 0.08);
   border: 1px solid rgba(215, 203, 190, 0.4);
   background: #ffffff;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -7959,7 +7959,7 @@ footer.glass-dark {
 
 .journey-card-item:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 32px rgba(53, 69, 54, 0.16);
+  box-shadow: 0 14px 32px rgba(83, 107, 76, 0.16);
   border-color: #B97D7B;
 }
 
@@ -7978,7 +7978,7 @@ footer.glass-dark {
 .journey-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(53, 69, 54, 0.45) 100%);
+  background: linear-gradient(180deg, transparent 55%, rgba(83, 107, 76, 0.45) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
   display: flex;
@@ -8038,13 +8038,13 @@ footer.glass-dark {
 
 .btn-journey-more {
   background-color: #ffffff;
-  color: #354536;
+  color: #536B4C;
   padding: 12px 28px;
   border-radius: 9999px;
   font-family: var(--font-sans);
   font-size: 0.9rem;
   font-weight: 700;
-  border: 1px solid rgba(53, 69, 54, 0.25);
+  border: 1px solid rgba(83, 107, 76, 0.25);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -8054,12 +8054,12 @@ footer.glass-dark {
 }
 
 .btn-journey-more:hover {
-  border-color: #354536;
+  border-color: #536B4C;
   background-color: #FAF7F2;
   transform: translateY(-2px);
 }
 
-/* 5. Consultation Invitation Banner (Primary brand colour: Deep Forest #233D32) */
+/* 5. Consultation Invitation Banner (Primary brand colour: Deep Forest #536B4C) */
 .consultation-invitation-banner {
   background-color: var(--color-deep-forest);
   color: #ffffff;
@@ -8158,7 +8158,7 @@ footer.glass-dark {
   transform: translateY(-2px);
 }
 
-/* 6. Footer Royal Banner (Primary brand colour: Deep Forest #233D32) */
+/* 6. Footer Royal Banner (Primary brand colour: Deep Forest #536B4C) */
 .footer-royal-banner {
   background-color: var(--color-deep-forest);
   color: #ffffff;
@@ -8476,7 +8476,7 @@ footer.glass-dark {
   background: var(--color-warm-ivory) !important;
   border-radius: 28px !important;
   padding: clamp(30px, 4vw, 44px) clamp(24px, 3.5vw, 40px) !important;
-  box-shadow: 0 16px 48px rgba(35, 61, 50, 0.08) !important;
+  box-shadow: 0 16px 48px rgba(83, 107, 76, 0.08) !important;
   border: 1.5px solid var(--color-rose-quartz-border) !important;
   text-align: center;
   position: relative;
@@ -8534,7 +8534,7 @@ footer.glass-dark {
 }
 
 .wizard-dot.active {
-  background-color: #233D32;
+  background-color: #536B4C;
   transform: scale(1.15);
 }
 
@@ -8547,7 +8547,7 @@ footer.glass-dark {
 }
 
 .wizard-line.active {
-  background-color: #233D32;
+  background-color: #536B4C;
 }
 
 /* Form Slider Wrapper */
@@ -8571,7 +8571,7 @@ footer.glass-dark {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #354536;
+  color: #536B4C;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -8599,7 +8599,7 @@ footer.glass-dark {
 .consultation-form-card .form-select {
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23354536' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23536B4C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   background-size: 16px;
@@ -8678,7 +8678,7 @@ footer.glass-dark {
   border: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 6px 18px rgba(35, 61, 50, 0.25);
+  box-shadow: 0 6px 18px rgba(83, 107, 76, 0.25);
   margin-top: 24px;
   display: inline-flex;
   align-items: center;
@@ -8690,7 +8690,7 @@ footer.glass-dark {
 .btn-wizard-continue:hover {
   background-color: var(--color-deep-forest-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(35, 61, 50, 0.3);
+  box-shadow: 0 8px 24px rgba(83, 107, 76, 0.3);
 }
 
 .btn-wizard-continue:disabled {
@@ -8712,9 +8712,9 @@ footer.glass-dark {
 .btn-wizard-back {
   padding: 13px 20px;
   border-radius: 9999px;
-  border: 1.5px solid rgba(53, 69, 54, 0.25);
+  border: 1.5px solid rgba(83, 107, 76, 0.25);
   background: transparent;
-  color: #354536;
+  color: #536B4C;
   font-size: 0.86rem;
   font-weight: 600;
   cursor: pointer;
@@ -8726,8 +8726,8 @@ footer.glass-dark {
 }
 
 .btn-wizard-back:hover {
-  background: rgba(53, 69, 54, 0.06);
-  border-color: #354536;
+  background: rgba(83, 107, 76, 0.06);
+  border-color: #536B4C;
 }
 
 .btn-wizard-back:disabled {
@@ -8805,21 +8805,21 @@ footer.glass-dark {
   border-radius: 50%;
   background: #FCFAF6;
   border: 1.5px solid rgba(217, 165, 167, 0.45);
-  color: #233D32;
+  color: #536B4C;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 3px 10px rgba(35, 61, 50, 0.04);
+  box-shadow: 0 3px 10px rgba(83, 107, 76, 0.04);
 }
 
 .patient-stories-nav-btn:hover {
-  background: #233D32;
+  background: #536B4C;
   color: #FFFFFF;
-  border-color: #233D32;
+  border-color: #536B4C;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(35, 61, 50, 0.25);
+  box-shadow: 0 6px 16px rgba(83, 107, 76, 0.25);
 }
 
 .patient-stories-carousel-wrapper {
@@ -8856,7 +8856,7 @@ footer.glass-dark {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 6px 20px rgba(35, 61, 50, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 6px 20px rgba(83, 107, 76, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   text-align: left;
   box-sizing: border-box;
@@ -8864,7 +8864,7 @@ footer.glass-dark {
 
 .patient-story-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(35, 61, 50, 0.07);
+  box-shadow: 0 12px 28px rgba(83, 107, 76, 0.07);
   border-color: rgba(185, 114, 123, 0.45);
 }
 
@@ -8897,7 +8897,7 @@ footer.glass-dark {
 
 .patient-story-divider {
   height: 1px;
-  background: rgba(35, 61, 50, 0.08);
+  background: rgba(83, 107, 76, 0.08);
   margin-bottom: 12px;
   width: 100%;
 }
@@ -8991,8 +8991,8 @@ footer.glass-dark {
 
 .back-to-top-btn:hover {
   transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 14px 30px rgba(35, 61, 50, 0.45);
-  background-color: #1A2F26 !important;
+  box-shadow: 0 14px 30px rgba(83, 107, 76, 0.45);
+  background-color: #43583E !important;
 }
 
 @keyframes popInBackToTop {
@@ -9020,7 +9020,7 @@ footer.glass-dark {
     transform: translateX(-50%);
     width: auto;
     z-index: 998;
-    background: rgba(35, 61, 50, 0.95);
+    background: rgba(83, 107, 76, 0.95);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-radius: 9999px;
@@ -9060,7 +9060,7 @@ footer.glass-dark {
 
   .mobile-book-btn {
     background: linear-gradient(135deg, #B49A68 0%, #D4B988 100%);
-    color: #1A2F26;
+    color: #43583E;
     width: 48px;
     height: 48px;
     box-shadow: 0 4px 14px rgba(180, 154, 104, 0.4);
@@ -9132,7 +9132,7 @@ footer.glass-dark {
 }
 
 .graphic-orb-green {
-  background: radial-gradient(circle, #536B4C 0%, rgba(35, 61, 50, 0) 70%);
+  background: radial-gradient(circle, #536B4C 0%, rgba(83, 107, 76, 0) 70%);
   animation: floatOrbSlow 18s ease-in-out infinite alternate-reverse;
 }
 
@@ -9428,7 +9428,7 @@ footer.glass-dark {
     height: auto !important;
     width: 100% !important;
     overflow: hidden !important;
-    box-shadow: 0 16px 38px rgba(35, 61, 50, 0.18), 0 2px 10px rgba(180, 154, 104, 0.16) !important;
+    box-shadow: 0 16px 38px rgba(83, 107, 76, 0.18), 0 2px 10px rgba(180, 154, 104, 0.16) !important;
     border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
   }
 
@@ -9870,7 +9870,7 @@ footer.glass-dark {
   .consultation-form-card {
     padding: 24px 18px !important;
     border-radius: 20px !important;
-    box-shadow: 0 10px 30px rgba(35, 61, 50, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(83, 107, 76, 0.08) !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;

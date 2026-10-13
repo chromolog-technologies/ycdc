@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
       <section style={{
         position: 'relative',
         padding: 'clamp(90px, 12vh, 130px) 0 70px',
-        background: 'linear-gradient(135deg, #172920 0%, #233D32 60%, #1A2E24 100%)',
+        background: 'linear-gradient(135deg, #3E5139 0%, #536B4C 60%, #43583E 100%)',
         color: '#FFFFFF',
         textAlign: 'center',
         overflow: 'hidden',
@@ -86,7 +86,7 @@ export default function PrivacyPolicy() {
             padding: 'clamp(28px, 5vw, 50px)',
             borderRadius: '24px',
             border: '1px solid rgba(215, 203, 190, 0.65)',
-            boxShadow: '0 16px 44px rgba(35, 61, 50, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02)',
+            boxShadow: '0 16px 44px rgba(83, 107, 76, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02)',
             textAlign: 'left'
           }}>
             {/* Intro Header */}
@@ -102,17 +102,17 @@ export default function PrivacyPolicy() {
                 width: '54px',
                 height: '54px',
                 borderRadius: '14px',
-                backgroundColor: 'rgba(35, 61, 50, 0.08)',
-                border: '1px solid rgba(35, 61, 50, 0.15)',
+                backgroundColor: 'rgba(83, 107, 76, 0.08)',
+                border: '1px solid rgba(83, 107, 76, 0.15)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexShrink: 0
               }}>
-                <Shield size={28} style={{ color: '#233D32' }} />
+                <Shield size={28} style={{ color: '#536B4C' }} />
               </div>
               <div>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.65rem', color: '#233D32', margin: 0, fontWeight: 600 }}>
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.65rem', color: '#536B4C', margin: 0, fontWeight: 600 }}>
                   Patient Data Commitment
                 </h3>
                 <p style={{ fontSize: '0.82rem', color: '#657766', marginTop: '4px', margin: 0 }}>
@@ -128,7 +128,7 @@ export default function PrivacyPolicy() {
                 <h4 style={{
                   fontFamily: 'var(--font-serif)',
                   fontSize: '1.28rem',
-                  color: '#233D32',
+                  color: '#536B4C',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
@@ -146,7 +146,7 @@ export default function PrivacyPolicy() {
                 <h4 style={{
                   fontFamily: 'var(--font-serif)',
                   fontSize: '1.28rem',
-                  color: '#233D32',
+                  color: '#536B4C',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
@@ -159,9 +159,9 @@ export default function PrivacyPolicy() {
                   We collect essential information to facilitate clinical appointments, provide accurate preliminary evaluations, and coordinate continuous dermatological care:
                 </p>
                 <ul style={{ paddingLeft: '22px', marginTop: '10px', marginBottom: 0, display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.92rem' }}>
-                  <li><strong style={{ color: '#233D32' }}>Booking Details:</strong> Full Name, Email, Phone Number, Selected Branch Location (Bangalore or Trivandrum), and preferred Date/Time.</li>
-                  <li><strong style={{ color: '#233D32' }}>Clinical &amp; Screening Details:</strong> Self-disclosed skin or hair concerns, treatment history, and uploaded photographs for remote doctor assessment.</li>
-                  <li><strong style={{ color: '#233D32' }}>Care Coordination Logs:</strong> Appointment confirmations, reminder notifications, and specialist follow-up communications.</li>
+                  <li><strong style={{ color: '#536B4C' }}>Booking Details:</strong> Full Name, Email, Phone Number, Selected Branch Location (Bangalore or Trivandrum), and preferred Date/Time.</li>
+                  <li><strong style={{ color: '#536B4C' }}>Clinical &amp; Screening Details:</strong> Self-disclosed skin or hair concerns, treatment history, and uploaded photographs for remote doctor assessment.</li>
+                  <li><strong style={{ color: '#536B4C' }}>Care Coordination Logs:</strong> Appointment confirmations, reminder notifications, and specialist follow-up communications.</li>
                 </ul>
               </div>
 
@@ -169,7 +169,7 @@ export default function PrivacyPolicy() {
                 <h4 style={{
                   fontFamily: 'var(--font-serif)',
                   fontSize: '1.28rem',
-                  color: '#233D32',
+                  color: '#536B4C',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
@@ -193,7 +193,7 @@ export default function PrivacyPolicy() {
                 <h4 style={{
                   fontFamily: 'var(--font-serif)',
                   fontSize: '1.28rem',
-                  color: '#233D32',
+                  color: '#536B4C',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
@@ -211,7 +211,7 @@ export default function PrivacyPolicy() {
                 <h4 style={{
                   fontFamily: 'var(--font-serif)',
                   fontSize: '1.28rem',
-                  color: '#233D32',
+                  color: '#536B4C',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
@@ -234,7 +234,7 @@ export default function PrivacyPolicy() {
               borderTop: '1px solid rgba(215, 203, 190, 0.55)',
               textAlign: 'center'
             }}>
-              <h5 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: '#233D32', marginBottom: '14px', fontWeight: 600 }}>
+              <h5 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: '#536B4C', marginBottom: '14px', fontWeight: 600 }}>
                 Follow YCDC on Social Channels
               </h5>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '14px' }}>
@@ -248,21 +248,21 @@ export default function PrivacyPolicy() {
                     borderRadius: '50%',
                     backgroundColor: '#FAF6F0',
                     border: '1px solid rgba(215, 203, 190, 0.7)',
-                    color: '#233D32',
+                    color: '#536B4C',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     transition: 'all 0.2s ease'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#233D32';
-                    e.currentTarget.style.borderColor = '#233D32';
+                    e.currentTarget.style.backgroundColor = '#536B4C';
+                    e.currentTarget.style.borderColor = '#536B4C';
                     e.currentTarget.style.color = '#FFFFFF';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = '#FAF6F0';
                     e.currentTarget.style.borderColor = 'rgba(215, 203, 190, 0.7)';
-                    e.currentTarget.style.color = '#233D32';
+                    e.currentTarget.style.color = '#536B4C';
                   }}
                   title="Instagram"
                 >
@@ -278,21 +278,21 @@ export default function PrivacyPolicy() {
                     borderRadius: '50%',
                     backgroundColor: '#FAF6F0',
                     border: '1px solid rgba(215, 203, 190, 0.7)',
-                    color: '#233D32',
+                    color: '#536B4C',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     transition: 'all 0.2s ease'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#233D32';
-                    e.currentTarget.style.borderColor = '#233D32';
+                    e.currentTarget.style.backgroundColor = '#536B4C';
+                    e.currentTarget.style.borderColor = '#536B4C';
                     e.currentTarget.style.color = '#FFFFFF';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = '#FAF6F0';
                     e.currentTarget.style.borderColor = 'rgba(215, 203, 190, 0.7)';
-                    e.currentTarget.style.color = '#233D32';
+                    e.currentTarget.style.color = '#536B4C';
                   }}
                   title="Facebook"
                 >
@@ -308,21 +308,21 @@ export default function PrivacyPolicy() {
                     borderRadius: '50%',
                     backgroundColor: '#FAF6F0',
                     border: '1px solid rgba(215, 203, 190, 0.7)',
-                    color: '#233D32',
+                    color: '#536B4C',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     transition: 'all 0.2s ease'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#233D32';
-                    e.currentTarget.style.borderColor = '#233D32';
+                    e.currentTarget.style.backgroundColor = '#536B4C';
+                    e.currentTarget.style.borderColor = '#536B4C';
                     e.currentTarget.style.color = '#FFFFFF';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = '#FAF6F0';
                     e.currentTarget.style.borderColor = 'rgba(215, 203, 190, 0.7)';
-                    e.currentTarget.style.color = '#233D32';
+                    e.currentTarget.style.color = '#536B4C';
                   }}
                   title="LinkedIn"
                 >
@@ -338,21 +338,21 @@ export default function PrivacyPolicy() {
                     borderRadius: '50%',
                     backgroundColor: '#FAF6F0',
                     border: '1px solid rgba(215, 203, 190, 0.7)',
-                    color: '#233D32',
+                    color: '#536B4C',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     transition: 'all 0.2s ease'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#233D32';
-                    e.currentTarget.style.borderColor = '#233D32';
+                    e.currentTarget.style.backgroundColor = '#536B4C';
+                    e.currentTarget.style.borderColor = '#536B4C';
                     e.currentTarget.style.color = '#FFFFFF';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = '#FAF6F0';
                     e.currentTarget.style.borderColor = 'rgba(215, 203, 190, 0.7)';
-                    e.currentTarget.style.color = '#233D32';
+                    e.currentTarget.style.color = '#536B4C';
                   }}
                   title="Twitter"
                 >

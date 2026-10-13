@@ -374,7 +374,7 @@ export default function GalleryPage() {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(135deg, rgba(35, 61, 50, 0.97) 0%, rgba(20, 36, 29, 0.98) 100%)', /* YCDC Deep Forest Green */
+          background: 'linear-gradient(135deg, rgba(83, 107, 76, 0.97) 0%, rgba(59, 77, 54, 0.98) 100%)', /* YCDC Deep Forest Green */
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
           zIndex: 9999,

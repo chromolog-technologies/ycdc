@@ -253,7 +253,7 @@ function AppContent() {
                 left: 0,
                 width: `${scrollProgress}%`,
                 height: '3px',
-                background: 'linear-gradient(90deg, #B49A68 0%, #233D32 50%, #E6CA85 100%)',
+                background: 'linear-gradient(90deg, #B49A68 0%, #536B4C 50%, #E6CA85 100%)',
                 zIndex: 1002,
                 transition: 'width 0.12s ease-out'
               }} 
@@ -426,8 +426,8 @@ function AppContent() {
                       alt="YCDC"
                       style={{ height: '38px', width: 'auto', objectFit: 'contain' }}
                     />
-                    <div style={{ borderLeft: '1px solid rgba(35, 61, 50, 0.15)', paddingLeft: '10px' }}>
-                      <div style={{ fontSize: '0.76rem', fontWeight: 700, color: '#233D32', letterSpacing: '0.04em' }}>
+                    <div style={{ borderLeft: '1px solid rgba(83, 107, 76, 0.15)', paddingLeft: '10px' }}>
+                      <div style={{ fontSize: '0.76rem', fontWeight: 700, color: '#536B4C', letterSpacing: '0.04em' }}>
                         YCDC INDIA
                       </div>
                       <div style={{ fontSize: '0.64rem', color: '#657766' }}>
@@ -443,9 +443,9 @@ function AppContent() {
                       width: '38px',
                       height: '38px',
                       borderRadius: '50%',
-                      backgroundColor: 'rgba(35, 61, 50, 0.08)',
+                      backgroundColor: 'rgba(83, 107, 76, 0.08)',
                       border: 'none',
-                      color: '#233D32',
+                      color: '#536B4C',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -466,7 +466,7 @@ function AppContent() {
                       borderRadius: '20px',
                       padding: '8px',
                       border: '1px solid rgba(215, 203, 190, 0.55)',
-                      boxShadow: '0 8px 30px rgba(35, 61, 50, 0.04)',
+                      boxShadow: '0 8px 30px rgba(83, 107, 76, 0.04)',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '4px'
@@ -489,8 +489,8 @@ function AppContent() {
                             padding: '12px 14px',
                             borderRadius: '12px',
                             border: 'none',
-                            backgroundColor: isActive ? 'rgba(35, 61, 50, 0.06)' : 'transparent',
-                            color: '#233D32',
+                            backgroundColor: isActive ? 'rgba(83, 107, 76, 0.06)' : 'transparent',
+                            color: '#536B4C',
                             cursor: 'pointer',
                             textAlign: 'left',
                             position: 'relative',
@@ -519,8 +519,8 @@ function AppContent() {
                                 width: '34px',
                                 height: '34px',
                                 borderRadius: '10px',
-                                backgroundColor: isActive ? '#233D32' : 'rgba(35, 61, 50, 0.05)',
-                                color: isActive ? '#F3E5AB' : '#233D32',
+                                backgroundColor: isActive ? '#536B4C' : 'rgba(83, 107, 76, 0.05)',
+                                color: isActive ? '#F3E5AB' : '#536B4C',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -533,7 +533,7 @@ function AppContent() {
                               style={{
                                 fontSize: '0.94rem',
                                 fontWeight: isActive ? 600 : 500,
-                                color: '#233D32',
+                                color: '#536B4C',
                                 letterSpacing: '-0.01em'
                               }}
                             >
@@ -562,7 +562,7 @@ function AppContent() {
                             <ChevronRight
                               size={15}
                               style={{
-                                color: isActive ? '#B49A68' : 'rgba(35, 61, 50, 0.28)',
+                                color: isActive ? '#B49A68' : 'rgba(83, 107, 76, 0.28)',
                                 transform: isActive ? 'translateX(2px)' : 'none',
                                 transition: 'all 0.2s ease'
                               }}
@@ -583,14 +583,14 @@ function AppContent() {
                         border: '1px solid rgba(215, 203, 190, 0.6)',
                         borderRadius: '12px',
                         textDecoration: 'none',
-                        color: '#233D32',
+                        color: '#536B4C',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '2px'
                       }}
                     >
                       <span style={{ fontSize: '0.68rem', color: '#657766', fontWeight: 600 }}>📍 Trivandrum</span>
-                      <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#233D32' }}>Pattom Clinic</span>
+                      <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#536B4C' }}>Pattom Clinic</span>
                     </a>
                     <a
                       href="tel:+917593864264"
@@ -600,14 +600,14 @@ function AppContent() {
                         border: '1px solid rgba(215, 203, 190, 0.6)',
                         borderRadius: '12px',
                         textDecoration: 'none',
-                        color: '#233D32',
+                        color: '#536B4C',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '2px'
                       }}
                     >
                       <span style={{ fontSize: '0.68rem', color: '#657766', fontWeight: 600 }}>📍 Bengaluru</span>
-                      <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#233D32' }}>Whitefield Suite</span>
+                      <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#536B4C' }}>Whitefield Suite</span>
                     </a>
                   </div>
 
@@ -620,7 +620,7 @@ function AppContent() {
                     style={{
                       width: '100%',
                       padding: '14px',
-                      backgroundColor: '#233D32',
+                      backgroundColor: '#536B4C',
                       color: '#FFFFFF',
                       border: '1.5px solid #B49A68',
                       borderRadius: '14px',
@@ -631,7 +631,7 @@ function AppContent() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: '8px',
-                      boxShadow: '0 8px 24px rgba(35, 61, 50, 0.25)'
+                      boxShadow: '0 8px 24px rgba(83, 107, 76, 0.25)'
                     }}
                   >
                     <Calendar size={18} style={{ color: '#F3E5AB' }} />
@@ -661,7 +661,7 @@ function AppContent() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#233D32'
+                        color: '#536B4C'
                       }}
                     >
                       <Instagram size={16} />
@@ -679,7 +679,7 @@ function AppContent() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#233D32'
+                        color: '#536B4C'
                       }}
                     >
                       <Youtube size={16} />
@@ -697,7 +697,7 @@ function AppContent() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#233D32'
+                        color: '#536B4C'
                       }}
                     >
                       <Facebook size={16} />
@@ -930,10 +930,10 @@ function AppContent() {
                 width: '46px',
                 height: '46px',
                 borderRadius: '50%',
-                backgroundColor: '#233D32',
+                backgroundColor: '#536B4C',
                 color: '#ffffff',
                 border: '2px solid rgba(180, 154, 104, 0.4)',
-                boxShadow: '0 8px 24px rgba(35, 61, 50, 0.35)',
+                boxShadow: '0 8px 24px rgba(83, 107, 76, 0.35)',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',

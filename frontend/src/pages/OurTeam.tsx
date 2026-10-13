@@ -535,7 +535,7 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
 
       {/* Recruitment CTA Section */}
       <section className="section-padding reveal reveal-up" style={{
-        background: 'linear-gradient(135deg, #233D32 0%, #1A2F26 100%)',
+        background: 'linear-gradient(135deg, #536B4C 0%, #43583E 100%)',
         color: '#ffffff',
         textAlign: 'center',
         position: 'relative',
@@ -587,7 +587,7 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
                 border: 'none',
                 borderRadius: '30px',
                 background: 'linear-gradient(135deg, #B49A68 0%, #D4B988 100%)',
-                color: '#1A2F26',
+                color: '#43583E',
                 boxShadow: '0 6px 22px rgba(180, 154, 104, 0.4)',
                 cursor: 'pointer',
                 transition: 'all 0.25s ease'

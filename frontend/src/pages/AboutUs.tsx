@@ -53,7 +53,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
         <div className="container treatment-layout">
           <div className="reveal reveal-left" style={{ textAlign: 'left' }}>
             <span className="badge badge-premium" style={{ marginBottom: '12px' }}>The Journey</span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', marginBottom: '20px', fontSize: '2.2rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', marginBottom: '20px', fontSize: '2.2rem' }}>
               The Pioneer of Clinical Dermatology
             </h2>
             <p style={{ color: 'var(--muted-charcoal)', marginBottom: '16px', lineHeight: '1.7' }}>
@@ -96,37 +96,37 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="reveal reveal-up" style={{ textAlign: 'center', marginBottom: '50px' }}>
             <span className="badge badge-premium">Our Philosophy</span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', marginTop: '10px', fontSize: '2.2rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', marginTop: '10px', fontSize: '2.2rem' }}>
               The Foundations of Our Care
             </h2>
           </div>
 
           <div className="reveal-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '24px' }}>
             <div className="glass hover-premium" style={{ padding: '32px', borderRadius: '14px', background: 'white', border: '1px solid var(--silk-200)', textAlign: 'left', boxShadow: '0 8px 24px rgba(0,0,0,0.04)' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'rgba(35, 61, 50, 0.1)', color: '#233D32', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'rgba(83, 107, 76, 0.1)', color: '#536B4C', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                 <ShieldCheck size={24} />
               </div>
-              <h5 style={{ fontWeight: 'bold', color: '#233D32', fontSize: '1.2rem', marginBottom: '10px' }}>ISO Certified Protocols</h5>
+              <h5 style={{ fontWeight: 'bold', color: '#536B4C', fontSize: '1.2rem', marginBottom: '10px' }}>ISO Certified Protocols</h5>
               <p style={{ fontSize: '0.9rem', color: 'var(--muted-charcoal)', lineHeight: '1.6' }}>
                 Our clinics maintain strict ISO 9001:2015 certified standards for sanitization, laser safety, and records management to ensure patient safety first.
               </p>
             </div>
 
             <div className="glass hover-premium" style={{ padding: '32px', borderRadius: '14px', background: 'white', border: '1px solid var(--silk-200)', textAlign: 'left', boxShadow: '0 8px 24px rgba(0,0,0,0.04)' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'rgba(35, 61, 50, 0.1)', color: '#233D32', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'rgba(83, 107, 76, 0.1)', color: '#536B4C', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                 <Heart size={24} />
               </div>
-              <h5 style={{ fontWeight: 'bold', color: '#233D32', fontSize: '1.2rem', marginBottom: '10px' }}>Patient-First Ethos</h5>
+              <h5 style={{ fontWeight: 'bold', color: '#536B4C', fontSize: '1.2rem', marginBottom: '10px' }}>Patient-First Ethos</h5>
               <p style={{ fontSize: '0.9rem', color: 'var(--muted-charcoal)', lineHeight: '1.6' }}>
                 No cookie-cutter treatments. We design specific prescriptions and customized skincare schedules mapped to your genetic skin profile.
               </p>
             </div>
 
             <div className="glass hover-premium" style={{ padding: '32px', borderRadius: '14px', background: 'white', border: '1px solid var(--silk-200)', textAlign: 'left', boxShadow: '0 8px 24px rgba(0,0,0,0.04)' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'rgba(35, 61, 50, 0.1)', color: '#233D32', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'rgba(83, 107, 76, 0.1)', color: '#536B4C', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                 <Award size={24} />
               </div>
-              <h5 style={{ fontWeight: 'bold', color: '#233D32', fontSize: '1.2rem', marginBottom: '10px' }}>Expert Practitioners</h5>
+              <h5 style={{ fontWeight: 'bold', color: '#536B4C', fontSize: '1.2rem', marginBottom: '10px' }}>Expert Practitioners</h5>
               <p style={{ fontSize: '0.9rem', color: 'var(--muted-charcoal)', lineHeight: '1.6' }}>
                 All procedures are overseen by board-certified dermatologists, plastic surgeons, and specialized transplant technicians with global credentials.
               </p>
@@ -140,7 +140,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
         <div className="container">
           <div className="reveal reveal-up" style={{ textAlign: 'center', marginBottom: '50px' }}>
             <span className="badge badge-premium">Specialist Roster</span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', marginTop: '10px', fontSize: '2.2rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', marginTop: '10px', fontSize: '2.2rem' }}>
               Meet Our Board-Certified Team
             </h2>
             <p style={{ maxWidth: '600px', margin: '12px auto 0', color: 'var(--muted-charcoal)', lineHeight: '1.6' }}>
@@ -158,7 +158,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
                 </div>
               </div>
               <div style={{ padding: '24px' }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: '#233D32', fontWeight: 600 }}>Dr. K. Yogiraj</h4>
+                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: '#536B4C', fontWeight: 600 }}>Dr. K. Yogiraj</h4>
                 <span style={{ fontSize: '0.85rem', color: '#B49A68', fontWeight: '600', display: 'block', margin: '4px 0 10px' }}>
                   MD, DVD, DHA (<AnimatedCounter target={48} suffix="+" /> Years Exp)
                 </span>
@@ -177,7 +177,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
                 </div>
               </div>
               <div style={{ padding: '24px' }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: '#233D32', fontWeight: 600 }}>Dr. Niranjana Raj</h4>
+                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: '#536B4C', fontWeight: 600 }}>Dr. Niranjana Raj</h4>
                 <span style={{ fontSize: '0.85rem', color: '#B49A68', fontWeight: '600', display: 'block', margin: '4px 0 10px' }}>
                   MD (Derm), FAM (<AnimatedCounter target={12} suffix="+" /> Years Exp)
                 </span>
@@ -196,7 +196,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
                 </div>
               </div>
               <div style={{ padding: '24px' }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: '#233D32', fontWeight: 600 }}>Dr. Vennela Reddy</h4>
+                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: '#536B4C', fontWeight: 600 }}>Dr. Vennela Reddy</h4>
                 <span style={{ fontSize: '0.85rem', color: '#B49A68', fontWeight: '600', display: 'block', margin: '4px 0 10px' }}>
                   MS, MCh (Plastic Surgery) (<AnimatedCounter target={9} suffix="+" /> Years Exp)
                 </span>
@@ -214,7 +214,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
         <div className="container">
           <div className="reveal reveal-up" style={{ textAlign: 'center', marginBottom: '46px' }}>
             <span className="badge badge-premium">World-Class Facilities</span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', marginTop: '10px', fontSize: '2.2rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', marginTop: '10px', fontSize: '2.2rem' }}>
               Designed for Unhurried Clinical Excellence
             </h2>
             <p style={{ maxWidth: '650px', margin: '12px auto 0', color: 'var(--muted-charcoal)', lineHeight: '1.6' }}>
@@ -228,7 +228,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
                 <img src="/ycdc_reception_lobby.jpg" alt="YCDC Reception Lobby" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} />
               </div>
               <div style={{ padding: '20px', textAlign: 'left' }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', fontSize: '1.2rem', marginBottom: '6px' }}>Executive Reception Lounge</h4>
+                <h4 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', fontSize: '1.2rem', marginBottom: '6px' }}>Executive Reception Lounge</h4>
                 <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', lineHeight: '1.5' }}>
                   Calming architectural ambiance with illuminated brass detailing and dedicated patient hospitality desks.
                 </p>
@@ -240,7 +240,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
                 <img src="/laser_suite_clinical.jpg" alt="US-FDA Laser Suite" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} />
               </div>
               <div style={{ padding: '20px', textAlign: 'left' }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', fontSize: '1.2rem', marginBottom: '6px' }}>FDA-Approved Laser Suites</h4>
+                <h4 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', fontSize: '1.2rem', marginBottom: '6px' }}>FDA-Approved Laser Suites</h4>
                 <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', lineHeight: '1.5' }}>
                   RevLite, ResurFX, and Soprano cooling laser platforms operated in sterile clinical environments.
                 </p>
@@ -252,7 +252,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
                 <img src="/luxury_treatment_suite.jpg" alt="Private Aesthetic Treatment Suite" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} />
               </div>
               <div style={{ padding: '20px', textAlign: 'left' }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', fontSize: '1.2rem', marginBottom: '6px' }}>Private Care Suites</h4>
+                <h4 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', fontSize: '1.2rem', marginBottom: '6px' }}>Private Care Suites</h4>
                 <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', lineHeight: '1.5' }}>
                   Acoustically insulated consultation and treatment chambers designed for utmost privacy and patient comfort.
                 </p>
@@ -264,7 +264,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
                 <img src="/facial_aesthetic_treatment.jpg" alt="Clinical Facial Aesthetics" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} />
               </div>
               <div style={{ padding: '20px', textAlign: 'left' }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', color: '#233D32', fontSize: '1.2rem', marginBottom: '6px' }}>Aesthetic Cosmetology</h4>
+                <h4 style={{ fontFamily: 'var(--font-serif)', color: '#536B4C', fontSize: '1.2rem', marginBottom: '6px' }}>Aesthetic Cosmetology</h4>
                 <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', lineHeight: '1.5' }}>
                   High-precision gold-probe radiofrequency, chemical resurfacing, and dermal volume restructuring.
                 </p>
@@ -279,12 +279,12 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
         <div 
           className="plum-gradient" 
           style={{ 
-            background: 'linear-gradient(135deg, #233D32 0%, #1A2F26 100%)', 
+            background: 'linear-gradient(135deg, #536B4C 0%, #43583E 100%)', 
             padding: '56px 36px', 
             borderRadius: '24px', 
             color: '#ffffff', 
             textAlign: 'center',
-            boxShadow: '0 16px 42px rgba(35, 61, 50, 0.28)',
+            boxShadow: '0 16px 42px rgba(83, 107, 76, 0.28)',
             border: '1px solid rgba(180, 154, 104, 0.35)'
           }}
         >
