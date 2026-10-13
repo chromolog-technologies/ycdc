@@ -5,30 +5,6 @@ import type { GalleryItem } from '../types';
 
 const MOCK_GALLERY: GalleryItem[] = [
   {
-    id: 'before-after-hair',
-    type: 'image',
-    category: 'treatments',
-    title: 'Before After - FUE Hair Restoration',
-    thumbnail_path: '/hair_after.png',
-    description: 'Excellent density and natural hairline restoration 6 months after a FUE hair transplant session.'
-  },
-  {
-    id: 'before-after-acne',
-    type: 'image',
-    category: 'treatments',
-    title: 'Before After - Acne Scar Correction',
-    thumbnail_path: '/acne_after.png',
-    description: 'Visible skin smoothing and reduction of deep pitted acne scars after 3 sessions of Secret RF Microneedling.'
-  },
-  {
-    id: 'before-after-gfc',
-    type: 'image',
-    category: 'treatments',
-    title: 'Before After - GFC Hair Density',
-    thumbnail_path: '/gfc_after.jpg',
-    description: 'Scalp GFC growth factor concentrate therapy for hair shaft thickening and density.'
-  },
-  {
     id: 'trichoscopy-exam',
     type: 'image',
     category: 'treatments',

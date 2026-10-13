@@ -14,6 +14,7 @@ export const PAGE_PATHS: Record<PageId, string> = {
 };
 
 export const getPageFromPath = (path: string): PageId => {
+  if (path === '/before-after') return 'treatments';
   const match = Object.entries(PAGE_PATHS).find(([, routePath]) => routePath === path);
   return (match?.[0] as PageId | undefined) ?? 'home';
 };
