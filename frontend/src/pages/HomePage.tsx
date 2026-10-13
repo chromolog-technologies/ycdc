@@ -311,12 +311,19 @@ export const HomePage: React.FC<HomePageProps> = ({
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const storiesScrollRef = useRef<HTMLDivElement>(null);
   const [isStoriesPaused, setIsStoriesPaused] = useState<boolean>(false);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
 
   const { refresh } = useScrollReveal();
 
   useEffect(() => {
     refresh();
   }, [refresh]);
+
+  useEffect(() => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   // Sync Care Journey activeStage with scrolling cards on desktop
   useEffect(() => {
@@ -446,12 +453,18 @@ export const HomePage: React.FC<HomePageProps> = ({
           1. CINEMATIC HERO SECTION: Animated Radiant Skin & Editorial Aesthetics
           ================================================================= */}
       <section className="master-hero-section">
-        {/* Animated High-End Hero Image with Subtle Breathing Ken Burns Motion */}
+        {/* Cinematic Video Background: Full-Size Responsive on Desktop & Mobile */}
         <div className="master-hero-img-wrap">
-          <img
-            src="/banner_radiant_skin.jpg"
-            alt="YCDC Clinical Dermatology &amp; Luxury Skin Rejuvenation"
-            className="master-hero-animated-img"
+          <video
+            ref={heroVideoRef}
+            src="/hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="master-hero-video-bg"
+            poster="/banner_radiant_skin.jpg"
           />
         </div>
 
