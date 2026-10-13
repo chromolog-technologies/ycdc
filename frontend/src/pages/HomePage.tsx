@@ -8,14 +8,15 @@ import {
   Heart,
   ShieldCheck,
   UserCheck,
-  Star,
   Check,
   MapPin,
   Instagram,
   Phone,
   FileText,
   UploadCloud,
-  Stethoscope
+  Stethoscope,
+  Lock,
+  Award
 } from 'lucide-react';
 import ConsultationForm from '../components/ConsultationForm';
 import useScrollReveal from '../hooks/useScrollReveal';
@@ -124,7 +125,7 @@ const CARE_CATEGORIES_DATA: Record<CareCategory, {
         serviceId: 'resurfx-laser'
       },
       {
-        title: 'Painless Triple-Wavelength Laser Hair Reduction',
+        title: 'Advanced Triple-Wavelength Laser Hair Reduction',
         desc: 'Advanced contact cooling technology for permanent hair reduction across Indian skin.',
         duration: '30-60 mins',
         serviceId: 'laser-hair-removal'
@@ -202,63 +203,63 @@ const PATIENT_CARE_STAGES = [
   }
 ];
 
-interface PatientStory {
+interface PatientCareStandard {
   id: string;
-  author: string;
-  location: string;
-  quote: string;
-  treatmentTag: string;
+  title: string;
+  mandate: string;
+  description: string;
+  categoryTag: string;
+  icon: React.ReactNode;
 }
 
-const PATIENT_STORIES_DATA: PatientStory[] = [
+const PATIENT_CARE_STANDARDS_DATA: PatientCareStandard[] = [
   {
     id: '1',
-    author: 'Arunachalam Pillai',
-    location: 'Patient, Trivandrum',
-    quote: "Had my FUE hair transplant performed under Dr. Yogiraj's clinical protocol. Incredibly dense regrowth with natural hairline. State-of-the-art facility and transparent care!",
-    treatmentTag: 'Hair Transplant (FUE)'
+    title: 'Informed Clinical Consent',
+    mandate: 'Ethical Medical Practice',
+    description: 'Every clinical procedure is preceded by comprehensive counseling on treatment options, realistic expectations, potential contraindications, and downtime.',
+    categoryTag: 'Transparency & Ethics',
+    icon: <FileText size={16} />
   },
   {
     id: '2',
-    author: 'Anjali Menon',
-    location: 'Patient, Trivandrum',
-    quote: "YCDC is the oldest and most trusted clinic in Trivandrum. I had their chemical peels for hyperpigmentation. Dr. Yogiraj's diagnosis was spot-on, and the clinical care is exceptional.",
-    treatmentTag: 'Chemical Peels (Google Review)'
+    title: 'Confidentiality & Privacy',
+    mandate: 'DPDP Act 2023 Compliant',
+    description: 'Patient records, diagnostic imagery, and clinical histories are preserved under high-security encryption and strict statutory doctor-patient confidentiality.',
+    categoryTag: 'Data Protection',
+    icon: <Lock size={16} />
   },
   {
     id: '3',
-    author: 'Deepak Mohan',
-    location: 'Patient, Bangalore',
-    quote: "Very professional clinic. The staff explain everything patiently. The laser treatment is completely pain-free compared to other clinics. Value for money and premium service.",
-    treatmentTag: 'Laser Hair Reduction'
+    title: 'RMP Administered Protocols',
+    mandate: 'NMC / SMR Certified Practitioners',
+    description: 'All advanced dermatological therapies, lasers, and surgical interventions are conducted or directly supervised by Registered Medical Practitioners.',
+    categoryTag: 'Qualified Care',
+    icon: <Stethoscope size={16} />
   },
   {
     id: '4',
-    author: 'Dr. Rahul Krishnan',
-    location: 'Patient, Bangalore',
-    quote: "As a doctor myself, I appreciate YCDC's evidence-based approach. My acne scars reduced significantly and the Whitefield clinic has the latest lasers. Highly recommended.",
-    treatmentTag: 'Acne Correction (Google Review)'
+    title: 'ISO 9001:2015 Safety Protocols',
+    mandate: 'International Quality Standards',
+    description: 'Strict adherence to hospital-grade disinfection, single-use consumables, calibrated medical laser energy, and aseptic clinical suites.',
+    categoryTag: 'Clinical Safety',
+    icon: <ShieldCheck size={16} />
   },
   {
     id: '5',
-    author: 'Meera Varghese',
-    location: 'Patient, Kochi',
-    quote: "Underwent HydraFacial and anti-pigmentation therapy before my wedding. My skin felt radiant, even-toned and deeply nourished. Truly world-class medical aesthetics.",
-    treatmentTag: 'HydraFacial Glow'
+    title: 'Evidence-Based Therapeutics',
+    mandate: 'Peer-Reviewed Modalities',
+    description: 'We administer only clinically validated, US FDA & CE cleared technologies with documented medical efficacy, strictly avoiding unproven marketing fads.',
+    categoryTag: 'Scientific Rigor',
+    icon: <Award size={16} />
   },
   {
     id: '6',
-    author: 'Suresh Nambiar',
-    location: 'Patient, Trivandrum',
-    quote: "Suffered from chronic psoriasis for years before visiting YCDC. The clinical team provided a systematic diagnostic treatment plan that gave me lasting relief.",
-    treatmentTag: 'Clinical Dermatology'
-  },
-  {
-    id: '7',
-    author: 'Pooja Hegde',
-    location: 'Patient, Bangalore',
-    quote: "The PRP hair sessions combined with personalized nutritional guidance halted my hair thinning completely. Professional, hygienic, and scientifically grounded.",
-    treatmentTag: 'PRP Therapy'
+    title: 'Unhurried Clinical Consultations',
+    mandate: 'Diagnostic Focus',
+    description: 'Thorough physical examinations, dermatoscopic evaluations, and lifestyle analysis to uncover root causes rather than superficial temporary fixes.',
+    categoryTag: 'Holistic Health',
+    icon: <Heart size={16} />
   }
 ];
 
@@ -543,7 +544,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* =================================================================
-          3. HERITAGE & CLINICAL MASTERY (Providing Best Skin and Hair Care Services – ISO Certified)
+          3. HERITAGE & CLINICAL MASTERY (Evidence-Based Dermatology & Trichology – ISO 9001:2015 Certified)
           ================================================================= */}
       <section className="heritage-mastery-section">
         <div className="container">
@@ -611,7 +612,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
 
               <h2 className="heritage-title">
-                Providing Best Skin and Hair Care Services &ndash; ISO Certified
+                Evidence-Based Dermatology &amp; Trichology &ndash; ISO 9001:2015 Certified
               </h2>
 
               <div className="heritage-quote-box">
@@ -1021,16 +1022,16 @@ export const HomePage: React.FC<HomePageProps> = ({
 
 
       {/* =================================================================
-          8. PATIENT STORIES (Trusted by Thousands of Happy Patients)
+          8. ETHICAL MEDICAL GOVERNANCE & PATIENT CARE STANDARDS (NMC Compliant)
           ================================================================= */}
-      <section className="patient-stories-section" id="patient-stories">
+      <section className="patient-stories-section" id="clinical-governance">
         <div className="container">
           <div className="patient-stories-header reveal reveal-up">
             <div className="patient-stories-header-left">
-              <span className="patient-stories-badge">PATIENT STORIES</span>
-              <h2 className="patient-stories-title">Trusted by Thousands of Happy Patients</h2>
+              <span className="patient-stories-badge">CLINICAL GOVERNANCE</span>
+              <h2 className="patient-stories-title">Evidence-Based Patient Care Standards</h2>
               <p className="patient-stories-sub">
-                Read genuine feedback from patients who experienced transformative skincare and hair treatments at YCDC.
+                Our clinical protocols are framed in strict adherence to medical ethics, patient dignity, and informed clinical consent.
               </p>
             </div>
 
@@ -1038,14 +1039,14 @@ export const HomePage: React.FC<HomePageProps> = ({
               <button
                 onClick={() => scrollStories('left')}
                 className="patient-stories-nav-btn"
-                aria-label="Previous stories"
+                aria-label="Previous standard"
               >
                 <ChevronLeft size={20} />
               </button>
               <button
                 onClick={() => scrollStories('right')}
                 className="patient-stories-nav-btn"
-                aria-label="Next stories"
+                aria-label="Next standard"
               >
                 <ChevronRight size={20} />
               </button>
@@ -1060,31 +1061,43 @@ export const HomePage: React.FC<HomePageProps> = ({
             onTouchEnd={() => setIsStoriesPaused(false)}
           >
             <div className="patient-stories-track" ref={storiesScrollRef}>
-              {[...PATIENT_STORIES_DATA, ...PATIENT_STORIES_DATA].map((story, idx) => (
-                <div key={`${story.id}-${idx}`} className="patient-story-card">
+              {[...PATIENT_CARE_STANDARDS_DATA, ...PATIENT_CARE_STANDARDS_DATA].map((standard, idx) => (
+                <div key={`${standard.id}-${idx}`} className="patient-story-card">
                   <div className="patient-story-top-row">
-                    <div className="patient-story-stars">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={15} className="patient-story-star" fill="#B9727B" />
-                      ))}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        background: '#EEF3EB',
+                        color: '#536B4C'
+                      }}>
+                        {standard.icon}
+                      </span>
+                      <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#536B4C', letterSpacing: '0.04em' }}>
+                        {standard.id.padStart(2, '0')}
+                      </span>
                     </div>
-                    <span className="patient-story-pill">{story.treatmentTag}</span>
+                    <span className="patient-story-pill">{standard.categoryTag}</span>
                   </div>
 
-                  <p className="patient-story-quote">
-                    &ldquo;{story.quote}&rdquo;
+                  <p className="patient-story-quote" style={{ fontStyle: 'normal', color: '#3A4238', fontSize: '0.88rem', lineHeight: 1.6 }}>
+                    {standard.description}
                   </p>
 
                   <div className="patient-story-divider" />
 
                   <div className="patient-story-footer">
                     <div className="patient-story-author-col">
-                      <span className="patient-story-author">{story.author}</span>
-                      <span className="patient-story-location">{story.location}</span>
+                      <span className="patient-story-author">{standard.title}</span>
+                      <span className="patient-story-location">{standard.mandate}</span>
                     </div>
                     <span className="patient-story-verified">
                       <ShieldCheck size={14} color="#536B4C" />
-                      <span>Verified Patient</span>
+                      <span>Verified Standard</span>
                     </span>
                   </div>
                 </div>

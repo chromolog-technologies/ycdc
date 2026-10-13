@@ -225,6 +225,24 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
 
+              <div>
+                <h4 style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.28rem',
+                  color: '#536B4C',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  marginBottom: '10px',
+                  fontWeight: 600
+                }}>
+                  <Shield size={19} style={{ color: '#B49A68', flexShrink: 0 }} /> 6. Ethical Public Communication &amp; NMC Guidelines Compliance
+                </h4>
+                <p style={{ margin: 0, fontSize: '0.94rem' }}>
+                  In accordance with the National Medical Commission (NMC) Guidelines on Ethical Advertising and Public Communication by Hospitals/Medical Institutions and Registered Medical Practitioners (2026), YCDC ensures that all digital information is purely educational, factual, and evidence-based. We strictly refrain from publishing commercial superlatives, guaranteed cures, misleading claims, or soliciting promotional patient testimonials. All medical practitioners are registered with the State Medical Councils / National Medical Commission, and patient privacy is maintained in alignment with the Digital Personal Data Protection (DPDP) Act, 2023.
+                </p>
+              </div>
+
             </div>
 
             {/* Social Icons inside Privacy Policy */}

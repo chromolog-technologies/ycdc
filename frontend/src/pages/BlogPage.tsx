@@ -33,7 +33,7 @@ const MOCK_BLOGS: BlogPost[] = [
     image_path: '/laser_treatment_premium.png',
     body_content: [
       'Embrace self-confidence and overcome the hassle of frequent waxing or shaving. Laser hair reduction uses selective photothermolysis to target melanin in hair follicles, significantly disabling follicular re-growth over time without damaging surrounding skin tissue.',
-      'At YCDC, we utilize US-FDA approved triple-wavelength lasers that are exceptionally safe for Indian skin types. The integrated cooling tips ensure the treatment is virtually painless.',
+      'At YCDC, we utilize US-FDA approved triple-wavelength lasers that are exceptionally safe for Indian skin types. Integrated sapphire contact cooling tips ensure optimal epidermal protection and patient comfort during application.',
       'Normally, a series of 6 to 8 sessions is required to target hairs in their active growth (anagen) phase. Sessions are spaced 4 to 6 weeks apart, revealing smooth, hair-free skin with no recovery downtime.'
     ]
   },

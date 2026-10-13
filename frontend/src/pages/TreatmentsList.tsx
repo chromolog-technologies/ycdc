@@ -853,7 +853,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                 </div>
               )}
 
-              {/* Clinical Quality Assurance Guarantee */}
+              {/* Clinical Quality Assurance Standards */}
               <div style={{
                 backgroundColor: '#FCFAF6',
                 border: '1px solid #EFE9DF',

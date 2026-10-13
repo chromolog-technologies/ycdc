@@ -1,4 +1,4 @@
-import { Award, Briefcase, GraduationCap, Instagram, Mail, MapPin } from 'lucide-react';
+import { Award, Briefcase, GraduationCap, Instagram, Mail, MapPin, ShieldCheck } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../config';
 import type { Doctor, OurTeamProps } from '../types';
@@ -224,7 +224,7 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
             Our Medical Specialists
           </h1>
           <p style={{ color: 'rgba(255, 255, 255, 0.92)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', lineHeight: '1.6' }}>
-            At YCDC, under the visionary leadership of Dr. K. Yogiraj, we promise unparalleled care and excellence in every service we offer.
+            Registered Medical Practitioners providing evidence-based dermatology, trichology, and aesthetic care with clinical integrity and scientific rigor.
           </p>
         </div>
       </section>
@@ -424,12 +424,27 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
                     <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--gold-500)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>
                       {doctor.designation}
                     </span>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', lineHeight: '1.5' }}>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', lineHeight: '1.5', marginBottom: '10px' }}>
                       {doctor.qualification}
                     </p>
+                    <div style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      fontSize: '0.68rem',
+                      fontWeight: 600,
+                      color: 'var(--color-soldier-green)',
+                      background: '#EEF3EB',
+                      padding: '3px 8px',
+                      borderRadius: '6px',
+                      border: '1px solid #D5DEC0'
+                    }}>
+                      <ShieldCheck size={11} color="var(--color-soldier-green)" />
+                      <span>RMP • State Medical Council</span>
+                    </div>
                   </div>
 
-                  <div style={{ marginTop: '24px' }}>
+                  <div style={{ marginTop: '20px' }}>
                     <span style={{ fontSize: '0.75rem', color: 'var(--muted-charcoal)', display: 'flex', alignItems: 'center', gap: '4px' }}>
                       <MapPin size={12} style={{ color: 'var(--gold-500)' }} /> Trivandrum
                     </span>
@@ -511,12 +526,27 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
                     <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--gold-500)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>
                       {doctor.designation}
                     </span>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', lineHeight: '1.5' }}>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--muted-charcoal)', lineHeight: '1.5', marginBottom: '10px' }}>
                       {doctor.qualification}
                     </p>
+                    <div style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      fontSize: '0.68rem',
+                      fontWeight: 600,
+                      color: 'var(--color-soldier-green)',
+                      background: '#EEF3EB',
+                      padding: '3px 8px',
+                      borderRadius: '6px',
+                      border: '1px solid #D5DEC0'
+                    }}>
+                      <ShieldCheck size={11} color="var(--color-soldier-green)" />
+                      <span>RMP • State Medical Council</span>
+                    </div>
                   </div>
 
-                  <div style={{ marginTop: '24px', display: 'flex', gap: '10px', alignItems: 'center' }}>
+                  <div style={{ marginTop: '20px', display: 'flex', gap: '10px', alignItems: 'center' }}>
                     <span style={{ fontSize: '0.75rem', color: 'var(--muted-charcoal)', display: 'flex', alignItems: 'center', gap: '4px' }}>
                       <MapPin size={12} style={{ color: 'var(--plum-800)' }} /> Bangalore
                     </span>
