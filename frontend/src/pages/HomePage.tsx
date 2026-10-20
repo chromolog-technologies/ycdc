@@ -875,7 +875,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </p>
 
               {/* Quick Stepper Pills (Scrolls to card on desktop, selects active card on mobile) */}
-              <div className="care-journey-stepper mobile-horizontal-track">
+              <div className="care-journey-stepper">
                 {PATIENT_CARE_STAGES.map((stage, idx) => {
                   const stageNum = idx + 1;
                   const isActive = activeStage === stageNum;
