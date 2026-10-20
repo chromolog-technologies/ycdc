@@ -1190,13 +1190,15 @@ export const HomePage: React.FC<HomePageProps> = ({
                   rel="noopener noreferrer"
                   className="btn-facility-maps"
                 >
-                  <MapPin size={15} /> Open Maps
+                  <MapPin size={15} />
+                  <span>Open Maps</span>
                 </a>
                 <a
                   href="tel:+914713100707"
                   className="btn-facility-book"
                 >
-                  <Phone size={14} /> Call Trivandrum
+                  <Phone size={14} />
+                  <span>Call Trivandrum</span>
                 </a>
               </div>
             </div>
@@ -1240,13 +1242,15 @@ export const HomePage: React.FC<HomePageProps> = ({
                   rel="noopener noreferrer"
                   className="btn-facility-maps"
                 >
-                  <MapPin size={15} /> Open Maps
+                  <MapPin size={15} />
+                  <span>Open Maps</span>
                 </a>
                 <a
                   href="tel:+917593864264"
                   className="btn-facility-book"
                 >
-                  <Phone size={14} /> Call Whitefield
+                  <Phone size={14} />
+                  <span>Call Whitefield</span>
                 </a>
               </div>
             </div>
