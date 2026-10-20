@@ -345,16 +345,17 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                 <Search size={18} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--muted-charcoal)', pointerEvents: 'none' }} />
                 <input
                   type="text"
-                  placeholder="Search procedures, allergy tests, lasers..."
+                  placeholder="Search treatments..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  className="treatments-search-input"
                   style={{
                     width: '100%',
-                    padding: '10px 38px 10px 42px',
+                    padding: '11px 40px 11px 44px',
                     borderRadius: '30px',
                     border: '1px solid var(--silk-200)',
                     outline: 'none',
-                    fontSize: '0.88rem',
+                    fontSize: '0.9rem',
                     backgroundColor: 'var(--silk-100)',
                     boxSizing: 'border-box'
                   }}

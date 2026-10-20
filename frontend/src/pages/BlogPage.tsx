@@ -264,9 +264,10 @@ export default function BlogPage() {
                     placeholder="Search articles..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    className="blog-search-input"
                     style={{
                       width: '100%',
-                      padding: '10px 38px 10px 42px',
+                      padding: '11px 40px 11px 44px',
                       borderRadius: '30px',
                       border: '1px solid var(--silk-200)',
                       outline: 'none',
