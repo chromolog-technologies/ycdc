@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search, Calendar, User, Clock, ArrowLeft, BookOpen } from 'lucide-react';
+import { Search, Calendar, User, Clock, ArrowLeft, BookOpen, X } from 'lucide-react';
 import { API_BASE_URL } from '../config';
 import type { BlogPost } from '../types';
 
@@ -241,16 +241,9 @@ export default function BlogPage() {
             // Grid / Search view
             <>
               {/* Search & Category Filter bar */}
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                flexWrap: 'wrap',
-                gap: '20px',
-                marginBottom: '40px'
-              }}>
+              <div className="blog-filter-bar">
                 {/* Tabs */}
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <div className="blog-category-tabs mobile-horizontal-track">
                   {(['all', 'skin', 'hair', 'anti-aging'] as const).map((cat) => (
                     <button
                       key={cat}
@@ -274,8 +267,8 @@ export default function BlogPage() {
                 </div>
 
                 {/* Search Bar */}
-                <div style={{ position: 'relative', width: '100%', maxWidth: '300px' }}>
-                  <Search size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--muted-charcoal)' }} />
+                <div className="blog-search-wrap">
+                  <Search size={18} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--muted-charcoal)', pointerEvents: 'none' }} />
                   <input
                     type="text"
                     placeholder="Search articles..."
@@ -283,14 +276,38 @@ export default function BlogPage() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     style={{
                       width: '100%',
-                      padding: '10px 16px 10px 38px',
+                      padding: '10px 38px 10px 42px',
                       borderRadius: '30px',
                       border: '1px solid var(--silk-200)',
                       outline: 'none',
                       fontSize: '0.9rem',
-                      boxShadow: 'var(--shadow-sm)'
+                      boxShadow: 'var(--shadow-sm)',
+                      boxSizing: 'border-box'
                     }}
                   />
+                  {searchQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setSearchQuery('')}
+                      style={{
+                        position: 'absolute',
+                        right: '12px',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        padding: '4px',
+                        color: 'var(--muted-charcoal)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                      aria-label="Clear search"
+                    >
+                      <X size={16} />
+                    </button>
+                  )}
                 </div>
               </div>
 

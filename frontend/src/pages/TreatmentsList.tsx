@@ -318,9 +318,9 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
               </button>
             </div>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
+            <div className="treatments-controls-row">
               {/* Category buttons */}
-              <div className="mobile-horizontal-track" style={{ gap: '8px', flex: 1, minWidth: 0 }}>
+              <div className="treatments-category-track mobile-horizontal-track" style={{ gap: '8px' }}>
                 {[
                   { key: 'all', label: 'All Specialties' },
                   { key: 'skin', label: 'Skin & Allergy' },
@@ -351,8 +351,8 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
               </div>
 
               {/* Search input */}
-              <div style={{ position: 'relative', width: '100%', maxWidth: '320px' }}>
-                <Search size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--muted-charcoal)' }} />
+              <div className="treatments-search-wrap">
+                <Search size={18} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--muted-charcoal)', pointerEvents: 'none' }} />
                 <input
                   type="text"
                   placeholder="Search procedures, allergy tests, lasers..."
@@ -360,7 +360,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                   onChange={(e) => setSearchQuery(e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '10px 16px 10px 38px',
+                    padding: '10px 38px 10px 42px',
                     borderRadius: '30px',
                     border: '1px solid var(--silk-200)',
                     outline: 'none',
@@ -369,6 +369,29 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                     boxSizing: 'border-box'
                   }}
                 />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery('')}
+                    style={{
+                      position: 'absolute',
+                      right: '12px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: '4px',
+                      color: 'var(--muted-charcoal)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                    aria-label="Clear search"
+                  >
+                    <X size={16} />
+                  </button>
+                )}
               </div>
             </div>
           </div>
