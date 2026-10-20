@@ -273,6 +273,13 @@ export const HomePage: React.FC<HomePageProps> = ({
   const storiesScrollRef = useRef<HTMLDivElement>(null);
   const [isStoriesPaused, setIsStoriesPaused] = useState<boolean>(false);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 768;
+    }
+    return false;
+  });
+  const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
 
   const { refresh } = useScrollReveal();
 
@@ -281,10 +288,23 @@ export const HomePage: React.FC<HomePageProps> = ({
   }, [refresh]);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const videoSrc = isMobile ? '/mobile view.mp4' : '/hero.mp4';
+
+  useEffect(() => {
     if (heroVideoRef.current) {
+      if (heroVideoRef.current.readyState >= 2) {
+        setIsVideoLoaded(true);
+      }
       heroVideoRef.current.play().catch(() => {});
     }
-  }, []);
+  }, [isMobile]);
 
   // Sync Care Journey activeStage with scrolling cards on desktop
   useEffect(() => {
@@ -409,15 +429,21 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="master-hero-img-wrap">
           <video
             ref={heroVideoRef}
-            src="/hero.mp4"
+            key={videoSrc}
+            src={videoSrc}
             autoPlay
             loop
             muted
             playsInline
             preload="auto"
-            className="master-hero-video-bg"
-            poster="/banner_radiant_skin.jpg"
-          />
+            className={`master-hero-video-bg ${isVideoLoaded ? 'video-loaded' : 'video-loading'}`}
+            onLoadedData={() => setIsVideoLoaded(true)}
+            onCanPlay={() => setIsVideoLoaded(true)}
+            onPlaying={() => setIsVideoLoaded(true)}
+          >
+            <source src={isMobile ? '/mobile view.mp4' : '/hero.mp4'} type="video/mp4" />
+            <source src={isMobile ? '/mobile%20view.mp4' : '/hero.mp4'} type="video/mp4" />
+          </video>
         </div>
 
         {/* Ambient Warm Rose-Gold Glow on Peonies */}

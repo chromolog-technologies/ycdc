@@ -5359,6 +5359,13 @@ footer.glass-dark {
   object-position: center center;
   z-index: 1;
   pointer-events: none;
+  background-color: #12100E;
+  opacity: 0;
+  transition: opacity 0.35s ease-out;
+}
+
+.master-hero-video-bg.video-loaded {
+  opacity: 1;
 }
 
 /* Gradient & Contrast Overlays */
