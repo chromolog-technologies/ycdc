@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, ArrowRight } from 'lucide-react';
 import { API_BASE_URL } from '../config';
 
 export default function ContactUs() {
@@ -229,29 +229,37 @@ export default function ContactUs() {
                   disabled={submitting} 
                   className="btn btn-primary" 
                   style={{ 
-                    display: 'inline-flex', 
+                    display: 'flex', 
                     alignItems: 'center', 
                     justifyContent: 'center', 
-                    gap: '8px', 
+                    gap: '10px', 
                     padding: '14px 28px', 
                     cursor: 'pointer',
                     width: '100%',
-                    marginTop: '8px'
+                    marginTop: '8px',
+                    fontSize: '0.98rem',
+                    fontWeight: 600,
+                    lineHeight: 1
                   }}
                 >
-                  {submitting ? 'Sending...' : 'Send Message'} <Send size={16} />
+                  <span>{submitting ? 'Sending...' : 'Send Message'}</span>
+                  <Send size={16} style={{ flexShrink: 0, marginTop: '-1px' }} />
                 </button>
               </form>
             )}
           </div>
 
           {/* Contact Details & Info */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', textAlign: 'left' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', textAlign: 'left', width: '100%' }}>
             {/* Pattom branch details */}
-            <div className="glass" style={{ padding: '32px', borderRadius: '16px', background: 'white', border: '1px solid var(--silk-200)', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.45rem', color: '#536B4C', fontWeight: 600 }}>Pattom, Trivandrum</h4>
-                <span className="badge badge-premium" style={{ fontSize: '0.7rem' }}>Active Center</span>
+            <div className="glass" style={{ padding: 'clamp(20px, 3.5vw, 32px)', borderRadius: '16px', background: 'white', border: '1px solid var(--silk-200)', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', width: '100%', boxSizing: 'border-box' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', marginBottom: '18px', width: '100%' }}>
+                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.2rem, 2.5vw, 1.45rem)', color: '#536B4C', fontWeight: 600, margin: 0, lineHeight: 1.25 }}>
+                  Pattom, Trivandrum
+                </h4>
+                <span className="badge badge-premium" style={{ fontSize: '0.72rem', whiteSpace: 'nowrap', flexShrink: 0, padding: '5px 12px' }}>
+                  Active Center
+                </span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '0.9rem' }}>
                 <div style={{ display: 'flex', gap: '12px' }}>
@@ -272,17 +280,27 @@ export default function ContactUs() {
                 </div>
               </div>
               <div style={{ marginTop: '20px', paddingTop: '14px', borderTop: '1px solid #EFE9DF' }}>
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#B49A68', fontWeight: 'bold', fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                  Open Trivandrum Map Navigation &rarr;
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=Dr.+Yogiraj+Centre+for+Dermatology+Pattom+Trivandrum" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ textDecoration: 'none', color: '#B49A68', fontWeight: 'bold', fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                >
+                  <span>Open Trivandrum Map Navigation</span>
+                  <ArrowRight size={16} style={{ flexShrink: 0 }} />
                 </a>
               </div>
             </div>
 
             {/* Whitefield branch details */}
-            <div className="glass" style={{ padding: '32px', borderRadius: '16px', background: 'white', border: '1px solid var(--silk-200)', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.45rem', color: '#536B4C', fontWeight: 600 }}>Whitefield, Bangalore</h4>
-                <span className="badge badge-gold" style={{ fontSize: '0.7rem' }}>Main Clinic</span>
+            <div className="glass" style={{ padding: 'clamp(20px, 3.5vw, 32px)', borderRadius: '16px', background: 'white', border: '1px solid var(--silk-200)', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', width: '100%', boxSizing: 'border-box' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', marginBottom: '18px', width: '100%' }}>
+                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.2rem, 2.5vw, 1.45rem)', color: '#536B4C', fontWeight: 600, margin: 0, lineHeight: 1.25 }}>
+                  Whitefield, Bangalore
+                </h4>
+                <span className="badge badge-gold" style={{ fontSize: '0.72rem', whiteSpace: 'nowrap', flexShrink: 0, padding: '5px 12px' }}>
+                  Main Clinic
+                </span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '0.9rem' }}>
                 <div style={{ display: 'flex', gap: '12px' }}>
@@ -303,8 +321,14 @@ export default function ContactUs() {
                 </div>
               </div>
               <div style={{ marginTop: '20px', paddingTop: '14px', borderTop: '1px solid #EFE9DF' }}>
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#B49A68', fontWeight: 'bold', fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                  Open Bangalore Map Navigation &rarr;
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=Dr.+Yogiraj+Centre+for+Dermatology+Whitefield+Bangalore" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ textDecoration: 'none', color: '#B49A68', fontWeight: 'bold', fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                >
+                  <span>Open Bangalore Map Navigation</span>
+                  <ArrowRight size={16} style={{ flexShrink: 0 }} />
                 </a>
               </div>
             </div>
