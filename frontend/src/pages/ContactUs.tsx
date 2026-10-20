@@ -68,17 +68,9 @@ export default function ContactUs() {
       }}>
         <div className="container">
           <span 
-            className="badge badge-gold" 
+            className="badge badge-hero-pill" 
             style={{ 
-              marginBottom: '16px', 
-              display: 'inline-block',
-              backgroundColor: 'rgba(180, 154, 104, 0.25)', 
-              color: '#F3E5AB', 
-              borderColor: 'rgba(243, 229, 171, 0.45)',
-              padding: '6px 18px',
-              fontSize: '0.8rem',
-              fontWeight: 600,
-              letterSpacing: '0.08em'
+              marginBottom: '16px'
             }}
           >
             Get In Touch

@@ -178,19 +178,9 @@ export default function BeforeAfter({ onBookTreatment }: BeforeAfterProps) {
         }} />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <span 
-            className="badge badge-gold" 
+            className="badge badge-hero-pill" 
             style={{ 
-              marginBottom: '16px', 
-              display: 'inline-block',
-              backgroundColor: 'rgba(180, 154, 104, 0.3)', 
-              color: '#F3E5AB', 
-              border: '1px solid rgba(243, 229, 171, 0.5)',
-              padding: '6px 18px',
-              borderRadius: '30px',
-              fontSize: '0.8rem',
-              fontWeight: 600,
-              letterSpacing: '0.08em',
-              backdropFilter: 'blur(8px)'
+              marginBottom: '16px'
             }}
           >
             Proven Transformations

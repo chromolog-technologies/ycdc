@@ -185,7 +185,7 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
       <section style={{
         position: 'relative',
         padding: '120px 0 80px',
-        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.55) 0%, rgba(0, 0, 0, 0.65) 100%), url("/hero_doctors_team.jpg") no-repeat center center/cover',
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.65) 0%, rgba(10, 12, 16, 0.75) 100%), url("/hero_doctors_team.jpg") no-repeat center center/cover',
         color: 'white',
         textAlign: 'center',
         overflow: 'hidden'
@@ -203,19 +203,9 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
         }} />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <span 
-            className="badge badge-gold" 
+            className="badge badge-hero-pill" 
             style={{ 
-              marginBottom: '16px', 
-              display: 'inline-block',
-              backgroundColor: 'rgba(180, 154, 104, 0.3)', 
-              color: '#F3E5AB', 
-              border: '1px solid rgba(243, 229, 171, 0.5)',
-              padding: '6px 18px',
-              borderRadius: '30px',
-              fontSize: '0.8rem',
-              fontWeight: 600,
-              letterSpacing: '0.08em',
-              backdropFilter: 'blur(8px)'
+              marginBottom: '16px'
             }}
           >
             Meet Our Clinicians
@@ -234,8 +224,8 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <span className="badge badge-premium">Medical Leadership</span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', color: 'var(--gold-500)', marginTop: '10px' }}>
-              Visionary <span style={{ color: 'var(--plum-900)' }}>Pioneer</span>
+            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#242923', marginTop: '10px' }}>
+              Visionary <span style={{ color: '#536B4C' }}>Pioneer</span>
             </h2>
           </div>
 
@@ -359,8 +349,8 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '50px' }}>
             <span className="badge badge-premium">Pattom Clinic</span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', color: 'var(--gold-500)', marginTop: '10px' }}>
-              Our <span style={{ color: 'var(--plum-900)' }}>Trivandrum Specialists</span>
+            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#242923', marginTop: '10px' }}>
+              Our <span style={{ color: '#536B4C' }}>Trivandrum Specialists</span>
             </h2>
             <p style={{ color: 'var(--muted-charcoal)', maxWidth: '600px', margin: '12px auto 0' }}>
               Consult our highly skilled clinical dermatologists and venereology specialists in Thiruvananthapuram.
@@ -461,8 +451,8 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '50px' }}>
             <span className="badge badge-premium">Whitefield Clinic</span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', color: 'var(--gold-500)', marginTop: '10px' }}>
-              Our <span style={{ color: 'var(--plum-900)' }}>Bengaluru Specialists</span>
+            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#242923', marginTop: '10px' }}>
+              Our <span style={{ color: '#536B4C' }}>Bengaluru Specialists</span>
             </h2>
             <p style={{ color: 'var(--muted-charcoal)', maxWidth: '600px', margin: '12px auto 0' }}>
               Meet our board-certified dermatologists, trichologists, and transplant surgeons practicing at our Bangalore center.
@@ -579,19 +569,9 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '680px', margin: '0 auto' }}>
             <span 
-              className="badge badge-gold" 
+              className="badge badge-hero-pill" 
               style={{ 
-                border: '1px solid rgba(243, 229, 171, 0.5)', 
-                color: '#F3E5AB', 
-                backgroundColor: 'rgba(180, 154, 104, 0.3)', 
-                marginBottom: '20px',
-                padding: '6px 20px',
-                borderRadius: '30px',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-                letterSpacing: '0.08em',
-                display: 'inline-block',
-                backdropFilter: 'blur(8px)'
+                marginBottom: '20px'
               }}
             >
               Work With Us
