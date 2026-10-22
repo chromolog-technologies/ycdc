@@ -28,6 +28,28 @@ interface HomePageProps {
   onBookTreatment: (category: string, serviceId: string) => void;
 }
 
+// Hero background video. Drop the new high-quality renders into /public/hero/ using these
+// names; until they exist the browser skips them and falls back to the current clips.
+// Poster = first frame of the video, shown while it loads (dark fallback if missing).
+const HERO_MEDIA = {
+  desktop: {
+    poster: '/hero/hero-desktop.jpg',
+    sources: [
+      { src: '/hero/hero-desktop.webm', type: 'video/webm' },
+      { src: '/hero/hero-desktop.mp4', type: 'video/mp4' },
+      { src: '/hero.mp4', type: 'video/mp4' }
+    ]
+  },
+  mobile: {
+    poster: '/hero/hero-mobile.jpg',
+    sources: [
+      { src: '/hero/hero-mobile.webm', type: 'video/webm' },
+      { src: '/hero/hero-mobile.mp4', type: 'video/mp4' },
+      { src: '/mobile%20view.mp4', type: 'video/mp4' }
+    ]
+  }
+};
+
 type CareCategory = 'skin' | 'hair' | 'laser' | 'aesthetics';
 
 const CARE_CATEGORIES_DATA: Record<CareCategory, {
@@ -335,7 +357,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const videoSrc = isMobile ? '/mobile view.mp4' : '/hero.mp4';
+  const heroMedia = isMobile ? HERO_MEDIA.mobile : HERO_MEDIA.desktop;
 
   useEffect(() => {
     if (heroVideoRef.current) {
@@ -475,11 +497,13 @@ export const HomePage: React.FC<HomePageProps> = ({
           ================================================================= */}
       <section className="master-hero-section">
         {/* Cinematic Video Background: Full-Size Responsive on Desktop & Mobile */}
-        <div className="master-hero-img-wrap">
+        <div
+          className="master-hero-img-wrap"
+          style={{ background: `#12100E url('${heroMedia.poster}') center / cover no-repeat` }}
+        >
           <video
             ref={heroVideoRef}
-            key={videoSrc}
-            src={videoSrc}
+            key={isMobile ? 'mobile' : 'desktop'}
             autoPlay
             loop
             muted
@@ -490,8 +514,9 @@ export const HomePage: React.FC<HomePageProps> = ({
             onCanPlay={() => setIsVideoLoaded(true)}
             onPlaying={() => setIsVideoLoaded(true)}
           >
-            <source src={isMobile ? '/mobile view.mp4' : '/hero.mp4'} type="video/mp4" />
-            <source src={isMobile ? '/mobile%20view.mp4' : '/hero.mp4'} type="video/mp4" />
+            {heroMedia.sources.map((source) => (
+              <source key={source.src} src={source.src} type={source.type} />
+            ))}
           </video>
         </div>
 
