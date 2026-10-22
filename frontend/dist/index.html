@@ -24,10 +24,67 @@
       gtag('js', new Date());
       gtag('config', 'G-YCDCTRACK', { send_page_view: false }); // Disable automatic pageview in SPA, we track manually on route change
     </script>
-    <script type="module" crossorigin src="/assets/index-BTuD2ZyX.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-B7Jl25CI.css">
+
+    <!-- Site preloader: inline so it paints before the app bundle loads; removed in src/main.tsx -->
+    <link rel="preload" as="image" href="/ycdc-logo.png" />
+    <style>
+      html.is-loading { overflow: hidden; }
+      #site-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        background: #F7F3ED;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+      }
+      #site-loader.is-hidden { opacity: 0; visibility: hidden; }
+      #site-loader img {
+        width: min(220px, 56vw);
+        height: auto;
+        animation: site-loader-breathe 2.4s ease-in-out infinite;
+      }
+      #site-loader .site-loader-track {
+        position: relative;
+        width: min(160px, 40vw);
+        height: 2px;
+        overflow: hidden;
+        border-radius: 2px;
+        background: rgba(83, 107, 76, 0.15);
+      }
+      #site-loader .site-loader-track::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: 40%;
+        border-radius: 2px;
+        background: linear-gradient(90deg, #536B4C, #B49A68);
+        animation: site-loader-slide 1.3s ease-in-out infinite;
+      }
+      @keyframes site-loader-breathe {
+        0%, 100% { opacity: 0.85; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.03); }
+      }
+      @keyframes site-loader-slide {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(250%); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #site-loader img, #site-loader .site-loader-track::after { animation: none; }
+      }
+    </style>
+    <script>document.documentElement.classList.add('is-loading');</script>
+    <script type="module" crossorigin src="/assets/index-CIkmfico.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DYAvIUDK.css">
   </head>
   <body>
+    <div id="site-loader" role="status" aria-live="polite" aria-label="Loading YCDC">
+      <img src="/ycdc-logo.png" alt="YCDC - Dr. Yogiraj Centre for Dermatology & Cosmetology" />
+      <div class="site-loader-track"></div>
+    </div>
     <div id="root"></div>
   </body>
 </html>
