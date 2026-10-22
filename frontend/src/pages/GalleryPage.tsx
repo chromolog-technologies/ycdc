@@ -37,6 +37,46 @@ const MOCK_GALLERY: GalleryItem[] = [
     description: 'Digital trichoscopy scalp analysis to evaluate hair root health and map out custom treatments.'
   },
   {
+    id: 'clinic-3d-main-reception',
+    type: 'image',
+    category: 'infrastructure',
+    title: 'New Architectural Vision - Main Reception & Aesthetics Signage',
+    thumbnail_path: '/ycdc_3d_render_main_reception.jpg',
+    description: 'Upcoming flagship clinical reception featuring curved textured walls, custom brass signage, and biophilic planter benches.'
+  },
+  {
+    id: 'clinic-3d-pharmacy',
+    type: 'image',
+    category: 'infrastructure',
+    title: 'New Architectural Vision - Clinical Pharmacy & Consultation Desk',
+    thumbnail_path: '/ycdc_3d_render_pharmacy.jpg',
+    description: 'Precision pharmacy counter with custom fluted wood partitions, backlit medicine displays, and ergonomic patient reception.'
+  },
+  {
+    id: 'clinic-3d-corridor',
+    type: 'image',
+    category: 'infrastructure',
+    title: 'New Architectural Vision - Private Suites Arched Corridor',
+    thumbnail_path: '/ycdc_3d_render_corridor.jpg',
+    description: 'Serene consultation corridor with vaulted arches, handcrafted woven pendant lighting, and natural daylighting.'
+  },
+  {
+    id: 'clinic-3d-aesthetics-lounge',
+    type: 'image',
+    category: 'infrastructure',
+    title: 'New Architectural Vision - Aesthetic Consultation Lounge',
+    thumbnail_path: '/ycdc_3d_render_aesthetics_lounge.jpg',
+    description: 'Intimate aesthetic consultation lounge with sculpted sage green armchairs and warm ambient lighting.'
+  },
+  {
+    id: 'clinic-3d-luxury-lounge',
+    type: 'image',
+    category: 'infrastructure',
+    title: 'New Architectural Vision - Grand Patient Lounge & Atrium',
+    thumbnail_path: '/ycdc_3d_render_luxury_lounge.jpg',
+    description: 'Spacious patient waiting atrium with custom curved banquettes, architectural columns, and illuminated cove ceilings.'
+  },
+  {
     id: 'clinic-lobby',
     type: 'image',
     category: 'infrastructure',
@@ -161,7 +201,7 @@ export default function GalleryPage() {
       <section style={{
         position: 'relative',
         padding: '120px 0 80px',
-        background: 'url("/skin_treatment_premium.png") no-repeat center center/cover',
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%), url("/ycdc_3d_render_main_reception.jpg") no-repeat center center/cover',
         color: 'white',
         textAlign: 'center',
         overflow: 'hidden'

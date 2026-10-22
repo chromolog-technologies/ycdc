@@ -633,9 +633,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                 {/* Photo Frame containing the reception desk photo */}
                 <div className="heritage-photo-frame">
                   <img
-                    src="/ycdc_reception_desk.png"
-                    onError={(e) => { e.currentTarget.src = '/DSC09955-scaled-880x952.jpg'; }}
-                    alt="Dr. Yogiraj Centre for Dermatology &amp; Cosmetology Reception Desk"
+                    src="/ycdc_3d_render_pharmacy.jpg"
+                    onError={(e) => { e.currentTarget.src = '/ycdc_reception_desk.png'; }}
+                    alt="Dr. Yogiraj Centre for Dermatology &amp; Cosmetology Architectural Flagship Suite"
                     loading="lazy"
                   />
 
@@ -1521,7 +1521,8 @@ export const HomePage: React.FC<HomePageProps> = ({
               title="YCDC Luxury Clinic Lounge"
             >
               <img
-                src="/ycdc_reception_lobby.jpg"
+                src="/ycdc_3d_render_main_reception.jpg"
+                onError={(e) => { e.currentTarget.src = '/ycdc_reception_lobby.jpg'; }}
                 alt="YCDC Clinic Reception Lounge"
                 className="journey-card-img"
               />

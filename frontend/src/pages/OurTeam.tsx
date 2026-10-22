@@ -185,7 +185,7 @@ export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
       <section style={{
         position: 'relative',
         padding: '120px 0 80px',
-        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.65) 0%, rgba(10, 12, 16, 0.75) 100%), url("/hero_doctors_team.jpg") no-repeat center center/cover',
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.65) 0%, rgba(10, 12, 16, 0.75) 100%), url("/ycdc_3d_render_luxury_lounge.jpg") no-repeat center center/cover',
         color: 'white',
         textAlign: 'center',
         overflow: 'hidden'

@@ -160,7 +160,7 @@ export default function BeforeAfter({ onBookTreatment }: BeforeAfterProps) {
       <section style={{
         position: 'relative',
         padding: '130px 0 85px',
-        background: 'linear-gradient(180deg, rgba(20, 28, 21, 0.75) 0%, rgba(35, 46, 36, 0.88) 100%), url("/hero_clinical_results.jpg") no-repeat center center/cover',
+        background: 'linear-gradient(180deg, rgba(20, 28, 21, 0.75) 0%, rgba(35, 46, 36, 0.88) 100%), url("/ycdc_3d_render_aesthetics_lounge.jpg") no-repeat center center/cover',
         color: '#FFFFFF',
         textAlign: 'center',
         overflow: 'hidden'

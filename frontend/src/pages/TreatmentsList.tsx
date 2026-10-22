@@ -152,7 +152,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
     <div className="animate-fade-in" style={{ backgroundColor: 'var(--silk-100)', paddingBottom: '60px' }}>
       {/* Page Header */}
       <section className="section-padding" style={{ 
-        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%), url("/luxury_treatment_suite.jpg") no-repeat center center/cover', 
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%), url("/ycdc_3d_render_corridor.jpg") no-repeat center center/cover', 
         color: 'white',
         textAlign: 'center',
         padding: '100px 0 80px'

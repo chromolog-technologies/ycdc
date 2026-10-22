@@ -16,7 +16,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
     <div className="animate-fade-in" style={{ backgroundColor: 'var(--silk-100)', paddingBottom: '60px' }}>
       {/* Page Hero */}
       <section className="section-padding" style={{ 
-        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%), url("/ycdc_reception_lobby.jpg") no-repeat center center/cover', 
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%), url("/ycdc_3d_render_main_reception.jpg") no-repeat center center/cover', 
         color: '#ffffff',
         textAlign: 'center',
         padding: '96px 0',
