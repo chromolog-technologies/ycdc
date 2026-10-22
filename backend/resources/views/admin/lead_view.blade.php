@@ -85,8 +85,8 @@
                             <div style="margin-top: 8px; max-width: 320px; border-radius: 8px; overflow: hidden; border: 1px solid var(--silk-200); background-color: var(--silk-200);">
                                 <!-- Verify if mock upload file name or actual url path -->
                                 @if(str_contains($lead->photo_attached, '.'))
-                                    @if(file_exists(public_path('uploads/leads/' . $lead->photo_attached)))
-                                        <img src="{{ asset('uploads/leads/' . $lead->photo_attached) }}" alt="Screening Attachment" style="width: 100%; object-fit: contain;">
+                                    @if(Storage::disk('local')->exists(\App\Models\Lead::PHOTO_DIR . '/' . $lead->photo_attached))
+                                        <img src="{{ $lead->photoUrl() }}" alt="Screening Attachment" style="width: 100%; object-fit: contain;">
                                     @else
                                         <div style="padding: 30px; text-align: center; color: var(--muted-charcoal); font-size: 0.85rem;">
                                             📸 Mock Attachment: <strong style="color: var(--plum-900);">{{ $lead->photo_attached }}</strong>
@@ -155,7 +155,11 @@
             <div class="card" style="border-color: rgba(229, 62, 62, 0.2); background-color: rgba(229, 62, 62, 0.02);">
                 <h4 style="color: #c53030; font-size: 0.9rem; font-weight: bold; text-transform: uppercase; margin-bottom: 12px;">Danger Zone</h4>
                 <p style="font-size: 0.8rem; color: var(--muted-charcoal); margin-bottom: 14px;">Once deleted, this patient inquiry record cannot be restored. Please confirm before executing.</p>
-                <a href="{{ route('admin.leads.delete', $lead->id) }}" class="btn btn-danger" style="width: 100%; justify-content: center;" onclick="return confirm('Permanently delete this inquiry from CRM records?')">Delete Inquiry</a>
+                <form action="{{ route('admin.leads.delete', $lead->id) }}" method="POST" onsubmit="return confirm('Permanently delete this inquiry from CRM records?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" style="width: 100%; justify-content: center;">Delete Inquiry</button>
+                </form>
             </div>
         </div>
 

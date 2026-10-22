@@ -34,9 +34,12 @@ class AdminController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if ($user && Hash::check($request->password, $user->password)) {
+        // This legacy panel has no branch scoping, so it is limited to super admins
+        if ($user && Hash::check($request->password, $user->password) && $user->hasRole('super-admin')) {
+            $request->session()->regenerate();
             session([
                 'admin_logged_in' => true,
+                'admin_user_id' => $user->id,
                 'admin_name' => $user->name,
                 'admin_email' => $user->email,
             ]);
@@ -46,9 +49,10 @@ class AdminController extends Controller
         return back()->withErrors(['email' => 'Invalid email or password.'])->withInput();
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        session()->forget(['admin_logged_in', 'admin_name', 'admin_email']);
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('admin.login')->with('success', 'Logged out successfully.');
     }
 
@@ -95,7 +99,7 @@ class AdminController extends Controller
         $imagePath = null;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $imageName = time() . '_' . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
+            $imageName = time() . '_' . Str::slug($request->name) . '.' . $file->guessExtension();
             $file->move(public_path('uploads/doctors'), $imageName);
             $imagePath = '/uploads/doctors/' . $imageName;
         }
@@ -137,7 +141,7 @@ class AdminController extends Controller
         $imagePath = $doctor->image_path;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $imageName = time() . '_' . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
+            $imageName = time() . '_' . Str::slug($request->name) . '.' . $file->guessExtension();
             $file->move(public_path('uploads/doctors'), $imageName);
             $imagePath = '/uploads/doctors/' . $imageName;
         }
@@ -273,7 +277,7 @@ class AdminController extends Controller
         ]);
 
         // Upload Thumbnail
-        $thumbName = time() . '_thumb_' . Str::slug($request->title) . '.' . $request->file('thumbnail')->getClientOriginalExtension();
+        $thumbName = time() . '_thumb_' . Str::slug($request->title) . '.' . $request->file('thumbnail')->guessExtension();
         $request->file('thumbnail')->move(public_path('uploads/gallery'), $thumbName);
         $thumbPath = '/uploads/gallery/' . $thumbName;
 
@@ -281,7 +285,7 @@ class AdminController extends Controller
         $videoPath = null;
         if ($request->type === 'video' && $request->hasFile('video')) {
             $videoFile = $request->file('video');
-            $videoName = time() . '_video_' . Str::slug($request->title) . '.' . $videoFile->getClientOriginalExtension();
+            $videoName = time() . '_video_' . Str::slug($request->title) . '.' . $videoFile->guessExtension();
             $videoFile->move(public_path('uploads/gallery'), $videoName);
             $videoPath = '/uploads/gallery/' . $videoName;
         }
@@ -319,7 +323,7 @@ class AdminController extends Controller
 
         $thumbPath = $item->thumbnail_path;
         if ($request->hasFile('thumbnail')) {
-            $thumbName = time() . '_thumb_' . Str::slug($request->title) . '.' . $request->file('thumbnail')->getClientOriginalExtension();
+            $thumbName = time() . '_thumb_' . Str::slug($request->title) . '.' . $request->file('thumbnail')->guessExtension();
             $request->file('thumbnail')->move(public_path('uploads/gallery'), $thumbName);
             $thumbPath = '/uploads/gallery/' . $thumbName;
         }
@@ -327,7 +331,7 @@ class AdminController extends Controller
         $videoPath = $item->video_path;
         if ($item->type === 'video' && $request->hasFile('video')) {
             $videoFile = $request->file('video');
-            $videoName = time() . '_video_' . Str::slug($request->title) . '.' . $videoFile->getClientOriginalExtension();
+            $videoName = time() . '_video_' . Str::slug($request->title) . '.' . $videoFile->guessExtension();
             $videoFile->move(public_path('uploads/gallery'), $videoName);
             $videoPath = '/uploads/gallery/' . $videoName;
         }
@@ -377,7 +381,7 @@ class AdminController extends Controller
         ]);
 
         // Upload Cover Image
-        $imgName = time() . '_blog_' . Str::slug($request->title) . '.' . $request->file('image')->getClientOriginalExtension();
+        $imgName = time() . '_blog_' . Str::slug($request->title) . '.' . $request->file('image')->guessExtension();
         $request->file('image')->move(public_path('uploads/blog'), $imgName);
         $imgPath = '/uploads/blog/' . $imgName;
 
@@ -427,7 +431,7 @@ class AdminController extends Controller
 
         $imgPath = $blog->image_path;
         if ($request->hasFile('image')) {
-            $imgName = time() . '_blog_' . Str::slug($request->title) . '.' . $request->file('image')->getClientOriginalExtension();
+            $imgName = time() . '_blog_' . Str::slug($request->title) . '.' . $request->file('image')->guessExtension();
             $request->file('image')->move(public_path('uploads/blog'), $imgName);
             $imgPath = '/uploads/blog/' . $imgName;
         }
@@ -485,7 +489,7 @@ class AdminController extends Controller
     public function updateLeadStatus(Request $request, $id)
     {
         $lead = Lead::findOrFail($id);
-        $request->validate(['status' => 'required|string']);
+        $request->validate(['status' => 'required|string|in:Pending,Contacted,Confirmed,Closed']);
         
         $lead->update(['status' => $request->status]);
         

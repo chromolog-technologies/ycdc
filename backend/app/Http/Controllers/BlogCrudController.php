@@ -39,7 +39,7 @@ class BlogCrudController extends Controller
         }
 
         // Upload Cover Image
-        $imgName = time() . '_blog_' . Str::slug($request->title) . '.' . $request->file('image')->getClientOriginalExtension();
+        $imgName = time() . '_blog_' . Str::slug($request->title) . '.' . $request->file('image')->guessExtension();
         $request->file('image')->move(public_path('uploads/blog'), $imgName);
         $imgPath = '/uploads/blog/' . $imgName;
 
@@ -89,7 +89,7 @@ class BlogCrudController extends Controller
 
         $imgPath = $blog->image_path;
         if ($request->hasFile('image')) {
-            $imgName = time() . '_blog_' . Str::slug($request->title) . '.' . $request->file('image')->getClientOriginalExtension();
+            $imgName = time() . '_blog_' . Str::slug($request->title) . '.' . $request->file('image')->guessExtension();
             $request->file('image')->move(public_path('uploads/blog'), $imgName);
             $imgPath = '/uploads/blog/' . $imgName;
         }

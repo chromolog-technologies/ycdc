@@ -120,16 +120,23 @@
             border-top: 1px solid rgba(255,255,255,0.08);
         }
 
-        .sidebar-footer a {
+        .sidebar-footer a,
+        .sidebar-footer button {
             color: rgba(255,255,255,0.6);
             font-size: 0.85rem;
             text-decoration: none;
             display: flex;
             align-items: center;
             transition: var(--transition-smooth);
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+            cursor: pointer;
         }
 
-        .sidebar-footer a:hover {
+        .sidebar-footer a:hover,
+        .sidebar-footer button:hover {
             color: var(--gold-500);
         }
 
@@ -292,6 +299,7 @@
             transition: var(--transition-smooth);
             text-decoration: none;
             border: 1px solid transparent;
+            font-family: inherit;
         }
 
         .btn-primary {
@@ -468,7 +476,10 @@
             </li>
         </ul>
         <div class="sidebar-footer">
-            <a href="{{ route('admin.logout') }}"><i>🚪</i> Sign Out</a>
+            <form action="{{ route('admin.logout') }}" method="POST">
+                @csrf
+                <button type="submit"><i>🚪</i> Sign Out</button>
+            </form>
         </div>
     </div>
 

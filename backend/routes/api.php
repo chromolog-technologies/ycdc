@@ -19,7 +19,7 @@ Route::get('/gallery', [ApiController::class, 'getGallery']);
 Route::get('/blog', [ApiController::class, 'getBlogs']);
 Route::get('/seo', [ApiController::class, 'getSeo']);
 Route::get('/case-studies', [ApiController::class, 'getCaseStudies']);
-Route::post('/leads', [ApiController::class, 'createLead']);
+Route::post('/leads', [ApiController::class, 'createLead'])->middleware('throttle:10,1');
 
 // Public Testimonials
 Route::get('/testimonials', function () {
@@ -27,31 +27,31 @@ Route::get('/testimonials', function () {
 });
 
 // Authentication Routes
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
 
 // Protected Admin APIs
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
     
-    // CRUD Endpoints
-    Route::apiResource('admin/doctors', DoctorCrudController::class);
-    Route::apiResource('admin/testimonials', TestimonialCrudController::class);
-    Route::apiResource('admin/services', TreatmentCrudController::class);
-    Route::apiResource('admin/gallery', GalleryCrudController::class);
-    Route::apiResource('admin/blogs', BlogCrudController::class);
-    Route::apiResource('admin/case-studies', CaseStudyCrudController::class);
-    Route::apiResource('admin/seo', SeoCrudController::class);
+    // CRUD Endpoints: any staff member may read, writes need the module permission
+    $writes = ['store', 'update', 'destroy'];
+    Route::apiResource('admin/doctors', DoctorCrudController::class)->middlewareFor($writes, 'permission:manage-doctors');
+    Route::apiResource('admin/testimonials', TestimonialCrudController::class)->middlewareFor($writes, 'permission:manage-testimonials');
+    Route::apiResource('admin/services', TreatmentCrudController::class)->middlewareFor($writes, 'permission:manage-treatments');
+    Route::apiResource('admin/gallery', GalleryCrudController::class)->middlewareFor($writes, 'permission:manage-gallery');
+    Route::apiResource('admin/blogs', BlogCrudController::class)->middlewareFor($writes, 'permission:manage-blogs');
+    Route::apiResource('admin/case-studies', CaseStudyCrudController::class)->middlewareFor($writes, 'permission:manage-case-studies');
+    Route::apiResource('admin/seo', SeoCrudController::class)->only(['index', 'show', 'update'])->middlewareFor('update', 'permission:manage-seo');
     
     // Scoped Leads CRM endpoints
-    Route::get('/admin/leads', [LeadCrudController::class, 'index']);
-    Route::post('/admin/leads', [LeadCrudController::class, 'store']);
-    Route::get('/admin/leads/{id}', [LeadCrudController::class, 'show']);
-    Route::put('/admin/leads/{id}', [LeadCrudController::class, 'update']);
-    Route::put('/admin/leads/{id}/status', [LeadCrudController::class, 'updateStatus']);
-    Route::put('/admin/leads/{id}/notes', [LeadCrudController::class, 'updateNotes']);
-    Route::delete('/admin/leads/{id}', [LeadCrudController::class, 'destroy']);
-    
-    // DB Reset (for debugging)
-    Route::post('/leads/reset', [ApiController::class, 'resetLeads']);
+    Route::middleware('permission:manage-leads')->group(function () {
+        Route::get('/admin/leads', [LeadCrudController::class, 'index']);
+        Route::post('/admin/leads', [LeadCrudController::class, 'store']);
+        Route::get('/admin/leads/{id}', [LeadCrudController::class, 'show']);
+        Route::put('/admin/leads/{id}', [LeadCrudController::class, 'update']);
+        Route::put('/admin/leads/{id}/status', [LeadCrudController::class, 'updateStatus']);
+        Route::put('/admin/leads/{id}/notes', [LeadCrudController::class, 'updateNotes']);
+        Route::delete('/admin/leads/{id}', [LeadCrudController::class, 'destroy']);
+    });
 });

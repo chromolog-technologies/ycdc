@@ -42,11 +42,11 @@ class CaseStudyCrudController extends Controller
         }
 
         // Upload images
-        $beforeName = time() . '_before_' . $id . '.' . $request->file('before_image')->getClientOriginalExtension();
+        $beforeName = time() . '_before_' . $id . '.' . $request->file('before_image')->guessExtension();
         $request->file('before_image')->move(public_path('uploads/casestudies'), $beforeName);
         $beforePath = '/uploads/casestudies/' . $beforeName;
 
-        $afterName = time() . '_after_' . $id . '.' . $request->file('after_image')->getClientOriginalExtension();
+        $afterName = time() . '_after_' . $id . '.' . $request->file('after_image')->guessExtension();
         $request->file('after_image')->move(public_path('uploads/casestudies'), $afterName);
         $afterPath = '/uploads/casestudies/' . $afterName;
 
@@ -100,7 +100,7 @@ class CaseStudyCrudController extends Controller
         // Before Image Replace
         $beforePath = $caseStudy->before_img_path;
         if ($request->hasFile('before_image')) {
-            $beforeName = time() . '_before_' . $id . '.' . $request->file('before_image')->getClientOriginalExtension();
+            $beforeName = time() . '_before_' . $id . '.' . $request->file('before_image')->guessExtension();
             $request->file('before_image')->move(public_path('uploads/casestudies'), $beforeName);
             $beforePath = '/uploads/casestudies/' . $beforeName;
         }
@@ -108,7 +108,7 @@ class CaseStudyCrudController extends Controller
         // After Image Replace
         $afterPath = $caseStudy->after_img_path;
         if ($request->hasFile('after_image')) {
-            $afterName = time() . '_after_' . $id . '.' . $request->file('after_image')->getClientOriginalExtension();
+            $afterName = time() . '_after_' . $id . '.' . $request->file('after_image')->guessExtension();
             $request->file('after_image')->move(public_path('uploads/casestudies'), $afterName);
             $afterPath = '/uploads/casestudies/' . $afterName;
         }

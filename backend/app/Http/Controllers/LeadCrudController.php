@@ -160,7 +160,7 @@ class LeadCrudController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $lead = Lead::create($request->all());
+        $lead = Lead::create($validator->validated());
 
         return response()->json(['success' => true, 'data' => $lead]);
     }
@@ -203,7 +203,7 @@ class LeadCrudController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $lead->update($request->all());
+        $lead->update($validator->validated());
 
         return response()->json(['success' => true, 'data' => $lead]);
     }

@@ -45,7 +45,7 @@
                                 <td>
                                     <div style="display: flex; gap: 8px;">
                                         <a href="{{ route('admin.blog.edit', $post->id) }}" class="btn btn-outline btn-sm">Edit</a>
-                                        <a href="{{ route('admin.blog.delete', $post->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this article?')">Delete</a>
+                                        <form action="{{ route('admin.blog.delete', $post->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this article?')">@csrf @method('DELETE')<button type="submit" class="btn btn-danger btn-sm">Delete</button></form>
                                     </div>
                                 </td>
                             </tr>

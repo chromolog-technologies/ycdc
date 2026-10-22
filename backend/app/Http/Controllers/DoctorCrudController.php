@@ -34,7 +34,7 @@ class DoctorCrudController extends Controller
         $imagePath = null;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $imageName = time() . '_' . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
+            $imageName = time() . '_' . Str::slug($request->name) . '.' . $file->guessExtension();
             $file->move(public_path('uploads/doctors'), $imageName);
             $imagePath = '/uploads/doctors/' . $imageName;
         }
@@ -82,7 +82,7 @@ class DoctorCrudController extends Controller
         $imagePath = $doctor->image_path;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $imageName = time() . '_' . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
+            $imageName = time() . '_' . Str::slug($request->name) . '.' . $file->guessExtension();
             $file->move(public_path('uploads/doctors'), $imageName);
             $imagePath = '/uploads/doctors/' . $imageName;
         }

@@ -37,7 +37,7 @@ class GalleryCrudController extends Controller
         }
 
         // Upload Thumbnail
-        $thumbName = time() . '_thumb_' . Str::slug($request->title) . '.' . $request->file('thumbnail')->getClientOriginalExtension();
+        $thumbName = time() . '_thumb_' . Str::slug($request->title) . '.' . $request->file('thumbnail')->guessExtension();
         $request->file('thumbnail')->move(public_path('uploads/gallery'), $thumbName);
         $thumbPath = '/uploads/gallery/' . $thumbName;
 
@@ -45,7 +45,7 @@ class GalleryCrudController extends Controller
         $videoPath = null;
         if ($request->type === 'video' && $request->hasFile('video')) {
             $videoFile = $request->file('video');
-            $videoName = time() . '_video_' . Str::slug($request->title) . '.' . $videoFile->getClientOriginalExtension();
+            $videoName = time() . '_video_' . Str::slug($request->title) . '.' . $videoFile->guessExtension();
             $videoFile->move(public_path('uploads/gallery'), $videoName);
             $videoPath = '/uploads/gallery/' . $videoName;
         }
@@ -86,7 +86,7 @@ class GalleryCrudController extends Controller
 
         $thumbPath = $item->thumbnail_path;
         if ($request->hasFile('thumbnail')) {
-            $thumbName = time() . '_thumb_' . Str::slug($request->title) . '.' . $request->file('thumbnail')->getClientOriginalExtension();
+            $thumbName = time() . '_thumb_' . Str::slug($request->title) . '.' . $request->file('thumbnail')->guessExtension();
             $request->file('thumbnail')->move(public_path('uploads/gallery'), $thumbName);
             $thumbPath = '/uploads/gallery/' . $thumbName;
         }
@@ -94,7 +94,7 @@ class GalleryCrudController extends Controller
         $videoPath = $item->video_path;
         if ($item->type === 'video' && $request->hasFile('video')) {
             $videoFile = $request->file('video');
-            $videoName = time() . '_video_' . Str::slug($request->title) . '.' . $videoFile->getClientOriginalExtension();
+            $videoName = time() . '_video_' . Str::slug($request->title) . '.' . $videoFile->guessExtension();
             $videoFile->move(public_path('uploads/gallery'), $videoName);
             $videoPath = '/uploads/gallery/' . $videoName;
         }

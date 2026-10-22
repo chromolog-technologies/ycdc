@@ -45,7 +45,7 @@
 
                             <div style="border-top: 1px solid var(--silk-100); padding-top: 14px; display: flex; justify-content: flex-end; gap: 8px;">
                                 <a href="{{ route('admin.gallery.edit', $item->id) }}" class="btn btn-outline btn-sm">Edit</a>
-                                <a href="{{ route('admin.gallery.delete', $item->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this media item?')" style="padding: 6px 12px;">Delete</a>
+                                <form action="{{ route('admin.gallery.delete', $item->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this media item?')">@csrf @method('DELETE')<button type="submit" class="btn btn-danger btn-sm" style="padding: 6px 12px;">Delete</button></form>
                             </div>
                         </div>
                     </div>

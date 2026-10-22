@@ -3,14 +3,12 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Service;
 use App\Models\GalleryItem;
 use App\Models\BlogPost;
 use App\Models\Lead;
 use App\Models\SeoConfig;
-use Illuminate\Support\Facades\Hash;
 
 class ClinicSeeder extends Seeder
 {
@@ -19,14 +17,7 @@ class ClinicSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Seed Admin User
-        User::updateOrCreate(
-            ['email' => 'admin@ycdc.com'],
-            [
-                'name' => 'System Admin',
-                'password' => Hash::make('YcdcAdmin2026!'),
-            ]
-        );
+        // 1. Admin users are created by RolesAndPermissionsSeeder (no hardcoded passwords)
 
         // 2. Seed Doctors
         $doctors = [

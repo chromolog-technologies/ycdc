@@ -85,7 +85,7 @@
                                 <td>
                                     <div style="display: flex; gap: 8px;">
                                         <a href="{{ route('admin.leads.view', $lead->id) }}" class="btn btn-outline btn-sm">Manage CRM</a>
-                                        <a href="{{ route('admin.leads.delete', $lead->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this enquiry lead from CRM?')">Delete</a>
+                                        <form action="{{ route('admin.leads.delete', $lead->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this enquiry lead from CRM?')">@csrf @method('DELETE')<button type="submit" class="btn btn-danger btn-sm">Delete</button></form>
                                     </div>
                                 </td>
                             </tr>
