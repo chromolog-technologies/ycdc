@@ -366,7 +366,7 @@ function AppContent() {
                   Book a Consultation <ArrowRight size={15} />
                 </button>
 
-                {/* Menu Icon (Matches reference layout beside button) */}
+                {/* Menu Icon (mobile/tablet only; shown with the drawer when .desktop-menu is hidden) */}
                 <button
                   className="header-reference-menu-btn"
                   onClick={() => dispatch(toggleMobileMenu())}
@@ -377,7 +377,6 @@ function AppContent() {
                     border: 'none',
                     cursor: 'pointer',
                     padding: '6px',
-                    display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}

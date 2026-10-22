@@ -1038,9 +1038,17 @@ header.header-scrolled .mobile-menu-btn {
   padding: 6px;
 }
 
+/* Header hamburger + drawer are only needed once the desktop links collapse */
+.header-reference-menu-btn { display: none; }
+
+@media (min-width: 1141px) {
+  .mobile-nav-drawer-overlay { display: none !important; }
+}
+
 @media (max-width: 1140px) {
   .desktop-menu { display: none !important; }
   .mobile-menu-btn { display: block !important; }
+  .header-reference-menu-btn { display: flex; }
 }
 
 /* ==========================================================================
