@@ -172,6 +172,45 @@ const CARE_CATEGORIES_DATA: Record<CareCategory, {
   }
 };
 
+const TESTIMONIALS = [
+  {
+    quote: "Our targeted combination of carbon-peel lasers and prescription retinoids calmed active cystic lesions while remodeling deep collagen scarring within 12 weeks.",
+    doctor: "Dr. Amy Cherian",
+    role: "Consultant Dermatologist",
+    caseTitle: "Acne Scar Revision",
+    avatar: "/doctor_amy.png",
+    author: "Dr. Amy Cherian",
+    treatment: "Acne Scar Revision"
+  },
+  {
+    quote: "Micro-follicular unit extraction paired with structured GFC sessions achieved natural crown density and a resilient, organic hairline.",
+    doctor: "Dr. Ryan Paul",
+    role: "Trichology & Hair Specialist",
+    caseTitle: "FUE Hair Restoration",
+    avatar: "/doctor_ryan.png",
+    author: "Dr. Ryan Paul",
+    treatment: "FUE Hair Restoration"
+  },
+  {
+    quote: "By addressing cellular barrier health and melanocyte regulation, our clinical regimen achieved sustained radiance with zero post-inflammatory rebound.",
+    doctor: "Dr. Bismi George",
+    role: "Chief Aesthetic Physician",
+    caseTitle: "Skin Rejuvenation Protocol",
+    avatar: "/doctor_bismi.png",
+    author: "Dr. Bismi George",
+    treatment: "Skin Rejuvenation Protocol"
+  },
+  {
+    quote: "Clinical dermatology requires precise diagnosis before procedural intervention. Evidence-based care ensures safe, predictable, and lasting transformation.",
+    doctor: "Dr. Yogiraj",
+    role: "Founder & Chief Dermatologist",
+    caseTitle: "Clinical Excellence",
+    avatar: "/doctor_yogiraj.png",
+    author: "Dr. Yogiraj",
+    treatment: "Founder & Chief Dermatologist"
+  }
+];
+
 const PATIENT_CARE_STAGES = [
   {
     num: '01',
@@ -270,6 +309,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 }) => {
   const [activeCareCategory, setActiveCareCategory] = useState<CareCategory>('skin');
   const [activeStage, setActiveStage] = useState<number>(1);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
   const storiesScrollRef = useRef<HTMLDivElement>(null);
   const [isStoriesPaused, setIsStoriesPaused] = useState<boolean>(false);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
@@ -371,6 +411,15 @@ export const HomePage: React.FC<HomePageProps> = ({
     }
   };
 
+  const prevTestimonial = () => {
+    setTestimonialIndex((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1));
+  };
+
+  const nextTestimonial = () => {
+    setTestimonialIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+  };
+
+  const currentTestimonial = TESTIMONIALS[testimonialIndex];
   const careData = CARE_CATEGORIES_DATA[activeCareCategory];
 
   // Scroll reveal observer for elements + automatic active stage on scroll
@@ -1046,6 +1095,105 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
+      {/* =================================================================
+          7. REAL PEOPLE. REAL RESULTS. (Stories of Confidence)
+          ================================================================= */}
+      <section className="master-results-section" id="clinical-results">
+        <div className="container">
+          <div className="master-results-header reveal reveal-up">
+            <div style={{ textAlign: 'left' }}>
+              <div className="master-section-eyebrow">REAL PEOPLE. REAL RESULTS.</div>
+              <h2 className="master-section-title">Stories of Confidence</h2>
+            </div>
+            <button
+              onClick={() => onNavigateToPage('before-after')}
+              className="master-view-more-link"
+              aria-label="View more before and after clinical results"
+            >
+              View More Stories &rarr;
+            </button>
+          </div>
+
+          <div className="master-results-grid">
+            {/* Case 1: Acne Before / After Card */}
+            <div className="master-ba-card reveal reveal-left">
+              <div className="master-ba-images-row">
+                <div className="master-ba-img-box">
+                  <img src="/acne_before.png" alt="Acne Treatment Before" loading="lazy" />
+                  <span className="master-ba-badge">Before</span>
+                </div>
+                <div className="master-ba-img-box">
+                  <img src="/acne_after.png" alt="Acne Treatment After" loading="lazy" />
+                  <span className="master-ba-badge">After</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Case 2: Hair Before / After Card */}
+            <div className="master-ba-card reveal reveal-up">
+              <div className="master-ba-images-row">
+                <div className="master-ba-img-box">
+                  <img src="/hair_before.png" alt="Hair Restoration Before" loading="lazy" />
+                  <span className="master-ba-badge">Before</span>
+                </div>
+                <div className="master-ba-img-box">
+                  <img src="/hair_after.png" alt="Hair Restoration After" loading="lazy" />
+                  <span className="master-ba-badge">After</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Case 3: What Doctors Say / Clinical Insights */}
+            <div className="master-testimonial-card reveal reveal-right" style={{ textAlign: 'left' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#B9727B' }}>
+                    WHAT DOCTORS SAY
+                  </span>
+                  <span className="master-testimonial-tag">{currentTestimonial.caseTitle}</span>
+                </div>
+                <div className="master-testimonial-quote-mark">&ldquo;</div>
+                <p className="master-testimonial-quote-text">
+                  &ldquo;{currentTestimonial.quote}&rdquo;
+                </p>
+              </div>
+
+              <div className="master-testimonial-bottom-row">
+                <div className="master-testimonial-author-group">
+                  <img
+                    src={currentTestimonial.avatar}
+                    alt={currentTestimonial.doctor}
+                    className="master-testimonial-avatar"
+                  />
+                  <div>
+                    <h5 className="master-testimonial-name">{currentTestimonial.doctor}</h5>
+                    <span style={{ fontSize: '0.76rem', color: '#6C7469', fontWeight: 500 }}>
+                      {currentTestimonial.role}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="master-testimonial-nav-arrows">
+                  <button
+                    onClick={prevTestimonial}
+                    className="master-testimonial-nav-btn"
+                    aria-label="Previous doctor insight"
+                  >
+                    <ChevronLeft size={16} />
+                  </button>
+                  <button
+                    onClick={nextTestimonial}
+                    className="master-testimonial-nav-btn"
+                    aria-label="Next doctor insight"
+                  >
+                    <ChevronRight size={16} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* =================================================================
           8. ETHICAL MEDICAL GOVERNANCE & PATIENT CARE STANDARDS (NMC Compliant)

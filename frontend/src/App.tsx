@@ -21,7 +21,8 @@ import {
   Image as ImageIcon,
   BookOpen,
   ChevronRight,
-  Compass
+  Compass,
+  Activity
 } from 'lucide-react';
 import HomePage from './pages/HomePage';
 import BookingWidget from './components/BookingWidget';
@@ -30,6 +31,7 @@ import AboutUs from './pages/AboutUs';
 import TreatmentsList from './pages/TreatmentsList';
 import ContactUs from './pages/ContactUs';
 import OurTeam from './pages/OurTeam';
+import BeforeAfter from './pages/BeforeAfter';
 import GalleryPage from './pages/GalleryPage';
 import BlogPage from './pages/BlogPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -66,6 +68,7 @@ const MOBILE_NAV_ITEMS: MobileNavItem[] = [
   { id: 'home', label: 'Home', icon: Compass },
   { id: 'treatments', label: 'Treatments & Lasers', icon: Sparkles, badge: 'Popular' },
   { id: 'team', label: 'Specialist Doctors', icon: Stethoscope },
+  { id: 'before-after', label: 'Clinical Results', icon: Activity },
   { id: 'about', label: 'About YCDC', icon: ShieldCheck },
   { id: 'gallery', label: 'Clinic Suites', icon: ImageIcon },
   { id: 'blog', label: 'Clinical Blog', icon: BookOpen },
@@ -172,12 +175,6 @@ function AppContent() {
     dispatch(setMobileMenuOpen(false));
     scrollToTop();
   };
-
-  useEffect(() => {
-    if (currentPage === 'before-after') {
-      navigateToPage('treatments');
-    }
-  }, [currentPage]);
 
   const handleBookTreatment = (category: string, serviceId: string) => {
     dispatch(openBookingModal({ category, service: serviceId }));
@@ -308,6 +305,7 @@ function AppContent() {
                   { id: 'about', label: 'About' },
                   { id: 'treatments', label: 'Treatments' },
                   { id: 'team', label: 'Doctors' },
+                  { id: 'before-after', label: 'Results' },
                   { id: 'blog', label: 'Blogs' },
                   { id: 'contact', label: 'Contact' }
                 ].map((item) => {
@@ -729,6 +727,10 @@ function AppContent() {
           <OurTeam onOpenApplyModal={() => dispatch(setApplyModalOpen(true))} />
         )}
 
+        {currentPage === 'before-after' && (
+          <BeforeAfter onBookTreatment={handleBookTreatment} />
+        )}
+
         {currentPage === 'treatments' && (
           <TreatmentsList onBookTreatment={handleBookTreatment} />
         )}
@@ -815,6 +817,7 @@ function AppContent() {
                     <button onClick={() => navigateToPage('home')}>Home</button>
                     <button onClick={() => navigateToPage('treatments')}>Treatments</button>
                     <button onClick={() => navigateToPage('team')}>Specialists</button>
+                    <button onClick={() => navigateToPage('before-after')}>Clinical Results</button>
                     <button onClick={() => navigateToPage('about')}>About YCDC</button>
                     <button onClick={() => navigateToPage('contact')}>Contact Us</button>
                   </div>
