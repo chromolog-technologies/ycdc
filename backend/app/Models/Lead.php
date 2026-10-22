@@ -13,6 +13,55 @@ class Lead extends Model
 
     protected $guarded = [];
 
+    protected static function booted(): void
+    {
+        // branch_code always follows the branch label, so scoping never relies on text matching
+        static::saving(function (Lead $lead) {
+            if ($lead->isDirty('branch') || !$lead->branch_code) {
+                $lead->branch_code = static::branchCodeFor($lead->branch);
+            }
+        });
+    }
+
+    /**
+     * Map a branch label such as "Whitefield Center, Bengaluru" to its code from config/clinic.php.
+     */
+    public static function branchCodeFor(?string $label): ?string
+    {
+        $label = strtolower((string) $label);
+
+        foreach (config('clinic.branches') as $code => $branch) {
+            foreach ([$code, ...$branch['aliases']] as $alias) {
+                if (str_contains($label, $alias)) {
+                    return $code;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Leads visible to the given staff member: their own branch, or every branch for super admins.
+     */
+    public function scopeVisibleTo($query, User $user)
+    {
+        $code = $user->branchCode();
+
+        if ($code) {
+            return $query->where('branch_code', $code);
+        }
+
+        return $user->hasRole('super-admin') ? $query : $query->whereRaw('1 = 0');
+    }
+
+    public function isVisibleTo(User $user): bool
+    {
+        $code = $user->branchCode();
+
+        return $code ? $this->branch_code === $code : $user->hasRole('super-admin');
+    }
+
     /**
      * Short-lived signed path to the attachment, e.g. /uploads/leads/abc.jpg?expires=..&signature=..
      */

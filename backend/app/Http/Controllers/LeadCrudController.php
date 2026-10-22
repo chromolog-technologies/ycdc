@@ -10,24 +10,11 @@ class LeadCrudController extends Controller
 {
     public function index(Request $request)
     {
-        $user = $request->user();
         $status = $request->query('status');
         $type = $request->query('type');
 
-        $query = Lead::orderBy('created_at', 'desc');
-
         // Apply Branch Scoping
-        if ($user->branch === 'trivandrum') {
-            $query->where(function($q) {
-                $q->where('branch', 'like', '%trivandrum%')
-                  ->orWhere('branch', 'like', '%pattom%');
-            });
-        } elseif ($user->branch === 'bangalore') {
-            $query->where(function($q) {
-                $q->where('branch', 'like', '%bangalore%')
-                  ->orWhere('branch', 'like', '%whitefield%');
-            });
-        }
+        $query = Lead::visibleTo($request->user())->orderBy('created_at', 'desc');
 
         // Apply filters
         if ($status) {
@@ -42,42 +29,14 @@ class LeadCrudController extends Controller
 
     public function show(Request $request, $id)
     {
-        $user = $request->user();
-        $lead = Lead::findOrFail($id);
-
-        // Verify branch access
-        if ($user->branch === 'trivandrum') {
-            $isTvm = stripos($lead->branch, 'trivandrum') !== false || stripos($lead->branch, 'pattom') !== false;
-            if (!$isTvm) {
-                return response()->json(['message' => 'Unauthorized branch access.'], 403);
-            }
-        } elseif ($user->branch === 'bangalore') {
-            $isBlr = stripos($lead->branch, 'bangalore') !== false || stripos($lead->branch, 'whitefield') !== false;
-            if (!$isBlr) {
-                return response()->json(['message' => 'Unauthorized branch access.'], 403);
-            }
-        }
+        $lead = $this->findVisibleLead($request, $id);
 
         return response()->json($lead);
     }
 
     public function updateStatus(Request $request, $id)
     {
-        $user = $request->user();
-        $lead = Lead::findOrFail($id);
-
-        // Verify branch access
-        if ($user->branch === 'trivandrum') {
-            $isTvm = stripos($lead->branch, 'trivandrum') !== false || stripos($lead->branch, 'pattom') !== false;
-            if (!$isTvm) {
-                return response()->json(['message' => 'Unauthorized branch access.'], 403);
-            }
-        } elseif ($user->branch === 'bangalore') {
-            $isBlr = stripos($lead->branch, 'bangalore') !== false || stripos($lead->branch, 'whitefield') !== false;
-            if (!$isBlr) {
-                return response()->json(['message' => 'Unauthorized branch access.'], 403);
-            }
-        }
+        $lead = $this->findVisibleLead($request, $id);
 
         $validator = Validator::make($request->all(), [
             'status' => 'required|string|in:Pending,Contacted,Confirmed,Closed',
@@ -94,21 +53,7 @@ class LeadCrudController extends Controller
 
     public function updateNotes(Request $request, $id)
     {
-        $user = $request->user();
-        $lead = Lead::findOrFail($id);
-
-        // Verify branch access
-        if ($user->branch === 'trivandrum') {
-            $isTvm = stripos($lead->branch, 'trivandrum') !== false || stripos($lead->branch, 'pattom') !== false;
-            if (!$isTvm) {
-                return response()->json(['message' => 'Unauthorized branch access.'], 403);
-            }
-        } elseif ($user->branch === 'bangalore') {
-            $isBlr = stripos($lead->branch, 'bangalore') !== false || stripos($lead->branch, 'whitefield') !== false;
-            if (!$isBlr) {
-                return response()->json(['message' => 'Unauthorized branch access.'], 403);
-            }
-        }
+        $lead = $this->findVisibleLead($request, $id);
 
         $lead->update(['notes' => $request->notes]);
 
@@ -117,21 +62,7 @@ class LeadCrudController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        $user = $request->user();
-        $lead = Lead::findOrFail($id);
-
-        // Verify branch access
-        if ($user->branch === 'trivandrum') {
-            $isTvm = stripos($lead->branch, 'trivandrum') !== false || stripos($lead->branch, 'pattom') !== false;
-            if (!$isTvm) {
-                return response()->json(['message' => 'Unauthorized branch access.'], 403);
-            }
-        } elseif ($user->branch === 'bangalore') {
-            $isBlr = stripos($lead->branch, 'bangalore') !== false || stripos($lead->branch, 'whitefield') !== false;
-            if (!$isBlr) {
-                return response()->json(['message' => 'Unauthorized branch access.'], 403);
-            }
-        }
+        $lead = $this->findVisibleLead($request, $id);
 
         $lead->delete();
 
@@ -140,54 +71,43 @@ class LeadCrudController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'patient_name' => 'required|string|max:255',
-            'patient_phone' => 'required|string|max:100',
-            'patient_email' => 'nullable|email|max:255',
-            'branch' => 'required|string|max:255',
-            'type' => 'required|string|in:Appointment,Online Consultation,Contact',
-            'service_requested' => 'nullable|string|max:255',
-            'doctor_requested' => 'nullable|string|max:255',
-            'preferred_date' => 'nullable|string|max:255',
-            'preferred_time' => 'nullable|string|max:255',
-            'concern_type' => 'nullable|string|max:255',
-            'medical_history' => 'nullable|string',
-            'notes' => 'nullable|string',
-            'status' => 'required|string|in:Pending,Contacted,Confirmed,Closed',
-        ]);
+        $validator = Validator::make($request->all(), $this->rules());
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $lead = Lead::create($validator->validated());
+        $lead = Lead::create($this->lockToUserBranch($request, $validator->validated()));
 
         return response()->json(['success' => true, 'data' => $lead]);
     }
 
     public function update(Request $request, $id)
     {
-        $user = $request->user();
-        $lead = Lead::findOrFail($id);
+        $lead = $this->findVisibleLead($request, $id);
 
-        // Verify branch access
-        if ($user->branch === 'trivandrum') {
-            $isTvm = stripos($lead->branch, 'trivandrum') !== false || stripos($lead->branch, 'pattom') !== false;
-            if (!$isTvm) {
-                return response()->json(['message' => 'Unauthorized branch access.'], 403);
-            }
-        } elseif ($user->branch === 'bangalore') {
-            $isBlr = stripos($lead->branch, 'bangalore') !== false || stripos($lead->branch, 'whitefield') !== false;
-            if (!$isBlr) {
-                return response()->json(['message' => 'Unauthorized branch access.'], 403);
-            }
+        $validator = Validator::make($request->all(), $this->rules());
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $validator = Validator::make($request->all(), [
+        $lead->update($this->lockToUserBranch($request, $validator->validated()));
+
+        return response()->json(['success' => true, 'data' => $lead]);
+    }
+
+    private function rules(): array
+    {
+        return [
             'patient_name' => 'required|string|max:255',
             'patient_phone' => 'required|string|max:100',
             'patient_email' => 'nullable|email|max:255',
-            'branch' => 'required|string|max:255',
+            'branch' => ['required', 'string', 'max:255', function ($attribute, $value, $fail) {
+                if (!Lead::branchCodeFor($value)) {
+                    $fail('Please choose a valid clinic branch.');
+                }
+            }],
             'type' => 'required|string|in:Appointment,Online Consultation,Contact',
             'service_requested' => 'nullable|string|max:255',
             'doctor_requested' => 'nullable|string|max:255',
@@ -197,14 +117,27 @@ class LeadCrudController extends Controller
             'medical_history' => 'nullable|string',
             'notes' => 'nullable|string',
             'status' => 'required|string|in:Pending,Contacted,Confirmed,Closed',
-        ]);
+        ];
+    }
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
+    // Branch staff can only file leads under their own branch, whatever the form sent
+    private function lockToUserBranch(Request $request, array $data): array
+    {
+        $code = $request->user()->branchCode();
+
+        if ($code) {
+            $data['branch'] = config("clinic.branches.{$code}.name");
         }
 
-        $lead->update($validator->validated());
+        return $data;
+    }
 
-        return response()->json(['success' => true, 'data' => $lead]);
+    private function findVisibleLead(Request $request, $id): Lead
+    {
+        $lead = Lead::findOrFail($id);
+
+        abort_unless($lead->isVisibleTo($request->user()), 403, 'Unauthorized branch access.');
+
+        return $lead;
     }
 }

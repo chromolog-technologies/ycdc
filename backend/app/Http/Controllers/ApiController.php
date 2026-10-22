@@ -10,6 +10,8 @@ use App\Models\BlogPost;
 use App\Models\Lead;
 use App\Models\SeoConfig;
 use App\Models\CaseStudy;
+use App\Notifications\NewLeadReceived;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
 class ApiController extends Controller
@@ -50,7 +52,11 @@ class ApiController extends Controller
         $validator = Validator::make($request->all(), [
             'patient_name' => 'required|string|max:255',
             'patient_phone' => 'required|string|max:20',
-            'branch' => 'required|string|max:255',
+            'branch' => ['required', 'string', 'max:255', function ($attribute, $value, $fail) {
+                if (!Lead::branchCodeFor($value)) {
+                    $fail('Please choose a valid clinic branch.');
+                }
+            }],
             'type' => 'required|string|in:Appointment,Online Consultation,Contact',
             // Patient photos (screenings) or CVs (careers form)
             'photo_attached' => 'nullable|file|mimes:jpg,jpeg,png,webp,heic,heif,pdf,doc,docx|max:5120',
@@ -87,11 +93,28 @@ class ApiController extends Controller
             'notes' => $request->input('notes'),
         ]);
 
+        $this->notifyBranch($lead);
+
         return response()->json([
             'success' => true,
             'message' => 'Your inquiry has been submitted successfully!',
             'lead' => $lead
         ], 201);
+    }
+
+    // Email the lead's branch inbox; a mail failure must never lose the patient's submission
+    private function notifyBranch(Lead $lead): void
+    {
+        $email = config("clinic.branches.{$lead->branch_code}.lead_email");
+        if (!$email) {
+            return;
+        }
+
+        try {
+            Notification::route('mail', $email)->notify(new NewLeadReceived($lead));
+        } catch (\Throwable $e) {
+            report($e);
+        }
     }
 
     public function getLeads()

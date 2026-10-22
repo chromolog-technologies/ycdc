@@ -50,4 +50,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * The clinic branch this user is limited to, or null for all-branch accounts ('all').
+     */
+    public function branchCode(): ?string
+    {
+        return array_key_exists((string) $this->branch, config('clinic.branches')) ? $this->branch : null;
+    }
 }
