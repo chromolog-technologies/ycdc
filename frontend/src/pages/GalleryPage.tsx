@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Play, X, Image as ImageIcon, Video, Layers, ChevronLeft, ChevronRight } from 'lucide-react';
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL, backendAssetUrl } from '../config';
 import type { GalleryItem } from '../types';
 
 const MOCK_GALLERY: GalleryItem[] = [
@@ -185,15 +185,7 @@ export default function GalleryPage() {
   }, []);
 
 
-  const getMediaUrl = (path: string | undefined) => {
-    if (!path) return '';
-    if (path.startsWith('http') || path.startsWith('data:')) return path;
-    if (path.startsWith('/uploads') || path.startsWith('uploads')) {
-      return `http://localhost:8000${path.startsWith('/') ? '' : '/'}${path}`;
-    }
-    // Return relative path (static fallback assets)
-    return path;
-  };
+  const getMediaUrl = (path: string | undefined) => backendAssetUrl(path);
 
   return (
     <div className="animate-fade-in" style={{ backgroundColor: 'var(--silk-100)', minHeight: '100vh', paddingBottom: '100px' }}>

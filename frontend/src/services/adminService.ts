@@ -132,6 +132,15 @@ export const adminService = {
     return res.data;
   },
 
+  getUsers: async () => {
+    const res = await api.get('/admin/users');
+    return res.data;
+  },
+  deleteUser: async (id: string | number) => {
+    const res = await api.delete(`/admin/users/${id}`);
+    return res.data;
+  },
+
   submitUser: async (id: string | null, data: any) => {
     if (id) {
       if (data instanceof FormData) {

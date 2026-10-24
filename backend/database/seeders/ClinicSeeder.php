@@ -158,7 +158,9 @@ class ClinicSeeder extends Seeder
 
         foreach ($doctors as $doc) {
             Doctor::create($doc);
-               // 3. Seed Services
+        }
+
+        // 3. Seed Services
         $services = [
             // --- DERMATIC PROCEDURES (Trivandrum) ---
             [
@@ -943,5 +945,4 @@ class ClinicSeeder extends Seeder
             Lead::create($l);
         }
     }
-}
 }

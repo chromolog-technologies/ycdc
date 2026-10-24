@@ -3,8 +3,10 @@ import { API_BASE_URL } from '../config';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
+  // No fixed Content-Type: axios sends JSON for objects and multipart for FormData.
+  // Forcing application/json made axios convert FormData to JSON and drop uploaded files.
   headers: {
-    'Content-Type': 'application/json',
+    Accept: 'application/json',
   },
 });
 

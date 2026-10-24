@@ -1,6 +1,6 @@
 import { Award, Briefcase, GraduationCap, Instagram, Mail, MapPin, ShieldCheck } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL, backendAssetUrl } from '../config';
 import type { Doctor, OurTeamProps } from '../types';
 
 const MOCK_DOCTORS: Doctor[] = [
@@ -149,13 +149,7 @@ const MOCK_DOCTORS: Doctor[] = [
   }
 ];
 
-const getDoctorImageUrl = (path?: string) => {
-  if (!path) return '';
-  if (path.startsWith('http') || path.startsWith('/')) {
-    return path;
-  }
-  return `http://localhost:8000${path}`;
-};
+const getDoctorImageUrl = (path?: string) => backendAssetUrl(path);
 
 export default function OurTeam({ onOpenApplyModal }: OurTeamProps) {
   const [doctors, setDoctors] = useState<Doctor[]>(MOCK_DOCTORS);

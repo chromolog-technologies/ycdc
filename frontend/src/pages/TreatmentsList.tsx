@@ -100,7 +100,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
             ...t,
             branch: t.branch || 'trivandrum',
             procedure_type: t.procedure_type || (t.category === 'skin' && t.name.toLowerCase().includes('test') ? 'dermatic' : 'cosmetic'),
-            image: TREATMENT_IMAGES[t.id] || 'https://ycdc.in/wp-content/uploads/2025/07/beautiful-young-indian-woman-enjoying-face-lifting-2025-03-18-17-16-15-utc-scaled.jpg'
+            image: t.image_url || TREATMENT_IMAGES[t.id] || 'https://ycdc.in/wp-content/uploads/2025/07/beautiful-young-indian-woman-enjoying-face-lifting-2025-03-18-17-16-15-utc-scaled.jpg'
           }));
           setTreatments(mapped);
         }

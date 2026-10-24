@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Search, Calendar, User, Clock, ArrowLeft, BookOpen, X } from 'lucide-react';
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL, backendAssetUrl } from '../config';
 import type { BlogPost } from '../types';
 
 const MOCK_BLOGS: BlogPost[] = [
@@ -82,13 +82,7 @@ export default function BlogPage() {
     return matchesCategory && matchesSearch;
   });
 
-  const getImageUrl = (path: string) => {
-    if (path.startsWith('http')) return path;
-    if (path.startsWith('/uploads') || path.startsWith('uploads')) {
-      return `http://localhost:8000${path.startsWith('/') ? '' : '/'}${path}`;
-    }
-    return path; // Fallback to public folder static asset
-  };
+  const getImageUrl = (path: string) => backendAssetUrl(path);
 
   return (
     <div className="animate-fade-in" style={{ backgroundColor: 'var(--silk-100)', minHeight: '100vh', paddingBottom: '100px' }}>

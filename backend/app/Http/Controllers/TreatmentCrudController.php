@@ -26,6 +26,9 @@ class TreatmentCrudController extends Controller
             'description' => 'required|string',
             'science' => 'required|string',
             'treats' => 'required|string',
+            'branch' => 'nullable|in:trivandrum,bangalore,both',
+            'procedure_type' => 'nullable|in:dermatic,cosmetic',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'active' => 'nullable'
         ]);
 
@@ -52,6 +55,9 @@ class TreatmentCrudController extends Controller
             'description' => $request->description,
             'science' => $request->science,
             'treats' => $request->treats,
+            'branch' => $request->input('branch', 'trivandrum'),
+            'procedure_type' => $request->input('procedure_type', 'cosmetic'),
+            'image_path' => $this->storeImage($request),
             'active' => $active
         ]);
 
@@ -76,6 +82,9 @@ class TreatmentCrudController extends Controller
             'description' => 'required|string',
             'science' => 'required|string',
             'treats' => 'required|string',
+            'branch' => 'nullable|in:trivandrum,bangalore,both',
+            'procedure_type' => 'nullable|in:dermatic,cosmetic',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'active' => 'nullable'
         ]);
 
@@ -94,6 +103,9 @@ class TreatmentCrudController extends Controller
             'description' => $request->description,
             'science' => $request->science,
             'treats' => $request->treats,
+            'branch' => $request->input('branch', $treatment->branch),
+            'procedure_type' => $request->input('procedure_type', $treatment->procedure_type),
+            'image_path' => $this->storeImage($request) ?? $treatment->image_path,
             'active' => $active
         ]);
 
@@ -105,5 +117,18 @@ class TreatmentCrudController extends Controller
         $treatment = Service::findOrFail($id);
         $treatment->delete();
         return response()->json(['success' => true]);
+    }
+
+    private function storeImage(Request $request): ?string
+    {
+        if (!$request->hasFile('image')) {
+            return null;
+        }
+
+        $file = $request->file('image');
+        $imageName = time() . '_' . Str::slug($request->name) . '.' . $file->guessExtension();
+        $file->move(public_path('uploads/treatments'), $imageName);
+
+        return '/uploads/treatments/' . $imageName;
     }
 }

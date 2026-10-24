@@ -11,6 +11,7 @@ import {
   Check
 } from 'lucide-react';
 import { leadService } from '../services/leadService';
+import { backendAssetUrl } from '../config';
 import type { LeadDashboardProps } from '../types';
 
 const mapLeadFromDb = (dbLead: any) => {
@@ -520,7 +521,7 @@ export default function LeadDashboard({ onClose }: LeadDashboardProps) {
                         <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'green', marginTop: '4px', fontWeight: '500' }}>
                           <FileText size={14} />
                           <a 
-                            href={selectedLead.photoAttached.startsWith('http') || selectedLead.photoAttached.startsWith('/') ? selectedLead.photoAttached : `http://localhost:8000/uploads/leads/${selectedLead.photoAttached}`}
+                            href={selectedLead.photoAttached.startsWith('http') || selectedLead.photoAttached.startsWith('/') ? selectedLead.photoAttached : backendAssetUrl(`/uploads/leads/${selectedLead.photoAttached}`)}
                             target="_blank" 
                             rel="noopener noreferrer"
                             style={{ color: 'var(--gold-600)', textDecoration: 'underline' }}

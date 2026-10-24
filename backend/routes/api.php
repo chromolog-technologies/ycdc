@@ -11,6 +11,7 @@ use App\Http\Controllers\LeadCrudController;
 use App\Http\Controllers\BlogCrudController;
 use App\Http\Controllers\CaseStudyCrudController;
 use App\Http\Controllers\SeoCrudController;
+use App\Http\Controllers\UserCrudController;
 
 // Public APIs
 Route::get('/doctors', [ApiController::class, 'getDoctors']);
@@ -44,6 +45,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('admin/case-studies', CaseStudyCrudController::class)->middlewareFor($writes, 'permission:manage-case-studies');
     Route::apiResource('admin/seo', SeoCrudController::class)->only(['index', 'show', 'update'])->middlewareFor('update', 'permission:manage-seo');
     
+    // Staff accounts (super admins only)
+    Route::apiResource('admin/users', UserCrudController::class)->middleware('role:super-admin');
+
     // Scoped Leads CRM endpoints
     Route::middleware('permission:manage-leads')->group(function () {
         Route::get('/admin/leads', [LeadCrudController::class, 'index']);

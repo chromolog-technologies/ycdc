@@ -89,6 +89,9 @@ class Lead extends Model
             $data['photo_attached'] = Str::after($this->photoUrl(), '/uploads/leads/');
         }
 
+        // Full signed link for clients that run on a different host than this backend
+        $data['photo_url'] = $this->photo_attached ? url($this->photoUrl()) : null;
+
         return $data;
     }
 }

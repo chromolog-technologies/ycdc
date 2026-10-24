@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Sparkles, Calendar, X, Shield, Award, CheckCircle2, Eye } from 'lucide-react';
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL, backendAssetUrl } from '../config';
 import type { BeforeAfterProps, CaseStudy } from '../types';
 
 const DEFAULT_CASE_STUDIES: CaseStudy[] = [
@@ -84,8 +84,8 @@ export default function BeforeAfter({ onBookTreatment }: BeforeAfterProps) {
             categoryLabel: item.category_label || item.title,
             title: item.title,
             description: item.description,
-            beforeImg: item.before_img_path ? (item.before_img_path.startsWith('http') ? item.before_img_path : `http://localhost:8000${item.before_img_path}`) : '/hair_before.png',
-            afterImg: item.after_img_path ? (item.after_img_path.startsWith('http') ? item.after_img_path : `http://localhost:8000${item.after_img_path}`) : '/hair_after.png',
+            beforeImg: item.before_img_path ? backendAssetUrl(item.before_img_path) : '/hair_before.png',
+            afterImg: item.after_img_path ? backendAssetUrl(item.after_img_path) : '/hair_after.png',
             details: {
               doctor: item.doctor || "Dr. K. Yogiraj & Team",
               technology: item.technology || "Clinical Dermatology Protocol",

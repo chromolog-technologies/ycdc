@@ -27,6 +27,7 @@ import {
 import { adminService } from '../services/adminService';
 import { leadService } from '../services/leadService';
 import api from '../lib/api';
+import { backendAssetUrl } from '../config';
 
 export default function AdminPortal() {
   const navigate = useNavigate();
@@ -286,22 +287,15 @@ export default function AdminPortal() {
   // Treatments CRUD
   const saveTreatment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const payload = {
-      id: fd.get('id'),
-      name: fd.get('name'),
-      category: fd.get('category'),
-      category_name: fd.get('category_name'),
-      duration: fd.get('duration'),
-      price_range: fd.get('price_range'),
-      description: fd.get('description'),
-      science: fd.get('science'),
-      treats: fd.get('treats'),
-      active: fd.get('active') ? 1 : 0
-    };
+    // Multipart so the optional treatment image can be uploaded
+    const formData = new FormData(e.currentTarget);
+    formData.set('active', formData.get('active') ? '1' : '0');
+    if (currentTreatment) {
+      formData.append('_method', 'PUT');
+    }
 
     try {
-      await adminService.submitService(currentTreatment ? String(currentTreatment.id) : null, payload);
+      await adminService.submitService(currentTreatment ? String(currentTreatment.id) : null, formData);
       showToastMessage(currentTreatment ? 'Treatment updated!' : 'Treatment added!');
       setShowTreatmentModal(false);
       loadAllData();
@@ -1462,7 +1456,7 @@ export default function AdminPortal() {
                                       <tr style={{ borderBottom: '1px solid var(--silk-200)' }}>
                                         <td style={{ padding: '8px 0', fontWeight: '600', color: 'var(--muted-charcoal)' }}>Attached File</td>
                                         <td style={{ padding: '8px 0' }}>
-                                          <a href={`http://localhost:8000/uploads/leads/${selectedLead.photo_attached}`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--plum-800)', fontWeight: 'bold', textDecoration: 'underline' }}>View File</a>
+                                          <a href={selectedLead.photo_url || backendAssetUrl(`/uploads/leads/${selectedLead.photo_attached}`)} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--plum-800)', fontWeight: 'bold', textDecoration: 'underline' }}>View File</a>
                                         </td>
                                       </tr>
                                     )}
@@ -1599,7 +1593,7 @@ export default function AdminPortal() {
                               <tr key={doc.id} style={{ borderBottom: '1px solid var(--silk-200)' }}>
                                 <td style={{ padding: '12px' }}>
                                   <img 
-                                    src={doc.image_path ? `http://localhost:8000${doc.image_path}` : '/doctor_yogiraj.png'} 
+                                    src={doc.image_path ? backendAssetUrl(doc.image_path) : '/doctor_yogiraj.png'} 
                                     alt={doc.name} 
                                     style={{ width: '45px', height: '45px', borderRadius: '50%', objectFit: 'cover', border: '1px solid var(--silk-200)' }} 
                                   />
@@ -1772,6 +1766,23 @@ export default function AdminPortal() {
                             <label className="form-label">Category Label Tag</label>
                             <input type="text" name="category_name" defaultValue={currentTreatment?.category_name || ''} required className="form-input" placeholder="e.g. Hair & Scalp Restoration" />
                           </div>
+                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                            <div>
+                              <label className="form-label">Clinic Branch</label>
+                              <select name="branch" defaultValue={currentTreatment?.branch || 'trivandrum'} className="form-select">
+                                <option value="trivandrum">Pattom Center, Trivandrum</option>
+                                <option value="bangalore">Whitefield Center, Bangalore</option>
+                                <option value="both">Both Branches</option>
+                              </select>
+                            </div>
+                            <div>
+                              <label className="form-label">Procedure Type</label>
+                              <select name="procedure_type" defaultValue={currentTreatment?.procedure_type || 'cosmetic'} className="form-select">
+                                <option value="dermatic">Dermatic (Clinical)</option>
+                                <option value="cosmetic">Cosmetic</option>
+                              </select>
+                            </div>
+                          </div>
                           <div>
                             <label className="form-label">Procedure Duration</label>
                             <input type="text" name="duration" defaultValue={currentTreatment?.duration || ''} required className="form-input" placeholder="e.g. 45-60 mins" />
@@ -1791,6 +1802,10 @@ export default function AdminPortal() {
                           <div>
                             <label className="form-label">What it treats (comma separated symptoms/concerns)</label>
                             <input type="text" name="treats" defaultValue={currentTreatment?.treats || ''} required className="form-input" placeholder="e.g. Hair fall, thinning, androgenetic alopecia" />
+                          </div>
+                          <div>
+                            <label className="form-label">Treatment Image (JPEG/PNG/WEBP, optional)</label>
+                            <input type="file" name="image" className="form-input" accept="image/*" />
                           </div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <input type="checkbox" name="active" defaultChecked={currentTreatment ? currentTreatment.active : true} id="tr-active" />
@@ -1947,7 +1962,7 @@ export default function AdminPortal() {
                               <tr key={item.id} style={{ borderBottom: '1px solid var(--silk-200)' }}>
                                 <td style={{ padding: '12px' }}>
                                   <img 
-                                    src={item.thumbnail_path.startsWith('http') ? item.thumbnail_path : `http://localhost:8000${item.thumbnail_path}`} 
+                                    src={backendAssetUrl(item.thumbnail_path)} 
                                     alt={item.title} 
                                     style={{ width: '60px', height: '40px', borderRadius: '4px', objectFit: 'cover', border: '1px solid var(--silk-200)' }} 
                                   />
@@ -2067,7 +2082,7 @@ export default function AdminPortal() {
                               <tr key={b.id} style={{ borderBottom: '1px solid var(--silk-200)' }}>
                                 <td style={{ padding: '12px' }}>
                                   <img 
-                                    src={`http://localhost:8000${b.image_path}`} 
+                                    src={backendAssetUrl(b.image_path)} 
                                     alt={b.title} 
                                     style={{ width: '60px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} 
                                   />
@@ -2196,8 +2211,8 @@ export default function AdminPortal() {
                               <tr key={cs.id} style={{ borderBottom: '1px solid var(--silk-200)' }}>
                                 <td style={{ padding: '12px' }}>
                                   <div style={{ display: 'flex', gap: '4px' }}>
-                                    <img src={cs.before_img_path.startsWith('http') ? cs.before_img_path : `http://localhost:8000${cs.before_img_path}`} alt="Before" style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} />
-                                    <img src={cs.after_img_path.startsWith('http') ? cs.after_img_path : `http://localhost:8000${cs.after_img_path}`} alt="After" style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} />
+                                    <img src={backendAssetUrl(cs.before_img_path)} alt="Before" style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} />
+                                    <img src={backendAssetUrl(cs.after_img_path)} alt="After" style={{ width: '40px', height: '40px', borderRadius: '4px', objectFit: 'cover' }} />
                                   </div>
                                 </td>
                                 <td style={{ padding: '12px', fontWeight: 'bold', color: 'var(--plum-900)' }}>{cs.title}</td>
