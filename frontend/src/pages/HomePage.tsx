@@ -335,9 +335,12 @@ export const HomePage: React.FC<HomePageProps> = ({
   const storiesScrollRef = useRef<HTMLDivElement>(null);
   const [isStoriesPaused, setIsStoriesPaused] = useState<boolean>(false);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
+  // Portrait hero video for phones and any tall screen (tablets, or phones in "Desktop site" mode,
+  // which report a ~980px width); the landscape clip would be cropped to a zoomed-in sliver there.
+  const isPortraitHero = () => window.innerWidth <= 768 || window.innerHeight > window.innerWidth;
   const [isMobile, setIsMobile] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
-      return window.innerWidth <= 768;
+      return isPortraitHero();
     }
     return false;
   });
@@ -351,7 +354,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(isPortraitHero());
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);

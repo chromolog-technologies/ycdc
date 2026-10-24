@@ -10450,3 +10450,37 @@ footer.glass-dark {
 
 
 
+
+/* ==========================================================================
+   Hero on tall portrait screens wider than phones: tablets in portrait and
+   phones in "Desktop site" mode (~980px wide but very tall). Uses the portrait
+   video (see HomePage) and anchors the copy to the bottom like the phone layout,
+   keeping the desktop type sizes.
+   ========================================================================== */
+@media (min-width: 769px) and (orientation: portrait) {
+  .master-hero-section {
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: clamp(48px, 7vh, 96px);
+  }
+
+  .master-hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .master-hero-main-row {
+    min-height: auto;
+  }
+
+  .master-hero-overlay-dark {
+    background: linear-gradient(
+      180deg,
+      rgba(14, 12, 10, 0.35) 0%,
+      rgba(14, 12, 10, 0.15) 35%,
+      rgba(14, 12, 10, 0.7) 70%,
+      rgba(14, 12, 10, 0.9) 100%
+    );
+  }
+}
