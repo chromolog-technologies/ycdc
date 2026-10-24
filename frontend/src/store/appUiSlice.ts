@@ -5,7 +5,6 @@ const initialState: AppUiState = {
   activeTreatmentTab: 'skin',
   mobileMenuOpen: false,
   showBookingModal: false,
-  showDashboardModal: false,
   showApplyModal: false,
   bookingPrefills: {}
 };
@@ -31,9 +30,6 @@ const appUiSlice = createSlice({
       state.bookingPrefills = {};
       state.showBookingModal = false;
     },
-    setDashboardModalOpen: (state, action: PayloadAction<boolean>) => {
-      state.showDashboardModal = action.payload;
-    },
     setApplyModalOpen: (state, action: PayloadAction<boolean>) => {
       state.showApplyModal = action.payload;
     }
@@ -46,7 +42,6 @@ export const {
   toggleMobileMenu,
   openBookingModal,
   closeBookingModal,
-  setDashboardModalOpen,
   setApplyModalOpen
 } = appUiSlice.actions;
 

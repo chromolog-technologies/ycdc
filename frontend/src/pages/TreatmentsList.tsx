@@ -19,6 +19,7 @@ import {
   Calendar
 } from 'lucide-react';
 import { API_BASE_URL } from '../config';
+import { useAppContext } from '../contexts';
 import type { Treatment, TreatmentsListProps } from '../types';
 import { TREATMENT_IMAGES, MOCK_SERVICES } from '../data/treatmentsData';
 
@@ -52,6 +53,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const { phone, whatsapp } = useAppContext();
   const [activeModalTreatment, setActiveModalTreatment] = useState<Treatment | null>(null);
 
   const [searchParams] = useSearchParams();
@@ -100,7 +102,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
             ...t,
             branch: t.branch || 'trivandrum',
             procedure_type: t.procedure_type || (t.category === 'skin' && t.name.toLowerCase().includes('test') ? 'dermatic' : 'cosmetic'),
-            image: t.image_url || TREATMENT_IMAGES[t.id] || 'https://ycdc.in/wp-content/uploads/2025/07/beautiful-young-indian-woman-enjoying-face-lifting-2025-03-18-17-16-15-utc-scaled.jpg'
+            image: t.image_url || TREATMENT_IMAGES[t.id] || '/images/site/beautiful-young-indian-woman-enjoying-face-lifting-2025-03-18-17-16-15-utc-scaled.jpg'
           }));
           setTreatments(mapped);
         }
@@ -130,7 +132,8 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
   };
 
   const handleWhatsAppClick = (branchName: string) => {
-    const phone = branchName === 'Bangalore' ? '919008985222' : '919447012345';
+    // Clinic WhatsApp line from AppContext (previously placeholder numbers per branch)
+    const phone = whatsapp.replace(/\D/g, '');
     const message = encodeURIComponent(`Hello YCDC ${branchName} Clinic, I would like to inquire about clinical procedures and appointments.`);
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   };
@@ -420,7 +423,7 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                   <MessageSquare size={16} /> WhatsApp Bangalore Clinic
                 </button>
                 <a
-                  href="tel:+919008985222"
+                  href={`tel:${phone}`}
                   className="btn btn-outline"
                   style={{ padding: '12px 24px', display: 'flex', alignItems: 'center', gap: '8px', color: '#536B4C', borderColor: '#536B4C', fontWeight: 'bold' }}
                 >
@@ -924,9 +927,8 @@ export default function TreatmentsList({ onBookTreatment }: TreatmentsListProps)
                 <button
                   onClick={() => {
                     const branchName = activeModalTreatment.branch === 'bangalore' ? 'Whitefield, Bangalore' : 'Pattom, Trivandrum';
-                    const phone = activeModalTreatment.branch === 'bangalore' ? '919008985222' : '919447012345';
                     const message = encodeURIComponent(`Hello YCDC ${branchName} Clinic, I would like to inquire about "${activeModalTreatment.name}".`);
-                    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+                    window.open(`https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${message}`, '_blank');
                   }}
                   style={{
                     padding: '10px 20px',

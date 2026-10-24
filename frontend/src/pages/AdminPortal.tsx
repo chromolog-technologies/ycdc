@@ -461,18 +461,6 @@ export default function AdminPortal() {
     }
   };
 
-  const resetAllLeads = async () => {
-    if (!confirm('This will reset the lead database to demo defaults. Proceed?')) return;
-    try {
-      await leadService.resetLeads();
-      showToastMessage('CRM Leads reset!');
-      setSelectedLead(null);
-      loadAllData();
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   const hasPermission = (perm: string) => {
     if (!user) return false;
     if (user.roles.includes('super-admin')) return true;
@@ -1288,9 +1276,6 @@ export default function AdminPortal() {
                               style={{ padding: '8px 14px', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '6px' }}
                             >
                               <PlusCircle size={14} /> Add Appointment
-                            </button>
-                            <button onClick={resetAllLeads} className="btn btn-outline" style={{ padding: '8px 14px', fontSize: '0.75rem' }}>
-                              Reset Leads Data
                             </button>
                           </div>
                         </div>

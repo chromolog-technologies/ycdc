@@ -17,10 +17,6 @@ export interface ConsultationFormProps {
   onSuccessClose?: () => void;
 }
 
-export interface LeadDashboardProps {
-  onClose?: () => void;
-}
-
 export interface OurTeamProps {
   onOpenApplyModal: () => void;
 }

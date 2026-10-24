@@ -24,7 +24,7 @@ const MOCK_DOCTORS: Doctor[] = [
     branch: 'bangalore',
     instagram_url: 'https://www.instagram.com/drniranjanaraj/',
     active: true,
-    image_path: 'https://ycdc.in/wp-content/uploads/2025/05/niranjana.jpg',
+    image_path: '/images/site/niranjana.jpg',
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const MOCK_DOCTORS: Doctor[] = [
     branch: 'bangalore',
     instagram_url: undefined,
     active: true,
-    image_path: 'https://ycdc.in/wp-content/uploads/2025/05/Dr.-Niranjana-Raj.jpg',
+    image_path: '/images/site/Dr.-Niranjana-Raj.jpg',
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const MOCK_DOCTORS: Doctor[] = [
     branch: 'bangalore',
     instagram_url: undefined,
     active: true,
-    image_path: 'https://ycdc.in/wp-content/uploads/2025/05/Dr.-NR.jpg',
+    image_path: '/images/site/Dr.-NR.jpg',
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ const MOCK_DOCTORS: Doctor[] = [
     branch: 'bangalore',
     instagram_url: undefined,
     active: true,
-    image_path: 'https://ycdc.in/wp-content/uploads/2025/05/cosmetologist-doing-trichoscopy-and-watching-resul-2024-10-18-10-16-52-utc-scaled.jpg',
+    image_path: '/images/site/cosmetologist-doing-trichoscopy-and-watching-resul-2024-10-18-10-16-52-utc-scaled.jpg',
   },
   {
     id: 6,

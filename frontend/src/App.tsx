@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Phone,
@@ -26,18 +26,8 @@ import {
 } from 'lucide-react';
 import HomePage from './pages/HomePage';
 import BookingWidget from './components/BookingWidget';
-import LeadDashboard from './components/LeadDashboard';
-import AboutUs from './pages/AboutUs';
-import TreatmentsList from './pages/TreatmentsList';
-import ContactUs from './pages/ContactUs';
-import OurTeam from './pages/OurTeam';
-import BeforeAfter from './pages/BeforeAfter';
-import GalleryPage from './pages/GalleryPage';
-import BlogPage from './pages/BlogPage';
-import PrivacyPolicy from './pages/PrivacyPolicy';
 import ApplyNowModal from './components/ApplyNowModal';
 import HeaderSearch from './components/HeaderSearch';
-import AdminPortal from './pages/AdminPortal';
 import { API_BASE_URL } from './config';
 import useScrollReveal from './hooks/useScrollReveal';
 import { getPageFromPath, PAGE_PATHS } from './routes/pageRoutes';
@@ -50,12 +40,22 @@ import {
   closeBookingModal,
   openBookingModal,
   setApplyModalOpen,
-  setDashboardModalOpen,
   setMobileMenuOpen,
   toggleMobileMenu
 } from './store/appUiSlice';
 
 import './App.css';
+
+// Pages other than Home load on demand so the first visit downloads less
+const AboutUs = lazy(() => import('./pages/AboutUs'));
+const TreatmentsList = lazy(() => import('./pages/TreatmentsList'));
+const ContactUs = lazy(() => import('./pages/ContactUs'));
+const OurTeam = lazy(() => import('./pages/OurTeam'));
+const BeforeAfter = lazy(() => import('./pages/BeforeAfter'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const AdminPortal = lazy(() => import('./pages/AdminPortal'));
 
 interface MobileNavItem {
   id: PageId;
@@ -83,7 +83,6 @@ function AppContent() {
     activeTreatmentTab: activeTab,
     mobileMenuOpen,
     showBookingModal,
-    showDashboardModal,
     showApplyModal,
     bookingPrefills
   } = useAppSelector((state) => state.appUi);
@@ -192,8 +191,8 @@ function AppContent() {
         <div className="top-bar-royal-berry">
           <div className="container top-bar-royal-inner">
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
-              <a href="tel:+919876543210" style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#ffffff', textDecoration: 'none' }}>
-                <Phone size={13} /> +91 98765 43210
+              <a href={`tel:${phone}`} style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#ffffff', textDecoration: 'none' }}>
+                <Phone size={13} /> {phone.replace(/^\+91(\d{5})(\d{5})$/, '+91 $1 $2')}
               </a>
               <span style={{ opacity: 0.5 }}>|</span>
               <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -710,6 +709,7 @@ function AppContent() {
       })()}
 
       <main key={currentPage} style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <Suspense fallback={<div style={{ minHeight: '70vh' }} />}>
         {currentPage === 'home' && (
           <HomePage
             onNavigateToPage={navigateToPage}
@@ -753,6 +753,7 @@ function AppContent() {
         {currentPage === 'admin' && (
           <AdminPortal />
         )}
+        </Suspense>
       </main>
 
       {/* 13. Footer */}
@@ -999,27 +1000,6 @@ function AppContent() {
               initialCategory={bookingPrefills.category}
               initialService={bookingPrefills.service}
             />
-          </div>
-        </div>
-      )}
-
-      {showDashboardModal && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(41, 45, 38, 0.72)',
-          backdropFilter: 'blur(6px)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 10000,
-          padding: '20px'
-        }}>
-          <div style={{ width: '100%', maxWidth: '980px', maxHeight: '92vh', overflowY: 'auto', borderRadius: '16px' }}>
-            <LeadDashboard onClose={() => dispatch(setDashboardModalOpen(false))} />
           </div>
         </div>
       )}

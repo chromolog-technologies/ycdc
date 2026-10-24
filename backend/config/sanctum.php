@@ -50,7 +50,8 @@ return [
     |
     */
 
-    'expiration' => null,
+    // Admin portal logins last one working day; the portal signs out on 401
+    'expiration' => (int) env('SANCTUM_EXPIRATION', 480),
 
     /*
     |--------------------------------------------------------------------------

@@ -736,7 +736,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="heritage-footer-row">
                 <div className="heritage-signature-box">
                   <img
-                    src="https://ycdc.in/wp-content/uploads/2025/05/Yogiraj-2.png"
+                    src="/images/site/Yogiraj-2.png"
                     onError={(e) => { e.currentTarget.src = '/Yogiraj-2.png'; }}
                     alt="Dr. Yogiraj"
                     className="heritage-signature-img"

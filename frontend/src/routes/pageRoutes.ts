@@ -1,4 +1,4 @@
-import type { PageId } from '../types/navigation';
+import type { PageId } from '../types/navigation.ts';
 
 export const PAGE_PATHS: Record<PageId, string> = {
   home: '/',

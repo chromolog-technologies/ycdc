@@ -9,7 +9,6 @@ export type {
   ApplyNowModalProps,
   BeforeAfterProps,
   ConsultationFormProps,
-  LeadDashboardProps,
   OurTeamProps,
   TreatmentsListProps
 } from './props';

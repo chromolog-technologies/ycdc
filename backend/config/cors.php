@@ -19,7 +19,9 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    // Comma-separated site origins allowed to call the API, e.g.
+    // "https://ycdc.in,https://www.ycdc.in,https://ycdc-navy.vercel.app"
+    'allowed_origins' => array_values(array_filter(array_map('trim', explode(',', env('CORS_ALLOWED_ORIGINS', 'http://localhost:5173,http://localhost:4173'))))),
 
     'allowed_origins_patterns' => [],
 

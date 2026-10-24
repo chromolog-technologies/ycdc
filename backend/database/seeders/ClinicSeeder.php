@@ -696,7 +696,7 @@ class ClinicSeeder extends Seeder
                 'type' => 'image',
                 'category' => 'treatments',
                 'title' => 'Before After - Hair Transplant Density',
-                'thumbnail_path' => 'https://ycdc.in/wp-content/uploads/2025/08/eed5800b-c58f-4e3d-a7cf-36350a19166c.jpg',
+                'thumbnail_path' => '/images/site/eed5800b-c58f-4e3d-a7cf-36350a19166c.jpg',
                 'video_path' => null,
                 'description' => 'Excellent density and natural hairline restoration 6 months after a FUE hair transplant session.'
             ],
@@ -705,7 +705,7 @@ class ClinicSeeder extends Seeder
                 'type' => 'image',
                 'category' => 'treatments',
                 'title' => 'Before After - Hair Line Restoration',
-                'thumbnail_path' => 'https://ycdc.in/wp-content/uploads/2025/05/ycdc-before-after2-880x808.jpeg',
+                'thumbnail_path' => '/images/site/ycdc-before-after2-880x808.jpeg',
                 'video_path' => null,
                 'description' => 'Frontal hairline restoration showing significant density and natural growth.'
             ],
@@ -714,7 +714,7 @@ class ClinicSeeder extends Seeder
                 'type' => 'image',
                 'category' => 'treatments',
                 'title' => 'Before After - Acne Scar Correction',
-                'thumbnail_path' => 'https://ycdc.in/wp-content/uploads/2025/08/eed5800b-c58f-4e3d-a7cf-36350a19166c.jpg',
+                'thumbnail_path' => '/images/site/eed5800b-c58f-4e3d-a7cf-36350a19166c.jpg',
                 'video_path' => null,
                 'description' => 'Visible skin smoothing and reduction of deep pitted acne scars after 3 sessions of Secret RF Microneedling.'
             ],
@@ -723,7 +723,7 @@ class ClinicSeeder extends Seeder
                 'type' => 'image',
                 'category' => 'treatments',
                 'title' => 'Trichoscopy Scalp Examination',
-                'thumbnail_path' => 'https://ycdc.in/wp-content/uploads/2025/05/cosmetologist-doing-trichoscopy-and-watching-resul-2024-10-18-10-16-52-utc-scaled.jpg',
+                'thumbnail_path' => '/images/site/cosmetologist-doing-trichoscopy-and-watching-resul-2024-10-18-10-16-52-utc-scaled.jpg',
                 'video_path' => null,
                 'description' => 'Digital trichoscopy scalp analysis to evaluate hair root health and map out custom treatments.'
             ],
@@ -732,7 +732,7 @@ class ClinicSeeder extends Seeder
                 'type' => 'image',
                 'category' => 'infrastructure',
                 'title' => 'YCDC Luxury Lobby & Reception',
-                'thumbnail_path' => 'https://ycdc.in/wp-content/uploads/2025/05/DSC09954-scaled.jpg',
+                'thumbnail_path' => '/images/site/DSC09954-scaled.jpg',
                 'video_path' => null,
                 'description' => 'Our welcoming reception lounge designed to provide patients with a calming and premium clinical environment.'
             ],
@@ -741,7 +741,7 @@ class ClinicSeeder extends Seeder
                 'type' => 'image',
                 'category' => 'treatments',
                 'title' => 'Before After - Pigmentation Treatment',
-                'thumbnail_path' => 'https://ycdc.in/wp-content/uploads/2025/05/ycdc-before-after6-880x808.jpeg',
+                'thumbnail_path' => '/images/site/ycdc-before-after6-880x808.jpeg',
                 'video_path' => null,
                 'description' => 'Advanced Q-Switched laser toning and chemical peel results for melasma and dark spots.'
             ],
@@ -750,7 +750,7 @@ class ClinicSeeder extends Seeder
                 'type' => 'video',
                 'category' => 'treatments',
                 'title' => 'YCDC Clinic Experience Tour',
-                'thumbnail_path' => 'https://ycdc.in/wp-content/uploads/2025/05/Dr.-NR-Opd.jpg',
+                'thumbnail_path' => '/images/site/Dr.-NR-Opd.jpg',
                 'video_path' => 'https://www.youtube.com/watch?v=RWr8XeBUxTU',
                 'description' => 'Detailed clinical video tour demonstrating our professional environment, FDA-approved lasers, and workflows.'
             ]
@@ -771,7 +771,7 @@ class ClinicSeeder extends Seeder
                 'date' => 'August 24, 2025',
                 'read_time' => '3 min read',
                 'excerpt' => 'Beautiful skin starts with the right care. At YCDC, we believe in simple yet effective skin care practices that keep your skin nourished, hydrated, and radiant every day.',
-                'image_path' => 'https://ycdc.in/wp-content/uploads/2025/07/beautiful-young-indian-woman-enjoying-face-lifting-2025-03-18-17-16-15-utc-scaled.jpg',
+                'image_path' => '/images/site/beautiful-young-indian-woman-enjoying-face-lifting-2025-03-18-17-16-15-utc-scaled.jpg',
                 'body_content' => [
                     'Beautiful skin starts with the right care. At YCDC, we believe in simple yet effective skin care practices that keep your skin nourished, hydrated, and radiant every day. Using cutting-edge ResurFX Laser and Secret RF Microneedling, we effectively target pimple scars, uneven texture, and active breakouts.',
                     '1. Protect Your Skin from Sun Damage: Always use a broad-spectrum sunscreen with SPF 30 or higher. UVA and UVB rays accelerate skin aging and trigger hyperpigmentation. Reapply sunscreen every 3 hours if outdoors.',
@@ -788,7 +788,7 @@ class ClinicSeeder extends Seeder
                 'date' => 'July 15, 2025',
                 'read_time' => '4 min read',
                 'excerpt' => 'Understand how US-FDA approved laser systems deliver permanent hair reduction safely across all skin types with zero downtime.',
-                'image_path' => 'https://ycdc.in/wp-content/uploads/2025/05/a-girl-in-black-underwear-gets-laser-hair-removal-2025-03-24-12-57-40-utc-scaled-500x450.jpg',
+                'image_path' => '/images/site/a-girl-in-black-underwear-gets-laser-hair-removal-2025-03-24-12-57-40-utc-scaled-500x450.jpg',
                 'body_content' => [
                     'Embrace self-confidence and overcome the hassle of frequent waxing or shaving. Laser hair reduction uses selective photothermolysis to target melanin in hair follicles, disabling their growth cycle permanently without damaging surrounding skin tissue.',
                     'At YCDC, we utilize US-FDA approved triple-wavelength lasers that are exceptionally safe for Indian skin types. The integrated cooling tips ensure the treatment is virtually painless.',
@@ -804,7 +804,7 @@ class ClinicSeeder extends Seeder
                 'date' => 'June 10, 2025',
                 'read_time' => '5 min read',
                 'excerpt' => 'Experiencing hair thinning? Explore the biological reasons behind hair fall and clinical hair loss solutions including PRP and FUE transplants.',
-                'image_path' => 'https://ycdc.in/wp-content/uploads/2025/05/a-beautician-makes-injections-into-the-scalp-for-h-2024-12-01-11-09-23-utc-scaled.jpg',
+                'image_path' => '/images/site/a-beautician-makes-injections-into-the-scalp-for-h-2024-12-01-11-09-23-utc-scaled.jpg',
                 'body_content' => [
                     'Hair loss causing thinning or baldness is a very common concern. Understanding the root cause—whether it is genetic androgenetic alopecia, hormonal imbalances, nutritional deficiencies, or stress-induced telogen effluvium—is the first step to successful restoration.',
                     'Modern trichology offers highly effective solutions: medications to block DHT, Platelet-Rich Plasma (PRP) scalp injections to stimulate hair bulbs, and FUE hair transplant surgery.',

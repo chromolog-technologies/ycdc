@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#F7F3ED" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary SEO Meta Tags -->
@@ -16,69 +18,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Google Analytics (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCDCTRACK"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-YCDCTRACK', { send_page_view: false }); // Disable automatic pageview in SPA, we track manually on route change
-    </script>
+    <!-- Canonical / Open Graph tags and Google Analytics are injected at build time (see vite.config.ts) -->
 
     <!-- Site preloader: inline so it paints before the app bundle loads; removed in src/main.tsx -->
     <link rel="preload" as="image" href="/ycdc-logo.png" />
-    <style>
-      html.is-loading { overflow: hidden; }
-      #site-loader {
-        position: fixed;
-        inset: 0;
-        z-index: 99999;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 28px;
-        background: #F7F3ED;
-        transition: opacity 0.6s ease, visibility 0.6s ease;
-      }
-      #site-loader.is-hidden { opacity: 0; visibility: hidden; }
-      #site-loader img {
-        width: min(220px, 56vw);
-        height: auto;
-        animation: site-loader-breathe 2.4s ease-in-out infinite;
-      }
-      #site-loader .site-loader-track {
-        position: relative;
-        width: min(160px, 40vw);
-        height: 2px;
-        overflow: hidden;
-        border-radius: 2px;
-        background: rgba(83, 107, 76, 0.15);
-      }
-      #site-loader .site-loader-track::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        width: 40%;
-        border-radius: 2px;
-        background: linear-gradient(90deg, #536B4C, #B49A68);
-        animation: site-loader-slide 1.3s ease-in-out infinite;
-      }
-      @keyframes site-loader-breathe {
-        0%, 100% { opacity: 0.85; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.03); }
-      }
-      @keyframes site-loader-slide {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(250%); }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        #site-loader img, #site-loader .site-loader-track::after { animation: none; }
-      }
-    </style>
+    <style>html.is-loading{overflow:hidden}#site-loader{z-index:99999;background:#f7f3ed;flex-direction:column;justify-content:center;align-items:center;gap:28px;transition:opacity .6s,visibility .6s;display:flex;position:fixed;inset:0}#site-loader.is-hidden{opacity:0;visibility:hidden}#site-loader img{width:min(220px,56vw);height:auto;animation:2.4s ease-in-out infinite site-loader-breathe}#site-loader .site-loader-track{background:#536b4c26;border-radius:2px;width:min(160px,40vw);height:2px;position:relative;overflow:hidden}#site-loader .site-loader-track:after{content:"";background:linear-gradient(90deg,#536b4c,#b49a68);border-radius:2px;width:40%;animation:1.3s ease-in-out infinite site-loader-slide;position:absolute;inset:0}@keyframes site-loader-breathe{0%,to{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.03)}}@keyframes site-loader-slide{0%{transform:translate(-100%)}to{transform:translate(250%)}}@media (prefers-reduced-motion:reduce){#site-loader img,#site-loader .site-loader-track:after{animation:none}}</style>
     <script>document.documentElement.classList.add('is-loading');</script>
-    <script type="module" crossorigin src="/assets/index-BSbPbCKK.js"></script>
+    <script type="module" crossorigin src="/assets/index-BOYxHI1H.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-iYQLubJU.css">
+    <link rel="canonical" href="https://ycdc-navy.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="YCDC">
+    <meta property="og:title" content="YCDC | Yogiraj Centre for Dermatology &amp; Cosmetology">
+    <meta property="og:description" content="Premium skin, hair and aesthetic care in Bengaluru and Thiruvananthapuram, led by Dr. K. Yogiraj with 45+ years of excellence.">
+    <meta property="og:url" content="https://ycdc-navy.vercel.app/">
+    <meta property="og:image" content="https://ycdc-navy.vercel.app/hero/hero-desktop.jpg">
+    <meta name="twitter:card" content="summary_large_image">
   </head>
   <body>
     <div id="site-loader" role="status" aria-live="polite" aria-label="Loading YCDC">
